@@ -3,7 +3,7 @@ const app= express()
 const mongoose=require('mongoose')
 const cors=require('cors')
 const multer=require('multer')
-
+const route=require('./routes/route')
 
 app.use(cors())
 app.listen(3800,()=>{
@@ -11,4 +11,5 @@ app.listen(3800,()=>{
     .catch(error=>handleError(error));
 })
 
-app.use(express.json)
+app.use(express.json())
+app.use(route)

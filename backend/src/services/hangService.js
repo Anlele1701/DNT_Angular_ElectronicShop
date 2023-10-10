@@ -1,0 +1,1 @@
+var hangModel=require('../models/hangModel')
