@@ -1,39 +1,59 @@
-<div class="header">
-  <div class="sidebar p-3">
-    <a routerLink="/" class="p-3">
-      <img src />
-    </a>
-    <ul class="menu">
-      <li>
-        <a routerLink="/dashboard" routerLinkActive="active">
-          <span class="icon"> </span>
-          <span class="text">Dashboard</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/customers">
-          <span class="icon"> </span>
-          <span class="text">Customers</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/products">
-          <span class="icon"> </span>
-          <span class="text">Products</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/orders">
-          <span class="icon"> </span>
-          <span class="text">Orders</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/categories">
-          <span class="icon"> </span>
-          <span class="text">Categories</span>
-        </a>
-      </li>
-    </ul>
+<body>
+  <!-- SIDEBAR -->
+  <div class="header">
+    <div class="sidebar p-3">
+      <a routerLink="/" class="d-flex justify-content-center">
+        <img src="assets/admin/logo.png" style="height: 100px" />
+      </a>
+      <hr style="color: white" />
+      <ul class="menu nav nav-pills flex-column mb-auto">
+        <li class="nav-link mb-3" style="background-color: #302e2e">
+          <a routerLink="/dashboard" routerLinkActive="active">
+            <span class="icon"> <i class="fa-solid fa-house"></i></span>
+            <span class="text-white pe-4 ps-2">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-link mb-3">
+          <a routerLink="/customers">
+            <span class="icon"><i class="fa-solid fa-user"></i> </span>
+            <span class="text-white pe-4 ps-2">Customers</span>
+          </a>
+        </li>
+        <li class="nav-link mb-3">
+          <a routerLink="/products">
+            <span class="icon"><i class="fa-solid fa-bag-shopping"></i> </span>
+            <span class="text-white pe-4 ps-2">Products</span>
+          </a>
+        </li>
+        <li class="nav-link mb-3">
+          <a routerLink="/orders">
+            <span class="icon"><i class="fa-solid fa-receipt"></i> </span>
+            <span class="text-white pe-4 ps-2">Orders</span>
+          </a>
+        </li>
+        <li class="nav-link mb-3">
+          <a routerLink="/categories">
+            <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
+            <span class="text-white pe-4 ps-2">Categories</span>
+          </a>
+        </li>
+        <div class="d-flex justify-content-center">
+          <li class="nav-link" id="logout">
+            <a routerLink="/categories">
+              <span class="icon">
+                <i class="fa-solid fa-right-from-bracket"></i
+              ></span>
+              <span class="text-white pe-4 ps-2">Logout</span>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+    <!-- Box -->
+    <div class="adminbox">
+      <div class="navbar-brand mb-0 h1">
+        <p>Testing</p>
+      </div>
+    </div>
   </div>
-</div>
+</body>

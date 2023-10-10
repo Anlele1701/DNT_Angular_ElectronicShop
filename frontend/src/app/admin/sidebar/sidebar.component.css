@@ -1,16 +1,31 @@
-.header
-{
-    display:flex;
+body {
+  background-color: #e6e5e4;
 }
-.sidebar
-{
-    background: #494949;
-    display: flex;
-    flex-shrink: 0;
-    flex-direction: column;
-    height: 100vh;
+/* Sidebar */
+.header {
+  display: flex;
 }
-.logo
-{
-    text-decoration: none;
+.sidebar {
+  background: #494949;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  height: 100vh;
+}
+.logo {
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+}
+#logout {
+  position: absolute;
+  bottom: 0;
+}
+.icon {
+  color: #ffffff;
+}
+/* Adminbox */
+.adminbox {
+  display: block;
 }
