@@ -1,0 +1,95 @@
+.column.menu {
+  width: 30%;
+}
+.column.content {
+  width: 70%;
+}
+.background-table {
+  background-color: #f4f4f4;
+  padding: 20px 0px;
+  border-radius: 15px;
+  margin: 20px 0px;
+}
+.background-table i {
+  margin: 10px 20px;
+  font-size: 36px;
+}
+@media only screen and (max-width: 576px) {
+  .column.menu {
+    width: 100% !important;
+  }
+  .column.content {
+    width: 100% !important;
+  }
+}
+.btn-border {
+  border-radius: 15px;
+  color: black;
+  cursor: pointer;
+}
+.btn-border:hover {
+  border: 0px solid #ccc;
+  background: #ccc;
+}
+.btn-border-bg-black {
+  background-color: #141515 !important;
+  color: #fff;
+}
+.btn-border i {
+  font-size: 24px;
+}
+.background-content {
+  position: relative;
+  height: 200px;
+  background-color: #141515;
+  padding: 20px 0px;
+  border-radius: 15px;
+  margin: 20px 0px;
+}
+.progress-content {
+  width: 88%;
+  height: 200px;
+  margin-top: 20px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: #f4f4f4;
+  padding: 20px 0px;
+  border-radius: 15px;
+}
+.progress {
+  background-color: #f4f4f4;
+  border-radius: 0px;
+}
+.progress-bar {
+  background-color: #141515;
+}
+.fa-flag {
+  font-size: 24px;
+}
+.fa-star {
+  font-size: 24px;
+}
+.condition-member {
+  margin-top: 80px;
+  position: relative;
+  padding: 60px 0px;
+  background: #f4f4f4;
+  border-radius: 15px;
+}
+.condition-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #141515;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 40px;
+}
+.col-md-12.h5.text-black {
+  padding: 0 30px;
+  margin: 0px;
+  word-wrap: break-word;
+}
