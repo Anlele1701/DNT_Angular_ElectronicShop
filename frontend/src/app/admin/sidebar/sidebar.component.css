@@ -1,0 +1,16 @@
+.header
+{
+    display:flex;
+}
+.sidebar
+{
+    background: #494949;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    height: 100vh;
+}
+.logo
+{
+    text-decoration: none;
+}
