@@ -7,7 +7,7 @@ const route=require('./routes/route')
 
 app.use(cors())
 app.listen(3800,()=>{
-    mongoose.connect('mongodb+srv://doAnLTWNC:doAnLTWNC@cluster0.tasxwde.mongodb.net/').then(()=> console.log('Connected to Mongo Successfully'))
+    mongoose.connect('mongodb+srv://doAnLTWNC:doAnLTWNC@cluster0.tasxwde.mongodb.net/DOAN').then(()=> console.log('Connected to Mongo Successfully'))
     .catch(error=>handleError(error));
 })
 

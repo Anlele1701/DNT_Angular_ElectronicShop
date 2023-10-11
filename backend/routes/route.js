@@ -7,4 +7,8 @@ var loaiSPController=require('../src/controllers/loaiSPController')
 var nhanVienController=require('../src/controllers/nhanVienController')
 var sanPhamController=require('../src/controllers/sanPhamController')
 
+
+
+router.route('/hang/createNewHang/:tenHang').post(hangController.createNewHang)
+router.route('/loaisp/createNewLoaiSP').post(loaiSPController.createnewLoaiSPtoHang)
 module.exports=router
