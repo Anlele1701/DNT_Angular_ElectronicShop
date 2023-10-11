@@ -11,17 +11,13 @@ body {
   top:0;
   bottom: 0;
   position: sticky;
-}
-.inside{
   overflow-y: auto;
-  padding:0 !important;
-  height:100%;
+
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
 }
- 
 ::-webkit-scrollbar-thumb {
   background: rgb(254, 254, 254); 
   border-radius: 10px;
@@ -36,6 +32,10 @@ a {
 }
 .icon {
   color: #ffffff;
+}
+/* Dropdown */
+.dropdown-toggle::after {
+  display: none;
 }
 /* Animation */
 li:hover{

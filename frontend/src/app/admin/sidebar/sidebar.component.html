@@ -2,83 +2,72 @@
   <!-- SIDEBAR -->
   <aside class="d-flex">
     <div class="sidebar p-3">
-      <div class="inside">
-        <a routerLink="/" class="d-flex justify-content-center">
-          <img src="assets/admin/logo.png" style="height: 100px" />
-        </a>
-        <hr style="color: white" />
-        <ul class="menu nav nav-pills flex-column mb-auto">
-          <li class="nav-link mb-3" style="background-color: #302e2e">
-            <a routerLink="/dashboard" routerLinkActive="active">
-              <span class="icon"> <i class="fa-solid fa-house"></i></span>
-              <span class="text-white pe-4 ps-2">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-link mb-3">
-            <a routerLink="/customers">
-              <span class="icon"><i class="fa-solid fa-user"></i> </span>
-              <span class="text-white pe-4 ps-2">Customers</span>
-            </a>
-          </li>
-          <!-- Dropdown -->
-          <li class="nav-link mb-3">
-            <a
-              routerLink="/products"
-              class="dropdown-toggle"
-              data-bg-toggle="dropdown"
-            >
-              <span class="icon"
-                ><i class="fa-solid fa-bag-shopping"></i>
-              </span>
-              <span class="text-white pe-4 ps-2">Products</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li style="padding: 0; margin: 0">
-                <a class="dropdown-item" style="color: black"
-                  >Quản lý phiếu phạt</a
-                >
-              </li>
-              <li style="padding: 0; margin: 0">
-                <a class="dropdown-item" style="color: black"
-                  >Quản lý phiếu trả</a
-                >
-              </li>
-              <li style="padding: 0; margin: 0">
-                <a class="dropdown-item" style="color: black"
-                  >Quả lý phiếu mượn</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="nav-link mb-3">
-            <a routerLink="/orders">
-              <span class="icon"><i class="fa-solid fa-receipt"></i> </span>
-              <span class="text-white pe-4 ps-2">Orders</span>
-            </a>
-          </li>
-          <li class="nav-link mb-3">
-            <a routerLink="/categories">
-              <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
-              <span class="text-white pe-4 ps-2">Categories</span>
-            </a>
-          </li>
-          <li class="nav-link" id="logout">
-            <a routerLink="/categories">
-              <span class="icon">
-                <i class="fa-solid fa-right-from-bracket"></i
-              ></span>
-              <span class="text-white pe-4 ps-2">Logout</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <!-- Logo -->
+      <a routerLink="/" class="d-flex justify-content-center pb-4">
+        <img src="assets/admin/logo.png" style="height: 100px" />
+      </a>
+      <hr style="color: white" />
+      <ul class="menu nav nav-pills flex-column mb-auto pt-3">
+        <li class="nav-link mb-3" style="background-color: #302e2e">
+          <a routerLink="/dashboard" routerLinkActive="active">
+            <span class="icon"> <i class="fa-solid fa-house"></i></span>
+            <span class="text-white pe-4 ps-3">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-link mb-3">
+          <a routerLink="/customers">
+            <span class="icon"><i class="fa-solid fa-user"></i> </span>
+            <span class="text-white pe-4 ps-3">Customers</span>
+          </a>
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-link mb-3">
+          <a
+            routerLink="/products"
+            class="dropdown-toggle"
+            data-bg-toggle="dropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="icon"><i class="fa-solid fa-bag-shopping"></i> </span>
+            <span class="text-white pe-4 ps-3">Products</span>
+            <i
+              class="fa-solid fa-circle-chevron-down"
+              style="color: #ffffff"
+            ></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-link mb-3">
+          <a routerLink="/orders">
+            <span class="icon"><i class="fa-solid fa-receipt"></i> </span>
+            <span class="text-white pe-4 ps-3">Orders</span>
+          </a>
+        </li>
+        <li class="nav-link mb-3">
+          <a routerLink="/categories">
+            <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
+            <span class="text-white pe-4 ps-3">Categories</span>
+          </a>
+        </li>
+        <li class="nav-link" id="logout">
+          <a routerLink="/categories">
+            <span class="icon">
+              <i class="fa-solid fa-right-from-bracket"></i
+            ></span>
+            <span class="text-white pe-4 ps-3">Logout</span>
+          </a>
+        </li>
+      </ul>
     </div>
-    <!-- Box -->
-    <div class="adminbox">
-      <div class="navbar-brand mb-0 h1">
-        <div>
-          <p>Testing</p>
-        </div>
+    <!-- Admin Box -->
+    <div class="container-fluid">
+      <div class="navbar-brand p-3 bg-white">
+        <p>Testing</p>
       </div>
     </div>
   </aside>
