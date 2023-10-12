@@ -1,0 +1,48 @@
+body {
+  background-color: #e6e5e4;
+}
+/* Sidebar */
+.sidebar {
+  background: #494949;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  height: 100vh;
+  top:0;
+  bottom: 0;
+  position: sticky;
+  overflow-y: auto;
+
+}
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(254, 254, 254); 
+  border-radius: 10px;
+}
+/*  */
+a {
+  text-decoration: none;
+}
+#logout {
+  align-items: end;
+  bottom:0
+}
+.icon {
+  color: #ffffff;
+}
+/* Dropdown */
+.dropdown-toggle::after {
+  display: none;
+}
+/* Animation */
+li:hover{
+  background-color: #302e2e;
+  transition: all 0.5s ease
+}
+/* Adminbox */
+.adminbox {
+  display: block;
+}
