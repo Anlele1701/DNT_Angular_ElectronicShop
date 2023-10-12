@@ -1,4 +1,4 @@
-<body>
+<body class="d-flex">
   <!-- SIDEBAR -->
   <aside class="d-flex">
     <div class="sidebar p-3">
@@ -23,35 +23,32 @@
         <!-- Dropdown -->
         <li class="nav-link mb-3">
           <a
-            routerLink="/products"
-            class="dropdown-toggle"
-            data-bg-toggle="dropdown"
-            data-bs-toggle="dropdown"
+            data-bs-toggle="collapse"
+            href="#collapseExample"
+            role="button"
             aria-expanded="false"
+            aria-controls="collapseExample"
           >
             <span class="icon"><i class="fa-solid fa-bag-shopping"></i> </span>
-            <span class="text-white pe-4 ps-3">Products</span>
-            <i
-              class="fa-solid fa-circle-chevron-down"
-              style="color: #ffffff"
-            ></i>
+            <span class="pe-4 ps-3">Products</span>
+            <i class="fa-solid fa-circle-chevron-down"></i>
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul class="collapse mt-2" id="collapseExample">
+            <li class="dropdown-item"><a href="#">Action</a></li>
+            <li class="dropdown-item"><a href="#">Another</a></li>
+            <li class="dropdown-item"><a href="#">Test</a></li>
           </ul>
         </li>
         <li class="nav-link mb-3">
           <a routerLink="/orders">
             <span class="icon"><i class="fa-solid fa-receipt"></i> </span>
-            <span class="text-white pe-4 ps-3">Orders</span>
+            <span class="pe-4 ps-3">Orders</span>
           </a>
         </li>
         <li class="nav-link mb-3">
           <a routerLink="/categories">
             <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
-            <span class="text-white pe-4 ps-3">Categories</span>
+            <span class="pe-4 ps-3">Categories</span>
           </a>
         </li>
         <li class="nav-link" id="logout">
@@ -59,16 +56,28 @@
             <span class="icon">
               <i class="fa-solid fa-right-from-bracket"></i
             ></span>
-            <span class="text-white pe-4 ps-3">Logout</span>
+            <span class="pe-4 ps-3">Logout</span>
           </a>
         </li>
       </ul>
     </div>
-    <!-- Admin Box -->
-    <div class="container-fluid">
-      <div class="navbar-brand p-3 bg-white">
-        <p>Testing</p>
+  </aside>
+  <!-- CONTENT -->
+  <!-- ADMINBOX -->
+  <div class="container-fluid p-0">
+    <div class="adminbox">
+      <div class="d-flex flex-row">
+        <div class="logo ms-5">
+          <img id="avataradmin" src="assets/admin/avatar.jpg" />
+        </div>
+        <div class="col ps-3">
+          <div class="fw-bold text-uppercase">Xin chào</div>
+          <div class="fw-light">Chức vụ</div>
+        </div>
       </div>
     </div>
-  </aside>
+    <!-- insert content -->
+
+    <!--  -->
+  </div>
 </body>
