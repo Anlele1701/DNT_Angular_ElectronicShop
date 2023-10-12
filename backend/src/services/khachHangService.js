@@ -1,0 +1,1 @@
+var khachHangModel=require('../models/khachHangModel')
