@@ -27,4 +27,7 @@
   object-fit: contain;
   mix-blend-mode: multiply;
 }
+#margin-top{
+  margin-top: 100px;
+}
 
