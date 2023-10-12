@@ -1,0 +1,30 @@
+#font{
+  font-family:'Inter'
+}
+#purchase-button{
+  height: 70px;
+}
+#rounded-button{
+  width: 90px;
+  height: 90px;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor:pointer;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+#rounded-button:hover{
+  background: #837e7e;
+}
+#rounded-button:focus{
+  background-color: #837e7e;
+}
+#img-size{
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+

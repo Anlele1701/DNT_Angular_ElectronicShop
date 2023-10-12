@@ -10,6 +10,7 @@ import { PurchaseHistoryComponent } from './client/purchase-history/purchase-his
 import { MembershipClassComponent } from './client/membership-class/membership-class.component';
 import { HeaderComponent } from './client/header/header.component';
 import { FooterComponent } from './client/footer/footer.component';
+import { ProductDetailComponent } from './client/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FooterComponent } from './client/footer/footer.component';
     PurchaseHistoryComponent,
     MembershipClassComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
