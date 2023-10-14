@@ -1,11 +1,13 @@
 var hangModel=require('../models/hangModel')
 var idHang=''
+
+//tạo hãng mới
 var createHang=async(tenHang)=>{
-    var hangItem=await hangModel.findOne({tenNhaSX:tenHang}).then(document=>{
+    var hangItem=await hangModel.findOne({tenNhaSX:tenHang.tenHang}).then(document=>{
         if(document==null)
         {
             var item=new hangModel({
-                tenNhaSX:tenHang,
+                tenNhaSX:tenHang.tenHang,
                 cacLoaiSP:[]
             })
             item.save().then(()=>console.log(item))

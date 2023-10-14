@@ -9,6 +9,7 @@ var sanPhamController=require('../src/controllers/sanPhamController')
 
 
 
-router.route('/hang/createNewHang/:tenHang').post(hangController.createNewHang)
-router.route('/loaisp/createNewLoaiSP').post(loaiSPController.createnewLoaiSPtoHang)
+router.route('/hang/createNewHang').post(hangController.createNewHang) //tạo hãng mới
+router.route('/loaisp/createNewLoaiSP').post(loaiSPController.createnewLoaiSPtoHang) //thêm loại sp vào hãng
+router.route('/sanpham/createNewProduct').post(sanPhamController.createNewProduct) //tạo sản phẩm mới
 module.exports=router
