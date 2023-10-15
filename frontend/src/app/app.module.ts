@@ -11,6 +11,9 @@ import { MembershipClassComponent } from './client/membership-class/membership-c
 import { HeaderComponent } from './client/header/header.component';
 import { FooterComponent } from './client/footer/footer.component';
 import { ProductDetailComponent } from './client/product-detail/product-detail.component';
+import { ProductCategoryComponent } from './client/product-category/product-category.component';
+import { ProductItemsComponent } from './client/product-items/product-items.component';
+import { PersonalPageComponent } from './client/personal-page/personal-page.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +24,12 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
     MembershipClassComponent,
     HeaderComponent,
     FooterComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProductCategoryComponent,
+    ProductItemsComponent,
+    PersonalPageComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    CarouselModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule],
   providers: [],
   bootstrap: [AppComponent],
 })
