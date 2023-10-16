@@ -11,6 +11,7 @@ import { MembershipClassComponent } from './client/membership-class/membership-c
 import { HeaderComponent } from './client/header/header.component';
 import { FooterComponent } from './client/footer/footer.component';
 import { ProductDetailComponent } from './client/product-detail/product-detail.component';
+import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
     MembershipClassComponent,
     HeaderComponent,
     FooterComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
