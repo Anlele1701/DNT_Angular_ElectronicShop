@@ -7,23 +7,26 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
 import { SidebarComponent } from './admin/sidebar/sidebar.component';
 import { ProductCategoryComponent } from './client/product-category/product-category.component';
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { CustomersComponent } from './admin/customers/customers.component';
 const routes: Routes = [
   // CLIENT
   { path: 'about-us', component: AboutUsComponent },
   { path: 'purchase-history', component: PurchaseHistoryComponent },
   { path: 'membership-class', component: MembershipClassComponent },
-  { path: 'product-detail', component: ProductDetailComponent},
+  { path: 'product-detail', component: ProductDetailComponent },
+  { path: 'product-detail', component: ProductDetailComponent },
+  { path: 'category', component: ProductCategoryComponent },
+  { path: 'personal', component: PersonalPageComponent },
   // ADMIN
   {
     path: 'admin',
     component: SidebarComponent, // Trang layout admin
-    children: [
-      { path: 'dashboard', component: DashboardComponent }, // Component con
-    ]
+    children: [ // Component con
+      { path: 'dashboard', component: DashboardComponent }, 
+      {path: 'customers', component: CustomersComponent},
+    ],
   },
-  { path: 'product-detail', component: ProductDetailComponent },
-  { path: 'category', component: ProductCategoryComponent },
-  { path: 'personal', component: PersonalPageComponent },
 ];
 
 @NgModule({
