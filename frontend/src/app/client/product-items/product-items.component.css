@@ -1,0 +1,12 @@
+.card-img-top {
+    background-color: #F4F4F4;
+}
+
+.badge {
+    background-color: #fff;
+    color: #000;
+    padding: 4px;
+    position: absolute;
+    top: 2%;
+    left: 0%
+}

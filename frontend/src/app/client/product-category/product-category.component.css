@@ -1,0 +1,10 @@
+.banner {
+    background: url('../../../assets/client/Shared/banphim-Banner.png') no-repeat center center/cover;
+    height: 350px;
+}
+
+.controller {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
