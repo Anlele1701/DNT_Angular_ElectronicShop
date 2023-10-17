@@ -1,6 +1,6 @@
 # :computer: **PROJECT MÔN HỌC LẬP TRÌNH WEB NÂNG CAO - ĐỀ TÀI WEBSITE BÁN ĐỒ ĐIỆN TỬ** :computer_mouse:
 
-## :man_technologist: **Thàn Viên Của Nhóm** :woman_technologist:
+## :man_technologist: **Thành Viên Của Nhóm** :woman_technologist:
 |STT    | Họ và Tên          | Mã Sinh Viên |
 |---    |--------------------|--------------|
 |1    | Lê Thành Duy Ân | 21DH110123   |
@@ -11,7 +11,7 @@
 |6    | Nguyễn Tiến Thành | 21DH114111 |
 
 ## :dart: **Mục Đích:** 
-Áp dụng thành công 1 công nghệ mới để xây dựng 1 website bán hàng (bán đồ công nghệ)
+Áp dụng thành công 1 công nghệ mới để xây dựng 1 website bán hàng (bán đồ công nghệ).
 
 ### :pushpin: Mục Tiêu: 
 - Có đầy đủ các chức năng cơ bản
