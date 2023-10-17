@@ -1,10 +1,12 @@
 const hangModel = require('../models/hangModel')
 var loaiSPModel=require('../models/loaiSPModel')
 var hangService=require('../services/hangService')
-
+var sanPhamService=require('../services/sanPhamService')
 
 var listIDSP=[]
 var cateID=''
+
+//tìm các sp theo loại sp và hãng của sp
 var getProductsOfCompany=async(tenLoaiSP, idHang)=>{
     try{
         
@@ -23,10 +25,12 @@ var getProductsOfCompany=async(tenLoaiSP, idHang)=>{
     }
 }
 
+//tìm id của loại sp
 var findCateID=async(tenLoaiSP)=>{
     try{
-        const idLoaiSP=loaiSPModel.findOne({tenLoai:tenLoaiSP}).then(document=>{
+        const idLoaiSP=await loaiSPModel.findOne({tenLoai:tenLoaiSP}).then(document=>{
             cateID=document.id
+            return idLoaiSP
         })
     }catch(error)
     {
@@ -34,13 +38,14 @@ var findCateID=async(tenLoaiSP)=>{
     }
 }
 
+
+//thêm loại sản phẩm vào hãng
 var createnewLoaiSPtoHang=async(sp)=>{
     try{
-        var idHang=await hangService.createHang('sam sung')
-        console.log(idHang)
-        var item=hangModel.findById(idHang).then((document)=>{
-            document.cacLoaiSP.push(sp.tenSP)
+        var item=hangModel.findById(sp.idHang).then((document)=>{
+            document.cacLoaiSP.push(sp.tenloaiSP)
             document.save()
+            sanPhamService.createNewCateProduct(sp)
             return document
         })
         return item
@@ -50,4 +55,14 @@ var createnewLoaiSPtoHang=async(sp)=>{
         console.error(error)
     }
 }
-module.exports={listIDSP,getProductsOfCompany,findCateID,cateID, createnewLoaiSPtoHang}
+
+var countLoaiSP=async()=>{
+    try{
+        var count=hangModel.find({}).then(document=>{
+            return {sum}
+        })
+    }catch(error){
+        console.log(error)
+    }
+}
+module.exports={listIDSP,getProductsOfCompany,findCateID,cateID, createnewLoaiSPtoHang, countLoaiSP}
