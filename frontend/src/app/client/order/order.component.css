@@ -1,0 +1,40 @@
+.color-green {
+  color: #0dcb15;
+}
+
+.backBtn {
+  font-size: 25px;
+  color: #717171;
+}
+
+.customer-info {
+  border-radius: 10px;
+  border: 0.5px solid #999;
+  padding: 16px 0;
+
+  background: #fff;
+}
+
+.info-details {
+  border-bottom: 1px solid rgba(57, 57, 57, 0.7);
+  padding: 16px 0;
+}
+
+.product-container {
+  border-radius: 10px;
+  border: 1px solid #999;
+
+  background: #fff;
+}
+
+.item-img {
+  max-width: 120px;
+  max-height: 120px;
+  border: 1px solid;
+  padding: 8px;
+}
+
+.vnpay-text {
+  font-size: 18px;
+  color: #595959;
+}

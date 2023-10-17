@@ -14,6 +14,7 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
 import { ProductCategoryComponent } from './client/product-category/product-category.component';
 import { ProductItemsComponent } from './client/product-items/product-items.component';
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
+import { OrderComponent } from './client/order/order.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PersonalPageComponent } from './client/personal-page/personal-page.comp
     ProductCategoryComponent,
     ProductItemsComponent,
     PersonalPageComponent,
+    OrderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule],
   providers: [],
