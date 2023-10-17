@@ -55,4 +55,14 @@ var createnewLoaiSPtoHang=async(sp)=>{
         console.error(error)
     }
 }
-module.exports={listIDSP,getProductsOfCompany,findCateID,cateID, createnewLoaiSPtoHang}
+
+var countLoaiSP=async()=>{
+    try{
+        var count=hangModel.find({}).then(document=>{
+            return {sum}
+        })
+    }catch(error){
+        console.log(error)
+    }
+}
+module.exports={listIDSP,getProductsOfCompany,findCateID,cateID, createnewLoaiSPtoHang, countLoaiSP}

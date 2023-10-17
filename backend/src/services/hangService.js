@@ -20,4 +20,12 @@ var createHang=async(tenHang)=>{
     })
     return idHang
 }
-module.exports={createHang}
+
+var getAllHang=async()=>{
+    var listHang=await hangModel.find({}).then(document=>{
+        console.log(document)
+        return document
+    })
+    return listHang
+}
+module.exports={createHang,getAllHang}

@@ -14,7 +14,8 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
 import { ProductCategoryComponent } from './client/product-category/product-category.component';
 import { ProductItemsComponent } from './client/product-items/product-items.component';
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
-
+import { CompanyComponent } from './admin/company/company.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +29,9 @@ import { PersonalPageComponent } from './client/personal-page/personal-page.comp
     ProductCategoryComponent,
     ProductItemsComponent,
     PersonalPageComponent,
+    CompanyComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
