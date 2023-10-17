@@ -5,11 +5,9 @@
   border-radius: 20px;
   background: #fff;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
-  height: 715px;
+  max-height: 750px;
+  min-height: 250px;
   overflow: hidden;
-}
-#khung-1-con {
-  height: 46vw;
   overflow-y: scroll;
 }
 #khung-2 {
@@ -17,16 +15,11 @@
   background: #fff;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
   height: 407px;
-  overflow: hidden;
-}
-#khung-2-con {
-  height: 380px;
-  overflow: auto;
+  float:left;
 }
 /* customize - scroll */
 ::-webkit-scrollbar {
   width: 10px;
-  height: 3px;
 }
 
 /* Track */
@@ -37,6 +30,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(217, 217, 217, 0.5);
+  border-radius: 20px;
 }
 
 /* Handle on hover */
@@ -59,18 +53,13 @@
 #Giohang {
   margin-bottom: 0;
   font-size: 35px;
-}
-#Giohangimage {
-  width: 60px;
-  height: 50px;
-  margin-left: 20px;
-  margin-bottom: 10px;
+  margin-right: 10px;
 }
 .Delete-all {
   border-radius: 30px;
   background: #000;
-  width: 190px;
-  height: 65px;
+  width: 146.552px;
+  height: 50px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: #ffffff;
   font-size: 20px;
@@ -86,6 +75,7 @@
   background-color: white;
   border: none;
   color: #c00;
+  font-size: 20px;
 }
 .bt-change-3 {
   color: #717171;
@@ -105,12 +95,12 @@
   align-items: center;
 }
 .p-change-1 {
-  display: block;
   color: #5d5d5d;
+  font-size:20px;
 }
 .p-change-2 {
   color: #2c2c2c;
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 600;
   margin-bottom: 0;
 }
@@ -123,10 +113,11 @@
 }
 .p-change-4 {
   font-weight: 700;
+  font-size:20px;
 }
 .p-money {
   color: #c00;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 500;
   margin-bottom: 0;
   margin-left: 20px;
@@ -137,7 +128,5 @@
   border-radius: 10px;
   border: 3px solid rgba(118, 118, 118, 0.5);
   background: lightgray 50% / cover no-repeat, #d9d9d9;
-}
-.margin-bot {
-  margin-bottom: 70px;
+  object-fit:contain;
 }

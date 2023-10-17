@@ -8,192 +8,85 @@
   </div>
   <!--hang tren-->
   <div class="row">
-    <div class="col-md-8 d-flex justify-content-between">
+    <div class="col-8 d-flex justify-content-between">
       <div class="col-7 d-flex align-items-end">
         <p id="Giohang">Giỏ hàng của tôi</p>
-        <img
-          src="/assets/client/ShoppingCart/shopping_cart.png"
-          alt=""
-          id="Giohangimage"
-        />
+        <div class="pb-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="42"
+            viewBox="0 0 36 42"
+            fill="none"
+          >
+            <path
+              d="M10.6135 41.6928C9.64059 41.6928 8.80773 41.2846 8.1149 40.4681C7.42208 39.6516 7.07566 38.6701 7.07566 37.5235C7.07566 36.377 7.42208 35.3954 8.1149 34.579C8.80773 33.7625 9.64059 33.3542 10.6135 33.3542C11.5864 33.3542 12.4193 33.7625 13.1121 34.579C13.8049 35.3954 14.1513 36.377 14.1513 37.5235C14.1513 38.6701 13.8049 39.6516 13.1121 40.4681C12.4193 41.2846 11.5864 41.6928 10.6135 41.6928ZM28.3027 41.6928C27.3298 41.6928 26.4969 41.2846 25.8041 40.4681C25.1112 39.6516 24.7648 38.6701 24.7648 37.5235C24.7648 36.377 25.1112 35.3954 25.8041 34.579C26.4969 33.7625 27.3298 33.3542 28.3027 33.3542C29.2756 33.3542 30.1084 33.7625 30.8013 34.579C31.4941 35.3954 31.8405 36.377 31.8405 37.5235C31.8405 38.6701 31.4941 39.6516 30.8013 40.4681C30.1084 41.2846 29.2756 41.6928 28.3027 41.6928ZM9.10992 8.33856L13.3553 18.7618H25.7377L30.6023 8.33856H9.10992ZM7.42945 4.16928H33.521C34.199 4.16928 34.715 4.52541 35.0688 5.23766C35.4225 5.94991 35.4373 6.67085 35.113 7.40047L28.8333 20.7422C28.509 21.437 28.0742 21.9756 27.5288 22.3578C26.9833 22.7399 26.3863 22.931 25.7377 22.931H12.5593L10.6135 27.1003H31.8405V31.2696H10.6135C9.28681 31.2696 8.28442 30.5834 7.60634 29.211C6.92826 27.8386 6.89877 26.4749 7.51789 25.1199L9.90593 20.0125L3.53783 4.16928H0V0H5.74898L7.42945 4.16928Z"
+              fill="black"
+            />
+          </svg>
+        </div>
       </div>
-      <div class="mb-3" id="p-change">
-        <button class="Delete-all">XÓA TẤT CẢ</button>
+      <div class="col-5 d-flex justify-content-end mb-2" id="p-change">
+        <button class="Delete-all fw-bold">Xóa tất cả</button>
       </div>
     </div>
   </div>
   <!--CHIA 2 Ben-->
-  <div class="row">
+  <div class="row mt-1 me-3">
     <!--Cot 8-->
-    <div class="col-md-8 container" id="khung-1">
-      <div id="khung-1-con">
-        <div class="container">
-          <div class="row p-3">
-            <div class="col-4 text-center">
-              <img
-                class="img-change"
-                src="/assets/client/ProductDetail/Hinh-test.jpg"
-                alt=""
-              />
-            </div>
-            <div class="col-4 p-center" >
-              <div>
-                <p class="p-change-4">Chuột Razer Death Essentail</p>
-                <p class="p-change-1">
-                  Số lượng
-                  <button class="bt-change" type="button">-</button>
-                  <button class="bt-change" type="button">1</button>
-                  <button class="bt-change" type="button">+</button>
-                </p>
-              </div>
-            </div>
-            <div class="col-4" id="p-change">
-              <div style="margin-top: 25px">
-                <p class="p-change-4">490.000đ</p>
-                <p class="p-change-1">490.000đ/sp</p>
-                <button class="bt-change-2">Delete Items</button>
-              </div>
+    <div class="col-md-8" id="khung-1">
+      <div>
+        <div class="row p-3 justify-content-between d-flex">
+          <div class="p-0 w-auto col-2">
+            <img
+              class="img-change"
+              src="/assets/client/ProductDetail/Hinh-test.jpg"
+              alt=""
+            />
+          </div>
+          <div class="col-4 p-center">
+            <div>
+              <p class="p-change-4 justify-content-center align-items-center">
+                Chuột Razer Death Essentail
+              </p>
+              <p class="p-change-1">Số lượng</p>
             </div>
           </div>
-          <!--test scroll bar-->
-          <div class="row p-3">
-            <div class="col-4 text-center">
-              <img
-                class="img-change"
-                src="/assets/client/ProductDetail/Hinh-test.jpg"
-                alt=""
-              />
-            </div>
-            <div class="col-4 p-center">
-              <div>
-                <p class="p-change-4">Chuột Razer Death Essentail</p>
-                <p class="p-change-1">
-                  Số lượng
-                  <button class="bt-change" type="button">-</button>
-                  <button class="bt-change" type="button">1</button>
-                  <button class="bt-change" type="button">+</button>
-                </p>
-              </div>
-            </div>
-            <div class="col-4" id="p-change">
-              <div style="margin-top: 25px">
-                <p class="p-change-4">490.000đ</p>
-                <p class="p-change-1">490.000đ/sp</p>
-                <button class="bt-change-2">Delete Items</button>
-              </div>
-            </div>
-          </div>
-          <div class="row p-3">
-            <div class="col-4 text-center">
-              <img
-                class="img-change"
-                src="/assets/client/ProductDetail/Hinh-test.jpg"
-                alt=""
-              />
-            </div>
-            <div class="col-4 p-center">
-              <div>
-                <p class="p-change-4">Chuột Razer Death Essentail</p>
-                <p class="p-change-1">
-                  Số lượng
-                  <button class="bt-change" type="button">-</button>
-                  <button class="bt-change" type="button">1</button>
-                  <button class="bt-change" type="button">+</button>
-                </p>
-              </div>
-            </div>
-            <div class="col-4" id="p-change">
-              <div style="margin-top: 25px">
-                <p class="p-change-4">490.000đ</p>
-                <p class="p-change-1">490.000đ/sp</p>
-                <button class="bt-change-2">Delete Items</button>
-              </div>
-            </div>
-          </div>
-          <div class="row p-3">
-            <div class="col-4 text-center">
-              <img
-                class="img-change"
-                src="/assets/client/ProductDetail/Hinh-test.jpg"
-                alt=""
-              />
-            </div>
-            <div class="col-4 p-center">
-              <div>
-                <p class="p-change-4">Chuột Razer Death Essentail</p>
-                <p class="p-change-1">
-                  Số lượng
-                  <button class="bt-change" type="button">-</button>
-                  <button class="bt-change" type="button">1</button>
-                  <button class="bt-change" type="button">+</button>
-                </p>
-              </div>
-            </div>
-            <div class="col-4" id="p-change">
-              <div style="margin-top: 25px">
-                <p class="p-change-4">490.000đ</p>
-                <p class="p-change-1">490.000đ/sp</p>
-                <button class="bt-change-2">Delete Items</button>
-              </div>
-            </div>
-          </div>
-          <div class="row p-3">
-            <div class="col-4 text-center">
-              <img
-                class="img-change"
-                src="/assets/client/ProductDetail/Hinh-test.jpg"
-                alt=""
-              />
-            </div>
-            <div class="col-4 p-center">
-              <div>
-                <p class="p-change-4">Chuột Razer Death Essentail</p>
-                <p class="p-change-1">
-                  Số lượng
-                  <button class="bt-change" type="button">-</button>
-                  <button class="bt-change" type="button">1</button>
-                  <button class="bt-change" type="button">+</button>
-                </p>
-              </div>
-            </div>
-            <div class="col-4" id="p-change">
-              <div style="margin-top: 25px">
-                <p class="p-change-4">490.000đ</p>
-                <p class="p-change-1">490.000đ/sp</p>
-                <button class="bt-change-2">Delete Items</button>
-              </div>
+          <div
+            class="col-2 justify-content-center align-items-center d-flex"
+            id="p-change"
+          >
+            <div style="margin-top: 25px">
+              <p class="p-change-4">490.000đ</p>
+              <p class="p-change-1">490.000đ/sp</p>
+              <button class="bt-change-2">Delete Items</button>
             </div>
           </div>
         </div>
+        <!--dzien  -->
       </div>
     </div>
     <!--Cot 4-->
     <div class="col-md-4">
-      <div id="khung-2" class="container">
+      <div id="khung-2">
         <div class="mt-3">
-          <div id="khung-2-con">
-            <div class="container">
-              <div class="row margin-bot">
-                <p class="p-change-2">TỔNG TIỀN</p>
-                <p>
-                  Tổng tiền sẽ bao gồm tổng số lượng sản phẩm và tổng số tiền
-                  của đơn hàng
-                </p>
-              </div>
-              <div class="row margin-bot">
-                <div class="col d-flex">
-                  <p class="p-change-3" style="margin-right: 30px">
-                    Số lượng :
-                  </p>
-                  <p class="p-change-3">9 Sản Phẩm</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col d-flex">
-                  <p class="p-change-2">Tổng tiền:</p>
-                  <p class="p-money">4.000.000đ</p>
-                </div>
-              </div>
+          <div class="p-3">
+            <p class="p-change-2">TỔNG TIỀN</p>
+            <p>
+              Tổng tiền sẽ bao gồm tổng số lượng sản phẩm và tổng số tiền của
+              đơn hàng
+            </p>
+          </div>
+          <div class="p-3">
+            <div class="d-flex">
+              <p class="p-change-3 me-4">Số lượng:</p>
+              <p class="p-change-3">9 Sản Phẩm</p>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="d-flex">
+              <p class="p-change-2">Tổng tiền:</p>
+              <p class="p-money">4.000.000đ</p>
             </div>
           </div>
         </div>
