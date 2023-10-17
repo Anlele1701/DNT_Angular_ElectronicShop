@@ -9,6 +9,7 @@ import { ProductCategoryComponent } from './client/product-category/product-cate
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CustomersComponent } from './admin/customers/customers.component';
+import { CompanyComponent } from './admin/company/company.component';
 const routes: Routes = [
   // CLIENT
   { path: 'about-us', component: AboutUsComponent },
@@ -22,11 +23,15 @@ const routes: Routes = [
   {
     path: 'admin',
     component: SidebarComponent, // Trang layout admin
-    children: [ // Component con
-      { path: 'dashboard', component: DashboardComponent }, 
-      {path: 'customers', component: CustomersComponent},
-    ],
+    children: [
+      { path: 'dashboard', component: DashboardComponent }, // Component con
+      { path: 'customer', component: CustomersComponent},
+      { path:'brands',component: CompanyComponent}
+    ]
   },
+  { path: 'product-detail', component: ProductDetailComponent },
+  { path: 'category', component: ProductCategoryComponent },
+  { path: 'personal', component: PersonalPageComponent },
 ];
 
 @NgModule({
