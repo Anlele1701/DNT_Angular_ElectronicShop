@@ -12,7 +12,7 @@ import { HeaderComponent } from './client/header/header.component';
 import { FooterComponent } from './client/footer/footer.component';
 import { ProductDetailComponent } from './client/product-detail/product-detail.component';
 import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
-import { PurchaseComponent } from './purchase/purchase.component';
+import { PurchaseComponent } from './client/purchase/purchase.component';
 
 @NgModule({
   declarations: [
