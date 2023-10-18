@@ -16,6 +16,7 @@ import { ProductItemsComponent } from './client/product-items/product-items.comp
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
 import { CompanyComponent } from './admin/company/company.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductComponent } from './admin/product/product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductItemsComponent,
     PersonalPageComponent,
     CompanyComponent,
+    ProductComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
   providers: [],

@@ -58,9 +58,15 @@ var createnewLoaiSPtoHang=async(sp)=>{
 
 var countLoaiSP=async()=>{
     try{
-        var count=hangModel.find({}).then(document=>{
-            return {sum}
+        var count=loaiSPModel.find({}).then(document=>{
+            var listLoaiSP=[]
+            document.forEach(item=>{
+                listLoaiSP.push(item.tenLoai)
+            })
+            console.log(document.length)
+            return {sumLoaiSP: document.length, listLoaiSP: listLoaiSP}
         })
+        return count
     }catch(error){
         console.log(error)
     }

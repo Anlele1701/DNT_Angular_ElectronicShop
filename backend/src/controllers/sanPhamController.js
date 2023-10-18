@@ -20,4 +20,11 @@ var createNewProduct=async(req,res)=>
     }
 }
 
-module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct}
+var getAllProduct=async(req,res)=>{
+    try{
+        var listProduct=await sanPhamService.getAllProduct(req.body.nameProductCate)
+        res.send(listProduct)
+    }catch(error) {console.log(error)}
+}
+
+module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct}

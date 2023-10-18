@@ -5,7 +5,6 @@ var loaiSPModel=require('../models/loaiSPModel')
 var loaiSPService=require('../services/loaiSPService')
 const { error } = require('console')
 var listSP=[]
-
 const Storage=multer.diskStorage({
     destination:'../ProductImages',
     filename:(req,file,cb)=>{
@@ -18,7 +17,7 @@ const upload=multer({
 })
 
 //lấy tất cả sp theo hãng và loại sp đó
-module.exports.getProductOfCompany=async(tenLoai,idHang)=>{
+var getProductOfCompany=async(tenLoai,idHang)=>{
     try{
         loaiSPService.getProductsOfCompany(tenLoai,idHang)
         loaiSPService.listIDSP.forEach(item=>{
@@ -35,7 +34,7 @@ module.exports.getProductOfCompany=async(tenLoai,idHang)=>{
 
 
 //tạo loại sp mới (auto trong collection LOAISP tạo sau khi tạo hãng mới)
-module.exports.createNewCateProduct=async(loaiSP)=>{
+var createNewCateProduct=async(loaiSP)=>{
     try{
         var cate
         const idLoaiSP=await loaiSPModel.findOne({tenLoai:loaiSP.tenloaiSP}).then(document=>{
@@ -70,7 +69,7 @@ module.exports.createNewCateProduct=async(loaiSP)=>{
 }
 
 //tạo sản phẩm mới
-module.exports.createNewProduct=async(product)=>{
+var createNewProduct=async(product)=>{
     var productItem=new sanPhamModel({
         tenSP:product.body.tenSP,
         hinhAnh:[],
@@ -90,3 +89,39 @@ module.exports.createNewProduct=async(product)=>{
     productItem.save().then(()=>console.log('success'))
     return (productItem)
 }
+
+var getAllProduct=async(nameProductCate)=>{
+    var list=[]
+    try{
+    var productList=await loaiSPModel.findOne({tenLoai:nameProductCate}).then(async document=>{
+        document.cacHang.forEach(itemHang=>{
+            itemHang.idCacSP.forEach(itemID=>{
+                console.log(itemID)
+                list.push(getProductFromID(itemID))
+            })
+        })
+        const products = await Promise.all(list);
+        console.log(products)
+        return products
+    })
+    return productList
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+var getProductFromID=async(idProduct)=>{
+    try{
+    var product=await sanPhamModel.findById(idProduct).then(document=>{
+        return document
+    })
+    return product
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct}

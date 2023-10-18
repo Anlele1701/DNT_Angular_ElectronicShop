@@ -10,6 +10,7 @@ import { PersonalPageComponent } from './client/personal-page/personal-page.comp
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CustomersComponent } from './admin/customers/customers.component';
 import { CompanyComponent } from './admin/company/company.component';
+import { ProductComponent } from './admin/product/product.component';
 const routes: Routes = [
   // CLIENT
   { path: 'about-us', component: AboutUsComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent }, // Component con
       { path: 'customer', component: CustomersComponent},
-      { path:'brands',component: CompanyComponent}
+      { path:'brands',component: CompanyComponent},
+      {path: 'products/:nameProduct', component: ProductComponent}
     ]
   },
   { path: 'product-detail', component: ProductDetailComponent },
