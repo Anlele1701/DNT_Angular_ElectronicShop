@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent {
+  count=0;
+  counter(type:string){
+    if(type === 'add'){
+      this.count++
+    }
+    else if(type==='minus' && this.count >0){
+      this.count--
+    }
+  }
 }
 

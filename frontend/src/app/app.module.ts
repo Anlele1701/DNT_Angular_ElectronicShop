@@ -14,7 +14,8 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
 import { ProductCategoryComponent } from './client/product-category/product-category.component';
 import { ProductItemsComponent } from './client/product-items/product-items.component';
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
-
+import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
+import { PurchaseComponent } from './client/purchase/purchase.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,9 @@ import { PersonalPageComponent } from './client/personal-page/personal-page.comp
     ProductCategoryComponent,
     ProductItemsComponent,
     PersonalPageComponent,
+    ShoppingCartComponent,
+    PurchaseComponent,
+    ProductDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule],
   providers: [],
