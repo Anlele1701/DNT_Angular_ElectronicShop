@@ -12,7 +12,7 @@ var createNewProduct=async(req,res)=>
 {
     try{
         var product=await sanPhamService.createNewProduct(req)
-        console.log(req.body.tenSP)
+        console.log(req.body.product.tenSP)
         res.send(product)
     }catch(err)
     {

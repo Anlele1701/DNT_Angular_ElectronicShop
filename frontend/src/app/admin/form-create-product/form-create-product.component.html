@@ -1,0 +1,28 @@
+<div style="width: 50%;">
+  <select class="form-select" style="width: 30%;" aria-label="Default select example"[(ngModel)]="tenHang" name="tenHang">
+    <option selected>Open this select menu</option>
+    <option *ngFor="let item of listHang" [value]="item" >{{ item }}</option>
+  </select>
+<ng-template [ngIf]="tenLoaiSP=='bàn phím'" #banphim>
+  <app-ban-phim-form></app-ban-phim-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='chuột'" #chuot>
+  <app-chuot-form></app-chuot-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='điện thoại'" #dienthoai>
+  <app-dien-thoai-form (dataDienThoai)="createNewProduct($event)"></app-dien-thoai-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='laptop'" #laptop>
+  <app-lap-top-form></app-lap-top-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='màn hình'" #manhinh>
+  <app-man-hinh-form></app-man-hinh-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='tai nghe'" #tainghe>
+  <app-tai-nghe-form></app-tai-nghe-form>
+</ng-template>

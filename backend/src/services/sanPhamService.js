@@ -1,9 +1,10 @@
 const multer=require('multer')
-
+var hangService=require('../services/hangService')
 var sanPhamModel=require('../models/sanPhamModel')
 var loaiSPModel=require('../models/loaiSPModel')
 var loaiSPService=require('../services/loaiSPService')
 const { error } = require('console')
+const hangModel = require('../models/hangModel')
 var listSP=[]
 const Storage=multer.diskStorage({
     destination:'../ProductImages',
@@ -71,22 +72,35 @@ var createNewCateProduct=async(loaiSP)=>{
 //tạo sản phẩm mới
 var createNewProduct=async(product)=>{
     var productItem=new sanPhamModel({
-        tenSP:product.body.tenSP,
+        tenSP:product.body.product.tenSP,
+        moTa:[],
         hinhAnh:[],
-        thongSo:{
-            hi:'123',
-            ba:'234'
-        }
+        thongSo:product.body.product.thongSo,
+        soLuong:product.body.product.soLuong,
+        giaTien:product.body.product.giaTien
     })
-    product.files.forEach(item=>{
+    product.body.product.hinhAnh.forEach(item=>{
+        console.log(item.name)
         var image={
-            tenImageSP: item.originalname,
-            dataImageSP: item.filename,
-            contentTypeSP:"image/png"
+            tenImageSP: item.name,
+            dataImageSP: item.size,
+            contentTypeSP:item.type
         }
         productItem.hinhAnh.push(image)
     })
-    productItem.save().then(()=>console.log('success'))
+    productItem.save().then(()=>console.log("Save product success"))
+    var id=productItem._id
+    console.log(product.body.tenHang)
+    var hangid=await hangService.findIDHang(product.body.tenHang)
+    console.log(hangid)
+    var loaiSP=await loaiSPModel.findOne({tenLoai:product.body.tenLoaiSP}).then(document=>{
+        document.cacHang.forEach(itemHang=>{
+            if(itemHang.idHang==hangid){
+                itemHang.idCacSP.push(id)
+            }
+        })
+        document.save()
+    })
     return (productItem)
 }
 

@@ -38,12 +38,11 @@
     <button><i class="fa-solid fa-magnifying-glass"></i>Search</button>
   </form>
   <p>
-    <button>Thêm mới sản phẩm</button>
+    <button (click)="getFormCreateProductPage(nameProduct)">Thêm mới sản phẩm</button>
   </p>
   <table class="table table-bordered table-sm" style="border-width: thick">
     <thead class="thead-dark" style="background: black; color: snow">
       <tr style="text-align: center">
-        <th>ID SP</th>
         <th>Tên sản phẩm</th>
         <th>Loại sản phẩm</th>
         <th>Hình ảnh sản phẩm</th>
@@ -52,12 +51,11 @@
         <th>Hành động</th>
       </tr>
     </thead>
-    <tr style="text-align: center">
-      <td>das</td>
-      <td>sad</td>
-      <td>asda</td>
+    <tr style="text-align: center" *ngFor="let item of listProduct">
+      <td>{{item.tenSP}}</td>
+      <td>samsung</td>
+      <td><img src="http://localhost:3800/images/{{item.hinhAnh[0].tenImageSP}}" style="height: 100px;"></td>
       <td>sa</td>
-      <td>d</td>
       <td>d</td>
       <td>
         <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Xem chi tiết</button>

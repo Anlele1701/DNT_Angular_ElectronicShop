@@ -28,4 +28,28 @@ var getAllHang=async()=>{
     })
     return listHang
 }
-module.exports={createHang,getAllHang}
+
+var getAllHangFromCate=async(tenLoaiSP)=>{
+    var listHang=[]
+    var hang=await hangModel.find({}).then(document=>{
+        document.forEach(item=>{
+            for(let loaiSPitem of item.cacLoaiSP)
+            {
+                if(loaiSPitem==tenLoaiSP.tenLoaiSP){
+                    listHang.push(item.tenNhaSX)
+                    break
+                }
+            }
+        })
+        console.log(listHang)
+    })
+    return listHang
+}
+
+var findIDHang=async(tenHang)=>{
+    var hangid=await hangModel.findOne({tenNhaSX:tenHang}).then(async document=>{
+        return await document.id
+    })
+    return hangid
+}
+module.exports={createHang,getAllHang,getAllHangFromCate,findIDHang}
