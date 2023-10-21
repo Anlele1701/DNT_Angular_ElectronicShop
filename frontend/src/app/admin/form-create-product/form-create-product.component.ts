@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormCreateProductComponent implements OnInit{
   tenHang:string=''
-  product:any
+  hinhAnhProduct:FormData
+  product:FormData
   listHang:string[]=[]
   tenLoaiSP:string=''
   constructor(private http:HttpClient, private route:ActivatedRoute){
@@ -30,10 +31,15 @@ export class FormCreateProductComponent implements OnInit{
       this.getAllHang()
   }
 
-  createNewProduct(data:any){
+  createNewProduct(data:FormData){
     this.product=data
-    this.http.post(this.API+'sanpham/createNewProduct',{product:this.product,tenLoaiSP:this.tenLoaiSP, tenHang:this.tenHang}).subscribe((data:any)=>{
+    this.product.append('tenLoaiSP',this.tenLoaiSP)
+    this.product.append('tenHang',this.tenHang)
+    this.http.post(this.API+'sanpham/createNewProduct',this.product).subscribe((data:any)=>{
       console.log(data)
     })
+  }
+  pasteHinhAnh(data:FormData){
+
   }
 }

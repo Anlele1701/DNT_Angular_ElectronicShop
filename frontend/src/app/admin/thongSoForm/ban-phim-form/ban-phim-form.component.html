@@ -1,52 +1,52 @@
 <div style="width: 50%;">
-  <form>
+  <form (submit)="sendDataToFatherComponent()">
      <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Tên sản phẩm:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.tenSP" name="banphim.tenSP">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mô tả 1:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.moTa1" name="banphim.moTa1">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mô tả 2:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.moTa2" name="banphim.moTa2">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mô tả 3:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.moTa3" name="banphim.moTa3">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Số lượng</label>
-      <input type="number" class="form-control" id="exampleInputPassword1">
+      <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.soLuong" name="banphim.soLuong">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Gía tiền:</label>
-      <input type="number" class="form-control" id="exampleInputPassword1">
+      <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.giaTien" name="banphim.giaTien">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Tình trạng:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.thongSo.tinhTrang" name="banphim.thongSo.tinhTrang">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Bảo hành:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.thongSo.baoHanh" name="banphim.thongSo.baoHanh">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Switch:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.thongSo.switch" name="banphim.thongSo.switch">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Kích thước:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.thongSo.kichThuoc" name="banphim.thongSo.kichThuoc">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Trọng lượng:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1">
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="banphim.thongSo.trongLuong" name="banphim.thongSo.trongLuong">
     </div>
     <div class="mb-3">
       <label for="formFileMultiple" class="form-label">Hình ảnh (tối đa 3 hình):</label>
-      <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*">
+      <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*" (change)="getImage($event)">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

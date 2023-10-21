@@ -7,7 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class DienThoaiFormComponent {
   selectedImage: any[] = [];
-  @Output() dataDienThoai = new EventEmitter<Object>();
+  hinhAnhList: FileList|null=null
+  @Output() dataDienThoai = new EventEmitter<FormData>();
   dienthoai = {
     tenSP: '',
     moTa1: '',
@@ -36,11 +37,17 @@ export class DienThoaiFormComponent {
       };
       this.selectedImage.push(itemImage);
     }
+    this.hinhAnhList=event.target.files
     this.dienthoai.hinhAnh = this.selectedImage;
     console.log(this.dienthoai.hinhAnh);
   }
   sendDataToFatherComponent() {
-    this.dataDienThoai.emit(this.dienthoai);
+    const dienThoaiForm=new FormData();
+    for (let i = 0; i < this.dienthoai.hinhAnh.length; i++) {
+      dienThoaiForm.append('hinhAnh', this.hinhAnhList[i]);
+    }
+    dienThoaiForm.append('product',JSON.stringify(this.dienthoai))
+    this.dataDienThoai.emit(dienThoaiForm);
     console.log(this.dienthoai);
   }
 }

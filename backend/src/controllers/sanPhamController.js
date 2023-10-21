@@ -11,8 +11,9 @@ var createNewCateProduct=async(req,res)=>{
 var createNewProduct=async(req,res)=>
 {
     try{
-        var product=await sanPhamService.createNewProduct(req)
-        console.log(req.body.product.tenSP)
+        const jsonData = JSON.parse(req.body.product);
+        console.log(jsonData)
+        var product=await sanPhamService.createNewProduct(jsonData,req.body.tenLoaiSP,req.body.tenHang)
         res.send(product)
     }catch(err)
     {

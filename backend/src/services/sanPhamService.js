@@ -70,16 +70,17 @@ var createNewCateProduct=async(loaiSP)=>{
 }
 
 //tạo sản phẩm mới
-var createNewProduct=async(product)=>{
+var createNewProduct=async(product,tenLoaiSP,tenHang)=>{
+    console.log(product.tenSP)
     var productItem=new sanPhamModel({
-        tenSP:product.body.product.tenSP,
-        moTa:[],
+        tenSP:product.tenSP,
+        moTa:[product.moTa1,product.moTa2,product.moTa3],
         hinhAnh:[],
-        thongSo:product.body.product.thongSo,
-        soLuong:product.body.product.soLuong,
-        giaTien:product.body.product.giaTien
+        thongSo:product.thongSo,
+        soLuong:product.soLuong,
+        giaTien:product.giaTien
     })
-    product.body.product.hinhAnh.forEach(item=>{
+    product.hinhAnh.forEach(item=>{
         console.log(item.name)
         var image={
             tenImageSP: item.name,
@@ -90,10 +91,9 @@ var createNewProduct=async(product)=>{
     })
     productItem.save().then(()=>console.log("Save product success"))
     var id=productItem._id
-    console.log(product.body.tenHang)
-    var hangid=await hangService.findIDHang(product.body.tenHang)
+    var hangid=await hangService.findIDHang(tenHang)
     console.log(hangid)
-    var loaiSP=await loaiSPModel.findOne({tenLoai:product.body.tenLoaiSP}).then(document=>{
+    var loaiSP=await loaiSPModel.findOne({tenLoai:tenLoaiSP}).then(document=>{
         document.cacHang.forEach(itemHang=>{
             if(itemHang.idHang==hangid){
                 itemHang.idCacSP.push(id)
