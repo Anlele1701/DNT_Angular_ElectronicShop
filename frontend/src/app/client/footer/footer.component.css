@@ -19,6 +19,9 @@ ul{
   display: flex;
   flex-wrap: wrap;
 }
+.row p{
+  color: #bbbbbb;
+}
 
 .footer{
   background-color: #494949;
