@@ -7,6 +7,7 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
 import { SidebarComponent } from './admin/sidebar/sidebar.component';
 import { ProductCategoryComponent } from './client/product-category/product-category.component';
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 const routes: Routes = [
   // CLIENT
   { path: 'about-us', component: AboutUsComponent },
