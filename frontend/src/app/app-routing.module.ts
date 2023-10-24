@@ -12,6 +12,7 @@ import { CustomersComponent } from './admin/customers/customers.component';
 import { CompanyComponent } from './admin/company/company.component';
 import { ProductComponent } from './admin/product/product.component';
 import { FormCreateProductComponent } from './admin/form-create-product/form-create-product.component';
+import { CategoryComponent } from './admin/category/category.component';
 const routes: Routes = [
   // CLIENT
   { path: 'about-us', component: AboutUsComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
       { path: 'customer', component: CustomersComponent},
       { path:'brands',component: CompanyComponent},
       {path: 'products/:nameProduct', component: ProductComponent},
-      {path:'createNewProduct/:nameProduct',component:FormCreateProductComponent}
+      {path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
+      {path:'categories',component:CategoryComponent}
     ]
   },
   { path: 'product-detail', component: ProductDetailComponent },

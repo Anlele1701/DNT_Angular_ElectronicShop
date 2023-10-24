@@ -71,4 +71,18 @@ var countLoaiSP=async()=>{
         console.log(error)
     }
 }
-module.exports={listIDSP,getProductsOfCompany,findCateID,cateID, createnewLoaiSPtoHang, countLoaiSP}
+
+var createLoaiSP=async(req)=>{
+    try{
+        var newLoaiSP=new loaiSPModel({
+            tenLoai:req.body.tenLoai
+        })
+        newLoaiSP.save().then((document)=>console.log(document))
+        return newLoaiSP
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+module.exports={listIDSP,getProductsOfCompany,findCateID,cateID, createnewLoaiSPtoHang, countLoaiSP,createLoaiSP}

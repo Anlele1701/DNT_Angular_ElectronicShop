@@ -14,6 +14,7 @@ export class CompanyComponent implements OnInit{
   createNewBrand(){
     this.http.post(this.API+'/hang/createNewHang',{tenHang:this.brandName}).subscribe((data:any)=>{
       console.log(this.brandName)
+      window.location.reload()
     })
   }
 

@@ -42,7 +42,7 @@
               <i class="fa-solid fa-circle-chevron-down"></i>
             </a>
             <ul class="collapse mt-2" id="collapseExample" *ngFor="let item of listLoaiSP">
-              <li class="dropdown-item"><a routerLink="/admin/products/{{item}}">{{item}}</a></li>
+              <li class="dropdown-item"><a [routerLink]="['/admin/products', item]" (click)="changeToProductPage(item)">{{item}}</a></li>
             </ul>
           </li>
           <li class="nav-link mb-3">
@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="nav-link mb-3">
-            <a routerLink="/categories">
+            <a routerLink="/admin/categories">
               <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
               <span class="pe-4 ps-3">Categories</span>
             </a>

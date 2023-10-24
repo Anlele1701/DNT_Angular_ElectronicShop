@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit{
     this.http.post(this.API+'sanpham/getAllSanPham',{nameProductCate:this.nameProduct}).subscribe((data:any)=>{
       data.forEach(item=>{
         this.listProduct.push(item)
+        console.log(item.tenHang)
       })
       console.log(this.listProduct)
     })

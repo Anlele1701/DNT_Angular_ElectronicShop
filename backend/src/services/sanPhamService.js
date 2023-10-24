@@ -89,6 +89,7 @@ var createNewProduct=async(product,tenLoaiSP,tenHang)=>{
         }
         productItem.hinhAnh.push(image)
     })
+    productItem.tenLoaiSP=tenLoaiSP
     productItem.save().then(()=>console.log("Save product success"))
     var id=productItem._id
     var hangid=await hangService.findIDHang(tenHang)
@@ -108,14 +109,24 @@ var getAllProduct=async(nameProductCate)=>{
     var list=[]
     try{
     var productList=await loaiSPModel.findOne({tenLoai:nameProductCate}).then(async document=>{
-        document.cacHang.forEach(itemHang=>{
-            itemHang.idCacSP.forEach(itemID=>{
+        var listtt=[]
+        var list=[]
+        document.cacHang.forEach(async itemHang=>{
+            
+            var doc=await itemHang.idCacSP.forEach(itemID=>{
                 console.log(itemID)
-                list.push(getProductFromID(itemID))
+                var oneItem= getProductFromID(itemID)
+                list.push(oneItem)
             })
+            var tenHang=''
+            var Hang=  await hangModel.findById(itemHang.idHang).then(document=>
+                {
+                    tenHang=document.tenNhaSX;
+                }
+            )
+            console.log(tenHang)
         })
         const products = await Promise.all(list);
-        console.log(products)
         return products
     })
     return productList
@@ -126,9 +137,9 @@ var getAllProduct=async(nameProductCate)=>{
     }
 }
 
-var getProductFromID=async(idProduct)=>{
+var getProductFromID=(idProduct)=>{
     try{
-    var product=await sanPhamModel.findById(idProduct).then(document=>{
+    var product=sanPhamModel.findById(idProduct).then(document=>{
         return document
     })
     return product

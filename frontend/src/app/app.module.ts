@@ -24,6 +24,7 @@ import { ChuotFormComponent } from './admin/thongSoForm/chuot-form/chuot-form.co
 import { ManHinhFormComponent } from './admin/thongSoForm/man-hinh-form/man-hinh-form.component';
 import { TaiNgheFormComponent } from './admin/thongSoForm/tai-nghe-form/tai-nghe-form.component';
 import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim-form.component';
+import { CategoryComponent } from './admin/category/category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim
     ManHinhFormComponent,
     TaiNgheFormComponent,
     BanPhimFormComponent,
+    CategoryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
   providers: [],
