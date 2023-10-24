@@ -8,4 +8,9 @@ var getAllHang=async(req,res)=>{
     var hangList=await hangService.getAllHang();
     res.send(hangList)
 }
-module.exports={createNewHang,getAllHang}
+
+var getAllHangFromCate=async(req,res)=>{
+    var hangList=await hangService.getAllHangFromCate(req.body);
+    res.send(hangList)
+}
+module.exports={createNewHang,getAllHang,getAllHangFromCate}
