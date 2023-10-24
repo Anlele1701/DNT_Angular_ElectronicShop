@@ -5,7 +5,7 @@ import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['../shared/AdminIndex.css']
 })
 export class CategoryComponent implements OnInit{
   categoryName:string=''

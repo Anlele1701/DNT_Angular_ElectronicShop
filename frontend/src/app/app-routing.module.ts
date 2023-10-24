@@ -22,23 +22,23 @@ const routes: Routes = [
   { path: 'product-detail', component: ProductDetailComponent },
   { path: 'category', component: ProductCategoryComponent },
   { path: 'personal', component: PersonalPageComponent },
+  { path: 'order', component: OrderComponent },
   // ADMIN
   {
     path: 'admin',
     component: SidebarComponent, // Trang layout admin
     children: [
       { path: 'dashboard', component: DashboardComponent }, // Component con
-      { path: 'customer', component: CustomersComponent},
-      { path:'brands',component: CompanyComponent},
-      {path: 'products/:nameProduct', component: ProductComponent},
-      {path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
-      {path:'categories',component:CategoryComponent}
-    ]
+      { path: 'customer', component: CustomersComponent },
+      { path: 'brands', component: CompanyComponent },
+      { path: 'products/:nameProduct', component: ProductComponent },
+      {
+        path: 'createNewProduct/:nameProduct',
+        component: FormCreateProductComponent,
+      },
+      { path: 'categories', component: CategoryComponent },
+    ],
   },
-  { path: 'product-detail', component: ProductDetailComponent },
-  { path: 'category', component: ProductCategoryComponent },
-  { path: 'personal', component: PersonalPageComponent },
-  { path: 'order', component: OrderComponent },
 ];
 
 @NgModule({

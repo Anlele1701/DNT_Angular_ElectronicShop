@@ -1,45 +1,83 @@
-<div style="background: #ffffff; border-radius: 10px solid red; padding: 1rem">
-  <h2>QUẢN LÝ LOẠI SẢN PHẨM</h2>
-  <form
-    asp-action="Index"
-    method="get"
-    class="form-inline"
-    style="padding-left: 140px"
-  >
-    <input type="text" name="SearchString" placeholder="Tìm kiếm sản phẩm" />
+<body>
+  <!--Title Box -->
+  <div class="box">
+    <h2>QUẢN LÝ LOẠI SẢN PHẨM</h2>
+    <form asp-action="Index" method="get">
+      <input
+        type="text"
+        name="SearchString"
+        placeholder="Tìm kiếm qua gmail hoặc tên"
+        class="searchBox form-control"
+      />
+    </form>
+    <button class="btnCreate btn btn-dark">THÊM LOẠI SẢN PHẨM MỚI</button>
+  </div>
 
-    <button><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-  </form>
-<hr>
+  <!-- <div
+    style="background: #ffffff; border-radius: 10px solid red; padding: 1rem"
+  > -->
+  <!-- <div>
+      <form>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Tên loại sản phẩm mới</label
+          >
+          <input
+            type="text"
+            class="form-control inputNewBrand"
+            placeholder="Nhập tên loại sản phẩm mới"
+            [(ngModel)]="categoryName"
+            name="categoryName"
+          />
+          <button id="btnNewBrand" (click)="createnewLoaiSP()">
+            Tạo loại sản phẩm mới
+          </button>
+        </div>
+      </form>
+    </div> -->
 
-<div>
-  <h4>THÊM LOẠI SẢN PHẨM MỚI</h4>
-  <form>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Tên loại sản phẩm mới</label>
-      <input type="text" class="form-control inputNewBrand" placeholder="Nhập tên loại sản phẩm mới" [(ngModel)]="categoryName" name="categoryName">
-      <button id="btnNewBrand" (click)="createnewLoaiSP()">Tạo loại sản phẩm mới</button>
+  <div class="box mt-3">
+    <div style="position: relative">
+      <h3 class="text-center">Danh Sách Loại Sản phẩm</h3>
+      <button
+        class="btn btn-dark"
+        style="position: absolute; right: 20px; top: 3px"
+      >
+        Xuất Excel
+      </button>
     </div>
-  </form>
-</div>
-
-<hr>
-<div>
-  <h4>DANH SÁCH CÁC HÃNG</h4>
-  <table class="table table-bordered" style="border-width: thick">
-    <thead class="thead-dark" style="background: black; color: snow">
-      <tr style="text-align: center">
-        <th>Tên loại sản phẩm</th>
-        <th style="width: 30%;">Hành động</th>
+    <!-- <table class="table table-hover table-striped">
+      <thead style="background: rgb(0, 0, 0); color: snow">
+        <tr style="text-align: center">
+          <th>Tên loại sản phẩm</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tr style="text-align: center" *ngFor="let item of listLoaiSP">
+        <td>{{ item }}</td>
+        <td>
+          <button type="button" class="btn btn-outline-warning">
+            <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
+          </button>
+          <button type="button" class="btn btn-outline-danger">
+            <i class="fa fa-trash"></i> Xóa
+          </button>
+        </td>
       </tr>
-    </thead>
-    <tr style="text-align: center" *ngFor="let item of listLoaiSP">
-      <td>{{item}}</td>
-      <td>
-        <button type="button" class="btn btn-outline-warning"><i class="fa-solid fa-square-pen"></i> Chỉnh sửa</button>
-        <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Xóa loại sản phẩm</button>
-      </td>
-    </tr>
-  </table>
-</div>
-</div>
+    </table> -->
+    <table class="table table-striped table-hover text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Loại Sản Phẩm</th>
+          <th>Hành Động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="text-align: center" *ngFor="let item of listLoaiSP">
+          <td>{{ item }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- </div> -->
+</body>
