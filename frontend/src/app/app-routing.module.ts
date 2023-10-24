@@ -11,6 +11,9 @@ import { OrderComponent } from './client/order/order.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CustomersComponent } from './admin/customers/customers.component';
 import { CompanyComponent } from './admin/company/company.component';
+import { ProductComponent } from './admin/product/product.component';
+import { FormCreateProductComponent } from './admin/form-create-product/form-create-product.component';
+import { CategoryComponent } from './admin/category/category.component';
 const routes: Routes = [
   // CLIENT
   { path: 'about-us', component: AboutUsComponent },
@@ -24,7 +27,10 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent }, // Component con
       { path: 'customer', component: CustomersComponent},
-      { path:'brands',component: CompanyComponent}
+      { path:'brands',component: CompanyComponent},
+      {path: 'products/:nameProduct', component: ProductComponent},
+      {path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
+      {path:'categories',component:CategoryComponent}
     ]
   },
   { path: 'product-detail', component: ProductDetailComponent },

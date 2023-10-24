@@ -1,11 +1,11 @@
 const multer=require('multer')
-
+var hangService=require('../services/hangService')
 var sanPhamModel=require('../models/sanPhamModel')
 var loaiSPModel=require('../models/loaiSPModel')
 var loaiSPService=require('../services/loaiSPService')
 const { error } = require('console')
+const hangModel = require('../models/hangModel')
 var listSP=[]
-
 const Storage=multer.diskStorage({
     destination:'../ProductImages',
     filename:(req,file,cb)=>{
@@ -18,7 +18,7 @@ const upload=multer({
 })
 
 //lấy tất cả sp theo hãng và loại sp đó
-module.exports.getProductOfCompany=async(tenLoai,idHang)=>{
+var getProductOfCompany=async(tenLoai,idHang)=>{
     try{
         loaiSPService.getProductsOfCompany(tenLoai,idHang)
         loaiSPService.listIDSP.forEach(item=>{
@@ -35,7 +35,7 @@ module.exports.getProductOfCompany=async(tenLoai,idHang)=>{
 
 
 //tạo loại sp mới (auto trong collection LOAISP tạo sau khi tạo hãng mới)
-module.exports.createNewCateProduct=async(loaiSP)=>{
+var createNewCateProduct=async(loaiSP)=>{
     try{
         var cate
         const idLoaiSP=await loaiSPModel.findOne({tenLoai:loaiSP.tenloaiSP}).then(document=>{
@@ -70,23 +70,83 @@ module.exports.createNewCateProduct=async(loaiSP)=>{
 }
 
 //tạo sản phẩm mới
-module.exports.createNewProduct=async(product)=>{
+var createNewProduct=async(product,tenLoaiSP,tenHang)=>{
+    console.log(product.tenSP)
     var productItem=new sanPhamModel({
-        tenSP:product.body.tenSP,
+        tenSP:product.tenSP,
+        moTa:[product.moTa1,product.moTa2,product.moTa3],
         hinhAnh:[],
-        thongSo:{
-            hi:'123',
-            ba:'234'
-        }
+        thongSo:product.thongSo,
+        soLuong:product.soLuong,
+        giaTien:product.giaTien
     })
-    product.files.forEach(item=>{
+    product.hinhAnh.forEach(item=>{
+        console.log(item.name)
         var image={
-            tenImageSP: item.originalname,
-            dataImageSP: item.filename,
-            contentTypeSP:"image/png"
+            tenImageSP: item.name,
+            dataImageSP: item.size,
+            contentTypeSP:item.type
         }
         productItem.hinhAnh.push(image)
     })
-    productItem.save().then(()=>console.log('success'))
+    productItem.tenLoaiSP=tenLoaiSP
+    productItem.save().then(()=>console.log("Save product success"))
+    var id=productItem._id
+    var hangid=await hangService.findIDHang(tenHang)
+    console.log(hangid)
+    var loaiSP=await loaiSPModel.findOne({tenLoai:tenLoaiSP}).then(document=>{
+        document.cacHang.forEach(itemHang=>{
+            if(itemHang.idHang==hangid){
+                itemHang.idCacSP.push(id)
+            }
+        })
+        document.save()
+    })
     return (productItem)
 }
+
+var getAllProduct=async(nameProductCate)=>{
+    var list=[]
+    try{
+    var productList=await loaiSPModel.findOne({tenLoai:nameProductCate}).then(async document=>{
+        var listtt=[]
+        var list=[]
+        document.cacHang.forEach(async itemHang=>{
+            
+            var doc=await itemHang.idCacSP.forEach(itemID=>{
+                console.log(itemID)
+                var oneItem= getProductFromID(itemID)
+                list.push(oneItem)
+            })
+            var tenHang=''
+            var Hang=  await hangModel.findById(itemHang.idHang).then(document=>
+                {
+                    tenHang=document.tenNhaSX;
+                }
+            )
+            console.log(tenHang)
+        })
+        const products = await Promise.all(list);
+        return products
+    })
+    return productList
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+var getProductFromID=(idProduct)=>{
+    try{
+    var product=sanPhamModel.findById(idProduct).then(document=>{
+        return document
+    })
+    return product
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct}

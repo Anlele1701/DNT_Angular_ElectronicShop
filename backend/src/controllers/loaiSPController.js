@@ -7,9 +7,16 @@ var createnewLoaiSPtoHang=async(req,res)=>{
 
 var countLoaiSP=async(req,res)=>{
     var sumLoaiSP=await loaiSPService.countLoaiSP()
+    res.send(sumLoaiSP)
+}
+
+var createLoaiSP=async(req,res)=>{
+    var newLoaiSP=await loaiSPService.createLoaiSP(req)
+    res.send(newLoaiSP)
 }
 
 module.exports={
     createnewLoaiSPtoHang,
-    countLoaiSP
+    countLoaiSP,
+    createLoaiSP
 }

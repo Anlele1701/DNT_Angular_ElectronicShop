@@ -11,8 +11,9 @@ var createNewCateProduct=async(req,res)=>{
 var createNewProduct=async(req,res)=>
 {
     try{
-        var product=await sanPhamService.createNewProduct(req)
-        console.log(req.body.tenSP)
+        const jsonData = JSON.parse(req.body.product);
+        console.log(jsonData)
+        var product=await sanPhamService.createNewProduct(jsonData,req.body.tenLoaiSP,req.body.tenHang)
         res.send(product)
     }catch(err)
     {
@@ -20,4 +21,11 @@ var createNewProduct=async(req,res)=>
     }
 }
 
-module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct}
+var getAllProduct=async(req,res)=>{
+    try{
+        var listProduct=await sanPhamService.getAllProduct(req.body.nameProductCate)
+        res.send(listProduct)
+    }catch(error) {console.log(error)}
+}
+
+module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct}
