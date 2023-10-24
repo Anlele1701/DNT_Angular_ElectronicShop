@@ -14,6 +14,7 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
 import { ProductCategoryComponent } from './client/product-category/product-category.component';
 import { ProductItemsComponent } from './client/product-items/product-items.component';
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
+import { OrderComponent } from './client/order/order.component';
 import { CompanyComponent } from './admin/company/company.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductComponent } from './admin/product/product.component';
@@ -48,6 +49,8 @@ import { CategoryComponent } from './admin/category/category.component';
     TaiNgheFormComponent,
     BanPhimFormComponent,
     CategoryComponent,
+    OrderComponent,
+    CompanyComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
   providers: [],

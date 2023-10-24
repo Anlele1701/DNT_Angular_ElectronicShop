@@ -7,6 +7,7 @@ import { ProductDetailComponent } from './client/product-detail/product-detail.c
 import { SidebarComponent } from './admin/sidebar/sidebar.component';
 import { ProductCategoryComponent } from './client/product-category/product-category.component';
 import { PersonalPageComponent } from './client/personal-page/personal-page.component';
+import { OrderComponent } from './client/order/order.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CustomersComponent } from './admin/customers/customers.component';
 import { CompanyComponent } from './admin/company/company.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'purchase-history', component: PurchaseHistoryComponent },
   { path: 'membership-class', component: MembershipClassComponent },
-  { path: 'product-detail', component: ProductDetailComponent},
+  { path: 'product-detail', component: ProductDetailComponent },
   // ADMIN
   {
     path: 'admin',
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'product-detail', component: ProductDetailComponent },
   { path: 'category', component: ProductCategoryComponent },
   { path: 'personal', component: PersonalPageComponent },
+  { path: 'order', component: OrderComponent },
 ];
 
 @NgModule({
