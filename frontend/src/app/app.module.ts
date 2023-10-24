@@ -17,6 +17,18 @@ import { PersonalPageComponent } from './client/personal-page/personal-page.comp
 import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
 import { PurchaseComponent } from './client/purchase/purchase.component';
 import { LoginRegisComponent } from './client/login-regis/login-regis.component';
+import { OrderComponent } from './client/order/order.component';
+import { CompanyComponent } from './admin/company/company.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductComponent } from './admin/product/product.component';
+import { FormCreateProductComponent } from './admin/form-create-product/form-create-product.component';
+import { DienThoaiFormComponent } from './admin/thongSoForm/dien-thoai-form/dien-thoai-form.component';
+import { LapTopFormComponent } from './admin/thongSoForm/lap-top-form/lap-top-form.component';
+import { ChuotFormComponent } from './admin/thongSoForm/chuot-form/chuot-form.component';
+import { ManHinhFormComponent } from './admin/thongSoForm/man-hinh-form/man-hinh-form.component';
+import { TaiNgheFormComponent } from './admin/thongSoForm/tai-nghe-form/tai-nghe-form.component';
+import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim-form.component';
+import { CategoryComponent } from './admin/category/category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,8 +45,20 @@ import { LoginRegisComponent } from './client/login-regis/login-regis.component'
     PurchaseComponent,
     ProductDetailComponent,
     LoginRegisComponent
+    CompanyComponent,
+    ProductComponent,
+    FormCreateProductComponent,
+    DienThoaiFormComponent,
+    LapTopFormComponent,
+    ChuotFormComponent,
+    ManHinhFormComponent,
+    TaiNgheFormComponent,
+    BanPhimFormComponent,
+    CategoryComponent,
+    OrderComponent,
+    CompanyComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

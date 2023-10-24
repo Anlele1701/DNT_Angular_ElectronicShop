@@ -19,8 +19,9 @@
               <span class="text-white pe-4 ps-3">Dashboard</span>
             </a>
           </li>
+          <!-- customer -->
           <li class="nav-link mb-3">
-            <a routerLink="/admin/customers">
+            <a routerLink="/admin/customer">
               <span class="icon"><i class="fa-solid fa-user"></i> </span>
               <span class="text-white pe-4 ps-3">Customers</span>
             </a>
@@ -40,10 +41,8 @@
               <span class="pe-4 ps-3">Products</span>
               <i class="fa-solid fa-circle-chevron-down"></i>
             </a>
-            <ul class="collapse mt-2" id="collapseExample">
-              <li class="dropdown-item"><a href="#">Action</a></li>
-              <li class="dropdown-item"><a href="#">Another</a></li>
-              <li class="dropdown-item"><a href="#">Test</a></li>
+            <ul class="collapse mt-2" id="collapseExample" *ngFor="let item of listLoaiSP">
+              <li class="dropdown-item"><a [routerLink]="['/admin/products', item]" (click)="changeToProductPage(item)">{{item}}</a></li>
             </ul>
           </li>
           <li class="nav-link mb-3">
@@ -53,9 +52,15 @@
             </a>
           </li>
           <li class="nav-link mb-3">
-            <a routerLink="/categories">
+            <a routerLink="/admin/categories">
               <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
               <span class="pe-4 ps-3">Categories</span>
+            </a>
+          </li>
+          <li class="nav-link mb-3">
+            <a routerLink="/admin/brands">
+              <span class="icon"> <i class="fa-solid fa-building"></i></span>
+              <span class="pe-4 ps-3">Brands</span>
             </a>
           </li>
           <li class="nav-link" id="logout">

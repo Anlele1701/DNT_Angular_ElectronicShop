@@ -1,0 +1,34 @@
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  transition: 0.5s ease-in-out;
+}
+
+button {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.edit {
+  color: green;
+}
+
+.detail {
+  color: blue;
+}
+
+.delete {
+  color: red;
+}
+
+
+.inputNewBrand{
+  width: 30%;
+}
+
+#btnNewBrand{
+  margin-top: 10px;
+}
