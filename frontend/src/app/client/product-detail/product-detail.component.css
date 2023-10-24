@@ -27,4 +27,16 @@
   object-fit: contain;
   mix-blend-mode: multiply;
 }
+#margin-top{
+  margin-top: 100px;
+}
+#margin-top-mua{
+  margin-top: 70px;
+}
+#margin-adjust{
+  margin-bottom: 200px;
+}
+#purchase-button{
+  padding : 7px;
+}
 

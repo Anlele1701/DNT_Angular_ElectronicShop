@@ -1,0 +1,216 @@
+:root {
+  --linear-grad: linear-gradient(to right, #141e30, #243b55);
+  --grad-clr1: #141e30;
+  --grad-clr2: #243b55;
+}
+
+body {
+  height: 100vh;
+  background: #f6f5f7;
+  display: grid;
+  place-content: center;
+}
+.container {
+  position: relative;
+  width: 850px;
+  height: 500px;
+  background-color: #fff;
+  box-shadow: 10px;
+  box-shadow: 25px 30px 55px #5557;
+  border-radius: 13px;
+  overflow: hidden;
+}
+.form-container {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  padding: 0px 40px;
+  transition: all 0.6s ease-in-out;
+}
+.sign-up-container {
+  opacity: 0;
+  z-index: 1;
+}
+.sign-in-container {
+  z-index: 2;
+}
+form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.input-dang-nhap {
+  width: 350px;
+  height: 50px;
+  background-color: #dedede;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.input-dang-ki {
+  height: 40px;
+  width: 300px;
+  background-color: #dedede;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 13px;
+}
+.btn-form {
+  border-radius: 10px;
+  background: #141515;
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  font-family: "Inter";
+  width: 120px;
+  height: 38px;
+}
+.form-container button {
+  transition: 80ms ease-in;
+}
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 60%;
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 9;
+}
+.overlayBtn {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 380px;
+  padding-bottom: 30px;
+  transform: translateX(-50%);
+  background: transparent;
+  width: 120px;
+  border: none;
+}
+.overlay {
+  position: relative;
+  background: #141515;
+  color: #fff;
+  left: -150%;
+  height: 100%;
+  width: 250%;
+  transition: transform 0.6s ease-in-out;
+}
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0px 40px;
+  text-align: center;
+  height: 100%;
+  width: 340px;
+  transition: 0.6s ease-in-out;
+}
+.overlay-left {
+  right: 60%;
+  transform: translateX(-12%);
+}
+.overlay-right {
+  right: 0;
+  transform: translateX(0%);
+}
+
+.right-panel-active .overlay-container {
+  transform: translateX(-150%);
+}
+.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+.right-panel-active .overlay-left {
+  transform: translateX(25%);
+}
+.right-panel-active .overlay-right {
+  transform: translateX(35%);
+}
+.right-panel-active .sign-in-container {
+  transform: translateX(20%);
+  opacity: 0;
+}
+.right-panel-active .sign-up-container {
+  transform: translateX(66.7%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+@keyframes show {
+  0%,
+  50% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50.1%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+.btnScaled {
+  animation: scaleBtn 0.6s;
+}
+@keyframes scaleBtn {
+  0% {
+    width: 143.67px;
+  }
+  50% {
+    width: 250px;
+  }
+  100% {
+    width: 143.67px;
+  }
+}
+.chao-ban-moi {
+  color: #f6f4ec;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 28px;
+  font-weight: 800;
+}
+.Welcome-back {
+  color: #f6f4ec;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 23px;
+  width: 340px;
+  font-weight: 800;
+}
+.p-1 {
+
+}
+.p-change-2 {
+  color:#6B9EFF;
+  font-family: "Inter";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.p-change-3 {
+  font-family: "Inter";
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.img-resize {
+  margin-bottom: 2vh;
+}
+@font-face {
+  font-family: Inter;
+  src: url(/assets/client/Login_Regis/Inter-VariableFont_slnt\,wght.ttf);
+}
