@@ -36,7 +36,9 @@
     </thead>
     <tr style="text-align: center" *ngFor="let itemHang of brandList">
       <td>{{itemHang.tenNhaSX}}</td>
-      <td></td>
+      <td *ngFor="let loaiSP of itemHang.cacLoaiSP">
+        {{loaiSP}}, 
+      </td>
       <td>
         <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Thêm loại sản phẩm</button>
         <button type="button" class="btn btn-outline-warning"><i class="fa-solid fa-square-pen"></i> Chỉnh sửa</button>

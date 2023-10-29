@@ -14,6 +14,7 @@ import { CompanyComponent } from './admin/company/company.component';
 import { ProductComponent } from './admin/product/product.component';
 import { FormCreateProductComponent } from './admin/form-create-product/form-create-product.component';
 import { CategoryComponent } from './admin/category/category.component';
+import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
 const routes: Routes = [
   // CLIENT
   { path: 'about-us', component: AboutUsComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
     component: SidebarComponent, // Trang layout admin
     children: [
       { path: 'dashboard', component: DashboardComponent }, // Component con
-      { path: 'customer', component: CustomersComponent},
+      { path: 'customers', component: CustomersComponent},
       { path:'brands',component: CompanyComponent},
       {path: 'products/:nameProduct', component: ProductComponent},
       {path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'category', component: ProductCategoryComponent },
   { path: 'personal', component: PersonalPageComponent },
   { path: 'order', component: OrderComponent },
+  { path: 'verify-email/:token',component:VerifyEmailComponent}
 ];
 
 @NgModule({

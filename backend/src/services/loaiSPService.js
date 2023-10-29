@@ -42,10 +42,14 @@ var findCateID=async(tenLoaiSP)=>{
 //thêm loại sản phẩm vào hãng
 var createnewLoaiSPtoHang=async(sp)=>{
     try{
-        var item=hangModel.findById(sp.idHang).then((document)=>{
-            document.cacLoaiSP.push(sp.tenloaiSP)
+        var item=await hangModel.findOne({tenNhaSX:sp.tenHang}).then(async (document)=>{
+            document.cacLoaiSP.push(sp.tenLoaiSP)
             document.save()
-            sanPhamService.createNewCateProduct(sp)
+            var hangItem={idHang:document._id}
+            var loaiSP=await loaiSPModel.findOne({tenLoai:sp.tenLoaiSP}).then((document1)=>{
+                document1.cacHang.push(hangItem)
+                document1.save()
+            })
             return document
         })
         return item

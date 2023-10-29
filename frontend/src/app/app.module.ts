@@ -29,6 +29,7 @@ import { ManHinhFormComponent } from './admin/thongSoForm/man-hinh-form/man-hinh
 import { TaiNgheFormComponent } from './admin/thongSoForm/tai-nghe-form/tai-nghe-form.component';
 import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim-form.component';
 import { CategoryComponent } from './admin/category/category.component';
+import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +45,7 @@ import { CategoryComponent } from './admin/category/category.component';
     ShoppingCartComponent,
     PurchaseComponent,
     ProductDetailComponent,
-    LoginRegisComponent
-    CompanyComponent,
+    LoginRegisComponent,
     ProductComponent,
     FormCreateProductComponent,
     DienThoaiFormComponent,
@@ -56,7 +56,8 @@ import { CategoryComponent } from './admin/category/category.component';
     BanPhimFormComponent,
     CategoryComponent,
     OrderComponent,
-    CompanyComponent
+    CompanyComponent,
+    VerifyEmailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
   providers: [],

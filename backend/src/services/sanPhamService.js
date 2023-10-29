@@ -6,16 +6,7 @@ var loaiSPService=require('../services/loaiSPService')
 const { error } = require('console')
 const hangModel = require('../models/hangModel')
 var listSP=[]
-const Storage=multer.diskStorage({
-    destination:'../ProductImages',
-    filename:(req,file,cb)=>{
-        cb(null,file.originalname);
-    }
-})
 
-const upload=multer({
-    storage:Storage
-})
 
 //lấy tất cả sp theo hãng và loại sp đó
 var getProductOfCompany=async(tenLoai,idHang)=>{
@@ -89,7 +80,7 @@ var createNewProduct=async(product,tenLoaiSP,tenHang)=>{
         }
         productItem.hinhAnh.push(image)
     })
-    productItem.tenLoaiSP=tenLoaiSP
+    productItem.tenHang=tenHang
     productItem.save().then(()=>console.log("Save product success"))
     var id=productItem._id
     var hangid=await hangService.findIDHang(tenHang)
@@ -105,6 +96,8 @@ var createNewProduct=async(product,tenLoaiSP,tenHang)=>{
     return (productItem)
 }
 
+
+// lấy danh sách sản phẩm theo loại sản phẩm
 var getAllProduct=async(nameProductCate)=>{
     var list=[]
     try{
@@ -137,6 +130,8 @@ var getAllProduct=async(nameProductCate)=>{
     }
 }
 
+
+//lấy id của sản phẩm
 var getProductFromID=(idProduct)=>{
     try{
     var product=sanPhamModel.findById(idProduct).then(document=>{

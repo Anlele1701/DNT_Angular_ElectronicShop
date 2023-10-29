@@ -53,10 +53,10 @@
     </thead>
     <tr style="text-align: center" *ngFor="let item of listProduct">
       <td>{{item.tenSP}}</td>
-      <td>samsung</td>
+      <td>{{item.tenHang}}</td>
       <td><img src="http://localhost:3800/images/{{item.hinhAnh[0].tenImageSP}}" style="height: 100px;"></td>
-      <td>sa</td>
-      <td>d</td>
+      <td>{{item.soLuong}}</td>
+      <td>{{item.giaTien}}</td>
       <td>
         <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Xem chi tiết</button>
         <button type="button" class="btn btn-outline-warning"><i class="fa-solid fa-square-pen"></i> Chỉnh sửa</button>
