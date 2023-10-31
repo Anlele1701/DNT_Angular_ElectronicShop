@@ -44,7 +44,7 @@ import { CategoryComponent } from './admin/category/category.component';
     ShoppingCartComponent,
     PurchaseComponent,
     ProductDetailComponent,
-    LoginRegisComponent
+    LoginRegisComponent,
     CompanyComponent,
     ProductComponent,
     FormCreateProductComponent,

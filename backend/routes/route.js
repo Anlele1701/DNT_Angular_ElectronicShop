@@ -11,6 +11,7 @@ var upload=require('../middleware/upload')
 router.route('/hang/createNewHang').post(hangController.createNewHang) //tạo hãng mới
 router.route('/hang/getAllHang').get(hangController.getAllHang)// lấy danh sách các hãng
 router.route('/hang/getAllHangFromCate').post(hangController.getAllHangFromCate)
+router.route('/hang/delete/:id').delete(hangController.deleteHang);
 router.route('/loaisp/countLoaiSP').get(loaiSPController.countLoaiSP) //lấy số lượng loại sản phẩm
 router.route('/loaisp/createNewLoaiSP').post(loaiSPController.createnewLoaiSPtoHang) //thêm loại sp vào hãng
 router.route('/loaisp/createLoaiSP').post(loaiSPController.createLoaiSP) //tạo loại sản phẩm mới

@@ -2,6 +2,7 @@ body {
     background: #EEEDEC;
     padding:20px;
 }
+
 .box {
     background: #FFFFFF;
     border-radius: 10px;
@@ -17,17 +18,45 @@ body {
     text-decoration: none;
 }
 
-    .btnCreate a {
-        text-decoration: none;
-        color: white;
+.btnCreate a {
+     text-decoration: none;
+     color: white;
+}
+.excelbtn a {
+    text-decoration: none;
+    color: white;
+}
+#listBox {
+    height: auto;
+}
+#tourBox{
+    height:380px;
+    overflow:auto;
+}
+/*table*/
+.fixTableHead {
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+    .fixTableHead thead th {
+        position: sticky;
+        top: 0;
     }
 
-.listTable {
-    border-width: thick;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
-#listBox{
-    height:200px;
-    overflow-y:scroll
+
+th,
+td {
+    padding: 8px 15px;
+}
+
+th {
+    background: black;
+    color: white;
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {

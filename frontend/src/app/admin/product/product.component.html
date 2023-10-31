@@ -26,7 +26,7 @@
   }
 </style>
 <div style="background: #ffffff; border-radius: 10px solid red; padding: 1rem">
-  <h2 style="">QUẢN LÝ SẢN PHẨM</h2>
+  <h2>QUẢN LÝ SẢN PHẨM</h2>
   <form
     asp-action="Index"
     method="get"
@@ -38,7 +38,9 @@
     <button><i class="fa-solid fa-magnifying-glass"></i>Search</button>
   </form>
   <p>
-    <button (click)="getFormCreateProductPage(nameProduct)">Thêm mới sản phẩm</button>
+    <button (click)="getFormCreateProductPage(nameProduct)">
+      Thêm mới sản phẩm
+    </button>
   </p>
   <table class="table table-bordered table-sm" style="border-width: thick">
     <thead class="thead-dark" style="background: black; color: snow">
@@ -51,16 +53,27 @@
         <th>Hành động</th>
       </tr>
     </thead>
-    <tr style="text-align: center" *ngFor="let item of listProduct">
-      <td>{{item.tenSP}}</td>
+    <tr style="text-align: center" *ngFor="let item of productList$ | async">
+      <td>{{ item.tenSP }}</td>
       <td>samsung</td>
-      <td><img src="http://localhost:3800/images/{{item.hinhAnh[0].tenImageSP}}" style="height: 100px;"></td>
+      <td>
+        <img
+          src="http://localhost:3800/images/{{ item.hinhAnh[0].tenImageSP }}"
+          style="height: 100px"
+        />
+      </td>
       <td>sa</td>
       <td>d</td>
       <td>
-        <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Xem chi tiết</button>
-        <button type="button" class="btn btn-outline-warning"><i class="fa-solid fa-square-pen"></i> Chỉnh sửa</button>
-        <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Xóa sản phẩm</button>
+        <button type="button" class="btn btn-outline-primary">
+          <i class="fa-solid fa-circle-info"></i> Xem chi tiết
+        </button>
+        <button type="button" class="btn btn-outline-warning">
+          <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
+        </button>
+        <button type="button" class="btn btn-outline-danger">
+          <i class="fa fa-trash"></i> Xóa sản phẩm
+        </button>
       </td>
     </tr>
   </table>

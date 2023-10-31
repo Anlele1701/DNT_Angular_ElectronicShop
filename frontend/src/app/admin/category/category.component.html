@@ -10,32 +10,23 @@
         class="searchBox form-control"
       />
     </form>
-    <button class="btnCreate btn btn-dark">THÊM LOẠI SẢN PHẨM MỚI</button>
+    <button class="btnCreate btn btn-dark" (click)="toggleAddForm()">
+      THÊM LOẠI SẢN PHẨM MỚI
+    </button>
+    <div *ngIf="AddFormVisible" class="d-flex mt-2 w-50">
+      <input
+        type="text"
+        class="form-control inputNewBrand me-2"
+        placeholder="Nhập tên loại sản phẩm mới"
+        [(ngModel)]="categoryName"
+        name="categoryName"
+      />
+      <button id="btnNewBrand" class="btn btn-dark" (click)="createnewLoaiSP()">
+        Tạo
+      </button>
+    </div>
   </div>
-
-  <!-- <div
-    style="background: #ffffff; border-radius: 10px solid red; padding: 1rem"
-  > -->
-  <!-- <div>
-      <form>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >Tên loại sản phẩm mới</label
-          >
-          <input
-            type="text"
-            class="form-control inputNewBrand"
-            placeholder="Nhập tên loại sản phẩm mới"
-            [(ngModel)]="categoryName"
-            name="categoryName"
-          />
-          <button id="btnNewBrand" (click)="createnewLoaiSP()">
-            Tạo loại sản phẩm mới
-          </button>
-        </div>
-      </form>
-    </div> -->
-
+  <!-- Danh sách -->
   <div class="box mt-3">
     <div style="position: relative">
       <h3 class="text-center">Danh Sách Loại Sản phẩm</h3>
@@ -65,19 +56,34 @@
         </td>
       </tr>
     </table> -->
-    <table class="table table-striped table-hover text-center">
-      <thead class="table-dark">
-        <tr>
-          <th>Loại Sản Phẩm</th>
-          <th>Hành Động</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="text-align: center" *ngFor="let item of listLoaiSP">
-          <td>{{ item }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- List Table -->
+    <div class="box mt-3" id="listBox">
+      <div class="fixTableHead">
+        <table
+          class="table table-striped table-hover table-bordered text-center"
+        >
+          <thead>
+            <tr>
+              <th>Loại Sản Phẩm</th>
+              <th>Hành Động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listLoaiSP">
+              <td>{{ item }}</td>
+              <td>
+                <button type="button" class="btn btn-outline-warning me-2">
+                  <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
+                </button>
+                <button type="button" class="btn btn-outline-danger">
+                  <i class="fa fa-trash"></i> Xóa
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <!-- </div> -->
 </body>
