@@ -1,0 +1,19 @@
+* {
+    padding: 0 0 10px 0;
+}
+
+img {
+    padding-top: 32px;
+    width: 100%;
+}
+
+.container {
+    background-color: #464646;
+    height: 300px;
+    border-radius: 35px;
+}
+.container h2 {
+    color: #EFEFEF;
+    padding-top: 8px;
+    font-weight: 700;
+}
