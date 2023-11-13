@@ -1,4 +1,5 @@
 var hangModel=require('../models/hangModel')
+var Promise = require("bluebird");
 var idHang=''
 
 //tạo hãng mới
@@ -52,4 +53,21 @@ var findIDHang=async(tenHang)=>{
     })
     return hangid
 }
-module.exports={createHang,getAllHang,getAllHangFromCate,findIDHang}
+var deleteHang = async(id) => {
+    return new Promise(function myFn(resolve, reject)
+    {
+        hangModel.findByIdAndDelete(id).then((result) =>
+        {
+            if(result)
+            {
+                resolve(true);
+            }
+            else
+            reject(false);
+        })
+        .catch((error) => {
+            reject(error); 
+        })
+    })
+}
+module.exports={deleteHang, createHang,getAllHang,getAllHangFromCate,findIDHang}

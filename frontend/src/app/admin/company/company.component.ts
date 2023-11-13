@@ -25,7 +25,11 @@ export class CompanyComponent implements OnInit{
       })
     })
   }
-
+  deleteBrand(idSP){
+    this.http.delete(this.API+'/hang/delete/'+idSP).subscribe((data:any)=>{
+      console.log(data)
+    })
+  }
 
   ngOnInit(): void {
     this.showAllBrand()

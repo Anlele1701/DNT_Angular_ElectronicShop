@@ -48,6 +48,7 @@ import { HomepageComponent } from './client/homepage/homepage.component';
     PurchaseComponent,
     ProductDetailComponent,
     LoginRegisComponent,
+    CompanyComponent,
     ProductComponent,
     FormCreateProductComponent,
     DienThoaiFormComponent,
