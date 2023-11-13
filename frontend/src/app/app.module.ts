@@ -31,6 +31,7 @@ import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim
 import { CategoryComponent } from './admin/category/category.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
 import { VerifyNotiComponent } from './client/login-regis/verify-noti/verify-noti.component';
+import { HomepageComponent } from './client/homepage/homepage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { VerifyNotiComponent } from './client/login-regis/verify-noti/verify-not
     OrderComponent,
     CompanyComponent,
     VerifyEmailComponent,
-    VerifyNotiComponent
+    VerifyNotiComponent,
+    HomepageComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
   providers: [],

@@ -14,10 +14,12 @@ import { CompanyComponent } from './admin/company/company.component';
 import { ProductComponent } from './admin/product/product.component';
 import { FormCreateProductComponent } from './admin/form-create-product/form-create-product.component';
 import { CategoryComponent } from './admin/category/category.component';
+import { HomepageComponent } from './client/homepage/homepage.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
 import { LoginRegisComponent } from './client/login-regis/login-regis.component';
 const routes: Routes = [
   // CLIENT
+  { path: 'homepage', component: HomepageComponent},
   { path: 'about-us', component: AboutUsComponent },
   { path: 'purchase-history', component: PurchaseHistoryComponent },
   { path: 'membership-class', component: MembershipClassComponent },
