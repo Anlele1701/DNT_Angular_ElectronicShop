@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-verify-email',
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VerifyEmailComponent implements OnInit{
 
-  constructor(private http:HttpClient, private activeRoute:ActivatedRoute){
+  constructor(private http:HttpClient, private activeRoute:ActivatedRoute, private router:Router){
 
   }
 
@@ -23,5 +23,9 @@ export class VerifyEmailComponent implements OnInit{
     this.http.get('http://localhost:3800/khachhang/verifyEmail/:'+token).subscribe((data:any)=>{
       console.log('Verified your gmail successfully!')
     })
+  }
+
+  changeToLoginPage(){
+    this.router.navigate(['/regis-login']);
   }
 }

@@ -15,6 +15,7 @@ import { ProductComponent } from './admin/product/product.component';
 import { FormCreateProductComponent } from './admin/form-create-product/form-create-product.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
+import { LoginRegisComponent } from './client/login-regis/login-regis.component';
 const routes: Routes = [
   // CLIENT
   { path: 'about-us', component: AboutUsComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'category', component: ProductCategoryComponent },
   { path: 'personal', component: PersonalPageComponent },
   { path: 'order', component: OrderComponent },
+  {path: 'regis-login', component: LoginRegisComponent},
   { path: 'verify-email/:token',component:VerifyEmailComponent}
 ];
 

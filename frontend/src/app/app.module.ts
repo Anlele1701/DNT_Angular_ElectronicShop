@@ -30,6 +30,7 @@ import { TaiNgheFormComponent } from './admin/thongSoForm/tai-nghe-form/tai-nghe
 import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim-form.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
+import { VerifyNotiComponent } from './client/login-regis/verify-noti/verify-noti.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-e
     CategoryComponent,
     OrderComponent,
     CompanyComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    VerifyNotiComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
   providers: [],

@@ -20,5 +20,6 @@ router.route('/sanpham/createNewProduct').post(upload.upload.array('hinhAnh',3),
 router.route('/sanpham/getAllSanPham').post(sanPhamController.getAllProduct)//lấy danh sách sản phẩm theo loại sản phẩm
 //
 router.route('/khachhang/dangKy').post(khachHangController.dangKy)//đăng ký tài khoản
-router.route('/khachhang/verifyEmail/:token').get(khachHangController.verifyEmail)//xác thực tài khoản
+router.route('/khachhang/verifyEmail/:token').get(khachHangController.verifyEmail)//xác thực tài khoản đăng ký
+router.route('/khachhang/dangNhap').post(khachHangController.dangNhap) //đăng nhập
 module.exports=router
