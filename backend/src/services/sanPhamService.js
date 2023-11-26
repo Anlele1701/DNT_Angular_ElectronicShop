@@ -144,4 +144,25 @@ var getProductFromID=(idProduct)=>{
     }
 }
 
-module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct}
+var getAllSanPham=async(loaiSP)=>{
+    try{
+        var listSP=await loaiSPModel.findOne({tenLoai:loaiSP})
+        console.log(listSP)
+        return listSP
+    }catch(error){
+        console.log(error)
+    }
+}
+
+var getSP=async(idSP)=>{
+    try{
+        var infoSP=await sanPhamModel.findById(idSP)
+        return infoSP
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct, getAllSanPham, getSP}

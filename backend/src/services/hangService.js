@@ -70,4 +70,15 @@ var deleteHang = async(id) => {
         })
     })
 }
-module.exports={deleteHang, createHang,getAllHang,getAllHangFromCate,findIDHang}
+
+var getHang=async(idHang)=>{
+    try{
+        var infoHang=await hangModel.findById(idHang)
+        return(infoHang)
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+module.exports={deleteHang, createHang,getAllHang,getAllHangFromCate,findIDHang, getHang}

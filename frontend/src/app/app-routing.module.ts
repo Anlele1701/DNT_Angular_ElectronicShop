@@ -36,15 +36,16 @@ const routes: Routes = [
       { path: 'customer', component: CustomersComponent },
       { path: 'brands', component: CompanyComponent },
       { path: 'products/:nameProduct', component: ProductComponent },
-      {path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
-      {path:'categories',component:CategoryComponent}
+      { path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
+      { path:'categories',component:CategoryComponent}
     ]
   },
   { path: 'product-detail', component: ProductDetailComponent },
-  { path: 'category', component: ProductCategoryComponent },
+  { path: 'category/:loaiSP', component: ProductCategoryComponent
+ },
   { path: 'personal', component: PersonalPageComponent },
   { path: 'order', component: OrderComponent },
-  {path: 'regis-login', component: LoginRegisComponent},
+  { path: 'regis-login', component: LoginRegisComponent},
   { path: 'verify-email/:token',component:VerifyEmailComponent}
 ];
 

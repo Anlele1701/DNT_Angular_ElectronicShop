@@ -32,6 +32,7 @@ import { CategoryComponent } from './admin/category/category.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
 import { VerifyNotiComponent } from './client/login-regis/verify-noti/verify-noti.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,7 @@ import { HomepageComponent } from './client/homepage/homepage.component';
     VerifyNotiComponent,
     HomepageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule],
   providers: [],
   bootstrap: [AppComponent],
 })
