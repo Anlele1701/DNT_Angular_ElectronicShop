@@ -1,5 +1,5 @@
 <div class="card border-0 position-relative">
-  <img src="http://localhost:3800/images/{{product.hinhAnh[0].tenImageSP}}" class="card-img-top" alt="..." />
+  <img src="http://localhost:3800/images/{{product.hinhAnh[0].tenImageSP}}" class="card-img-top" alt="..." (click)="detailPage()"/>
   <div class="card-body mt-3 p-0">
     <h5 class="card-title">{{ product.tenSP }}</h5>
     <p class="card-text">{{ product.giaTien| currency : "VND" : " " }}Đ</p>

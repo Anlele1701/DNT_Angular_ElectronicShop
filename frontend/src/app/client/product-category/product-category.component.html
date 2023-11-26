@@ -22,7 +22,7 @@
       <div class="col-lg-8">
         <div class="row">
           <div class="col-lg-4" *ngFor="let product of listproduct| paginate:{itemsPerPage:pageSize, currentPage:currentPage}">
-            <app-product-items [product]="product"></app-product-items>
+            <app-product-items [product]="product" [tenSP]="product.tenSP"></app-product-items>
           </div>
           <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
         </div>

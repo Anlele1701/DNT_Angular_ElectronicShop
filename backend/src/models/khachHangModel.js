@@ -9,6 +9,7 @@ var khachHangSchema=new Schema({
     diem: {type: Number, default:0},
     verified:{type:Boolean},
     emailToken:{type:String},
-    dateCreated:{type:Date, default:Date.now()}
+    dateCreated:{type:Date, default:Date.now()},
+    hangThanhVien:{type:String,default:'Đồng'}
 },{collection:'KHACHHANG'})
 module.exports=mongoose.model('KHACHHANG',khachHangSchema)

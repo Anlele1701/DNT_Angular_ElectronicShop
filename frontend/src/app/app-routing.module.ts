@@ -40,7 +40,7 @@ const routes: Routes = [
       { path:'categories',component:CategoryComponent}
     ]
   },
-  { path: 'product-detail', component: ProductDetailComponent },
+  { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
   { path: 'category/:loaiSP', component: ProductCategoryComponent
  },
   { path: 'personal', component: PersonalPageComponent },
