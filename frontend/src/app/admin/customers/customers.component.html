@@ -1,0 +1,64 @@
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: black;
+    transition: 0.5s ease-in-out;
+  }
+
+  button {
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .edit {
+    color: green;
+  }
+
+  .detail {
+    color: blue;
+  }
+
+  .delete {
+    color: red;
+  }
+</style>
+<div style="background: #ffffff; border-radius: 10px solid red; padding: 1rem">
+  <h2 style="">QUẢN LÝ KHÁCH HÀNG</h2>
+  <form
+    asp-action="Index"
+    method="get"
+    class="form-inline"
+    style="padding-left: 140px"
+  >
+    <input type="text" name="SearchString" placeholder="Tìm kiếm khách hàng" />
+
+    <button><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+  </form>
+  <table class="table table-bordered table-sm" style="border-width: thick">
+    <thead class="thead-dark" style="background: black; color: snow">
+      <tr style="text-align: center">
+        <th>Tên sản phẩm</th>
+        <th>Loại sản phẩm</th>
+        <th>Hình ảnh sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tr style="text-align: center" >
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Xem chi tiết</button>
+        <button type="button" class="btn btn-outline-warning"><i class="fa-solid fa-square-pen"></i> Chỉnh sửa</button>
+        <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Xóa sản phẩm</button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -29,6 +29,10 @@ import { ManHinhFormComponent } from './admin/thongSoForm/man-hinh-form/man-hinh
 import { TaiNgheFormComponent } from './admin/thongSoForm/tai-nghe-form/tai-nghe-form.component';
 import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim-form.component';
 import { CategoryComponent } from './admin/category/category.component';
+import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
+import { VerifyNotiComponent } from './client/login-regis/verify-noti/verify-noti.component';
+import { HomepageComponent } from './client/homepage/homepage.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,9 +60,12 @@ import { CategoryComponent } from './admin/category/category.component';
     BanPhimFormComponent,
     CategoryComponent,
     OrderComponent,
-    CompanyComponent
+    CompanyComponent,
+    VerifyEmailComponent,
+    VerifyNotiComponent,
+    HomepageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule],
   providers: [],
   bootstrap: [AppComponent],
 })

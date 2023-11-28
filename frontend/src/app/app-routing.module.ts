@@ -15,6 +15,8 @@ import { ProductComponent } from './admin/product/product.component';
 import { FormCreateProductComponent } from './admin/form-create-product/form-create-product.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
+import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
+import { LoginRegisComponent } from './client/login-regis/login-regis.component';
 const routes: Routes = [
   // CLIENT
   { path: 'homepage', component: HomepageComponent},
@@ -34,13 +36,17 @@ const routes: Routes = [
       { path: 'customer', component: CustomersComponent },
       { path: 'brands', component: CompanyComponent },
       { path: 'products/:nameProduct', component: ProductComponent },
-      {
-        path: 'createNewProduct/:nameProduct',
-        component: FormCreateProductComponent,
-      },
-      { path: 'categories', component: CategoryComponent },
-    ],
+      { path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
+      { path:'categories',component:CategoryComponent}
+    ]
   },
+  { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
+  { path: 'category/:loaiSP', component: ProductCategoryComponent
+ },
+  { path: 'personal', component: PersonalPageComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'regis-login', component: LoginRegisComponent},
+  { path: 'verify-email/:token',component:VerifyEmailComponent}
 ];
 
 @NgModule({

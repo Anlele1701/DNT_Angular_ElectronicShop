@@ -1,9 +1,8 @@
 <div class="card border-0 position-relative">
-  <img src="{{ product.imgPath }}" class="card-img-top" alt="..." />
+  <img src="http://localhost:3800/images/{{product.hinhAnh[0].tenImageSP}}" class="card-img-top" alt="..." (click)="detailPage()"/>
   <div class="card-body mt-3 p-0">
-    <h5 class="card-title">{{ product.name }}</h5>
-    <p class="card-text">{{ product.description }}</p>
-    <p class="card-text">{{ product.price }}</p>
+    <h5 class="card-title">{{ product.tenSP }}</h5>
+    <p class="card-text">{{ product.giaTien| currency : "VND" : " " }}Đ</p>
     <a href="#" class="btn btn-dark">MUA NGAY</a>
   </div>
   <p class="badge">NEW</p>

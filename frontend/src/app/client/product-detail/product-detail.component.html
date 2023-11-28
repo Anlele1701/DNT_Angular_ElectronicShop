@@ -4,33 +4,39 @@
     <div class="col-md-5 d-flex justify-content-center align-items-center">
       <img
         class="img-fluid"
-        src="/assets/client/ProductDetail/Hinh-test.jpg"
+        src="http://localhost:3800/images/{{product.hinhAnh[0].tenImageSP}}"
         alt=""
       />
-
     </div>
     <!-- Tên sản phẩm -->
     <div
       class="col-md-5 container text-start justify-content-center align-items-center"
     >
-      <h4 class="fs-2">Chuột Razer DeathAdder Essential</h4>
+      <h4 class="fs-2">{{product.tenSP}}</h4>
       <br />
-      <h3 class="fs-2">490.000d</h3>
+      <h3 class="fs-2">{{product.giaTien|currency:"VND":" "}}đ</h3>
       <br />
       <div id="font" class="fs-3">
-        <p class="fs-2 fw-bold">Thông số kỹ thuật :</p>
-        <p>Hãng sản xuất: Razer</p>
-        <p>Số nút: 5 nút có thể lập trình</p>
-        <p>Đèn LED : Led Green đơn sắc</p>
-        <p>Màu sắc: Đen</p>
-        <p>Kết nối : USB 2.0</p>
-        <p>Kiểu cầm: Ergonomic / Công thái học</p>
-        <p>Độ phân giải (CPI/DPI) : 6400DPI</p>
-        <p>Cảm biến: Cảm biến quang học (Optical)</p>
-        <p>Thời gian phản hồi: 1ms</p>
-        <p>Gia tốc: 220 IPS / 30G</p>
-        <p>Kích thước: 127.0 x 61.7 x 42.7 mm</p>
-        <p>Trọng lượng: 96g</p>
+        <ng-container [ngSwitch]="loaiSP">
+          <ng-container *ngSwitchCase="'Chuột'">
+            <ng-container *ngTemplateOutlet="chuot"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Màn Hình'">
+            <ng-container *ngTemplateOutlet="manHinh"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Bàn Phím'">
+            <ng-container *ngTemplateOutlet="banPhim"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Điện Thoại'">
+            <ng-container *ngTemplateOutlet="dienThoai"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Tai Nghe'">
+            <ng-container *ngTemplateOutlet="taiNghe"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Laptop'">
+            <ng-container *ngTemplateOutlet="laptop"></ng-container>
+          </ng-container>
+        </ng-container>
       </div>
       <div class="d-grid gap-2 col-7" id="margin-top-mua">
         <button
@@ -49,7 +55,7 @@
         <button id="rounded-button" >
           <img
             id="img-size"
-            src="/assets/client/ProductDetail/hinh 2.jpg"
+            src="http://localhost:3800/images/{{product.hinhAnh[0].tenImageSP}}"
             alt=""
           />
         </button>
@@ -58,7 +64,7 @@
         <button id="rounded-button">
           <img
             id="img-size"
-            src="/assets/client/ProductDetail/hinh 2.jpg"
+            src="http://localhost:3800/images/{{product.hinhAnh[1].tenImageSP}}"
             alt=""
           />
         </button>
@@ -67,7 +73,7 @@
         <button id="rounded-button">
           <img
             id="img-size"
-            src="/assets/client/ProductDetail/hinh 2.jpg"
+            src="http://localhost:3800/images/{{product.hinhAnh[2].tenImageSP}}"
             alt=""
           />
         </button>
@@ -77,21 +83,85 @@
   </div>
 </div>
 <h3 class="container text-start fs-2">
-  Chuột Razer Deathadder Essential sở hữu thiết kế công thái học :
+  {{product.moTa[0]}}
 </h3>
 <p class="container text-start fs-3">
-  Chuột gaming DeathAdder Essential được Razer thiết kế với kiểu dáng công thái
-  học (Ergonomic) cổ điển. Thiết kế đẹp mắt và khác biệt ở các dòng chuột máy
-  tính khác, tạo ra sự thoải mái, cho phép người chơi duy trì mức hiệu suất cao
-  trong suốt thời gian chơi game dài, vì vậy bạn sẽ không bao giờ bị ngập ngừng
-  trong các trận chiến nóng bỏng. Hứa hẹn đây sẽ là một trong những dòng chuột
-  gaming dưới 1 triệu rất đáng trải nghiệm.
+  {{product.moTa[0]}}
+</p>
+<p class="container text-start fs-3">
+  {{product.moTa[1]}}
 </p>
 <div class="container">
   <div class="row">
     <div class="d-flex justify-content-center align-items-center">
-      <img class="w-50" src="/assets/client/ProductDetail/hinh 2.jpg" alt="" />
+      <img class="w-50" src="http://localhost:3800/images/{{product.hinhAnh[0].tenImageSP}}" alt="" />
     </div>
   </div>
 </div>
 
+
+<ng-template #chuot>
+  <p class="fs-2 fw-bold">Thông số kỹ thuật :</p>
+  <p>Tên hãng: {{product.tenHang}}</p>
+  <p>Model: {{product.thongSo.model}}</p>
+  <p>Bảo hành: {{product.thongSo.baoHanh}}</p>
+  <p>Kiểu kết nối: {{product.thongSo.kieuKetNoi}}</p>
+  <p>Cảm biến: {{product.thongSo.camBien}}</p>
+  <p>DPI: {{product.thongSo.DPI}}</p>
+</ng-template>
+
+<ng-template #manHinh>
+  <p class="fs-2 fw-bold">Thông số kỹ thuật :</p>
+  <p>Tên hãng: {{product.tenHang}}</p>
+  <p>Kích thước: {{product.thongSo.kichThuoc}}</p>
+  <p>Tần số quét: {{product.thongSo.tanSoQuet}}</p>
+  <p>Hiển thị màu sắc: {{product.thongSo.hienThiMauSac}}</p>
+  <p>Cổng hình ảnh: {{product.thongSo.congHinhAnh}}</p>
+</ng-template>
+
+<ng-template #dienThoai>
+  <p class="fs-2 fw-bold">Thông số kỹ thuật :</p>
+  <p>Tên hãng: {{product.tenHang}}</p>
+  <p>Màn hình: {{product.thongSo.manHinh}}</p>
+  <p>Camera trước: {{product.thongSo.cameraTruoc}}</p>
+  <p>Camera sau: {{product.thongSo.cameraSau}}</p>
+  <p>CPU: {{product.thongSo.CPU}}</p>
+  <p>Bộ nhớ: {{product.thongSo.boNho}}</p>
+  <p>Hệ điều hành: {{product.thongSo.heDieuHanh}}</p>
+</ng-template>
+
+<ng-template #banPhim>
+  <p class="fs-2 fw-bold">Thông số kỹ thuật :</p>
+  <p>Tên hãng: {{product.tenHang}}</p>
+  <p>Switch: {{product.thongSo.switch}}</p>
+  <p>Kích thước: {{product.thongSo.kichThuoc}}</p>
+  <p>Trọng lượng: {{product.thongSo.trongLuong}}</p>
+  <p>Tình trạng: {{product.thongSo.tinhTrang}}</p>
+  <p>Bảo hành: {{product.thongSo.baoHanh}}</p>
+</ng-template>
+
+<ng-template #laptop>
+  <p class="fs-2 fw-bold">Thông số kỹ thuật :</p>
+  <p>Tên hãng: {{product.tenHang}}</p>
+  <p>CPU: {{product.thongSo.CPU}}</p>
+  <p>Màn hình: {{product.thongSo.manHinh}}</p>
+  <p>RAM: {{product.thongSo.RAM}}</p>
+  <p>Đồ họa: {{product.thongSo.doHoa}}</p>
+  <p>Lưu trữ: {{product.thongSo.luuTru}}</p>
+  <p>Hệ điều hành: {{product.thongSo.heDieuHanh}}</p>
+  <p>PIN: {{product.thongSo.PIN}}</p>
+  <p>Khối lượng: {{product.thongSo.khoiLuong}}</p>
+</ng-template>
+
+<ng-template #taiNghe>
+  <p class="fs-2 fw-bold">Thông số kỹ thuật :</p>
+  <p>Tên hãng: {{product.tenHang}}</p>
+  <p>Chất liệu khung: {{product.thongSo.chatLieuKhung}}</p>
+  <p>Màu sắc: {{product.thongSo.mauSac}}</p>
+  <p>Kiểu tai nghe: {{product.thongSo.kieuTaiNghe}}</p>
+  <p>Kiểu kết nối: {{product.thongSo.kieuKetNoi}}</p>
+  <p>Thời lượng pin: {{product.thongSo.thoiLuongPin}}</p>
+  <p>Microphone: {{product.thongSo.Microphone}}</p>
+  <p>Tần số: {{product.thongSo.TanSo}}</p>
+  <p>Độ nhạy: {{product.thongSo.doNhay}}</p>
+</ng-template>

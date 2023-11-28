@@ -28,4 +28,25 @@ var getAllProduct=async(req,res)=>{
     }catch(error) {console.log(error)}
 }
 
-module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct}
+
+var getAllSanPham=async(req,res)=>{
+    try{
+        var listProduct=await sanPhamService.getAllSanPham(req.params.loaiSP)
+        res.send(listProduct)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+var getSP=async(req,res)=>{
+    try{
+        var infoSP=await sanPhamService.getSP(req.params.idSP)
+        res.send(infoSP)
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct, getAllSanPham, getSP}

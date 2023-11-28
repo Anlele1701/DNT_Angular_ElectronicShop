@@ -25,4 +25,9 @@ var deleteHang = async(req,res)=>{
         res.send({"status":false, "message":"Xóa thất bại"});
     }
 }
-module.exports={createNewHang,getAllHang,getAllHangFromCate, deleteHang}
+
+var getHang= async(req,res)=>{
+    var infoHang=await hangService.getHang(req.params.idHang)
+    res.send(infoHang)
+}
+module.exports={createNewHang,getAllHang,getAllHangFromCate, deleteHang, getHang}
