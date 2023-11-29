@@ -36,6 +36,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HighchartsChartModule } from 'highcharts-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,8 +68,19 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     VerifyEmailComponent,
     VerifyNotiComponent,
     HomepageComponent,
-    ClientLayoutComponent,  ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule, MatDialogModule, NoopAnimationsModule],
+    ClientLayoutComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    CarouselModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    MatDialogModule,
+    NoopAnimationsModule,
+    HighchartsChartModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
