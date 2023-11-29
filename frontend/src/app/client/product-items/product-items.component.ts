@@ -17,7 +17,7 @@ export class ProductItemsComponent {
     this.activeRoute.params.subscribe(params=>{
       this.loaiSP=params['loaiSP']
     })
-    this.router.navigate(['/category/'+this.loaiSP,this.tenSP],{
+    this.router.navigate(['/client/category/'+this.loaiSP,this.tenSP],{
       queryParams:{product: JSON.stringify(this.product)}
     })
   }

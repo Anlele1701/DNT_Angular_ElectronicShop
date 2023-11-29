@@ -32,7 +32,10 @@ export class LoginRegisComponent {
 
   submitFormRegis(){
     this.http.post(this.API+'khachhang/dangKy',{name:this.name, email:this.email, sdt:this.sdt, password:this.matKhau}).subscribe((data:any)=>{
-      if(data.emailExisted)
+      if(data.inValid){
+        console.log(data.inValid)
+      }
+      else if(data.emailExisted)
       {
         console.log(data.emailExisted)
       }
@@ -49,7 +52,7 @@ export class LoginRegisComponent {
       else{
         console.log(data)
         this.UserService.setUser(data)
-        this.router.navigate(['/personal']);
+        this.router.navigate(['/client/personal']);
       }
     })
   }

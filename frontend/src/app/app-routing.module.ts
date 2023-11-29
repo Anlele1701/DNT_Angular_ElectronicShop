@@ -35,7 +35,7 @@ const routes: Routes = [
       { path: 'category', component: ProductCategoryComponent },
       { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
       { path: 'category/:loaiSP', component: ProductCategoryComponent },
-      { path: 'verify-email/:token', component: VerifyEmailComponent },
+      { path: 'verify-email/:token', component: VerifyEmailComponent }
     ],
   },
   // ADMIN
