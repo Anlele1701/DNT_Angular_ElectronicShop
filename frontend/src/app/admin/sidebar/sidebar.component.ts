@@ -1,13 +1,15 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit{
-  constructor(private http: HttpClient, private router:Router){}
+  constructor(private http: HttpClient, private router:Router){
+
+  }
   activeindex = 0;
   countLoaiSP:number=0
   listLoaiSP:string[]=[]

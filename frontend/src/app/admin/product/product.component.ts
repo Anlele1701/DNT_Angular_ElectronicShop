@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['../shared/AdminIndex.css']
 })
 export class ProductComponent implements OnInit{
   nameProduct:String=''
@@ -40,5 +40,13 @@ export class ProductComponent implements OnInit{
   productList$ = this.productListSource.asObservable();
   updateProductList(products: any[]) {
     this.productListSource.next(products);
+  } 
+  AddFormVisible: boolean = false;
+
+  toggleAddForm() {
+    this.AddFormVisible = !this.AddFormVisible;
+  }
+   hideAddForm() {
+    this.AddFormVisible = false;
   }
 }

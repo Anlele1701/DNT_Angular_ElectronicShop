@@ -4,7 +4,7 @@ import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css']
+  styleUrls: ['../shared/AdminIndex.css']
 })
 export class CompanyComponent implements OnInit{
   stringLoaiSP: string=''
@@ -43,4 +43,14 @@ export class CompanyComponent implements OnInit{
     })
     return this.stringLoaiSP
   }
+  // FUNCTION
+   // FUNCTIONS
+   AddFormVisible: boolean = false;
+
+   toggleAddForm() {
+     this.AddFormVisible = !this.AddFormVisible;
+   }
+    hideAddForm() {
+     this.AddFormVisible = false;
+   }
 }
