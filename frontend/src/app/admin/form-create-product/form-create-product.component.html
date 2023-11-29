@@ -1,0 +1,29 @@
+<div style="width: 50%;">
+  <select class="form-select" style="width: 30%;" aria-label="Default select example"[(ngModel)]="tenHang" name="tenHang">
+    <option selected>Open this select menu</option>
+    <option *ngFor="let item of listHang" [value]="item" >{{ item }}</option>
+  </select>
+  
+<ng-template [ngIf]="tenLoaiSP=='Bàn Phím'" #banphim>
+  <app-ban-phim-form  (dataBanPhim)="createNewProduct($event)"></app-ban-phim-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='Chuột'" #chuot>
+  <app-chuot-form (dataChuot)="createNewProduct($event)"></app-chuot-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='Điện Thoại'" #dienthoai>
+  <app-dien-thoai-form (dataDienThoai)="createNewProduct($event)"></app-dien-thoai-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='Laptop'" #laptop>
+  <app-lap-top-form (dataLaptop)="createNewProduct($event)"></app-lap-top-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='Màn Hình'" #manhinh>
+  <app-man-hinh-form (dataManHinh)="createNewProduct($event)"></app-man-hinh-form>
+</ng-template>
+
+<ng-template [ngIf]="tenLoaiSP=='Tai Nghe'" #tainghe>
+  <app-tai-nghe-form (dataTaiNghe)="createNewProduct($event)"></app-tai-nghe-form>
+</ng-template>

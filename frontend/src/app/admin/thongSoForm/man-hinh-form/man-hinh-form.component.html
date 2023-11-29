@@ -1,0 +1,49 @@
+<div style="width: 50%;">
+  <form (submit)="sendDataToFatherComponent()">
+     <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Tên sản phẩm:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.tenSP" name="manhinh.tenSP">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Mô tả 1:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.moTa1" name="manhinh.moTa1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Mô tả 2:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.moTa2" name="manhinh.moTa2">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Mô tả 3:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.moTa3" name="manhinh.moTa3">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Số lượng</label>
+      <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.soLuong" name="manhinh.soLuong">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Gía tiền:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.giaTien" name="manhinh.giaTien">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Kích thước:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.thongSo.kichThuoc" name="manhinh.thongSo.kichThuoc">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Tần số quét:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.thongSo.tanSoQuet" name="manhinh.thongSo.tanSoQuet">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Hiển thị màu sắc:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.thongSo.hienThiMauSac" name="manhinh.thongSo.hienThiMauSac">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Cổng hình ảnh:</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="manhinh.thongSo.congHinhAnh" name="manhinh.thongSo.congHinhAnh">
+    </div>
+    <div class="mb-3">
+      <label for="formFileMultiple" class="form-label">Hình ảnh (tối đa 3 hình):</label>
+      <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*" (change)="getImage($event)">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div>

@@ -1,32 +1,43 @@
 <div>
-  <body class="d-flex">
+  <body>
     <!-- SIDEBAR -->
-    <aside class="d-flex">
-      <div class="sidebar p-3">
-        <!-- Logo -->
-        <a
-          routerLink="/admin/dashboard"
-          class="d-flex justify-content-center pb-4"
-        >
-          <img src="assets/admin/logo.png" style="height: 100px" />
-        </a>
-        <hr style="color: white" />
-        <!-- Sidebar menu -->
-        <ul class="menu nav nav-pills flex-column mb-auto pt-3">
-          <li class="nav-link mb-3" style="background-color: #302e2e">
-            <a routerLink="/admin/dashboard" routerLinkActive="active">
+    <div class="sidebar">
+      <!-- Logo -->
+      <a routerLink="/admin/dashboard" style="margin-left: -15px">
+        <img src="assets/admin/logo.png" style="height: 85px" />
+        <span class="imgTitle">HỆ THỐNG QUẢN LÝ</span>
+      </a>
+      <hr style="color: white" />
+      <!-- Sidebar menu -->
+      <div class="main">
+        <ul class="menu pt-3">
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 0 }"
+            (click)="onClickSideBar(0)"
+          >
+            <a routerLink="/admin/dashboard" (click)="onClickSideBar(0)">
               <span class="icon"> <i class="fa-solid fa-house"></i></span>
-              <span class="text-white pe-4 ps-3">Dashboard</span>
+              <span class="cateName">Dashboard</span>
             </a>
           </li>
-          <li class="nav-link mb-3">
+          <!-- customer -->
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 1 }"
+            (click)="onClickSideBar(1)"
+          >
             <a routerLink="/admin/customers">
               <span class="icon"><i class="fa-solid fa-user"></i> </span>
-              <span class="text-white pe-4 ps-3">Customers</span>
+              <span class="cateName">Customers</span>
             </a>
           </li>
           <!-- Dropdown -->
-          <li class="nav-link mb-3">
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 2 }"
+            (click)="onClickSideBar(2)"
+          >
             <a
               data-bs-toggle="collapse"
               href="#collapseExample"
@@ -37,38 +48,72 @@
               <span class="icon"
                 ><i class="fa-solid fa-bag-shopping"></i>
               </span>
-              <span class="pe-4 ps-3">Products</span>
-              <i class="fa-solid fa-circle-chevron-down"></i>
+              <span class="cateName">Products</span>
+              <i
+                class="fa-solid fa-circle-chevron-down"
+                style="display: none"
+              ></i>
             </a>
-            <ul class="collapse mt-2" id="collapseExample">
-              <li class="dropdown-item"><a href="#">Action</a></li>
-              <li class="dropdown-item"><a href="#">Another</a></li>
-              <li class="dropdown-item"><a href="#">Test</a></li>
-            </ul>
+            <div>
+              <ul
+                class="collapse mt-2"
+                id="collapseExample"
+                *ngFor="let item of listLoaiSP"
+              >
+                <li class="dropdown-item">
+                  <a
+                    [routerLink]="['/admin/products', item]"
+                    (click)="changeToProductPage(item)"
+                    >{{ item }}</a
+                  >
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="nav-link mb-3">
+          <!-- ORDERS -->
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 3 }"
+            (click)="onClickSideBar(3)"
+          >
             <a routerLink="/orders">
               <span class="icon"><i class="fa-solid fa-receipt"></i> </span>
-              <span class="pe-4 ps-3">Orders</span>
+              <span class="cateName">Orders</span>
             </a>
           </li>
-          <li class="nav-link mb-3">
-            <a routerLink="/categories">
+          <!-- ORDERS -->
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 4 }"
+            (click)="onClickSideBar(4)"
+          >
+            <a routerLink="/admin/categories">
               <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
-              <span class="pe-4 ps-3">Categories</span>
+              <span class="cateName">Categories</span>
             </a>
           </li>
-          <li class="nav-link" id="logout">
+          <!-- BRANDS -->
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 5 }"
+            (click)="onClickSideBar(5)"
+          >
+            <a routerLink="/admin/brands">
+              <span class="icon"> <i class="fa-solid fa-building"></i></span>
+              <span class="cateName">Brands</span>
+            </a>
+          </li>
+          <li class="nav-link">
             <a routerLink="/categories">
               <span class="icon">
                 <i class="fa-solid fa-right-from-bracket"></i
               ></span>
-              <span class="pe-4 ps-3">Logout</span>
+              <span class="cateName">Logout</span>
             </a>
           </li>
         </ul>
       </div>
-    </aside>
+    </div>
     <!-- CONTENT -->
     <!-- ADMINBOX -->
     <div class="container-fluid p-0">
@@ -84,7 +129,7 @@
         </div>
       </div>
       <!--  -->
-      <div>
+      <div class="content">
         <router-outlet></router-outlet>
       </div>
       <!--  -->

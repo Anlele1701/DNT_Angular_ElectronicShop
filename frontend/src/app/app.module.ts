@@ -17,6 +17,25 @@ import { PersonalPageComponent } from './client/personal-page/personal-page.comp
 import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
 import { PurchaseComponent } from './client/purchase/purchase.component';
 import { LoginRegisComponent } from './client/login-regis/login-regis.component';
+import { OrderComponent } from './client/order/order.component';
+import { CompanyComponent } from './admin/company/company.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductComponent } from './admin/product/product.component';
+import { FormCreateProductComponent } from './admin/form-create-product/form-create-product.component';
+import { DienThoaiFormComponent } from './admin/thongSoForm/dien-thoai-form/dien-thoai-form.component';
+import { LapTopFormComponent } from './admin/thongSoForm/lap-top-form/lap-top-form.component';
+import { ChuotFormComponent } from './admin/thongSoForm/chuot-form/chuot-form.component';
+import { ManHinhFormComponent } from './admin/thongSoForm/man-hinh-form/man-hinh-form.component';
+import { TaiNgheFormComponent } from './admin/thongSoForm/tai-nghe-form/tai-nghe-form.component';
+import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim-form.component';
+import { CategoryComponent } from './admin/category/category.component';
+import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
+import { VerifyNotiComponent } from './client/login-regis/verify-noti/verify-noti.component';
+import { HomepageComponent } from './client/homepage/homepage.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +51,24 @@ import { LoginRegisComponent } from './client/login-regis/login-regis.component'
     ShoppingCartComponent,
     PurchaseComponent,
     ProductDetailComponent,
-    LoginRegisComponent
-  ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule],
+    LoginRegisComponent,
+    CompanyComponent,
+    ProductComponent,
+    FormCreateProductComponent,
+    DienThoaiFormComponent,
+    LapTopFormComponent,
+    ChuotFormComponent,
+    ManHinhFormComponent,
+    TaiNgheFormComponent,
+    BanPhimFormComponent,
+    CategoryComponent,
+    OrderComponent,
+    CompanyComponent,
+    VerifyEmailComponent,
+    VerifyNotiComponent,
+    HomepageComponent,
+    ClientLayoutComponent,  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule, MatDialogModule, NoopAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

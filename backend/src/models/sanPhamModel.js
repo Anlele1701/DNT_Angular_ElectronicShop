@@ -14,6 +14,7 @@ var sanPhamSchema=new Schema({
         type:Number,
         int: true
     },
-    giaTien: {type:Number}
+    giaTien: {type:Number},
+    tenHang: {type:String}
 },{collection:'SANPHAM'})
 module.exports=mongoose.model('SANPHAM',sanPhamSchema)
