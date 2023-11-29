@@ -7,6 +7,7 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit{
+  stringLoaiSP: string=''
   constructor(private http:HttpClient){}
   brandName:string=''
   brandList:any[]=[]
@@ -33,5 +34,13 @@ export class CompanyComponent implements OnInit{
 
   ngOnInit(): void {
     this.showAllBrand()
+  }
+
+  returnStringLoaiSP(itemHang){
+    this.stringLoaiSP=''
+    itemHang.forEach(item=>{
+      this.stringLoaiSP=this.stringLoaiSP+item+', '
+    })
+    return this.stringLoaiSP
   }
 }
