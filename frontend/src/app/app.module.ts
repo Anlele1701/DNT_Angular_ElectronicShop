@@ -29,6 +29,13 @@ import { ManHinhFormComponent } from './admin/thongSoForm/man-hinh-form/man-hinh
 import { TaiNgheFormComponent } from './admin/thongSoForm/tai-nghe-form/tai-nghe-form.component';
 import { BanPhimFormComponent } from './admin/thongSoForm/ban-phim-form/ban-phim-form.component';
 import { CategoryComponent } from './admin/category/category.component';
+import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
+import { VerifyNotiComponent } from './client/login-regis/verify-noti/verify-noti.component';
+import { HomepageComponent } from './client/homepage/homepage.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +51,7 @@ import { CategoryComponent } from './admin/category/category.component';
     ShoppingCartComponent,
     PurchaseComponent,
     ProductDetailComponent,
-    LoginRegisComponent
+    LoginRegisComponent,
     CompanyComponent,
     ProductComponent,
     FormCreateProductComponent,
@@ -56,9 +63,12 @@ import { CategoryComponent } from './admin/category/category.component';
     BanPhimFormComponent,
     CategoryComponent,
     OrderComponent,
-    CompanyComponent
-  ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule],
+    CompanyComponent,
+    VerifyEmailComponent,
+    VerifyNotiComponent,
+    HomepageComponent,
+    ClientLayoutComponent,  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule, MatDialogModule, NoopAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
