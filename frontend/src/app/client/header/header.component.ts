@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   }
   reloadCategory(loaiSP) {
-    this.router.navigate(['/category',loaiSP]).then(()=>{
+    this.router.navigate(['/client/category',loaiSP]).then(()=>{
       window.location.reload()
     });
   }

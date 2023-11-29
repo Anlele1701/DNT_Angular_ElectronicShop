@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgModel } from '@angular/forms';
-import { count } from 'rxjs';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
@@ -10,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit{
   constructor(private http: HttpClient, private router:Router){}
+  activeindex = 0;
   countLoaiSP:number=0
   listLoaiSP:string[]=[]
   readonly API='http://localhost:3800'
+  onClickSideBar(index: number){
+    this.activeindex = index;
+  }
   countAllLoaiSP(){
     this.http.get(this.API+'/loaisp/countLoaiSP').subscribe((data:any)=>{
       this.countAllLoaiSP=data.sumLoaiSP
@@ -24,6 +26,6 @@ export class SidebarComponent implements OnInit{
   }
   changeToProductPage(item:string)
   {
-    this.router.navigate(['/admin/products',item])
+    this.router.navigate(['/admin/products',item]);
   }
 }

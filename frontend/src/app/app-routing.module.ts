@@ -16,7 +16,6 @@ import { FormCreateProductComponent } from './admin/form-create-product/form-cre
 import { CategoryComponent } from './admin/category/category.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
-import { LoginRegisComponent } from './client/login-regis/login-regis.component';
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
@@ -31,12 +30,11 @@ const routes: Routes = [
       { path: 'purchase-history', component: PurchaseHistoryComponent },
       { path: 'membership-class', component: MembershipClassComponent },
       { path: 'product-detail', component: ProductDetailComponent },
-      { path: 'category', component: ProductCategoryComponent },
       { path: 'personal', component: PersonalPageComponent },
       { path: 'order', component: OrderComponent },
+      { path: 'category', component: ProductCategoryComponent },
       { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
       { path: 'category/:loaiSP', component: ProductCategoryComponent },
-      { path: 'regis-login', component: LoginRegisComponent },
       { path: 'verify-email/:token', component: VerifyEmailComponent },
     ],
   },

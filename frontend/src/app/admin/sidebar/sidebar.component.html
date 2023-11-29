@@ -3,31 +3,41 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
       <!-- Logo -->
-      <a
-        routerLink="/admin/dashboard"
-        class="d-flex justify-content-center pb-4"
-      >
+      <a routerLink="/admin/dashboard" style="margin-left: -15px">
         <img src="assets/admin/logo.png" style="height: 85px" />
+        <span class="imgTitle">HỆ THỐNG QUẢN LÝ</span>
       </a>
       <hr style="color: white" />
       <!-- Sidebar menu -->
       <div class="main">
         <ul class="menu pt-3">
-          <li class="nav-link mb-3" style="background-color: #302e2e">
-            <a routerLink="/admin/dashboard" routerLinkActive="active">
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 0 }"
+            (click)="onClickSideBar(0)"
+          >
+            <a routerLink="/admin/dashboard" (click)="onClickSideBar(0)">
               <span class="icon"> <i class="fa-solid fa-house"></i></span>
               <span class="cateName">Dashboard</span>
             </a>
           </li>
           <!-- customer -->
-          <li class="nav-link mb-3">
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 1 }"
+            (click)="onClickSideBar(1)"
+          >
             <a routerLink="/admin/customers">
               <span class="icon"><i class="fa-solid fa-user"></i> </span>
               <span class="cateName">Customers</span>
             </a>
           </li>
           <!-- Dropdown -->
-          <li class="nav-link mb-3">
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 2 }"
+            (click)="onClickSideBar(2)"
+          >
             <a
               data-bs-toggle="collapse"
               href="#collapseExample"
@@ -39,41 +49,61 @@
                 ><i class="fa-solid fa-bag-shopping"></i>
               </span>
               <span class="cateName">Products</span>
-              <i class="fa-solid fa-circle-chevron-down"></i>
+              <i
+                class="fa-solid fa-circle-chevron-down"
+                style="display: none"
+              ></i>
             </a>
-            <ul
-              class="collapse mt-2"
-              id="collapseExample"
-              *ngFor="let item of listLoaiSP"
-            >
-              <li class="dropdown-item">
-                <a
-                  [routerLink]="['/admin/products', item]"
-                  (click)="changeToProductPage(item)"
-                  >{{ item }}</a
-                >
-              </li>
-            </ul>
+            <div>
+              <ul
+                class="collapse mt-2"
+                id="collapseExample"
+                *ngFor="let item of listLoaiSP"
+              >
+                <li class="dropdown-item">
+                  <a
+                    [routerLink]="['/admin/products', item]"
+                    (click)="changeToProductPage(item)"
+                    >{{ item }}</a
+                  >
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="nav-link mb-3">
+          <!-- ORDERS -->
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 3 }"
+            (click)="onClickSideBar(3)"
+          >
             <a routerLink="/orders">
               <span class="icon"><i class="fa-solid fa-receipt"></i> </span>
               <span class="cateName">Orders</span>
             </a>
           </li>
-          <li class="nav-link mb-3">
+          <!-- ORDERS -->
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 4 }"
+            (click)="onClickSideBar(4)"
+          >
             <a routerLink="/admin/categories">
               <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
               <span class="cateName">Categories</span>
             </a>
           </li>
-          <li class="nav-link mb-3">
+          <!-- BRANDS -->
+          <li
+            class="nav-link mb-3"
+            [ngClass]="{ selectedItem: activeindex === 5 }"
+            (click)="onClickSideBar(5)"
+          >
             <a routerLink="/admin/brands">
               <span class="icon"> <i class="fa-solid fa-building"></i></span>
               <span class="cateName">Brands</span>
             </a>
           </li>
-          <li class="nav-link" id="logout">
+          <li class="nav-link">
             <a routerLink="/categories">
               <span class="icon">
                 <i class="fa-solid fa-right-from-bracket"></i

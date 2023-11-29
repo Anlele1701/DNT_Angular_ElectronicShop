@@ -67,8 +67,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     VerifyEmailComponent,
     VerifyNotiComponent,
     HomepageComponent,
-    ClientLayoutComponent
-  ],
+    ClientLayoutComponent,  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule, MatDialogModule, NoopAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
