@@ -33,6 +33,9 @@ import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-e
 import { VerifyNotiComponent } from './client/login-regis/verify-noti/verify-noti.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,9 +66,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CompanyComponent,
     VerifyEmailComponent,
     VerifyNotiComponent,
-    HomepageComponent
+    HomepageComponent,
+    ClientLayoutComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule, MatDialogModule, NoopAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

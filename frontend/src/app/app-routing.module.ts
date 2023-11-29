@@ -17,16 +17,29 @@ import { CategoryComponent } from './admin/category/category.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
 import { LoginRegisComponent } from './client/login-regis/login-regis.component';
+import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 const routes: Routes = [
+  { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
-  { path: 'homepage', component: HomepageComponent},
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'purchase-history', component: PurchaseHistoryComponent },
-  { path: 'membership-class', component: MembershipClassComponent },
-  { path: 'product-detail', component: ProductDetailComponent },
-  { path: 'category', component: ProductCategoryComponent },
-  { path: 'personal', component: PersonalPageComponent },
-  { path: 'order', component: OrderComponent },
+  {
+    path: 'client',
+    component: ClientLayoutComponent, //Trang layout client
+    children: [
+      { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
+      { path: 'homepage', component: HomepageComponent },
+      { path: 'about-us', component: AboutUsComponent },
+      { path: 'purchase-history', component: PurchaseHistoryComponent },
+      { path: 'membership-class', component: MembershipClassComponent },
+      { path: 'product-detail', component: ProductDetailComponent },
+      { path: 'category', component: ProductCategoryComponent },
+      { path: 'personal', component: PersonalPageComponent },
+      { path: 'order', component: OrderComponent },
+      { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
+      { path: 'category/:loaiSP', component: ProductCategoryComponent },
+      { path: 'regis-login', component: LoginRegisComponent },
+      { path: 'verify-email/:token', component: VerifyEmailComponent },
+    ],
+  },
   // ADMIN
   {
     path: 'admin',
@@ -36,19 +49,14 @@ const routes: Routes = [
       { path: 'customer', component: CustomersComponent },
       { path: 'brands', component: CompanyComponent },
       { path: 'products/:nameProduct', component: ProductComponent },
-      { path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
-      { path:'categories',component:CategoryComponent}
-    ]
+      {
+        path: 'createNewProduct/:nameProduct',
+        component: FormCreateProductComponent,
+      },
+      { path: 'categories', component: CategoryComponent },
+    ],
   },
-  { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
-  { path: 'category/:loaiSP', component: ProductCategoryComponent
- },
-  { path: 'personal', component: PersonalPageComponent },
-  { path: 'order', component: OrderComponent },
-  { path: 'regis-login', component: LoginRegisComponent},
-  { path: 'verify-email/:token',component:VerifyEmailComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

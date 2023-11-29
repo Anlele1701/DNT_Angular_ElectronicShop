@@ -1,29 +1,29 @@
 <div>
   <body>
     <!-- SIDEBAR -->
-    <aside class="d-flex">
-      <div class="sidebar p-3">
-        <!-- Logo -->
-        <a
-          routerLink="/admin/dashboard"
-          class="d-flex justify-content-center pb-4"
-        >
-          <img src="assets/admin/logo.png" style="height: 100px" />
-        </a>
-        <hr style="color: white" />
-        <!-- Sidebar menu -->
-        <ul class="menu nav nav-pills flex-column mb-auto pt-3">
+    <div class="sidebar">
+      <!-- Logo -->
+      <a
+        routerLink="/admin/dashboard"
+        class="d-flex justify-content-center pb-4"
+      >
+        <img src="assets/admin/logo.png" style="height: 85px" />
+      </a>
+      <hr style="color: white" />
+      <!-- Sidebar menu -->
+      <div class="main">
+        <ul class="menu pt-3">
           <li class="nav-link mb-3" style="background-color: #302e2e">
             <a routerLink="/admin/dashboard" routerLinkActive="active">
               <span class="icon"> <i class="fa-solid fa-house"></i></span>
-              <span class="text-white pe-4 ps-3">Dashboard</span>
+              <span class="cateName">Dashboard</span>
             </a>
           </li>
           <!-- customer -->
           <li class="nav-link mb-3">
             <a routerLink="/admin/customers">
               <span class="icon"><i class="fa-solid fa-user"></i> </span>
-              <span class="text-white pe-4 ps-3">Customers</span>
+              <span class="cateName">Customers</span>
             </a>
           </li>
           <!-- Dropdown -->
@@ -38,29 +38,39 @@
               <span class="icon"
                 ><i class="fa-solid fa-bag-shopping"></i>
               </span>
-              <span class="pe-4 ps-3">Products</span>
+              <span class="cateName">Products</span>
               <i class="fa-solid fa-circle-chevron-down"></i>
             </a>
-            <ul class="collapse mt-2" id="collapseExample" *ngFor="let item of listLoaiSP">
-              <li class="dropdown-item"><a [routerLink]="['/admin/products', item]" (click)="changeToProductPage(item)">{{item}}</a></li>
+            <ul
+              class="collapse mt-2"
+              id="collapseExample"
+              *ngFor="let item of listLoaiSP"
+            >
+              <li class="dropdown-item">
+                <a
+                  [routerLink]="['/admin/products', item]"
+                  (click)="changeToProductPage(item)"
+                  >{{ item }}</a
+                >
+              </li>
             </ul>
           </li>
           <li class="nav-link mb-3">
             <a routerLink="/orders">
               <span class="icon"><i class="fa-solid fa-receipt"></i> </span>
-              <span class="pe-4 ps-3">Orders</span>
+              <span class="cateName">Orders</span>
             </a>
           </li>
           <li class="nav-link mb-3">
             <a routerLink="/admin/categories">
               <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
-              <span class="pe-4 ps-3">Categories</span>
+              <span class="cateName">Categories</span>
             </a>
           </li>
           <li class="nav-link mb-3">
             <a routerLink="/admin/brands">
               <span class="icon"> <i class="fa-solid fa-building"></i></span>
-              <span class="pe-4 ps-3">Brands</span>
+              <span class="cateName">Brands</span>
             </a>
           </li>
           <li class="nav-link" id="logout">
@@ -68,12 +78,12 @@
               <span class="icon">
                 <i class="fa-solid fa-right-from-bracket"></i
               ></span>
-              <span class="pe-4 ps-3">Logout</span>
+              <span class="cateName">Logout</span>
             </a>
           </li>
         </ul>
       </div>
-    </aside>
+    </div>
     <!-- CONTENT -->
     <!-- ADMINBOX -->
     <div class="container-fluid p-0">
@@ -89,7 +99,7 @@
         </div>
       </div>
       <!--  -->
-      <div>
+      <div class="content">
         <router-outlet></router-outlet>
       </div>
       <!--  -->
