@@ -49,7 +49,7 @@ export class LoginRegisComponent {
       else{
         console.log(data)
         this.UserService.setUser(data)
-        this.router.navigate(['/personal']);
+        this.router.navigate(['/client/personal']);
       }
     })
   }
