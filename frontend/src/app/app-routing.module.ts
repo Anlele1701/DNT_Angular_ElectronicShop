@@ -17,9 +17,11 @@ import { CategoryComponent } from './admin/category/category.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
 import { LoginRegisComponent } from './client/login-regis/login-regis.component';
+import { ForgotPasswordComponent } from './client/login-regis/forgot-password/forgot-password.component';
+import { ResetComponent } from './client/login-regis/forgot-password/reset/reset.component';
 const routes: Routes = [
   // CLIENT
-  { path: 'homepage', component: HomepageComponent},
+  { path: 'homepage', component: HomepageComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'purchase-history', component: PurchaseHistoryComponent },
   { path: 'membership-class', component: MembershipClassComponent },
@@ -36,17 +38,21 @@ const routes: Routes = [
       { path: 'customer', component: CustomersComponent },
       { path: 'brands', component: CompanyComponent },
       { path: 'products/:nameProduct', component: ProductComponent },
-      { path:'createNewProduct/:nameProduct',component:FormCreateProductComponent},
-      { path:'categories',component:CategoryComponent}
-    ]
+      {
+        path: 'createNewProduct/:nameProduct',
+        component: FormCreateProductComponent,
+      },
+      { path: 'categories', component: CategoryComponent },
+    ],
   },
   { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
-  { path: 'category/:loaiSP', component: ProductCategoryComponent
- },
+  { path: 'category/:loaiSP', component: ProductCategoryComponent },
   { path: 'personal', component: PersonalPageComponent },
   { path: 'order', component: OrderComponent },
-  { path: 'regis-login', component: LoginRegisComponent},
-  { path: 'verify-email/:token',component:VerifyEmailComponent}
+  { path: 'regis-login', component: LoginRegisComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset/:tokenReset', component: ResetComponent },
+  { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
 
 @NgModule({
