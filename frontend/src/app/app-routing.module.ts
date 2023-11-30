@@ -19,16 +19,28 @@ import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-e
 import { LoginRegisComponent } from './client/login-regis/login-regis.component';
 import { ForgotPasswordComponent } from './client/login-regis/forgot-password/forgot-password.component';
 import { ResetComponent } from './client/login-regis/forgot-password/reset/reset.component';
+import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 const routes: Routes = [
+  { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
-  { path: 'homepage', component: HomepageComponent },
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'purchase-history', component: PurchaseHistoryComponent },
-  { path: 'membership-class', component: MembershipClassComponent },
-  { path: 'product-detail', component: ProductDetailComponent },
-  { path: 'category', component: ProductCategoryComponent },
-  { path: 'personal', component: PersonalPageComponent },
-  { path: 'order', component: OrderComponent },
+  {
+    path: 'client',
+    component: ClientLayoutComponent, //Trang layout client
+    children: [
+      { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
+      { path: 'homepage', component: HomepageComponent },
+      { path: 'about-us', component: AboutUsComponent },
+      { path: 'purchase-history', component: PurchaseHistoryComponent },
+      { path: 'membership-class', component: MembershipClassComponent },
+      { path: 'product-detail', component: ProductDetailComponent },
+      { path: 'personal', component: PersonalPageComponent },
+      { path: 'order', component: OrderComponent },
+      { path: 'category', component: ProductCategoryComponent },
+      { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
+      { path: 'category/:loaiSP', component: ProductCategoryComponent },
+      { path: 'verify-email/:token', component: VerifyEmailComponent },
+    ],
+  },
   // ADMIN
   {
     path: 'admin',
@@ -54,7 +66,6 @@ const routes: Routes = [
   { path: 'reset/:tokenReset', component: ResetComponent },
   { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

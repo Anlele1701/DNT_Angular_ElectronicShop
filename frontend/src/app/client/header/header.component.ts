@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginRegisComponent } from '../login-regis/login-regis.component';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router:Router) {}
+  constructor(private router:Router, public popUp: MatDialog) {}
   ngOnInit(): void {
 
   }
   reloadCategory(loaiSP) {
-    // Navigate to the same route with a different parameter
-    this.router.navigate(['/category',loaiSP]).then(()=>{
+    this.router.navigate(['/client/category',loaiSP]).then(()=>{
       window.location.reload()
     });
   }
+  openLogin():void
+  {
+    const popup = this.popUp.open(LoginRegisComponent,{
+    });
+    popup.afterClosed().subscribe(result =>{
+      console.log(result);
+    })
+    }
 }

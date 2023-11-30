@@ -35,7 +35,9 @@ import { HomepageComponent } from './client/homepage/homepage.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ForgotPasswordComponent } from './client/login-regis/forgot-password/forgot-password.component';
 import { ResetComponent } from './client/login-regis/forgot-password/reset/reset.component';
-import { API } from './services/API.service';
+import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,18 +69,11 @@ import { API } from './services/API.service';
     VerifyEmailComponent,
     VerifyNotiComponent,
     HomepageComponent,
+    ClientLayoutComponent,  ],
     ForgotPasswordComponent,
     ResetComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    CarouselModule,
-    HttpClientModule,
-    NgxPaginationModule,
+  imports: [BrowserModule, AppRoutingModule, FormsModule, CarouselModule, HttpClientModule, NgxPaginationModule, MatDialogModule, NoopAnimationsModule],
     ReactiveFormsModule,
-  ],
   providers: [],
   bootstrap: [AppComponent],
 })
