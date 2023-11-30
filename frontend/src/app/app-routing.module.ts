@@ -16,6 +16,9 @@ import { FormCreateProductComponent } from './admin/form-create-product/form-cre
 import { CategoryComponent } from './admin/category/category.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
+import { LoginRegisComponent } from './client/login-regis/login-regis.component';
+import { ForgotPasswordComponent } from './client/login-regis/forgot-password/forgot-password.component';
+import { ResetComponent } from './client/login-regis/forgot-password/reset/reset.component';
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
@@ -54,6 +57,14 @@ const routes: Routes = [
       { path: 'categories', component: CategoryComponent },
     ],
   },
+  { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
+  { path: 'category/:loaiSP', component: ProductCategoryComponent },
+  { path: 'personal', component: PersonalPageComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'regis-login', component: LoginRegisComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset/:tokenReset', component: ResetComponent },
+  { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

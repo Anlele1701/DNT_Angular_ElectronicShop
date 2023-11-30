@@ -1,22 +1,33 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserServiceService {
-  public user:any
-  constructor() { }
-
-  setUser(user:any){
-    this.user=user
-    localStorage.setItem('user',JSON.stringify(this.user))
+  constructor(private http: HttpClient) {}
+  public user: any;
+  private readonly urlApi = 'http://localhost:3800/';
+  setUser(user: any) {
+    this.user = user;
+    localStorage.setItem('user', JSON.stringify(this.user));
   }
 
-  getUser(){
+  getUser() {
     if (!this.user) {
       // Retrieve from local storage if not available in the service
       this.user = JSON.parse(localStorage.getItem('user'));
     }
     return this.user;
+  }
+
+  sendEmailService(email: string): Observable<any> {
+    return this.http.post<any>(this.urlApi + 'send-email', {
+      email: email,
+    });
+  }
+  resetPasswordService(resetObj: any): Observable<any> {
+    return this.http.post<any>(this.urlApi + 'reset-password', resetObj);
   }
 }

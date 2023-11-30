@@ -1,4 +1,8 @@
+const khachHangModel = require("../models/khachHangModel");
 var khacHangService = require("../services/khachHangService");
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const bcrypt = require("bcrypt");
 
 var dangKy = async (req, res) => {
   var regInformUser = await khacHangService.dangKy(req);
@@ -20,7 +24,27 @@ var dangNhap = async (req, res) => {
     } else {
       console.log({ token: logInformUser });
       res.send(logInformUser);
+const sendEmail = async (req, res) => {
+  try {
+    const result = await khacHangService.sendEmail(req, res);
+    if (result === "Email not found") {
+      return res.send({ message: result });
+    } else if (result === "Lỗi gửi email") {  
+      return res.send({ message: result });
     }
+  }
+};
+    return res.send({ message: "Hãy kiểm tra email" });
+  } catch (e) {
+    console.log("Lỗi trong controller của sendEmail");
+  }
+};
+const resetPassword = async (req, res) => {
+  try {
+    const result = await khacHangService.resetPassword(req, res);
+    return res.send({ message: "Reset password thành công" });
+  } catch (e) {
+    console.log("Lỗi trong controller của resetPassword");
   }
 };
 
@@ -28,4 +52,5 @@ var verifyEmail = async (req, res) => {
   var verify = await khacHangService.verifyEmail(req);
 };
 
-module.exports = { dangKy, verifyEmail, dangNhap };
+    var verify=await khacHangService.verifyEmail(req)
+}

@@ -9,47 +9,51 @@ import { map } from 'rxjs/operators';
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
   styleUrls: ['./product-category.component.css'],
-  providers: [API]
+  providers: [API],
 })
-export class ProductCategoryComponent implements OnInit{
-  listproduct:any[]=[]
-  listBrand:string[]=[]
-  loaiSP:string=''
-  loading:boolean=true
+export class ProductCategoryComponent implements OnInit {
+  listproduct: any[] = [];
+  listBrand: string[] = [];
+  loaiSP: string = '';
+  loading: boolean = true;
   requests = [];
-  pageSize=9 //số lượng sản phẩm trong 1 trang
+  pageSize = 9; //số lượng sản phẩm trong 1 trang
   currentPage = 1;
 
-  constructor(private http:HttpClient, private activatedRoute: ActivatedRoute, private api:API){}
+  constructor(
+    private http: HttpClient,
+    private activatedRoute: ActivatedRoute,
+    private api: API
+  ) {}
   ngOnInit() {
-    this.checkUrlLoaiSP()
-    this.getAllProduct()
+    this.checkUrlLoaiSP();
+    this.getAllProduct();
   }
 
-  checkUrlLoaiSP(){
-    this.activatedRoute.params.subscribe(params => {
-        this.loaiSP = params['loaiSP']
+  checkUrlLoaiSP() {
+    this.activatedRoute.params.subscribe((params) => {
+      this.loaiSP = params['loaiSP'];
     });
   }
 
-
-  getAllProduct(){
+  getAllProduct() {
     this.http
       .get(this.api.getAPI() + '/sanpham/getAllSanPham/' + this.loaiSP)
       .subscribe((data: any) => {
         data.cacHang.forEach((item) => {
-          this.getHang(item.idHang)
+          this.getHang(item.idHang);
           item.idCacSP.forEach((idSP) => {
-            this.getSP(idSP)
+            this.getSP(idSP);
           });
         });
 
-        forkJoin(this.requests).subscribe(() => {  //hoàn thành load tất cả dữ liệu rồi mới show
+        forkJoin(this.requests).subscribe(() => {
+          //hoàn thành load tất cả dữ liệu rồi mới show
           this.loading = false;
         });
       });
   }
-  getHang(idHang){
+  getHang(idHang) {
     this.requests.push(
       this.http.get(this.api.getAPI() + '/hang/getHang/' + idHang).pipe(
         map((hangData: any) => {
@@ -59,8 +63,7 @@ export class ProductCategoryComponent implements OnInit{
     );
   }
 
-  getSP(idSP)
-  {
+  getSP(idSP) {
     this.requests.push(
       this.http.get(this.api.getAPI() + '/sanpham/getSP/' + idSP).pipe(
         map((spData: any) => {
