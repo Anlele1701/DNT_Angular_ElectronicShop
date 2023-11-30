@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import * as Highcharts from 'highcharts' ;
 import { HighchartsChartModule } from 'highcharts-angular';
+import { count } from 'rxjs';
+import { API } from 'src/app/services/API.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +12,24 @@ import { HighchartsChartModule } from 'highcharts-angular';
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
   imports: [HighchartsChartModule],
+  providers:[API]
 })
 export class DashboardComponent implements OnInit{
   chartOptions: any;
   highcharts: typeof Highcharts = Highcharts;
+  API: string=''
+  countSP:number=0;
+  countKH: number =0;
 
-  constructor(){}
+  constructor(private api: API, public http:HttpClient){
+    this.API = api.getAPI();
+  }
   ngOnInit(): void {
     this.barChart();
+    this.getCountSP();
+    this.getCountKH();
   }
+  // CHART
   barChart(){
     this.chartOptions={
       chart:{
@@ -51,4 +64,18 @@ export class DashboardComponent implements OnInit{
       data:[1276,1007, 4561, 746]
     }
   ]
+
+  // BE
+  getCountSP(){
+    this.http.get(this.API+'/sanpham/countSP').subscribe((data:any)=>
+    {
+      this.countSP = data.result;
+    })
+  }
+  getCountKH(){
+    this.http.get(this.API+'/khachhang/countKH').subscribe((data:any)=>{
+        this.countKH = data.result;
+        console.log(this.countKH)
+    })
+  }
 }

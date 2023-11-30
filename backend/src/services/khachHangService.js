@@ -105,4 +105,19 @@ var dangNhap = async (req) => {
   }
 };
 
-module.exports = { dangKy, verifyEmail, dangNhap };
+var countKH = async() =>{
+  
+  return new Promise(function myFn(resolve, reject)
+  {
+      khachHangModel.countDocuments({})
+      .then((count) => {
+        resolve(count);
+        console.log(count);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
+}
+
+module.exports = { dangKy, verifyEmail, dangNhap, countKH };

@@ -1,3 +1,4 @@
+const khachHangModel = require('../models/khachHangModel')
 var khacHangService=require('../services/khachHangService')
 
 var dangKy=async(req,res)=>{
@@ -27,5 +28,16 @@ var verifyEmail=async(req,res)=>{
 
     var verify=await khacHangService.verifyEmail(req)
 }
-
-module.exports={dangKy,verifyEmail, dangNhap}
+var countKH = async(req,res)=>{
+    try{
+    var result = await khacHangService.countKH()
+    if (result){
+        res.send({result});
+    }
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+module.exports={dangKy,verifyEmail, dangNhap, countKH}

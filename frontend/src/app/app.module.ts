@@ -78,7 +78,6 @@ import { HighchartsChartModule } from 'highcharts-angular';
     HttpClientModule,
     NgxPaginationModule,
     MatDialogModule,
-    NoopAnimationsModule,
     HighchartsChartModule,
   ],
   providers: [],
