@@ -9,7 +9,7 @@
       />
     </div>
     <!-- Tên sản phẩm -->
-    <div  
+    <div
       class="col-md-5 container text-start justify-content-center align-items-center"
     >
       <h4 class="fs-2">{{product.tenSP}}</h4>
@@ -43,6 +43,7 @@
           class="btn btn-outline-dark btn-lg fw-bolder"
           type="button"
           id="purchase-button"
+          (click)="buyNow()"
         >
           Mua hàng
         </button>

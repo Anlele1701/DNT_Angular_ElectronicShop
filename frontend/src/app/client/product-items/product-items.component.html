@@ -3,7 +3,7 @@
   <div class="card-body mt-3 p-0">
     <h5 class="card-title">{{ product.tenSP }}</h5>
     <p class="card-text">{{ product.giaTien| currency : "VND" : " " }}Đ</p>
-    <a href="#" class="btn btn-dark">MUA NGAY</a>
+    <a class="btn btn-dark" (click)="buyNow()">MUA NGAY</a>
   </div>
   <p class="badge">NEW</p>
 </div>
