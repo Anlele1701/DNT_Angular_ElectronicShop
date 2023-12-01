@@ -72,6 +72,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     HomepageComponent,
     ResetComponent,
     ForgotPasswordComponent,
+    ClientLayoutComponent
   ],
   imports: [
     BrowserModule,

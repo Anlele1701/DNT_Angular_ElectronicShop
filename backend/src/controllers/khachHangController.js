@@ -40,24 +40,22 @@ var verifyEmail = async (req, res) => {
   var verify = await khacHangService.verifyEmail(req);
 };
 
-var countKH = async(req,res)=>{
-    try{
-    var result = await khacHangService.countKH()
-    if (result){
-        res.send({result});
+var countKH = async (req, res) => {
+  try {
+    var result = await khacHangService.countKH();
+    if (result) {
+      res.send({ result });
     }
-    }
-    catch(error)
-    {
-        console.log(error)
-    }
-}
+  } catch (error) {
+    console.log(error);
+  }
+};
 const sendEmail = async (req, res) => {
   try {
     const result = await khacHangService.sendEmail(req, res);
     if (result === "Email not found") {
       return res.send({ message: result });
-    } else if (result === "Lỗi gửi email") {  
+    } else if (result === "Lỗi gửi email") {
       return res.send({ message: result });
     }
     return res.send({ message: "Hãy kiểm tra email" });
@@ -65,4 +63,11 @@ const sendEmail = async (req, res) => {
     console.log("Lỗi trong controller của sendEmail");
   }
 };
-module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword };
+module.exports = {
+  dangKy,
+  verifyEmail,
+  dangNhap,
+  sendEmail,
+  resetPassword,
+  countKH,
+};
