@@ -1,38 +1,47 @@
 import { UserServiceService } from './../../services/userService/user-service.service';
 import { HttpClient } from '@angular/common/http';
-import { Component ,ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-regis',
   templateUrl: './login-regis.component.html',
-  styleUrls: ['./login-regis.component.css']
+  styleUrls: ['./login-regis.component.css'],
 })
 export class LoginRegisComponent {
   @ViewChild('container') container: any;
   //model
-  name:string=''
-  email:string=''
-  sdt:string=''
-  matKhau:string=''
+  name: string = '';
+  email: string = '';
+  sdt: string = '';
+  matKhau: string = '';
 
-  constructor(private http: HttpClient, private router:Router, private UserService:UserServiceService){}
-  readonly API='http://localhost:3800/'
-  ngAfterViewInit(){
-    const overlayBtn = this.container.nativeElement.querySelector('.overlayBtn');
-    const overLayCon = this.container.nativeElement.querySelector('.overlayCon')
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private UserService: UserServiceService
+  ) {}
+  readonly API = 'http://localhost:3800/';
+  ngAfterViewInit() {
+    const overlayBtn =
+      this.container.nativeElement.querySelector('.overlayBtn');
+    const overLayCon =
+      this.container.nativeElement.querySelector('.overlayCon');
     overlayBtn.addEventListener('click', () => {
       this.container.nativeElement.classList.toggle('right-panel-active');
       overlayBtn.classList.remove('btnScaled');
-      window.requestAnimationFrame(()=>{
-        overlayBtn.classList.add('btnScaled')
-      })
+      window.requestAnimationFrame(() => {
+        overlayBtn.classList.add('btnScaled');
+      });
     });
   }
 
   submitFormRegis(){
     this.http.post(this.API+'khachhang/dangKy',{name:this.name, email:this.email, sdt:this.sdt, password:this.matKhau}).subscribe((data:any)=>{
-      if(data.emailExisted)
+      if(data.inValid){
+        console.log(data.inValid)
+      }
+      else if(data.emailExisted)
       {
         console.log(data.emailExisted)
       }
@@ -49,7 +58,7 @@ export class LoginRegisComponent {
       else{
         console.log(data)
         this.UserService.setUser(data)
-        this.router.navigate(['/personal']);
+        this.router.navigate(['/client/personal']);
       }
     })
   }
