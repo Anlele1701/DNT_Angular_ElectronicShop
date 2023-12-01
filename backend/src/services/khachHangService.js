@@ -71,7 +71,7 @@ var dangKy = async (req) => {
           html: `
                 <h2>Hi ${user.hoTen}! Thanks for your registering to our site</h2>
                 <h4>To continue registering, please verify your email with the link below...</h4>
-                <a href="http://localhost:4200/verify-email/${user.emailToken}">Verify Your Email</a>
+                <a href="http://localhost:4200/client/verify-email/${user.emailToken}">Verify Your Email</a>
             `,
         };
 

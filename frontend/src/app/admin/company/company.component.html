@@ -32,9 +32,7 @@
       </thead>
       <tr style="text-align: center" *ngFor="let itemHang of brandList$ | async">
         <td>{{itemHang.tenNhaSX}}</td>
-        <td *ngFor="let loaiSP of itemHang.cacLoaiSP">
-          {{loaiSP}},
-        </td>
+        <td>{{returnStringLoaiSP(itemHang.cacLoaiSP)}}</td>
         <td>
           <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Thêm loại sản
             phẩm</button>
