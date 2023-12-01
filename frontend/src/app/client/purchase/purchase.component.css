@@ -103,7 +103,7 @@
 }
 .scrollbar {
   overflow: auto;
-  height: 450px;
+  max-height: 450px;
 }
 /* width */
 ::-webkit-scrollbar {

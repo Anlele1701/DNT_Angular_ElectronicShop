@@ -17,6 +17,8 @@ import { CategoryComponent } from './admin/category/category.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
 import { VerifyEmailComponent } from './client/login-regis/verify-email/verify-email.component';
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
+import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
+import { PurchaseComponent } from './client/purchase/purchase.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -36,6 +38,8 @@ const routes: Routes = [
       { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
       { path: 'category/:loaiSP', component: ProductCategoryComponent },
       { path: 'verify-email/:token', component: VerifyEmailComponent },
+      { path: 'shopping-cart', component:ShoppingCartComponent},
+      { path:'purchase',component:PurchaseComponent}
     ],
   },
   // ADMIN
