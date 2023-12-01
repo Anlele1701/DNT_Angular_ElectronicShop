@@ -39,7 +39,7 @@ const routes: Routes = [
       { path: 'category/:loaiSP', component: ProductCategoryComponent },
       { path: 'verify-email/:token', component: VerifyEmailComponent },
       { path: 'shopping-cart', component:ShoppingCartComponent},
-      { path:'purchase',component:PurchaseComponent}
+      { path: 'purchase',component:PurchaseComponent}
     ],
   },
   // ADMIN
