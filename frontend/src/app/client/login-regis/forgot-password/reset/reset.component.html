@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h3 class="text-center fw-bold">Tạo mật khẩu mới</h3>
+            <form [formGroup]="resetForm">
+
+                <div class="mb-3">
+                    <input formControlName="password" type="password" class="form-control" placeholder="Mật khẩu mới">
+                    <span *ngIf="resetForm.hasError('required','password') && resetForm.controls['password'].dirty"
+                        class="text-danger">*Password is required</span>
+                </div>
+                <div class="mb-3">
+                    <input formControlName="confirmPassword" type="password" class="form-control"
+                        placeholder="Xác nhận mật khẩu mới">
+                    <span
+                        *ngIf="resetForm.hasError('required','confirmPassword') && resetForm.controls['confirmPassword'].dirty"
+                        class="text-danger">*Confirm password is required</span>
+                    <span *ngIf="resetForm.hasError('confirmPassword')" class="text-danger">*Password
+                        xác nhận không đúng</span>
+                </div>
+                <div class="text-center mb-4">
+                    <button [disabled]="resetForm.invalid" [class.disabled]="resetForm.invalid" type="submit"
+                        class="btn btn-primary" (click)="reset()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div *ngIf="isShowNoti" class="text-center m-3 fw-bold">
+        <span [ngClass]="{'text-success': isSuccess, 'text-danger': !isSuccess}">{{ successMes }}</span>
+        <button routerLink="/regis-login" class="btn btn-secondary btn-sm mx-2 fw-medium">Quay về trang đăng
+            nhập</button>
+    </div>
+</div>
