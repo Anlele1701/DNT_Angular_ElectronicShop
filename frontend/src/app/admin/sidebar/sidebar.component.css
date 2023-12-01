@@ -2,7 +2,7 @@ body {
   background-color: #e6e5e4;
   margin: 0;
   padding: 0;
-  display:flex;
+  display: flex;
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -13,12 +13,12 @@ body {
   border-radius: 10px;
 }
 /*  */
-.selectedItem{
+.selectedItem {
   background-color: #302e2e;
 }
 /* Sidebar */
 .sidebar {
-  position:fixed;
+  position: fixed;
   background: #494949;
   height: 100%;
   top: 0;
@@ -26,20 +26,20 @@ body {
   bottom: 0;
   width: 110px;
   z-index: 1;
-  padding:0 1.7rem;
+  padding: 0 1.7rem;
   overflow-x: hidden;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
   transition: width 0.25s linear;
 }
-.imgTitle{
+.imgTitle {
   white-space: nowrap;
   text-align: center;
   font-weight: bold;
   font-size: large;
-  margin-top:10px;
+  margin-top: 10px;
 }
-.menu{
-  padding-left: 0 !important;;
+.menu {
+  padding-left: 0 !important;
 }
 .menu li {
   list-style: none;
@@ -48,15 +48,15 @@ body {
   border-radius: 8px;
   white-space: nowrap;
   transition: all 0.3s ease-in-out;
-}   
+}
 a {
   text-decoration: none;
   color: #ffffff;
-  gap:15px;
-  display:flex;
+  gap: 15px;
+  display: flex;
   align-items: center;
 }
-.cateName{
+.cateName {
   overflow: hidden;
 }
 .icon {
@@ -83,7 +83,7 @@ li:hover {
   background-color: #ffffff;
   padding: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  margin-left:100px;
+  margin-left: 100px;
   position: sticky;
 }
 #avataradmin {
@@ -91,7 +91,11 @@ li:hover {
   max-width: 50px;
   border-radius: 50%;
 }
-.content{
-  margin-left:100px;
+.content {
+  margin-left: 100px;
   height: 100vh;
+}
+/* Không hover vào thì dropdown sẽ ẩn đi */
+.sidebar:not(:hover) .collapse {
+  display: none;
 }
