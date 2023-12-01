@@ -1,19 +1,74 @@
-<!-- CAROULSEL -->
-<app-carousel [images]="images" [autoSlide]="true"></app-carousel>
-
-<!-- banner 1 -->
-<img src="assets\client\Shared\banner_1.png" />
-
-<div class="container">
-  <h2 class="text-center">Tên Gì Gì Đó</h2>
+<div>
+  <!-- VIDEO -->
+  <video autoplay muted loop style="min-width: 100%; min-height: 100%">
+    <source src="assets/client/Shared/video.mp4" type="video/mp4">
+  </video>
+  <!--  -->
+  <!-- TÓM TẮT ABOUT US -->
+  <div class ="d-flex justify-content-center">
+  <div class="about_us">
+    <div>
+      <h3>Chinh phục công nghệ cùng Zone14</h3>
+      <p>Chúng tôi không chỉ cung cấp sản phẩm, mà còn mang đến cơ hội và khám phá trong thế giới kỳ diệu của công nghệ. Hãy cùng chúng tôi tạo ra những trải nghiệm đáng nhớ và cuộc sống sống động hơn.</p>
+      <hr />
+    </div>
+    
+    <div class="row">
+      <div class="col-sm">
+        <h3>17</h3>
+        <p>Nhãn hàng đã hợp tác</p>
+      </div>
+      <div class="col-sm">
+        <h3>200+</h3>
+        <p>Sản phẩm đa dạng</p>
+      </div>
+      <div class="col-sm">
+        <h3>100%</h3>
+        <p>Cam kết chính hãng</p>
+      </div>
+    </div>
+  </div>
 </div>
+  <!--  -->
 
-<!-- banner 2 -->
-<img src="assets\client\Shared\banner_2.png" />
+  <!-- PARALlAX SCROLLING -->
+  <div class="parallax_scrolling">
 
-<div class="container">
-  <h2 class="text-center">Tên Gì Gì Đó</h2>
+  </div>
+  <!--  -->
+
+  <!-- SẢN PHẨM MỚI 1 -->
+  <!--  -->
+
+  <!-- SẢN PHẨM MỚI 2 -->
+
+  <!-- BANNER -->
+  <img id="banner" src="assets/client/Shared/banner_4.png">
+  <!--  -->
+
+  <!-- DANH MỤC -->
+  <div class="container-md text-center mt-5">
+    <div class="row row-cols-3">
+      <div class="cateBox col">    
+          <img src ="assets/client/HomePage/iphone15pro.png" style=" max-width:90%;max-height:90%;">   
+          <span style="position: absolute;top:50%; left:50%"></span>
+      </div>
+      <div class="cateBox col" id ="phone">
+        <span style="position: absolute; top:50%; left:20%">Phone</span>
+      </div>
+      <div class="cateBox col">
+        3
+      </div>
+      <div class="cateBox col" id ="bigBox">
+        4
+      </div>
+      <div class="cateBox col">
+        5
+      </div>
+      <div class="cateBox col" id="biggestBox">
+        6
+      </div>
+    </div>
+  </div>
+  <!--  -->
 </div>
-
-<!-- banner 3 -->
-<img src="assets\client\Shared\banner_3.png" />

@@ -2,7 +2,18 @@
     padding: 0 0 10px 0;
 }
 
-img {
+.about_us {
+    width: 50%;
+    text-align: center;
+    color: #474747;
+    padding-top: 50px;
+}
+
+.parallax_scrolling {
+    background-color: #464646;
+}
+
+#banner {
     padding-top: 32px;
     width: 100%;
 }
@@ -16,4 +27,28 @@ img {
     color: #EFEFEF;
     padding-top: 8px;
     font-weight: 700;
+}
+/* DANH MUC */
+.cateBox{
+    background: #D9D9D9;
+    width: 413px;
+    height: 375px;
+    margin-bottom:50px;
+    margin-right:30px;
+    position: relative;
+}
+#bigBox{
+    width: 860px;
+}
+#biggestBox{
+    width:97%;
+}
+#phone{
+    background-image: url('src/assets/client/HomePage/iphone15pro.png');  
+    background-position-x: 150px; 
+    background-repeat: no-repeat;
+    transition: 0.7s;
+}
+#phone:hover{
+    transform:scale(1.1);
 }
