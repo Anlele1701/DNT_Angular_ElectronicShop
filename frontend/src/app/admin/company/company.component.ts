@@ -7,6 +7,7 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit{
+  stringLoaiSP: string=''
   constructor(private http:HttpClient){}
   brandName:string=''
   brandList:any[]=[]
@@ -25,9 +26,21 @@ export class CompanyComponent implements OnInit{
       })
     })
   }
-
+  deleteBrand(idSP){
+    this.http.delete(this.API+'/hang/delete/'+idSP).subscribe((data:any)=>{
+      console.log(data)
+    })
+  }
 
   ngOnInit(): void {
     this.showAllBrand()
+  }
+
+  returnStringLoaiSP(itemHang){
+    this.stringLoaiSP=''
+    itemHang.forEach(item=>{
+      this.stringLoaiSP=this.stringLoaiSP+item+', '
+    })
+    return this.stringLoaiSP
   }
 }

@@ -1,4 +1,4 @@
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +13,7 @@ export class FormCreateProductComponent implements OnInit{
   product:FormData
   listHang:string[]=[]
   tenLoaiSP:string=''
-  constructor(private http:HttpClient, private route:ActivatedRoute){
+  constructor(private http:HttpClient, private route:ActivatedRoute, private productRoute:Router){
     this.route.paramMap.subscribe(params=>{
       this.tenLoaiSP=params.get('nameProduct')
     })
@@ -38,6 +38,7 @@ export class FormCreateProductComponent implements OnInit{
     this.http.post(this.API+'sanpham/createNewProduct',this.product).subscribe((data:any)=>{
       console.log(data)
     })
+    this.productRoute.navigate['/admin/products']
   }
   pasteHinhAnh(data:FormData){
 

@@ -3,6 +3,7 @@
     <option selected>Open this select menu</option>
     <option *ngFor="let item of listHang" [value]="item" >{{ item }}</option>
   </select>
+  
 <ng-template [ngIf]="tenLoaiSP=='Bàn Phím'" #banphim>
   <app-ban-phim-form  (dataBanPhim)="createNewProduct($event)"></app-ban-phim-form>
 </ng-template>

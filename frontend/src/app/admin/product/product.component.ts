@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -25,6 +26,7 @@ export class ProductComponent implements OnInit{
         this.listProduct.push(item)
         console.log(item.tenHang)
       })
+      this.updateProductList(data);
       console.log(this.listProduct)
     })
   }
@@ -32,5 +34,11 @@ export class ProductComponent implements OnInit{
   getFormCreateProductPage(nameProduct:String){
     console.log(nameProduct)
     this.router.navigate([`/admin/createNewProduct`,nameProduct])
+  }
+  // functions
+  private productListSource = new BehaviorSubject<any[]>([]);
+  productList$ = this.productListSource.asObservable();
+  updateProductList(products: any[]) {
+    this.productListSource.next(products);
   }
 }

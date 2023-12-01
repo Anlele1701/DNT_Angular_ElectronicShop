@@ -1,0 +1,69 @@
+body {
+    background: #EEEDEC;
+    padding:20px;
+}
+
+.box {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 1rem;
+}
+.searchBox {
+    margin-top: 15px;
+    width: 500px;
+}
+
+.btnCreate {
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.btnCreate a {
+     text-decoration: none;
+     color: white;
+}
+.excelbtn a {
+    text-decoration: none;
+    color: white;
+}
+#listBox {
+    height: auto;
+}
+#tourBox{
+    height:380px;
+    overflow:auto;
+}
+/*table*/
+.fixTableHead {
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+    .fixTableHead thead th {
+        position: sticky;
+        top: 0;
+    }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 8px 15px;
+}
+
+th {
+    background: black;
+    color: white;
+}
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(254, 254, 254);
+    border-radius: 10px;
+}
