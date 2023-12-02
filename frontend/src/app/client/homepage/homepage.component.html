@@ -1,6 +1,6 @@
 <div>
   <!-- VIDEO -->
-  <video autoplay muted loop style="min-width: 100%; min-height: 100%">
+  <video autoplay [muted] ="'muted'" loop style="min-width: 100%; min-height: 100%">
     <source src="assets/client/Shared/video.mp4" type="video/mp4">
   </video>
   <!--  -->
@@ -8,7 +8,7 @@
   <div class ="d-flex justify-content-center">
   <div class="about_us">
     <div>
-      <h3>Chinh phục công nghệ cùng Zone14</h3>
+      <h2>Chinh phục công nghệ cùng Zone14</h2>
       <p>Chúng tôi không chỉ cung cấp sản phẩm, mà còn mang đến cơ hội và khám phá trong thế giới kỳ diệu của công nghệ. Hãy cùng chúng tôi tạo ra những trải nghiệm đáng nhớ và cuộc sống sống động hơn.</p>
       <hr />
     </div>
@@ -38,36 +38,57 @@
   <!--  -->
 
   <!-- SẢN PHẨM MỚI 1 -->
-  <!--  -->
+  <div class ="animate">
+    <div class ="sp1">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
 
-  <!-- SẢN PHẨM MỚI 2 -->
+  <!-- SẢN PHẨM MỚI 2 -->    
+  <div class ="sp2"></div>
+</div>
 
   <!-- BANNER -->
   <img id="banner" src="assets/client/Shared/banner_4.png">
   <!--  -->
-
+  
   <!-- DANH MỤC -->
   <div class="container-md text-center mt-5">
-    <div class="row row-cols-3">
-      <div class="cateBox col">    
-          <img src ="assets/client/HomePage/iphone15pro.png" style=" max-width:90%;max-height:90%;">   
-          <span style="position: absolute;top:50%; left:50%"></span>
-      </div>
-      <div class="cateBox col" id ="phone">
-        <span style="position: absolute; top:50%; left:20%">Phone</span>
+    <div class="row gx-4 row-cols-3">
+      <div class="cateBox col" >
+        <div class = "imgCate" id="phone"></div>
+          <span class ="imgTitle">Điện Thoại</span>
       </div>
       <div class="cateBox col">
-        3
-      </div>
-      <div class="cateBox col" id ="bigBox">
-        4
-      </div>
+        <div class ="imgCate" id ="laptop"></div>
+          <span class ="imgTitle">Laptop</span>
+        </div>
       <div class="cateBox col">
-        5
+        <div class ="imgCate" id ="monitor"></div>
+        <span class ="imgTitle">Màn Hình</span>
       </div>
+
       <div class="cateBox col" id="biggestBox">
-        6
+        <div class ="imgCate" id ="keyboard">      
+          <span id="longTitle">Bàn Phím</span>
+        </div>
       </div>
+      <div class="cateBoxs col">
+        <div class ="imgCate" id ="mouse">   
+        <span class ="imgTitle">Chuột</span>
+      </div>   
+      </div>
+      <div class="cateBoxs col">
+        <div class ="imgCate" id ="headphone">  
+        <span class ="imgTitle">Tai Nghe</span>
+      </div>  
+      </div>
+      
     </div>
   </div>
   <!--  -->

@@ -5,8 +5,11 @@
 .about_us {
     width: 50%;
     text-align: center;
-    color: #474747;
+    color: #1C1B1F;
     padding-top: 50px;
+}
+p {
+    font-size: 18px;
 }
 
 .parallax_scrolling {
@@ -23,32 +26,116 @@
     height: 300px;
     border-radius: 35px;
 }
+
 .container h2 {
     color: #EFEFEF;
     padding-top: 8px;
     font-weight: 700;
 }
+
 /* DANH MUC */
-.cateBox{
-    background: #D9D9D9;
+.cateBox {
+    background: #E6E6E6;
     width: 413px;
     height: 375px;
-    margin-bottom:50px;
-    margin-right:30px;
+    margin-bottom: 50px;
+    margin-right: 31px;
     position: relative;
+    overflow: hidden;
 }
-#bigBox{
-    width: 860px;
+
+.cateBoxs {
+    background: #E6E6E6;
+    margin-bottom: 50px;
+    margin-right: 42px;
+    width: 630px;
+    height: 375px;
+    position: relative;
+    overflow: hidden;
 }
-#biggestBox{
-    width:97%;
+
+#biggestBox {
+    width: 97%;
 }
-#phone{
-    background-image: url('src/assets/client/HomePage/iphone15pro.png');  
-    background-position-x: 150px; 
-    background-repeat: no-repeat;
+
+/* CATE */
+#phone {
+    background-image: url('src/assets/client/HomePage/iphone15pro.png');
+    background-color: #768A95;
+}
+
+#laptop {
+    background-image: url('src/assets/client/HomePage/macbook.png');
+    background-size: contain;
+    background-position-y: -30px;
+    background-color: #DFEBF7;
+}
+
+#monitor {
+    background-image: url('src/assets/client/HomePage/monitor.png');
+    background-size: contain;
+    background-color: #AAC7D7;
+}
+#keyboard{
+    background-image: url('src/assets/client/HomePage/ban_phim.png');
+    background-size: contain;
+    background-position: left;
+    background-position-x:70px;
+    background-size:auto 300px;
+    background-color: #31414B;
+}
+#mouse{
+    background-image: url('src/assets/client/HomePage/chuot.png');
+    background-size: contain;
+    background-position: left;
+    background-color: #45576D;
+}
+#headphone{
+    background-image: url('src/assets/client/HomePage/tai_nghe.png');
+    background-size: contain;
+    background-position: center;
+    background-color: #9BABB8;
+}
+/*  ANIMATION*/
+.imgCate {
     transition: 0.7s;
+    height: 110%;
+    background-repeat: no-repeat;
 }
-#phone:hover{
-    transform:scale(1.1);
+.cateBox:hover .imgCate {
+    transform: scale(1.1);
+}
+.cateBox:hover .imgTitle {
+    opacity: 1;
+}
+.cateBox:hover #longTitle {
+    opacity: 1;
+}
+
+.cateBoxs:hover .imgCate {
+    transform: scale(1.1);
+}
+.cateBoxs:hover .imgTitle {
+    opacity: 1;
+}
+
+.imgTitle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 40%;
+    color: white;
+    font-size: 40px;
+    font-weight: 500;
+    opacity: 0;
+    transition: .5s ease;
+}
+#longTitle{
+    position: absolute;
+    right: 15%;
+    bottom:45%;
+    color: white;
+    font-size: 50px;
+    opacity: 0;
+    transition: .5s ease;
 }
