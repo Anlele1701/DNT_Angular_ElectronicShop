@@ -24,6 +24,7 @@
           <div
             class="col-12 p-3 btn-border"
             [ngClass]="{ 'btn-border-bg-black': activeIndex === 0 }"
+
             (click)="onClickBtnMenu(0)"
           >
             <i class="fa-solid fa-house"></i><span>Trang chủ</span>
@@ -33,6 +34,7 @@
           <div
             class="col-12 p-3 btn-border"
             [ngClass]="{ 'btn-border-bg-black': activeIndex === 1 }"
+            [routerLink]="['/client/purchase-history']"
             (click)="onClickBtnMenu(1)"
           >
             <i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
@@ -43,6 +45,7 @@
             class="col-12 p-3 btn-border"
             [ngClass]="{ 'btn-border-bg-black': activeIndex === 2 }"
             (click)="onClickBtnMenu(2)"
+            
           >
             <i class="fa-regular fa-face-smile"></i
             ><span>Tài khoản của bạn</span>
@@ -53,6 +56,7 @@
             class="col-12 p-3 btn-border"
             [ngClass]="{ 'btn-border-bg-black': activeIndex === 3 }"
             (click)="onClickBtnMenu(3)"
+            [routerLink]="['/client/membership-class']"
           >
             <i class="fa-solid fa-medal"></i><span>Hạng thành viên</span>
           </div>

@@ -27,6 +27,7 @@
                 </div>
                 <div class="row m-0 p-2">
                     <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 0}"
+                    [routerLink]="['/client/personal']"
                         (click)="onClickBtnMenu(0)"><i class="fa-solid fa-house"></i><span>Trang chủ</span>
                     </div>
                 </div>
@@ -41,7 +42,7 @@
                             bạn</span></div>
                 </div>
                 <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 3}"
+                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 3}" [routerLink]="['/client/membership-class']"
                         (click)="onClickBtnMenu(3)"><i class="fa-solid fa-medal"></i><span>Hạng thành viên</span></div>
                 </div>
                 <div class="row m-0 p-2">
