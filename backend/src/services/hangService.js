@@ -60,7 +60,7 @@ var deleteHang = async (id) => {
       .then((result) => {
         if (result.cacLoaiSP && result.cacLoaiSP.length > 0) {
           console.log(`Không thể xóa vì đang chứa ${result.cacLoaiSP}.`);
-          reject(new Error(`Không thể xóa.`));
+          reject(false);
         } else {
           hangModel
             .findByIdAndDelete(id)

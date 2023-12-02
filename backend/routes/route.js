@@ -29,6 +29,7 @@ router
   .route("/sanpham/getAllSanPham/:loaiSP")
   .get(sanPhamController.getAllSanPham); //lấy danh sách sản phẩm theo loại sp - customer
 router.route("/sanpham/getSP/:idSP").get(sanPhamController.getSP); //lấy thông tin sản phẩm
+router.route("/sanpham/countSP").get(sanPhamController.countSP);// lấy số lượng sản phẩm
 
 //KHÁCH HÀNG
 router.route("/khachhang/dangKy").post(khachHangController.dangKy); //đăng ký tài khoản

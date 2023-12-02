@@ -257,4 +257,4 @@ function verifyToken(token) {
     return null;
   }
 }
-module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword };
+module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword, countKH};

@@ -19,8 +19,9 @@ var deleteHang = async(req,res)=>{
         await hangService.deleteHang(req.params.id);
         res.send({ "status": true, "message": "Xóa thành công" });
       } catch (error) {
-        console.error(error);
-        res.status(400).send({ "status": false, "message": error.message });
+        console.log(error);
+        res.send({ "status": false, "message": error.message });        
+
       }
 }
 

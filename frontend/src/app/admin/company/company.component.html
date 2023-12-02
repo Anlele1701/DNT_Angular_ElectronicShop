@@ -1,5 +1,5 @@
 <body>
-  <!-- TOAST -->
+  <!-- TOAST SUCCESS -->
   <div
     *ngIf="deleted"
     class="toast align-items-center text-bg-primary border-0 show top-20 end-0"
@@ -19,6 +19,27 @@
       ></button>
     </div>
   </div>
+  <!-- TOAST FAILED -->
+  <div
+    *ngIf="notdelted"
+    class="toast align-items-center bg-danger text-white border-0 show top-20 end-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    data-bs-autohide="true"
+    style="position: absolute"
+  >
+    <div class="d-flex">
+      <div class="toast-body">Xóa hãng thất bại!</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+
   <div class="box">
     <h2>QUẢN LÝ HÃNG</h2>
     <form asp-action="Index" method="get">
@@ -29,7 +50,6 @@
         class="searchBox form-control"
       />
     </form>
-
     <button class="btnCreate btn btn-dark" (click)="toggleAddForm()">
       THÊM HÃNG MỚI
     </button>
@@ -124,6 +144,7 @@
                         <button
                           type="button"
                           class="btn btn-primary"
+                          data-bs-dismiss="modal"
                           (click)="deleteBrand(itemHang._id)"
                         >
                           Xóa hãng

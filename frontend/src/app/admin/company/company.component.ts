@@ -14,7 +14,8 @@ export class CompanyComponent implements OnInit {
   constructor(private http: HttpClient) {}
   brandName: string = '';
   brandList: any[] = [];
-  deleted: boolean = false;
+  deleted: boolean;
+  notdelted:boolean;
   brandList$: Observable<any[]>;
 
   readonly API = 'http://localhost:3800';
@@ -38,11 +39,12 @@ export class CompanyComponent implements OnInit {
       .delete(this.API + '/hang/delete/' + idSP)
       .subscribe((data: any) => {
         if (data.status) {
-          console.log('Xoa thanh cong ');
           this.showAllBrand();
           this.deleted = true;
-        } else {
-          console.log('Xoa that bai');
+        } 
+        else {  
+          console.log(data.status)
+          this.notdelted= true;      
         }
       });
   }
