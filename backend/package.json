@@ -19,6 +19,7 @@
     "consolidate": "^1.0.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "createerror": "^1.3.0",
     "crypto": "^1.0.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",

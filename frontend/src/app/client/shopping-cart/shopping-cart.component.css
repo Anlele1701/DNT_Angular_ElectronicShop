@@ -1,21 +1,30 @@
-.margin-top {
-  margin-top: 100px;
+.body-change{
+  padding:90px;
+  height: fit-content;
+}
+.content-tong{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+}
+/* content-trai */
+.content-trai{
+  width: 70%;
 }
 .khung-1 {
   border-radius: 20px;
   background: #fff;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
-  max-height: 750px;
+  max-height:800px;
   min-height: 250px;
-  overflow: hidden;
-  overflow-y: scroll;
+  width: 100%;
+  padding:20px;
 }
-.khung-2 {
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
-  height: 407px;
-  float:left;
+.scrollbar{
+  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 700px;
 }
 /* customize - scroll */
 ::-webkit-scrollbar {
@@ -37,6 +46,35 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(217, 217, 217, 0.5);
 }
+.Giohang {
+  font-size: 35px;
+}
+.Delete-all {
+  border-radius: 30px;
+  background: #000;
+  width: 146.552px;
+  height: 50px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  font-size: 20px;
+}
+
+
+/* content-phai */
+.content-phai{
+  width: 30%;
+  padding:0 20px;
+}
+.khung-2 {
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+  height: 407px;
+  width: 100%;
+  padding:20px;
+}
+
+/* button */
 .button-tt {
   margin-top: 30px;
   table-layout: fixed;
@@ -50,20 +88,7 @@
 .button-tt:hover {
   background-color: #cccccc;
 }
-.Giohang {
-  margin-bottom: 0;
-  font-size: 35px;
-  margin-right: 10px;
-}
-.Delete-all {
-  border-radius: 30px;
-  background: #000;
-  width: 146.552px;
-  height: 50px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  color: #ffffff;
-  font-size: 20px;
-}
+
 .bt-change {
   width: 29px;
   height: 29px;
@@ -84,16 +109,8 @@
   background-color: white;
   border: none;
 }
-.p-change {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.p-center {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+
+/* P */
 .p-change-1 {
   color: #5d5d5d;
   font-size:20px;
@@ -122,6 +139,8 @@
   margin-bottom: 0;
   margin-left: 20px;
 }
+
+
 .img-change {
   width: 200px;
   height: 220px;
@@ -129,4 +148,7 @@
   border: 3px solid rgba(118, 118, 118, 0.5);
   background: lightgray 50% / cover no-repeat, #d9d9d9;
   object-fit:contain;
+}
+@media (max-width:1300px) {
+
 }
