@@ -1,5 +1,8 @@
 .card-img-top {
     background-color: #F4F4F4;
+    width: 100%;
+    height: 230px;
+    background-size: cover;
 }
 
 .badge {
