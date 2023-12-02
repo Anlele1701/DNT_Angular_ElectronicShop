@@ -31,6 +31,11 @@ router
   .route("/sanpham/getAllSanPham/:loaiSP")
   .get(sanPhamController.getAllSanPham); //lấy danh sách sản phẩm theo loại sp - customer
 router.route("/sanpham/getSP/:idSP").get(sanPhamController.getSP); //lấy thông tin sản phẩm
+router
+  .route("/sanpham/editSanPham")
+  .post(upload.upload.array("hinhAnh", 3), sanPhamController.editProduct); //tạo sản phẩm mới
+
+router.route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP").delete(sanPhamController.deleteProduct)
 
 //KHÁCH HÀNG
 router.route("/khachhang/dangKy").post(khachHangController.dangKy); //đăng ký tài khoản

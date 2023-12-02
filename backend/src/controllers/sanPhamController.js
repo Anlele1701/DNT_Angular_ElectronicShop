@@ -1,3 +1,4 @@
+const { json } = require('body-parser')
 var sanPhamService=require('../services/sanPhamService')
 var getProductsOfCompany=async(req,res)=>{
     var products=await sanPhamService.getProductOfCompany(req.params.tenLoai,req.params.idHang)
@@ -49,4 +50,24 @@ var getSP=async(req,res)=>{
     }
 }
 
-module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct, getAllSanPham, getSP}
+var editProduct=async(req,res)=>{
+    try{
+        const jsonData=JSON.parse(req.body.product)
+        var editSP=await sanPhamService.editSanPham(jsonData, req.body.loaiSP, req.body.tenHang)
+        res.send(editSP)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+var deleteProduct=async(req,res)=>{
+    try{
+        var deleteSP= sanPhamService.deleteProduct(req.params.idSP, req.params.loaiSP, req.params.tenHang)
+        res.send({success:'success'})
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
+module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct, getAllSanPham, getSP, editProduct, deleteProduct}

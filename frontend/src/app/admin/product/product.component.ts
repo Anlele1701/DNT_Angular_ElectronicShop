@@ -67,4 +67,15 @@ export class ProductComponent implements OnInit, OnDestroy {
   updateProductList(products: any[]) {
     this.productListSource.next(products);
   }
+
+  changeToEditProductPage(idSP: string){
+    this.router.navigate(['/admin/edit-product/'+this.nameProduct+'/'+idSP])
+  }
+
+  deleteProduct(idSP: string, tenHang: string){
+    this.http.delete(this.API+'sanpham/deleteProduct/'+this.nameProduct+'/'+tenHang+'/'+idSP).subscribe((data:any) => {
+      console.log(data)
+      window.location.reload()
+    });
+  }
 }

@@ -165,4 +165,102 @@ var getSP=async(idSP)=>{
     }
 }
 
-module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct, getAllSanPham, getSP}
+var editSanPham=async(product, loaiSP, hangCu)=>{
+    try{
+        let listHinhAnh=[]
+        product.hinhAnh.forEach(item=>{
+            var image={
+                tenImageSP: item.tenImageSP,
+                dataImageSP: item.dataImageSP,
+                contentTypeSP:item.contentTypeSP
+            }
+            listHinhAnh.push(image)
+        })
+        console.log(listHinhAnh)
+        var sanpham=sanPhamModel.findById(product._id).then(document=>{
+            document.tenSP=product.tenSP
+            document.thongSo=product.thongSo
+            document.giaTien=product.giaTien
+            document.soLuong=product.soLuong
+            document.moTa=product.moTa
+            document.hinhAnh=listHinhAnh
+            document.tenHang=product.tenHang
+            document.save()
+            if(hangCu!==product.tenHang)
+            {
+                changeProductToNewHang(product._id, product.tenHang, loaiSP, hangCu)
+            }
+            
+            // console.log(document)
+            return document
+        })
+        return sanpham
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+var changeProductToNewHang=async(idSP, tenHang, loaiSP, hangCu)=>{
+    try{
+        let idhang=''
+        var hang=await hangModel.findOne({tenNhaSX:tenHang}).then( document=>{
+            idhang= document._id
+        })
+        let idhangCu=''
+        await hangModel.findOne({tenNhaSX:hangCu}).then(hang=>{
+            idhangCu=hang._id
+        })
+        console.log(idhangCu)
+        await loaiSPModel.findOne({tenLoai:loaiSP}).then(document=>{ //remove idsp in old idhang to new id hang
+            document.cacHang.forEach(item=>{
+                if(item.idHang.equals(idhangCu)){
+                    console.log(item.idCacSP)
+                    const index=item.idCacSP.indexOf(idSP)
+                    if(index!=-1)
+                    {
+                        item.idCacSP.splice(index,1)
+                    }
+                    console.log(item.idCacSP)
+                }
+                if(item.idHang.equals(idhang)){
+                    console.log(item.idCacSP)
+                    const index=item.idCacSP.indexOf(idSP)
+                    if(index==-1)
+                    {
+                        item.idCacSP.push(idSP)
+                    }
+                    console.log(item.idCacSP)
+                }
+            })
+            document.save()
+        })
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
+var deleteProduct=async(idSP, loaiSP, tenHang)=>{
+    console.log(idSP)
+    console.log(loaiSP)
+    console.log(tenHang)
+    let idHang=''
+    await hangModel.findOne({tenNhaSX:tenHang}).then(document=>{
+        idHang=document._id
+    })
+    await loaiSPModel.findOne({tenLoai: loaiSP}).then(document=>{
+        document.cacHang.forEach(item=>{
+            if(item.idHang.equals(idHang)){
+                const index=item.idCacSP.indexOf(idSP)
+                if(index!==-1){
+                    item.idCacSP.splice(index,1)
+                }
+            }
+        })
+        document.save()
+    })
+    await sanPhamModel.findByIdAndDelete(idSP)
+}
+
+module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct, getAllSanPham, getSP, editSanPham, deleteProduct}
