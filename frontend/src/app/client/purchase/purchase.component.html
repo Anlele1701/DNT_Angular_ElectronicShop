@@ -65,8 +65,8 @@
       <p class="p-change-1">Thông tin đơn hàng</p>
       <!-- Nội dung -->
       <!-- Content-DonHang -->
-      <div class="scrollbar" *ngFor="let item of cartList">
-        <div class="d-flex mb-3">
+      <div class="scrollbar">
+        <div class="d-flex mb-3" *ngFor="let item of cartList">
           <div class="card card-change-2 me-3">
             <img
               class="img-change"
@@ -79,7 +79,6 @@
             <p class="p-change-6">Giá: <span>{{item.thanhTien|currency:"VND":" "}}đ</span></p>
           </div>
         </div>
-
       </div>
       <div class="d-flex mt-4">
         <p class="p-change-1" style="font-size: 18px">Privacy Policy</p>

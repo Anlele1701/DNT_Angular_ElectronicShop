@@ -7,7 +7,7 @@
       <h5 class="card-title">{{ product.tenSP }}</h5>
     </div>
     <p class="card-text mt-1">{{ product.giaTien| currency : "VND" : " " }}Đ</p>
-    <a href="#" class="btn btn-dark mt-2">MUA NGAY</a>
+    <a class="btn btn-dark mt-2" (click)="buyNow()">MUA NGAY</a>
   </div>
   <p class="badge">NEW</p>
 </div>
