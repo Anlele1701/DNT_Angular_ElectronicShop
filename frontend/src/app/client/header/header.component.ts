@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginRegisComponent } from '../login-regis/login-regis.component';
+import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { LoginRegisComponent } from '../login-regis/login-regis.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router:Router, public popUp: MatDialog) {}
+  constructor(private router:Router, public popUp: MatDialog, private userService: UserServiceService) {}
   ngOnInit(): void {
 
   }
@@ -25,5 +26,13 @@ export class HeaderComponent implements OnInit {
     popup.afterClosed().subscribe(result =>{
       console.log(result);
     })
+    }
+
+    changeToPersonalPage(){
+      if(this.userService.checkLogin())
+      {
+        this.router.navigate(['/client/personal'])
+      }
+      else this.openLogin()
     }
 }

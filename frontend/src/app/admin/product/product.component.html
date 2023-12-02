@@ -27,12 +27,7 @@
 </style>
 <div style="background: #ffffff; border-radius: 10px solid red; padding: 1rem">
   <h2>QUẢN LÝ SẢN PHẨM</h2>
-  <form
-    asp-action="Index"
-    method="get"
-    class="form-inline"
-    style="padding-left: 140px"
-  >
+  <form asp-action="Index" method="get" class="form-inline" style="padding-left: 140px">
     <input type="text" name="SearchString" placeholder="Tìm kiếm sản phẩm" />
 
     <button><i class="fa-solid fa-magnifying-glass"></i>Search</button>
@@ -42,34 +37,39 @@
       Thêm mới sản phẩm
     </button>
   </p>
-  <table class="table table-bordered table-sm" style="border-width: thick">
-    <thead class="thead-dark" style="background: black; color: snow">
-      <tr style="text-align: center">
-        <th>Tên sản phẩm</th>
-        <th>Loại sản phẩm</th>
-        <th>Hình ảnh sản phẩm</th>
-        <th>Số lượng</th>
-        <th>Đơn giá</th>
-        <th>Hành động</th>
+  <div class="overlay" *ngIf="isLoading">
+    <div class="loading-spinner"></div>
+  </div>
+  <div *ngIf="!isLoading">
+    <table class="table table-bordered table-sm" style="border-width: thick">
+      <thead class="thead-dark" style="background: black; color: snow">
+        <tr style="text-align: center">
+          <th>Tên sản phẩm</th>
+          <th>Loại sản phẩm</th>
+          <th>Hình ảnh sản phẩm</th>
+          <th>Số lượng</th>
+          <th>Đơn giá</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tr style="text-align: center" *ngFor="let item of listProduct">
+        <td>{{item.tenSP}}</td>
+        <td>{{item.tenHang}}</td>
+        <td><img src="http://localhost:3800/images/{{item.hinhAnh[0].tenImageSP}}" style="height: 100px;"></td>
+        <td>{{item.soLuong}}</td>
+        <td>{{item.giaTien}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary">
+            <i class="fa-solid fa-circle-info"></i> Xem chi tiết
+          </button>
+          <button type="button" class="btn btn-outline-warning">
+            <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
+          </button>
+          <button type="button" class="btn btn-outline-danger">
+            <i class="fa fa-trash"></i> Xóa sản phẩm
+          </button>
+        </td>
       </tr>
-    </thead>
-    <tr style="text-align: center" *ngFor="let item of listProduct">
-      <td>{{item.tenSP}}</td>
-      <td>{{item.tenHang}}</td>
-      <td><img src="http://localhost:3800/images/{{item.hinhAnh[0].tenImageSP}}" style="height: 100px;"></td>
-      <td>{{item.soLuong}}</td>
-      <td>{{item.giaTien}}</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary">
-          <i class="fa-solid fa-circle-info"></i> Xem chi tiết
-        </button>
-        <button type="button" class="btn btn-outline-warning">
-          <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
-        </button>
-        <button type="button" class="btn btn-outline-danger">
-          <i class="fa fa-trash"></i> Xóa sản phẩm
-        </button>
-      </td>
-    </tr>
-  </table>
+    </table>
+  </div>
 </div>

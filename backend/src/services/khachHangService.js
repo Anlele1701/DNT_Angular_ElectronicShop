@@ -71,7 +71,7 @@ var dangKy = async (req) => {
           html: `
                 <h2>Hi ${user.hoTen}! Thanks for your registering to our site</h2>
                 <h4>To continue registering, please verify your email with the link below...</h4>
-                <a href="http://localhost:4200/verify-email/${user.emailToken}">Verify Your Email</a>
+                <a href="http://localhost:4200/client/verify-email/${user.emailToken}">Verify Your Email</a>
             `,
         };
 
@@ -151,5 +151,96 @@ var checkLoginValid = (email, password) => {
     return "Vui lòng nhập gmail và mật khẩu!";
   } else return 0;
 };
-
-module.exports = { dangKy, verifyEmail, dangNhap };
+const sendEmail = async (req) => {
+  try {
+    const email = req.body.email;
+    const user = await khachHangModel.findOne({ email: email, verified: true });
+    if (!user) {
+      console.log("Email not found");
+      return "Email not found";
+    }
+    const payload = {
+      email: user.email,
+    };
+    const expiryTime = 180;
+    const token = jwt.sign(payload, "mymy-secret-key", {
+      expiresIn: expiryTime,
+    });
+    let mailDetails = {
+      from: ' "Reset your password" <inyourzone14@gmail.com>',
+      to: email,
+      subject: "Zone14 - Reset Password",
+      html: `
+                  <h2>Hi ${user.hoTen}!</h2>
+                  <h4>To continue reset password, please click the link below...</h4>
+                  <a href="http://localhost:4200/reset/${token}"><button style="background:#3630a3;color:white;">Reset your password</button></a>
+              `,
+    };
+    transporter.sendMail(mailDetails, async (err, data) => {
+      if (err) {
+        console.log(err);
+        return "Error sending email";
+      } else {
+        user.emailToken = token;
+        await user.save();
+        console.log("Hãy kiểm tra email để reset password");
+        return "Kiểm tra email để đặt lại mật khẩu";
+      }
+    });
+  } catch (e) {
+    console.log("Lỗi gửi email reset password:", e);
+    return "Lỗi gửi email";
+  }
+};
+//Reset mật khẩu
+const resetPassword = async (req, res) => {
+  try {
+    const token = req.body.token;
+    const newPassword = req.body.password;
+    const tokenData = verifyToken(token);
+    if (!tokenData) {
+      console.log("Token hết hạn hoặc không tồn tại !");
+      return res.status(401).send("Token hết hạn hoặc không tồn tại !");
+    }
+    const user = await khachHangModel.findOne({
+      email: tokenData.email,
+      verified: true,
+      emailToken: token,
+    });
+    if (!user) {
+      console.log("Không tìm thấy token trùng với thông tin tài khoản !");
+      return res
+        .status(404)
+        .send("Không tìm thấy token trùng với thông tin tài khoản !");
+    }
+    const salt = await bcrypt.genSalt(10);
+    const encryptedPassword = await bcrypt.hash(newPassword, salt);
+    user.matKhau = encryptedPassword;
+    user.emailToken = null;
+    try {
+      const updatedUser = await khachHangModel.findOneAndUpdate(
+        { _id: user._id },
+        { $set: user },
+        { new: true }
+      );
+      console.log("Reset password thành công !");
+      return "Reset password thành công !";
+    } catch (e) {
+      console.log("Lỗi không thể cập nhật reset password !", e);
+      return res.status(500).send("Lỗi không thể cập nhật reset password !");
+    }
+  } catch (e) {
+    console.log("Lỗi reset password:", e);
+    return res.status(500).send("Lỗi trong service reset password");
+  }
+};
+function verifyToken(token) {
+  try {
+    const decoded = jwt.verify(token, "mymy-secret-key");
+    return decoded;
+  } catch (error) {
+    console.log("Lỗi xác thực token:", error);
+    return null;
+  }
+}
+module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword };

@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
 
@@ -15,10 +16,15 @@ export class PersonalPageComponent implements OnInit{
     this.activeIndex = index;
   }
 
-  constructor(public userService:UserServiceService){}
+  constructor(public userService:UserServiceService, private router:Router){}
 
   ngOnInit(): void {
     this.user=this.userService.getUser()
     console.log(this.user)
+  }
+
+  logOut(){
+    this.userService.logOUt()
+    this.router.navigate(['/client/homepage'])
   }
 }

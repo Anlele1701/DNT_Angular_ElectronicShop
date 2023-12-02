@@ -13,7 +13,7 @@
       <p class="p-change-1">Thông tin nhận hàng</p>
       <div class="mb-4">
         <p class="p-change-2">Họ tên: <span>*</span></p>
-        <input class="input-change" placeholder="Vui lòng nhập họ tên" />
+        <input class="input-change" placeholder="Vui lòng nhập họ tên" value="{{userInfo.hoTen}}"/>
       </div>
       <div class="mb-4">
         <p class="p-change-2">Số điện thoại: <span>*</span></p>
@@ -65,21 +65,21 @@
       <p class="p-change-1">Thông tin đơn hàng</p>
       <!-- Nội dung -->
       <!-- Content-DonHang -->
-      <div class="scrollbar">
+      <div class="scrollbar" *ngFor="let item of cartList">
         <div class="d-flex mb-3">
           <div class="card card-change-2 me-3">
             <img
               class="img-change"
-              src="/assets/client/ProductDetail/Hinh-test.jpg"
+              src="http://localhost:3800/images/{{item.hinhAnh}}"
             />
           </div>
           <div>
-            <p class="p-change-4">Chuột razer Essential Death</p>
-            <p class="p-change-5">Số lượng: <span>1</span></p>
-            <p class="p-change-6">Giá: <span>490.000đ</span></p>
+            <p class="p-change-4">{{item.tenSP}}</p>
+            <p class="p-change-5">Số lượng: <span>{{item.soLuongMua}}</span></p>
+            <p class="p-change-6">Giá: <span>{{item.thanhTien|currency:"VND":" "}}đ</span></p>
           </div>
         </div>
-        
+
       </div>
       <div class="d-flex mt-4">
         <p class="p-change-1" style="font-size: 18px">Privacy Policy</p>
@@ -98,8 +98,8 @@
           <p class="p-change-6" style="font-size: 30px;">Tổng tiền:</p>
         </div>
         <div class="col-8 text-end">
-          <p class="p-change-6 mb-2">1</p>
-          <p class="p-change-6 mb-2">490.000Đ</p>
+          <p class="p-change-6 mb-2">{{tongSL}}</p>
+          <p class="p-change-6 mb-2">{{tamTinh|currency:"VND":" "}}Đ</p>
           <p class="p-change-6 mb-2">20.000Đ</p>
           <p class="p-change-6 mb-4">8.000Đ</p>
           <p class="p-change-6" style="font-size: 30px;">478.000Đ</p>

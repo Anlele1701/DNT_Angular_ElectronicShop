@@ -3,10 +3,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <!-- logo -->
-      <img
-        src="assets\client\Shared\logo.png"
-        style="width: 75px; image-rendering: optimizeQuality"
-      />
+      <img src="assets\client\Shared\logo.png" style="width: 75px; image-rendering: optimizeQuality" />
     </a>
 
     <!-- Button cho màn hình mobile -->
@@ -14,8 +11,8 @@
       class="navbar-toggler bg-white"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" 
+      data-bs-target="#navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
@@ -32,13 +29,7 @@
           <a class="nav-link" routerLink="/client/about-us">Về Chúng Tôi</a>
         </li>
         <li class="nav-item dropdown ms-5">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Danh Mục
           </a>
           <ul class="dropdown-menu">
@@ -84,22 +75,16 @@
       <ul class="nav">
         <li class="nav-item me-3">
           <a class="nav-link" aria-current="page" href="#">
-            <i
-              class="fas fa-search fa-lg"
-              style="color: #f1f1f1; font-size: 1.5rem"
-            ></i>
+            <i class="fas fa-search fa-lg" style="color: #f1f1f1; font-size: 1.5rem"></i>
           </a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link" href="#">
-            <i
-              class="fas fa-shopping-bag"
-              style="color: #f1f1f1; font-size: 1.5rem"
-            ></i>
+          <a class="nav-link" [routerLink]="['/client/shopping-cart']" >
+            <i class="fas fa-shopping-bag" style="color: #f1f1f1; font-size: 1.5rem"></i>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="openLogin()">
+          <a class="nav-link" (click)="changeToPersonalPage()">
             <i
               class="fas fa-user-circle"
               style="color: #f1f1f1; font-size: 1.5rem"

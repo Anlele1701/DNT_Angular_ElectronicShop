@@ -1,48 +1,58 @@
 <div style="background: #ffffff; border-radius: 10px solid red; padding: 1rem">
   <h2 style="">QUẢN LÝ HÃNG</h2>
-  <form
-    asp-action="Index"
-    method="get"
-    class="form-inline"
-    style="padding-left: 140px"
-  >
+  <form asp-action="Index" method="get" class="form-inline" style="padding-left: 140px">
     <input type="text" name="SearchString" placeholder="Tìm kiếm sản phẩm" />
 
     <button><i class="fa-solid fa-magnifying-glass"></i>Search</button>
   </form>
-<hr>
+  <hr>
 
-<div>
-  <h4>THÊM HÃNG HỢP TÁC</h4>
-  <form>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Tên hãng hợp tác mới:</label>
-      <input type="text" class="form-control inputNewBrand" placeholder="Nhập tên hãng hợp tác mới" [(ngModel)]="brandName" name="brandName">
-      <button id="btnNewBrand" (click)="createNewBrand()">Tạo hãng mới</button>
-    </div>
-  </form>
-</div>
+  <div>
+    <h4>THÊM HÃNG HỢP TÁC</h4>
+    <form>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Tên hãng hợp tác mới:</label>
+        <input type="text" class="form-control inputNewBrand" placeholder="Nhập tên hãng hợp tác mới"
+          [(ngModel)]="brandName" name="brandName">
+        <button id="btnNewBrand" (click)="createNewBrand()">Tạo hãng mới</button>
+      </div>
+    </form>
+  </div>
 
-<hr>
-<div>
-  <h4>DANH SÁCH CÁC HÃNG</h4>
-  <table class="table table-bordered" style="border-width: thick">
-    <thead class="thead-dark" style="background: black; color: snow">
-      <tr style="text-align: center">
-        <th>Tên hãng</th>
-        <th>Các loại sản phẩm</th>
-        <th style="width: 30%;">Hành động</th>
+  <hr>
+  <div>
+    <h4>DANH SÁCH CÁC HÃNG</h4>
+    <table class="table table-bordered" style="border-width: thick">
+      <thead class="thead-dark" style="background: black; color: snow">
+        <tr style="text-align: center">
+          <th>Tên hãng</th>
+          <th>Các loại sản phẩm</th>
+          <th style="width: 30%;">Hành động</th>
+        </tr>
+      </thead>
+      <tr style="text-align: center" *ngFor="let itemHang of brandList$ | async">
+        <td>{{itemHang.tenNhaSX}}</td>
+        <td>{{returnStringLoaiSP(itemHang.cacLoaiSP)}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Thêm loại sản
+            phẩm</button>
+          <button type="button" class="btn btn-outline-warning"><i class="fa-solid fa-square-pen"></i> Chỉnh
+            sửa</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteBrand(itemHang._id)"><i
+              class="fa fa-trash"></i> Xóa sản phẩm</button>
+        </td>
       </tr>
-    </thead>
-    <tr style="text-align: center" *ngFor="let itemHang of brandList">
-      <td>{{itemHang.tenNhaSX}}</td>
-      <td>{{returnStringLoaiSP(itemHang.cacLoaiSP)}}</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Thêm loại sản phẩm</button>
-        <button type="button" class="btn btn-outline-warning"><i class="fa-solid fa-square-pen"></i> Chỉnh sửa</button>
-        <button type="button" class="btn btn-outline-danger" (click)="deleteBrand(itemHang._id)"><i class="fa fa-trash"></i> Xóa sản phẩm</button>
-      </td>
-    </tr>
-  </table>
-</div>
-</div>
+      <tr style="text-align: center" *ngFor="let itemHang of brandList">
+        <td>{{itemHang.tenNhaSX}}</td>
+        <td>{{returnStringLoaiSP(itemHang.cacLoaiSP)}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary"><i class="fa-solid fa-circle-info"></i> Thêm loại sản
+            phẩm</button>
+          <button type="button" class="btn btn-outline-warning"><i class="fa-solid fa-square-pen"></i> Chỉnh
+            sửa</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteBrand(itemHang._id)"><i
+              class="fa fa-trash"></i> Xóa sản phẩm</button>
+        </td>
+      </tr>
+    </table>
+  </div>
