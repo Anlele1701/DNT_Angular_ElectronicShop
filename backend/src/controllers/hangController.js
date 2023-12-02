@@ -15,15 +15,13 @@ var getAllHangFromCate=async(req,res)=>{
 }
 var deleteHang = async(req,res)=>{
     console.log("Đã xóa" + req.params.id);
-    var result = await hangService.deleteHang(req.params.id);
-    if (result)
-    {
-        res.send({"status":true, "message":"Xóa thành công"});
-    }
-    else
-    {
-        res.send({"status":false, "message":"Xóa thất bại"});
-    }
+    try {
+        await hangService.deleteHang(req.params.id);
+        res.send({ "status": true, "message": "Xóa thành công" });
+      } catch (error) {
+        console.error(error);
+        res.status(400).send({ "status": false, "message": error.message });
+      }
 }
 
 var getHang= async(req,res)=>{

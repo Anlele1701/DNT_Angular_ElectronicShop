@@ -1,4 +1,24 @@
 <body>
+  <!-- TOAST -->
+  <div
+    *ngIf="deleted"
+    class="toast align-items-center text-bg-primary border-0 show top-20 end-0"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    data-bs-autohide="true"
+    style="position: absolute"
+  >
+    <div class="d-flex">
+      <div class="toast-body">Đã xóa hãng thành công!</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
   <div class="box">
     <h2>QUẢN LÝ HÃNG</h2>
     <form asp-action="Index" method="get">
@@ -11,7 +31,7 @@
     </form>
 
     <button class="btnCreate btn btn-dark" (click)="toggleAddForm()">
-      THÊM LOẠI SẢN PHẨM MỚI
+      THÊM HÃNG MỚI
     </button>
     <div *ngIf="AddFormVisible" class="d-flex mt-2 w-50">
       <input
@@ -29,7 +49,7 @@
   <!-- Danh sách -->
   <div class="box mt-3">
     <div style="position: relative">
-      <h3 class="text-center">DANH SÁCH CÁC LOẠI SẢN PHẨM</h3>
+      <h3 class="text-center">DANH SÁCH CÁC HÃNG</h3>
       <button
         class="btn btn-dark"
         style="position: absolute; right: 20px; top: 3px"
@@ -51,7 +71,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let itemHang of brandList">
+            <tr *ngFor="let itemHang of brandList$ | async">
               <td>{{ itemHang.tenNhaSX }}</td>
               <td>{{ returnStringLoaiSP(itemHang.cacLoaiSP) }}</td>
               <td>
@@ -65,14 +85,14 @@
                   type="button"
                   class="btn btn-outline-danger"
                   data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
+                  [attr.data-bs-target]="'#exampleModal' + itemHang._id"
                 >
                   <i class="fa fa-trash"></i> Xóa sản phẩm
                 </button>
                 <!-- Modal -->
                 <div
                   class="modal fade"
-                  id="exampleModal"
+                  [id]="'exampleModal' + itemHang._id"
                   tabindex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
@@ -101,7 +121,11 @@
                         >
                           Quay lại
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          (click)="deleteBrand(itemHang._id)"
+                        >
                           Xóa hãng
                         </button>
                       </div>

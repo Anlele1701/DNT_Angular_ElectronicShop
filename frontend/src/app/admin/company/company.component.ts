@@ -1,88 +1,63 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgModel } from '@angular/forms';
 import {
+  BehaviorSubject,
   Observable,
-  Subject,
-  catchError,
-  map,
-  takeUntil,
-  throwError,
 } from 'rxjs';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  styleUrls: ['../shared/AdminIndex.css']
+  styleUrls: ['../shared/AdminIndex.css'],
 })
-export class CompanyComponent implements OnInit, OnDestroy {
-  brandList$: Observable<any[]>;
-  private destroy$: Subject<void> = new Subject<void>();
+export class CompanyComponent implements OnInit {
   stringLoaiSP: string = '';
   constructor(private http: HttpClient) {}
   brandName: string = '';
   brandList: any[] = [];
+  deleted: boolean = false;
+  brandList$: Observable<any[]>;
+
   readonly API = 'http://localhost:3800';
   createNewBrand() {
     this.http
       .post(this.API + '/hang/createNewHang', { tenHang: this.brandName })
-      .pipe(
-        catchError((error) => {
-          console.error('Lỗi khi tạo mới thương hiệu:', error);
-          return throwError(error);
-        })
-      )
-      .subscribe(() => {
+      .subscribe((data: any) => {
         console.log(this.brandName);
-        this.refreshBrandList();
+        this.showAllBrand();
       });
   }
-  private refreshBrandList() {
-    this.showAllBrand(); // Cập nhật brandList$ sau khi tạo mới hoặc xóa một thương hiệu
-  }
-
   showAllBrand() {
-    this.brandList$ = this.http.get(this.API + '/hang/getAllHang').pipe(
-      map((data: any) => {
-        console.log(data);
-        return data;
-      }),
-      catchError((error) => {
-        console.error('Lỗi khi lấy danh sách thương hiệu:', error);
-        return throwError(error);
-      }),
-      takeUntil(this.destroy$)
-    );
+    const brandListSubject = new BehaviorSubject<any[]>([]);
+    this.http.get(this.API + '/hang/getAllHang').subscribe((data: any) => {
+      brandListSubject.next(data);
+    });
+    this.brandList$ = brandListSubject.asObservable();
   }
   deleteBrand(idSP) {
     this.http
       .delete(this.API + '/hang/delete/' + idSP)
-      .pipe(
-        catchError((error) => {
-          console.error('Lỗi khi xóa thương hiệu:', error);
-          return throwError(error);
-        })
-      )
-      .subscribe(() => {
-        this.refreshBrandList();
+      .subscribe((data: any) => {
+        if (data.status) {
+          console.log('Xoa thanh cong ');
+          this.showAllBrand();
+          this.deleted = true;
+        } else {
+          console.log('Xoa that bai');
+        }
       });
   }
-
   ngOnInit(): void {
     this.showAllBrand();
   }
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-   // FUNCTIONS
-   AddFormVisible: boolean = false;
+  // FUNCTIONS
+  AddFormVisible: boolean = false;
 
-   toggleAddForm() {
-     this.AddFormVisible = !this.AddFormVisible;
-   }
-    hideAddForm() {
-     this.AddFormVisible = false;
-   }
+  toggleAddForm() {
+    this.AddFormVisible = !this.AddFormVisible;
+  }
+  hideAddForm() {
+    this.AddFormVisible = false;
+  }
   returnStringLoaiSP(itemHang) {
     this.stringLoaiSP = '';
     itemHang.forEach((item) => {
