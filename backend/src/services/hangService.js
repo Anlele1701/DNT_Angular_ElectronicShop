@@ -81,6 +81,21 @@ var getHang = async (idHang) => {
     console.log(error);
   }
 };
+var updateHang = async(id, hangDetails) => {
+  console.log("BOdy" + hangDetails);
+  return new Promise((resolve, reject) => {
+    hangModel.findByIdAndUpdate(id, hangDetails, { new: true })
+    .exec()
+    .then(result=>{
+      resolve(result)
+      return result;
+    })
+    .catch(error =>{
+      reject(error);
+    })
+  });
+};
+
 module.exports = {
   deleteHang,
   createHang,
@@ -88,4 +103,5 @@ module.exports = {
   getAllHangFromCate,
   findIDHang,
   getHang,
+  updateHang,
 };

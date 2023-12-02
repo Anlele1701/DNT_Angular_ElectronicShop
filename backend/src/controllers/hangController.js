@@ -24,9 +24,21 @@ var deleteHang = async(req,res)=>{
 
       }
 }
-
 var getHang= async(req,res)=>{
     var infoHang=await hangService.getHang(req.params.idHang)
     res.send(infoHang)
 }
-module.exports={createNewHang,getAllHang,getAllHangFromCate, deleteHang, getHang}
+var updateHang = async(req,res)=>{
+    console.log(req.params.id); 
+    console.log(req.body);
+    var result=await hangService.updateHang(req.params.id, req.body);
+    if (result)
+    {
+        res.send({"status": true, "message":"Updated"})
+    }
+    else
+    {
+        res.send({"status":false, "message":"Wat the fuck"})
+    }
+}
+module.exports={createNewHang,getAllHang,getAllHangFromCate, deleteHang, getHang, updateHang}

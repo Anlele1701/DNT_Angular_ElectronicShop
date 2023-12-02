@@ -95,12 +95,60 @@
               <td>{{ itemHang.tenNhaSX }}</td>
               <td>{{ returnStringLoaiSP(itemHang.cacLoaiSP) }}</td>
               <td>
-                <button type="button" class="btn btn-outline-primary">
-                  <i class="fa-solid fa-circle-info"></i> Thêm loại sản phẩm
-                </button>
-                <button type="button" class="btn btn-outline-warning">
+                <!-- CHỈNH SỬA HÃNG -->
+                <button
+                  type="button"
+                  class="btn btn-outline-warning me-2"
+                  data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#editModal' + itemHang._id"
+                >
                   <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
                 </button>
+                <!-- MODAL EDIT -->
+                <div
+                  class="modal fade"
+                  [id]="'editModal' + itemHang._id"
+                  tabindex="-1"
+                  aria-labelledby="editModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Chỉnh sửa sản phẩm
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        Bạn có chắc là bạn muốn xóa {{ itemHang.tenNhaSX }}
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Quay lại
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-bs-dismiss="modal"
+                        >
+                          Cập nhật Hãng
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- XÓA HÃNG -->
                 <button
                   type="button"
                   class="btn btn-outline-danger"
@@ -109,7 +157,7 @@
                 >
                   <i class="fa fa-trash"></i> Xóa sản phẩm
                 </button>
-                <!-- Modal -->
+                <!-- Modal DELETE -->
                 <div
                   class="modal fade"
                   [id]="'exampleModal' + itemHang._id"

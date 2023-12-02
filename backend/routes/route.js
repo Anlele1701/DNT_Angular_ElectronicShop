@@ -16,6 +16,7 @@ router
   .post(hangController.getAllHangFromCate); //lấy danh sách các hãng từ loại sp
 router.route("/hang/delete/:id").delete(hangController.deleteHang);
 router.route("/hang/getHang/:idHang").get(hangController.getHang); //lấy thông tin hãng
+router.route("/hang/update/:id").patch(hangController.updateHang); //Cập nhật thông tin của hãng
 
 //LOẠI SẢN PHẨM
 router.route("/loaisp/countLoaiSP").get(loaiSPController.countLoaiSP); //lấy số lượng loại sản phẩm

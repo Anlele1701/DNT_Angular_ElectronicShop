@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {
-  BehaviorSubject,
-  Observable,
-} from 'rxjs';
+import { BehaviorSubject, Observable, flatMap } from 'rxjs';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -15,18 +12,19 @@ export class CompanyComponent implements OnInit {
   brandName: string = '';
   brandList: any[] = [];
   deleted: boolean;
-  notdelted:boolean;
+  notdelted: boolean;
   brandList$: Observable<any[]>;
 
   readonly API = 'http://localhost:3800';
   createNewBrand() {
     this.http
-      .post(this.API + '/hang/createNewHang', { tenHang: this.brandName })
-      .subscribe((data: any) => {
-        console.log(this.brandName);
-        this.showAllBrand();
-      });
-  }
+    .post(this.API + '/hang/createNewHang', { tenHang: this.brandName })
+    .pipe(
+    flatMap(async () => this.showAllBrand())
+    )
+    .subscribe((data: any) => {this.showAllBrand()
+    });
+    }
   showAllBrand() {
     const brandListSubject = new BehaviorSubject<any[]>([]);
     this.http.get(this.API + '/hang/getAllHang').subscribe((data: any) => {
@@ -41,10 +39,9 @@ export class CompanyComponent implements OnInit {
         if (data.status) {
           this.showAllBrand();
           this.deleted = true;
-        } 
-        else {  
-          console.log(data.status)
-          this.notdelted= true;      
+        } else {
+          console.log(data.status);
+          this.notdelted = true;
         }
       });
   }
