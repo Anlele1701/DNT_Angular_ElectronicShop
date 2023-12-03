@@ -24,13 +24,15 @@ router
   .route("/loaisp/createNewLoaiSP")
   .post(loaiSPController.createnewLoaiSPtoHang); //thêm loại sp vào hãng
 router.route("/loaisp/createLoaiSP").post(loaiSPController.createLoaiSP); //tạo loại sản phẩm mới
+router.route("/loaisp/deleteLoaiSP/:id").delete(loaiSPController.deleteLoaiSP); //xóa loại sản phẩm
+router.route("/loaisp/updateLoaiSP/:id").patch(loaiSPController.updateLoaiSP); // Update loại sản phẩm
 // SẢN PHẨM
 router.route("/sanpham/getAllSanPham").post(sanPhamController.getAllProduct); //lấy danh sách sản phẩm theo loại sản phẩm - admin
 router
   .route("/sanpham/getAllSanPham/:loaiSP")
   .get(sanPhamController.getAllSanPham); //lấy danh sách sản phẩm theo loại sp - customer
 router.route("/sanpham/getSP/:idSP").get(sanPhamController.getSP); //lấy thông tin sản phẩm
-router.route("/sanpham/countSP").get(sanPhamController.countSP);// lấy số lượng sản phẩm
+router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số lượng sản phẩm
 
 //KHÁCH HÀNG
 router.route("/khachhang/dangKy").post(khachHangController.dangKy); //đăng ký tài khoản
