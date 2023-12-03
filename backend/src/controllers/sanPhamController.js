@@ -96,4 +96,4 @@ var deleteProduct=async(req,res)=>{
     }
 }
 
-module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct, getAllSanPham, getSP, editProduct, deleteProduct}
+module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct, getAllSanPham, getSP, editProduct, deleteProduct, countSP}

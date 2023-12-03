@@ -78,7 +78,7 @@
           </a>
         </li>
         <li class="nav-item" *ngIf="checkLogin()">
-          <a class="nav-link" (click)="openLogin('500ms', '500ms')">
+          <a class="nav-link" (click)="changeToPersonalPage()">
             <i
               class="fas fa-user-circle"
               style="color: #f1f1f1; font-size: 1.5rem"
@@ -86,7 +86,7 @@
           </a>
         </li>
         <li class="nav-item" *ngIf="!checkLogin()">
-          <a class="nav-link" (click)="changeToLoginPage()">
+          <a class="nav-link" (click)="openLogin('500ms', '500ms')">
             <p>Đăng nhập</p>
           </a>
         </li>

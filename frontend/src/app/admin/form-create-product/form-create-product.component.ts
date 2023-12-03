@@ -1,6 +1,7 @@
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form-create-product',
@@ -13,10 +14,9 @@ export class FormCreateProductComponent implements OnInit{
   product:FormData
   listHang:string[]=[]
   tenLoaiSP:string=''
-  constructor(private http:HttpClient, private route:ActivatedRoute, private productRoute:Router){
-    this.route.paramMap.subscribe(params=>{
-      this.tenLoaiSP=params.get('nameProduct')
-    })
+  constructor(@Inject(MAT_DIALOG_DATA)public data:any,private http:HttpClient, private route:ActivatedRoute, private productRoute:Router){
+    console.log(this.data)
+    this.tenLoaiSP=this.data
   }
   readonly API="http://localhost:3800/"
   getAllHang(){

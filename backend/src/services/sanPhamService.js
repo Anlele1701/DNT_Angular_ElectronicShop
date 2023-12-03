@@ -277,4 +277,4 @@ var deleteProduct=async(idSP, loaiSP, tenHang)=>{
     await sanPhamModel.findByIdAndDelete(idSP)
 }
 
-module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct, getAllSanPham, getSP, editSanPham, deleteProduct}
+module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct, getAllSanPham, getSP, editSanPham, deleteProduct, countSP}
