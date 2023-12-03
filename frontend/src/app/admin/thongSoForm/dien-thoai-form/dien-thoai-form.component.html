@@ -1,57 +1,80 @@
-<div style="width: 50%;">
+<div class="popup">
   <form (submit)="sendDataToFatherComponent()">
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Tên sản phẩm:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.tenSP" name="dienthoai.tenSP">
+    <h3 class="text-start fw-semibold pt-2">Thêm mới điện thoại</h3>
+    <hr>
+    <div class="row row-cols-2">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Tên sản phẩm:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.tenSP"
+          name="dienthoai.tenSP">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mô tả 1:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.moTa1"
+          name="dienthoai.moTa1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mô tả 2:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.moTa2"
+          name="dienthoai.moTa2">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mô tả 3:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.moTa3"
+          name="dienthoai.moTa3">
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Mô tả 1:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.moTa1" name="dienthoai.moTa1">
+    <div class="row row-cols-4">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Số lượng</label>
+        <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.soLuong"
+          name="dienthoai.soLuong">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Gía tiền:</label>
+        <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.giaTien"
+          name="dienthoai.giaTien">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Màn hình:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.manHinh"
+          name="dienthoai.thongSo.manHinh">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Camere trước:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.cameraTruoc"
+          name="dienthoai.thongSo.cameraTruoc">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Camera sau:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.cameraSau"
+          name="dienthoai.thongSo.cameraSau">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">CPU:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.CPU"
+          name="dienthoai.thongSo.CPU">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Bộ nhớ:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.boNho"
+          name="dienthoai.thongSo.boNho">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Hệ điều hành:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.heDieuHanh"
+          name="dienthoai.thongSo.heDieuHanh">
+      </div>
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Hình ảnh (tối đa 3 hình):</label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*"
+          (change)="getImage($event)">
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Mô tả 2:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.moTa2" name="dienthoai.moTa2">
+    <hr>
+    <div class="text-center float-end">
+      <button mat-dialog-close class="btn btn-danger me-3">Cancel</button>
+      <button type="submit" class="btn btn-primary me-3">Submit</button>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Mô tả 3:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.moTa3" name="dienthoai.moTa3">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Số lượng</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.soLuong" name="dienthoai.soLuong">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Gía tiền:</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.giaTien" name="dienthoai.giaTien">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Màn hình:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.manHinh" name="dienthoai.thongSo.manHinh">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Camere trước:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.cameraTruoc" name="dienthoai.thongSo.cameraTruoc">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Camera sau:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.cameraSau" name="dienthoai.thongSo.cameraSau">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">CPU:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.CPU" name="dienthoai.thongSo.CPU">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Bộ nhớ:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.boNho" name="dienthoai.thongSo.boNho">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Hệ điều hành:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="dienthoai.thongSo.heDieuHanh" name="dienthoai.thongSo.heDieuHanh">
-    </div>
-    <div class="mb-3">
-      <label for="formFileMultiple" class="form-label">Hình ảnh (tối đa 3 hình):</label>
-      <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*" (change)="getImage($event)">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  </div>
+</div>
