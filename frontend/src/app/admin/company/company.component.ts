@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, flatMap } from 'rxjs';
 @Component({
@@ -14,6 +14,10 @@ export class CompanyComponent implements OnInit {
   deleted: boolean;
   notdelted: boolean;
   brandList$: Observable<any[]>;
+  tenNhaSX: string="";
+  brandID: any;
+  allHang: string[]=["Điện Thoại","Màn Hình","Laptop","Bàn Phím","Chuột","Tai Nghe"];
+  cacLoaiSP: { [key: string]: boolean } = {};
 
   readonly API = 'http://localhost:3800';
   createNewBrand() {
@@ -44,6 +48,23 @@ export class CompanyComponent implements OnInit {
           this.notdelted = true;
         }
       });
+  }
+  updateBrand(data:any){
+    this.tenNhaSX = data.tenNhaSX;
+    this.brandID = data._id;   
+   this.cacLoaiSP= data.cacLoaiSP;
+
+  }
+  updateDB(){
+    let data ={
+      "tenNhaSX":this.tenNhaSX,
+      "cacLoaiSP": this.cacLoaiSP
+    }
+    this.http.patch(this.API+'/hang/update/'+this.brandID, data).subscribe((result)=>{
+      console.log(result);
+      alert("Da capnhat");
+      this.showAllBrand();
+    })
   }
   ngOnInit(): void {
     this.showAllBrand();
