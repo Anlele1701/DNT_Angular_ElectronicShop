@@ -143,7 +143,7 @@ const updateLoaiSP = async (req) => {
 
     return {
       status: 200,
-      message: `Loại sản phẩm đã cập nhật ${updateLSP}`,
+      message: `Loại sản phẩm đã cập nhật ${updateLSP.tenLoai}`,
       updateLSP,
     };
   } catch (e) {

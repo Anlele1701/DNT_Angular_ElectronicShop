@@ -25,7 +25,7 @@ export class CategoryComponent implements OnInit {
   showAllCategories() {
     this.http.get(this.API + '/loaisp/countLoaiSP').subscribe((data: any) => {
       this.listLoaiSP = data.listLoaiSP;
-      console.log(data);
+      //console.log(data);
     });
   }
 
@@ -68,7 +68,7 @@ export class CategoryComponent implements OnInit {
     this.http
       .patch(this.API + '/loaisp/updateLoaiSP/' + idLSP, data)
       .subscribe((data: any) => {
-        console.log(data);
+        //console.log(data);
         if (data.status) {
           alert('Cập nhật thành công!');
         } else {
