@@ -39,7 +39,7 @@
       ></button>
     </div>
   </div>
-
+  <!-- TITLE -->
   <div class="box">
     <h2>QUẢN LÝ HÃNG</h2>
     <form asp-action="Index" method="get">
@@ -183,6 +183,7 @@
                           type="button"
                           class="btn btn-primary"
                           data-bs-dismiss="modal"
+                          (click)="updateDB()"
                         >
                           Cập nhật Hãng
                         </button>

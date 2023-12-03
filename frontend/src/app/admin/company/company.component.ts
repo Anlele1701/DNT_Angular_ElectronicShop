@@ -52,19 +52,26 @@ export class CompanyComponent implements OnInit {
   updateBrand(data:any){
     this.tenNhaSX = data.tenNhaSX;
     this.brandID = data._id;   
-   this.cacLoaiSP= data.cacLoaiSP;
-
+    this.allHang.forEach((item)=>{
+      this.cacLoaiSP[item]=data.cacLoaiSP.includes(item);
+    })
   }
   updateDB(){
+    var selectedLoaiSP = Object.keys(this.cacLoaiSP).filter((key) => this.cacLoaiSP[key]);
     let data ={
-      "tenNhaSX":this.tenNhaSX,
-      "cacLoaiSP": this.cacLoaiSP
-    }
-    this.http.patch(this.API+'/hang/update/'+this.brandID, data).subscribe((result)=>{
+      "tenNhaSX": this.tenNhaSX,
+      "cacLoaiSP": selectedLoaiSP,
+    };
+    this.http.patch(this.API+'/hang/update'+"/"+this.brandID, data).subscribe((result)=>{
       console.log(result);
-      alert("Da capnhat");
+      alert("Cập nhật thành công!");
       this.showAllBrand();
-    })
+    },
+    (error) => {
+      console.error("Error updating data:", error);
+    }
+    )
+    
   }
   ngOnInit(): void {
     this.showAllBrand();
