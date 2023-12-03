@@ -7,7 +7,7 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   constructor(private router:Router, public popUp: MatDialog, private userService: UserServiceService) {}
@@ -15,13 +15,17 @@ export class HeaderComponent implements OnInit {
 
   }
   reloadCategory(loaiSP) {
-    this.router.navigate(['/client/category',loaiSP]).then(()=>{
-      window.location.reload()
+    this.router.navigate(['/client/category', loaiSP]).then(() => {
+      window.location.reload();
     });
   }
-  openLogin():void
-  {
-    const popup = this.popUp.open(LoginRegisComponent,{
+  openLogin(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    const popup = this.popUp.open(LoginRegisComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
     });
     popup.afterClosed().subscribe(result =>{
       console.log(result);

@@ -39,6 +39,7 @@ import { ClientLayoutComponent } from './client/client-layout/client-layout.comp
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,12 +71,11 @@ import { EditProductComponent } from './admin/product/edit-product/edit-product.
     VerifyEmailComponent,
     VerifyNotiComponent,
     HomepageComponent,
-    ClientLayoutComponent,
-    ForgotPasswordComponent,
     ResetComponent,
     EditProductComponent,
+    ForgotPasswordComponent,
+    ClientLayoutComponent
   ],
-
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -84,7 +84,7 @@ import { EditProductComponent } from './admin/product/edit-product/edit-product.
     HttpClientModule,
     NgxPaginationModule,
     MatDialogModule,
-    NoopAnimationsModule,
+    HighchartsChartModule,
     ReactiveFormsModule,
   ],
   providers: [],

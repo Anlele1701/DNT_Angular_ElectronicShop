@@ -118,6 +118,20 @@ var dangNhap = async (req) => {
   }
 };
 
+var countKH = async() =>{
+  
+  return new Promise(function myFn(resolve, reject)
+  {
+      khachHangModel.countDocuments({})
+      .then((count) => {
+        resolve(count);
+        console.log(count);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
+}
 var checkAccountValid = (account) => {
   if (
     /[a-zA-Z]/.test(account.name) == false ||
@@ -243,4 +257,4 @@ function verifyToken(token) {
     return null;
   }
 }
-module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword };
+module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword, countKH};

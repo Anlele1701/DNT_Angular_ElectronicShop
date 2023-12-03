@@ -1,78 +1,89 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgModel } from '@angular/forms';
-import {
-  Observable,
-  Subject,
-  catchError,
-  map,
-  takeUntil,
-  throwError,
-} from 'rxjs';
+import { BehaviorSubject, Observable, flatMap } from 'rxjs';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css'],
+  styleUrls: ['../shared/AdminIndex.css'],
 })
-export class CompanyComponent implements OnInit, OnDestroy {
-  brandList$: Observable<any[]>;
-  private destroy$: Subject<void> = new Subject<void>();
+export class CompanyComponent implements OnInit {
   stringLoaiSP: string = '';
   constructor(private http: HttpClient) {}
   brandName: string = '';
   brandList: any[] = [];
+  deleted: boolean;
+  notdelted: boolean;
+  brandList$: Observable<any[]>;
+  tenNhaSX: string="";
+  brandID: any;
+  allHang: string[]=["Điện Thoại","Màn Hình","Laptop","Bàn Phím","Chuột","Tai Nghe"];
+  cacLoaiSP: { [key: string]: boolean } = {};
+
   readonly API = 'http://localhost:3800';
   createNewBrand() {
     this.http
-      .post(this.API + '/hang/createNewHang', { tenHang: this.brandName })
-      .pipe(
-        catchError((error) => {
-          console.error('Lỗi khi tạo mới thương hiệu:', error);
-          return throwError(error);
-        })
-      )
-      .subscribe(() => {
-        console.log(this.brandName);
-        this.refreshBrandList();
-      });
-  }
-  private refreshBrandList() {
-    this.showAllBrand(); // Cập nhật brandList$ sau khi tạo mới hoặc xóa một thương hiệu
-  }
-
+    .post(this.API + '/hang/createNewHang', { tenHang: this.brandName })
+    .pipe(
+    flatMap(async () => this.showAllBrand())
+    )
+    .subscribe((data: any) => {this.showAllBrand()
+    });
+    }
   showAllBrand() {
-    this.brandList$ = this.http.get(this.API + '/hang/getAllHang').pipe(
-      map((data: any) => {
-        console.log(data);
-        return data;
-      }),
-      catchError((error) => {
-        console.error('Lỗi khi lấy danh sách thương hiệu:', error);
-        return throwError(error);
-      }),
-      takeUntil(this.destroy$)
-    );
+    const brandListSubject = new BehaviorSubject<any[]>([]);
+    this.http.get(this.API + '/hang/getAllHang').subscribe((data: any) => {
+      brandListSubject.next(data);
+    });
+    this.brandList$ = brandListSubject.asObservable();
   }
   deleteBrand(idSP) {
     this.http
       .delete(this.API + '/hang/delete/' + idSP)
-      .pipe(
-        catchError((error) => {
-          console.error('Lỗi khi xóa thương hiệu:', error);
-          return throwError(error);
-        })
-      )
-      .subscribe(() => {
-        this.refreshBrandList();
+      .subscribe((data: any) => {
+        if (data.status) {
+          this.showAllBrand();
+          this.deleted = true;
+        } else {
+          console.log(data.status);
+          this.notdelted = true;
+        }
       });
   }
-
+  updateBrand(data:any){
+    this.tenNhaSX = data.tenNhaSX;
+    this.brandID = data._id;   
+    this.allHang.forEach((item)=>{
+      this.cacLoaiSP[item]=data.cacLoaiSP.includes(item);
+    })
+  }
+  updateDB(){
+    var selectedLoaiSP = Object.keys(this.cacLoaiSP).filter((key) => this.cacLoaiSP[key]);
+    let data ={
+      "tenNhaSX": this.tenNhaSX,
+      "cacLoaiSP": selectedLoaiSP,
+    };
+    this.http.patch(this.API+'/hang/update'+"/"+this.brandID, data).subscribe((result)=>{
+      console.log(result);
+      alert("Cập nhật thành công!");
+      this.showAllBrand();
+    },
+    (error) => {
+      console.error("Error updating data:", error);
+    }
+    )
+    
+  }
   ngOnInit(): void {
     this.showAllBrand();
   }
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+  // FUNCTIONS
+  AddFormVisible: boolean = false;
+
+  toggleAddForm() {
+    this.AddFormVisible = !this.AddFormVisible;
+  }
+  hideAddForm() {
+    this.AddFormVisible = false;
   }
   returnStringLoaiSP(itemHang) {
     this.stringLoaiSP = '';
