@@ -125,6 +125,7 @@ img.nextAnimation {
   color: #fff;
   font-size: 28px;
   display: none;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .descriptions-text p.p-active {
   display: block;

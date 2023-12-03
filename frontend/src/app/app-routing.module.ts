@@ -71,7 +71,7 @@ const routes: Routes = [
   { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation:'reload'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

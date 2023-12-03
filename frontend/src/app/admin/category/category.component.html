@@ -6,13 +6,15 @@
       <input
         type="text"
         name="SearchString"
-        placeholder="Tìm kiếm qua gmail hoặc tên"
+        placeholder="Tìm kiếm qua tên loại sản phẩm"
         class="searchBox form-control"
       />
     </form>
+
     <button class="btnCreate btn btn-dark" (click)="toggleAddForm()">
       THÊM LOẠI SẢN PHẨM MỚI
     </button>
+
     <div *ngIf="AddFormVisible" class="d-flex mt-2 w-50">
       <input
         type="text"
@@ -37,25 +39,6 @@
         Xuất Excel
       </button>
     </div>
-    <!-- <table class="table table-hover table-striped">
-      <thead style="background: rgb(0, 0, 0); color: snow">
-        <tr style="text-align: center">
-          <th>Tên loại sản phẩm</th>
-          <th>Hành động</th>
-        </tr>
-      </thead>
-      <tr style="text-align: center" *ngFor="let item of listLoaiSP">
-        <td>{{ item }}</td>
-        <td>
-          <button type="button" class="btn btn-outline-warning">
-            <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
-          </button>
-          <button type="button" class="btn btn-outline-danger">
-            <i class="fa fa-trash"></i> Xóa
-          </button>
-        </td>
-      </tr>
-    </table> -->
     <!-- List Table -->
     <div class="box mt-3" id="listBox">
       <div class="fixTableHead">
@@ -75,9 +58,53 @@
                 <button type="button" class="btn btn-outline-warning me-2">
                   <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
                 </button>
-                <button type="button" class="btn btn-outline-danger">
+                <button
+                  type="button"
+                  class="btn btn-outline-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="fa fa-trash"></i> Xóa
                 </button>
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Xóa sản phẩm
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        Bạn có chắc là bạn muốn xóa "{{ item }}"
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Quay lại
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Xóa hãng
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </td>
             </tr>
           </tbody>

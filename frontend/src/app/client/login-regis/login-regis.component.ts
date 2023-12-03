@@ -19,7 +19,7 @@ export class LoginRegisComponent {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private UserService: UserServiceService
+    private UserService: UserServiceService,
   ) {}
   readonly API = 'http://localhost:3800/';
   ngAfterViewInit() {
@@ -36,30 +36,35 @@ export class LoginRegisComponent {
     });
   }
 
-  submitFormRegis(){
-    this.http.post(this.API+'khachhang/dangKy',{name:this.name, email:this.email, sdt:this.sdt, password:this.matKhau}).subscribe((data:any)=>{
-      if(data.inValid){
-        console.log(data.inValid)
-      }
-      else if(data.emailExisted)
-      {
-        console.log(data.emailExisted)
-      }
-      else console.log('Success')
-    })
+  submitFormRegis() {
+    this.http
+      .post(this.API + 'khachhang/dangKy', {
+        name: this.name,
+        email: this.email,
+        sdt: this.sdt,
+        password: this.matKhau,
+      })
+      .subscribe((data: any) => {
+        if (data.emailExisted) {
+          console.log(data.emailExisted);
+        } else console.log('Success');
+      });
   }
 
-  submitFormLogin(){
-    this.http.post(this.API+'khachhang/dangNhap',{email:this.email,password:this.matKhau}).subscribe((data:any)=>{
-      if(data.invalid)
-      {
-        console.log(data.invalid)
-      }
-      else{
-        console.log(data)
-        this.UserService.setUser(data)
-        this.router.navigate(['/client/personal']);
-      }
-    })
+  submitFormLogin() {
+    this.http
+      .post(this.API + 'khachhang/dangNhap', {
+        email: this.email,
+        password: this.matKhau,
+      })
+      .subscribe((data: any) => {
+        if (data.invalid) {
+          console.log(data.invalid);
+        } else {
+          console.log(data);
+          this.UserService.setUser(data);
+          this.router.navigate(['/personal']);
+        }
+      });
   }
 }

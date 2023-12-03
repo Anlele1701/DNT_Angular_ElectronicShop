@@ -1,65 +1,90 @@
-<div style="width: 50%;">
+<div class="popup">
   <form (submit)="sendDataToFatherComponent()">
-     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Tên sản phẩm:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.tenSP" name="laptop.tenSP">
+    <h3 class="text-start fw-semibold pt-2">Thêm mới laptop</h3>
+    <hr>
+    <div class="row row-cols-2">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Tên sản phẩm:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.tenSP"
+          name="laptop.tenSP">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mô tả 1:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.moTa1"
+          name="laptop.moTa1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mô tả 2:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.moTa2"
+          name="laptop.moTa2">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mô tả 3:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.moTa3"
+          name="laptop.moTa3">
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Mô tả 1:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.moTa1" name="laptop.moTa1">
+    <div class="row row-cols-4">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Số lượng</label>
+        <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.soLuong"
+          name="laptop.soLuong">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Gía tiền:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.giaTien"
+          name="laptop.giaTien">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">CPU:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.CPU"
+          name="laptop.thongSo.CPU">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Màn hình:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.manHinh"
+          name="laptop.thongSo.manhinh">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">RAM:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.Ram"
+          name="laptop.thongSo.Ram">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Đồ họa:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.doHoa"
+          name="laptop.thongSo.doHoa">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Lưu trữ:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.luuTru"
+          name="laptop.thongSo.luuTru">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Hệ điều hành:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.heDieuHanh"
+          name="laptop.thongSo.heDieuHanh">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">PIN:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.PIN"
+          name="laptop.thongSo.PIN">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Khối lượng:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.khoiLuong"
+          name="laptop.thongSo.khoiLuong">
+      </div>
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Hình ảnh (tối đa 3 hình):</label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*"
+          (change)="getImage($event)">
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Mô tả 2:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.moTa2" name="laptop.moTa2">
+    <hr>
+    <div class="text-center float-end">
+      <button mat-dialog-close class="btn btn-danger me-3">Cancel</button>
+      <button type="submit" class="btn btn-primary me-3">Submit</button>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Mô tả 3:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.moTa3" name="laptop.moTa3">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Số lượng</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.soLuong" name="laptop.soLuong">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Gía tiền:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.giaTien" name="laptop.giaTien">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">CPU:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.CPU" name="laptop.thongSo.CPU">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Màn hình:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.manHinh" name="laptop.thongSo.manhinh">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">RAM:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.Ram" name="laptop.thongSo.Ram">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Đồ họa:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.doHoa" name="laptop.thongSo.doHoa">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Lưu trữ:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.luuTru" name="laptop.thongSo.luuTru">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Hệ điều hành:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.heDieuHanh" name="laptop.thongSo.heDieuHanh">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">PIN:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.PIN" name="laptop.thongSo.PIN">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Khối lượng:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="laptop.thongSo.khoiLuong" name="laptop.thongSo.khoiLuong">
-    </div>
-    <div class="mb-3">
-      <label for="formFileMultiple" class="form-label">Hình ảnh (tối đa 3 hình):</label>
-      <input class="form-control" type="file" id="formFileMultiple"  multiple accept="image/*" (change)="getImage($event)">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  </div>
+</div>
