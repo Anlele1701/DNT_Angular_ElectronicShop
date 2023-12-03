@@ -38,6 +38,7 @@ import { ResetComponent } from './client/login-regis/forgot-password/reset/reset
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HighchartsChartModule } from 'highcharts-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,11 +70,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     VerifyEmailComponent,
     VerifyNotiComponent,
     HomepageComponent,
-    ClientLayoutComponent,
-    ForgotPasswordComponent,
     ResetComponent,
+    ForgotPasswordComponent,
+    ClientLayoutComponent
   ],
-
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -82,7 +82,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     NgxPaginationModule,
     MatDialogModule,
-    NoopAnimationsModule,
+    HighchartsChartModule,
     ReactiveFormsModule,
   ],
   providers: [],

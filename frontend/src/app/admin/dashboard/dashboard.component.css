@@ -12,3 +12,9 @@
 .card-text{
   font-size:20px;
 }
+h5{
+  white-space: nowrap;
+}
+p{
+  white-space: nowrap;
+}

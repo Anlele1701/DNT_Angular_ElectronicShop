@@ -164,5 +164,19 @@ var getSP=async(idSP)=>{
         console.log(error)
     }
 }
+var countSP= async()=>
+{
+    return new Promise(function myFn(resolve, reject)
+    {
+        sanPhamModel.countDocuments({})
+        .then((count) => {
+          resolve(count);
+          console.log(count);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    })
+}
 
-module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct, getAllSanPham, getSP}
+module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct, getAllSanPham, getSP, countSP}

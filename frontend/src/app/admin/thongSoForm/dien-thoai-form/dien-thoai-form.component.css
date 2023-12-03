@@ -1,0 +1,17 @@
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 30px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  transition: all 1.5s ease-in-out;
+  background-color: #fff;
+  padding: 10px 20px;
+}
+@media (max-width: 768px) {
+  * {
+    font-size: 11px;
+  }
+}
