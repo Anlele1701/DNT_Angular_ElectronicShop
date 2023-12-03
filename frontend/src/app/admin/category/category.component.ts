@@ -74,6 +74,7 @@ export class CategoryComponent implements OnInit {
         } else {
           alert('Cập nhật thất bại!');
         }
+        this.newTenLoai = '';
         this.showAllCategories();
       });
   }
