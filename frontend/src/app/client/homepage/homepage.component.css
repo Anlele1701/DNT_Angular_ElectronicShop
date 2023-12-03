@@ -14,6 +14,48 @@ p {
 
 .parallax_scrolling {
     background-color: #464646;
+    color: #EFEFEF;
+    height: auto;
+    padding: 0 !important;
+}
+.prl-left h2 {
+    padding: 0px 0px 0px 10px;
+    font-size: 70px;
+    font-weight: 500;
+    transform: transform 0.5s ease-out;
+}
+.prl-right h2 {
+    display: flex;
+    justify-content: end;
+    padding: 0px 0px 0px 10px;
+    font-size: 70px;
+    font-weight: 500;
+    transform: transform 0.5s ease-out;
+}
+.prl-left {
+    transform: translateX(0%);
+}
+
+    .prl-right {
+    transform: translateX(0%);
+}
+
+.sanpham {
+    padding: 40px 90px 30px 90px;
+    margin-top:10px;
+}
+
+.sanpham a {
+    cursor: pointer;
+    font-size: 20px;
+}
+#hinh-anh {
+    width: 600px;
+    height: 600px;
+}
+#tenSP {
+    font-size: 50px;
+    font-weight: 500;
 }
 
 #banner {
@@ -32,7 +74,13 @@ p {
     padding-top: 8px;
     font-weight: 700;
 }
-
+/* ROWCOLOR */
+#phoneSP{
+    background: radial-gradient(circle at 100% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+}
+#laptopSP{
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+}
 /* DANH MUC */
 .cateBox {
     background: #E6E6E6;
