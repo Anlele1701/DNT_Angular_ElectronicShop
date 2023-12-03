@@ -28,11 +28,15 @@ export class HeaderComponent implements OnInit {
     })
     }
 
-    changeToPersonalPage(){
-      if(this.userService.checkLogin())
-      {
-        this.router.navigate(['/client/personal'])
-      }
-      else this.openLogin()
-    }
+  changeToPersonalPage(){
+    this.router.navigate(['/client/personal'])
+  }
+
+  changeToLoginPage() {
+      this.openLogin()
+  }
+
+  checkLogin(){
+    return this.userService.checkLogin()
+  }
 }

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { API } from 'src/app/services/API.service';
 import { CartService } from 'src/app/services/cartService/cart.service';
 import { cartItem } from 'src/app/services/cartService/cartItem.service';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
@@ -8,17 +10,30 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
   styleUrls: ['./purchase.component.css'],
-  providers: [cartItem]
+  providers: [cartItem, API]
 })
 export class PurchaseComponent implements OnInit{
-  constructor(private userService:UserServiceService, private cartService: CartService, private router: Router){}
+  constructor(private userService:UserServiceService, private cartService: CartService, private router: Router, private http:HttpClient, private api:API){}
   userInfo:any
   cartList:cartItem[]
-  tamTinh: number=0
-  tongSL: number=0
+  userOrder={
+    id:'',
+    hoten:'',
+    sdt:'',
+    address:'',
+    ptTT: 'Thanh toán tiền mặt',
+    tongSL: 0,
+    tamTinh:0,
+    tienKM:20000,
+    thueVAT:0,
+    tongTien:0
+  }
   getUserInfo()
   {
     this.userInfo=this.userService.getUser()
+    this.userOrder.hoten=this.userInfo.hoTen
+    this.userOrder.sdt=this.userInfo.sdt
+    this.userOrder.id=this.userInfo._id
   }
 
   getCartList()
@@ -27,11 +42,23 @@ export class PurchaseComponent implements OnInit{
   }
 
   getTamTinh(){
-    this.tamTinh=this.cartService.updateTongTien()
+    this.userOrder.tamTinh=this.cartService.updateTongTien()
+    this.userOrder.tongTien=this.userOrder.tamTinh
   }
 
   getTongSL(){
-    this.tongSL=this.cartService.updateTongSLMua()
+    this.userOrder.tongSL=this.cartService.updateTongSLMua()
+  }
+
+  thanhToan(){
+    console.log(this.userOrder)
+    console.log(this.cartList)
+    this.http.post(this.api.getAPI()+'/donhang/muaHang',{userOrder:this.userOrder, cartList: this.cartList}).subscribe((data:any)=>{
+      if(data){
+        this.router.navigate(['/client/personal'])
+        this.cartService.deleteAll()
+      }
+    })
   }
 
   ngOnInit(): void {

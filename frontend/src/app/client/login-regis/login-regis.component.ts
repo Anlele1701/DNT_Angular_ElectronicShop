@@ -1,7 +1,7 @@
 import { UserServiceService } from './../../services/userService/user-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-regis',
@@ -58,7 +58,11 @@ export class LoginRegisComponent {
       else{
         console.log(data)
         this.UserService.setUser(data)
-        this.router.navigate(['/client/personal']);
+        let route=this.router.url
+        if(route==='/client/shopping-cart'){
+          this.router.navigate(['/client/purchase'])
+        }
+        else this.router.navigate(['/client/personal'])
       }
     })
   }

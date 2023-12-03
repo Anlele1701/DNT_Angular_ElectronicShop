@@ -45,4 +45,8 @@ router
 router.route("/khachhang/dangNhap").post(khachHangController.dangNhap); //đăng nhập
 router.route("/send-email").post(khachHangController.sendEmail); //Gửi email reset mật khẩu
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
+
+
+//ĐƠN HÀNG
+router.route("/donhang/muaHang").post(donHangController.muaHang)
 module.exports = router;

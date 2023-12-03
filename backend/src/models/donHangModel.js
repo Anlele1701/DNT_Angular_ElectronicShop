@@ -13,6 +13,9 @@ var donHangSchema=new Schema({
             trangThaiTT: {type: String},
             trangThaiGiaoHang: {type:String},
             tongSLMua: {type:Number, int:true},
+            tamTinh: {type:Number},
+            tienKM: {type: Number},
+            thueVAT: {type: Number},
             tongTien: {type: Number},
             CTDH: {type:[
                 {
