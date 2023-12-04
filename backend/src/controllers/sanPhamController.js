@@ -1,16 +1,14 @@
 const { count } = require("../models/hangModel");
-var sanPhamService = require("../services/sanPhamService");
-var getProductsOfCompany = async (req, res) => {
-  var products = await sanPhamService.getProductOfCompany(
-    req.params.tenLoai,
-    req.params.idHang
-  );
-  res.send(products);
-};
-var createNewCateProduct = async (req, res) => {
-  var product = await sanPhamService.createNewCateProduct();
-  res.send(products);
-};
+const { json } = require('body-parser')
+var sanPhamService=require('../services/sanPhamService')
+var getProductsOfCompany=async(req,res)=>{
+    var products=await sanPhamService.getProductOfCompany(req.params.tenLoai,req.params.idHang)
+    res.send(products)
+}
+var createNewCateProduct=async(req,res)=>{
+    var product= await sanPhamService.createNewCateProduct()
+    res.send(products)
+}
 
 var createNewProduct = async (req, res) => {
   try {
@@ -77,3 +75,25 @@ module.exports = {
   getSP,
   countSP,
 };
+
+var editProduct=async(req,res)=>{
+    try{
+        const jsonData=JSON.parse(req.body.product)
+        var editSP=await sanPhamService.editSanPham(jsonData, req.body.loaiSP, req.body.tenHang)
+        res.send(editSP)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+var deleteProduct=async(req,res)=>{
+    try{
+        var deleteSP= sanPhamService.deleteProduct(req.params.idSP, req.params.loaiSP, req.params.tenHang)
+        res.send({success:'success'})
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
+module.exports={getProductsOfCompany,createNewCateProduct, createNewProduct,getAllProduct, getAllSanPham, getSP, editProduct, deleteProduct, countSP}

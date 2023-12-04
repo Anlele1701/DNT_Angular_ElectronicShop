@@ -1,7 +1,7 @@
 import { UserServiceService } from './../../services/userService/user-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-regis',
@@ -51,20 +51,21 @@ export class LoginRegisComponent {
       });
   }
 
-  submitFormLogin() {
-    this.http
-      .post(this.API + 'khachhang/dangNhap', {
-        email: this.email,
-        password: this.matKhau,
-      })
-      .subscribe((data: any) => {
-        if (data.invalid) {
-          console.log(data.invalid);
-        } else {
-          console.log(data);
-          this.UserService.setUser(data);
-          this.router.navigate(['/personal']);
+  submitFormLogin(){
+    this.http.post(this.API+'khachhang/dangNhap',{email:this.email,password:this.matKhau}).subscribe((data:any)=>{
+      if(data.invalid)
+      {
+        console.log(data.invalid)
+      }
+      else{
+        console.log(data)
+        this.UserService.setUser(data)
+        let route=this.router.url
+        if(route==='/client/shopping-cart'){
+          this.router.navigate(['/client/purchase'])
         }
-      });
+        else this.router.navigate(['/client/personal'])
+      }
+    })
   }
 }

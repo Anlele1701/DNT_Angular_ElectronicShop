@@ -41,4 +41,9 @@ export class ProductDetailComponent implements OnInit{
     }
     this.cartService.addItemToCart(this.cartitem)
   }
+
+  buyNow(){
+    this.addItemToCart()
+    this.router.navigate(['/client/shopping-cart'])
+  }
 }
