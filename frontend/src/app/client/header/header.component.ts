@@ -12,7 +12,6 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
 export class HeaderComponent implements OnInit {
   constructor(private router:Router, public popUp: MatDialog, private userService: UserServiceService) {}
   ngOnInit(): void {
-
   }
   reloadCategory(loaiSP) {
     this.router.navigate(['/client/category', loaiSP]).then(() => {
@@ -31,14 +30,9 @@ export class HeaderComponent implements OnInit {
       console.log(result);
     })
     }
-
   changeToPersonalPage(){
     this.router.navigate(['/client/personal'])
   }
-
-  changeToLoginPage() {
-  }
-
   checkLogin(){
     return this.userService.checkLogin()
   }
