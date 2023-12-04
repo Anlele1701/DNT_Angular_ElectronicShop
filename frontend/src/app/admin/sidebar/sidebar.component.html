@@ -1,5 +1,9 @@
 <div>
+
   <body>
+    <div *ngIf="isLoading$ | async" class="overlay">
+      <mat-spinner class="spinner"></mat-spinner>
+    </div>
     <!-- SIDEBAR -->
     <div class="sidebar">
       <!-- Logo -->
@@ -11,60 +15,31 @@
       <!-- Sidebar menu -->
       <div class="main">
         <ul class="menu pt-3">
-          <li
-            class="nav-link mb-3"
-            [ngClass]="{ selectedItem: activeindex === 0 }"
-            (click)="onClickSideBar(0)"
-          >
+          <li class="nav-link mb-3" [ngClass]="{ selectedItem: activeindex === 0 }" (click)="onClickSideBar(0)">
             <a routerLink="/admin/dashboard" (click)="onClickSideBar(0)">
               <span class="icon"> <i class="fa-solid fa-house"></i></span>
               <span class="cateName">Dashboard</span>
             </a>
           </li>
           <!-- customer -->
-          <li
-            class="nav-link mb-3"
-            [ngClass]="{ selectedItem: activeindex === 1 }"
-            (click)="onClickSideBar(1)"
-          >
+          <li class="nav-link mb-3" [ngClass]="{ selectedItem: activeindex === 1 }" (click)="onClickSideBar(1)">
             <a routerLink="/admin/customer">
               <span class="icon"><i class="fa-solid fa-user"></i> </span>
               <span class="cateName">Customers</span>
             </a>
           </li>
           <!-- Dropdown -->
-          <li
-            class="nav-link mb-3"
-            [ngClass]="{ selectedItem: activeindex === 2 }"
-            (click)="onClickSideBar(2)"
-          >
-            <a
-              data-bs-toggle="collapse"
-              href="#collapseExample"
-              role="button"
-              aria-controls="collapseExample"
-            >
-              <span class="icon"
-                ><i class="fa-solid fa-bag-shopping"></i>
+          <li class="nav-link mb-3" [ngClass]="{ selectedItem: activeindex === 2 }" (click)="onClickSideBar(2)">
+            <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-controls="collapseExample">
+              <span class="icon"><i class="fa-solid fa-bag-shopping"></i>
               </span>
               <span class="cateName">Products</span>
-              <i
-                class="fa-solid fa-circle-chevron-down"
-                style="display: none"
-              ></i>
+              <i class="fa-solid fa-circle-chevron-down" style="display: none"></i>
             </a>
             <div>
-              <ul
-                class="collapse mt-2"
-                *ngFor="let item of listLoaiSP"
-                id="collapseExample"
-                style="overflow: hidden"
-              >
+              <ul class="collapse mt-2" *ngFor="let item of listLoaiSP" id="collapseExample" style="overflow: hidden">
                 <li class="dropdown-item">
-                  <a
-                    [routerLink]="['/admin/products', item.tenLoai]"
-                    (click)="changeToProductPage(item.tenLoai)"
-                  >
+                  <a class="" [routerLink]="['/admin/products', item]" (click)="changeToProductPage(item.tenLoai)">
                     {{ item.tenLoai }}
                   </a>
                 </li>
@@ -72,33 +47,21 @@
             </div>
           </li>
           <!-- ORDERS -->
-          <li
-            class="nav-link mb-3"
-            [ngClass]="{ selectedItem: activeindex === 3 }"
-            (click)="onClickSideBar(3)"
-          >
+          <li class="nav-link mb-3" [ngClass]="{ selectedItem: activeindex === 3 }" (click)="onClickSideBar(3)">
             <a routerLink="/orders">
               <span class="icon"><i class="fa-solid fa-receipt"></i> </span>
               <span class="cateName">Orders</span>
             </a>
           </li>
           <!-- ORDERS -->
-          <li
-            class="nav-link mb-3"
-            [ngClass]="{ selectedItem: activeindex === 4 }"
-            (click)="onClickSideBar(4)"
-          >
+          <li class="nav-link mb-3" [ngClass]="{ selectedItem: activeindex === 4 }" (click)="onClickSideBar(4)">
             <a routerLink="/admin/categories">
               <span class="icon"> <i class="fa-brands fa-elementor"></i></span>
               <span class="cateName">Categories</span>
             </a>
           </li>
           <!-- BRANDS -->
-          <li
-            class="nav-link mb-3"
-            [ngClass]="{ selectedItem: activeindex === 5 }"
-            (click)="onClickSideBar(5)"
-          >
+          <li class="nav-link mb-3" [ngClass]="{ selectedItem: activeindex === 5 }" (click)="onClickSideBar(5)">
             <a routerLink="/admin/brands">
               <span class="icon"> <i class="fa-solid fa-building"></i></span>
               <span class="cateName">Brands</span>
@@ -107,8 +70,7 @@
           <li class="nav-link">
             <a routerLink="/categories">
               <span class="icon">
-                <i class="fa-solid fa-right-from-bracket"></i
-              ></span>
+                <i class="fa-solid fa-right-from-bracket"></i></span>
               <span class="cateName">Logout</span>
             </a>
           </li>
