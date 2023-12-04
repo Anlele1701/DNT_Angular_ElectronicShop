@@ -10,6 +10,7 @@ import { LapTopFormComponent } from '../thongSoForm/lap-top-form/lap-top-form.co
 import { ManHinhFormComponent } from '../thongSoForm/man-hinh-form/man-hinh-form.component';
 import { TaiNgheFormComponent } from '../thongSoForm/tai-nghe-form/tai-nghe-form.component';
 import { DienThoaiFormComponent } from '../thongSoForm/dien-thoai-form/dien-thoai-form.component';
+import { LoadDataService } from '../shared/load-data.service';
 
 @Component({
   selector: 'app-product',
@@ -19,7 +20,6 @@ import { DienThoaiFormComponent } from '../thongSoForm/dien-thoai-form/dien-thoa
 export class ProductComponent implements OnInit, OnDestroy {
   nameProduct: String = '';
   listProduct: any[] = [];
-  isLoading = false;
   private unsubscribe$ = new Subject<void>();
 
   readonly API = 'http://localhost:3800/';
@@ -28,7 +28,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private popup: MatDialog
+    private popup: MatDialog,
+    private loadDataService: LoadDataService
   ) {}
   ngOnInit(): void {
     this.loadData();
@@ -44,7 +45,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     });
   }
   getProductFromCate() {
-    this.isLoading = true;
+    this.loadDataService.setLoadingData(true);
     this.http
       .post(this.API + 'sanpham/getAllSanPham', {
         nameProductCate: this.nameProduct,
@@ -59,7 +60,7 @@ export class ProductComponent implements OnInit, OnDestroy {
           console.error('Error fetching data', error);
         },
         () => {
-          this.isLoading = false;
+          this.loadDataService.setLoadingData(false);
         }
       );
   }

@@ -39,6 +39,7 @@ import { ClientLayoutComponent } from './client/client-layout/client-layout.comp
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     HomepageComponent,
     ResetComponent,
     ForgotPasswordComponent,
-    ClientLayoutComponent
+    ClientLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +85,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     MatDialogModule,
     HighchartsChartModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

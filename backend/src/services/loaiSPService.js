@@ -66,6 +66,7 @@ var countLoaiSP = async () => {
     var count = loaiSPModel.find({}).then((document) => {
       var listLoaiSP = [];
       document.forEach((item) => {
+        //listLoaiSP.push(item.tenLoai);
         listLoaiSP.push(item);
       });
       console.log(document.length);
