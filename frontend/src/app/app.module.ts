@@ -38,6 +38,8 @@ import { ResetComponent } from './client/login-regis/forgot-password/reset/reset
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ContactComponent } from './client/contact/contact.component';
+import { YourAccountComponent } from './client/your-account/your-account.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +74,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ClientLayoutComponent,
     ForgotPasswordComponent,
     ResetComponent,
+    ContactComponent,
+    YourAccountComponent,
   ],
 
   imports: [

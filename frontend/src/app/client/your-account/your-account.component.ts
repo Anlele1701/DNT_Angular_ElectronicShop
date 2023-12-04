@@ -1,14 +1,14 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 @Component({
-  selector: 'app-purchase-history',
-  templateUrl: './purchase-history.component.html',
-  styleUrls: ['./purchase-history.component.css'],
+  selector: 'app-your-account',
+  templateUrl: './your-account.component.html',
+  styleUrls: ['./your-account.component.css']
 })
-export class PurchaseHistoryComponent {
+export class YourAccountComponent {
   user:any
-  activeIndex = 1;
+  activeIndex = 2;
   onClickBtnMenu(index: number) {
     this.activeIndex = index;
   }

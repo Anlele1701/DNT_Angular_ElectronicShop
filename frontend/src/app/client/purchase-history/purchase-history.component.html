@@ -18,7 +18,7 @@
             <div class="background-table">
                 <div class="row m-0 p-2">
                     <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
-                    <div class="col-8 text-center d-flex align-items-center h5"><b>Lê Thành Duy Ân</b></div>
+                    <div class="col-8 text-center d-flex align-items-center h5"><b>{{user.hoTen}}</b></div>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -26,8 +26,7 @@
                     </div>
                 </div>
                 <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 0}"
-                    [routerLink]="['/client/personal']"
+                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 0}"[routerLink]="['/client/personal']"
                         (click)="onClickBtnMenu(0)"><i class="fa-solid fa-house"></i><span>Trang chủ</span>
                     </div>
                 </div>
@@ -37,7 +36,7 @@
                     </div>
                 </div>
                 <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 2}"
+                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 2}" [routerLink]="['/client/your-account']"
                         (click)="onClickBtnMenu(2)"><i class="fa-regular fa-face-smile"></i><span>Tài khoản của
                             bạn</span></div>
                 </div>
@@ -46,12 +45,12 @@
                         (click)="onClickBtnMenu(3)"><i class="fa-solid fa-medal"></i><span>Hạng thành viên</span></div>
                 </div>
                 <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 4}"
+                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 4}"[routerLink]="['/client/contact']"
                         (click)="onClickBtnMenu(4)"><i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
                     </div>
                 </div>
                 <div class="row m-0 p-2">
-                    <div class="col-12 p-3 text-center h6"><span>Thoát tài khoản</span>
+                    <div class="col-12 p-3 text-center h6" (click)="logOut()"><span>Thoát tài khoản</span>
                     </div>
                 </div>
             </div>
@@ -123,6 +122,14 @@
                     <div class="col-2">Chuyển khoản</div>
                     <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
                 </div>
+                <div class="row text-center shadow-sm">
+                  <div class="col-3">Laptop LMHT</div>
+                  <div class="col-2">08/09/2023</div>
+                  <div class="col-2">1</div>
+                  <div class="col-2">16.000.000VND</div>
+                  <div class="col-2">Chuyển khoản</div>
+                  <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
+              </div>
             </div>
         </div>
     </div>
