@@ -4,11 +4,13 @@
 }
 .content-tong{
   width: 100%;
-  height: fit-content;
   display: flex;
 }
 /* content-trai */
 .content-trai{
+  width: 70%;
+}
+.khung-xoa{
   width: 70%;
 }
 .khung-1 {
@@ -66,7 +68,7 @@
   padding:0 20px;
 }
 .khung-2 {
-  border-radius: 10px;
+  border-radius: 20px;
   background: #fff;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
   height: 407px;
@@ -150,5 +152,18 @@
   object-fit:contain;
 }
 @media (max-width:1300px) {
-
+  .content-tong{
+    display: block;
+  }
+  .khung-xoa{
+    width: 100%;
+  }
+  .content-trai{
+    width:100%;
+  }
+  .content-phai{
+    width: 100%;
+    padding:0px;
+    margin-top: 30px;
+  }
 }

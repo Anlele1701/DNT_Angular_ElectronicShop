@@ -40,6 +40,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { ContactComponent } from './client/contact/contact.component';
+import { YourAccountComponent } from './client/your-account/your-account.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +76,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
     ResetComponent,
     EditProductComponent,
     ForgotPasswordComponent,
+    ResetComponent,
+    YourAccountComponent,
+    ContactComponent,
     ClientLayoutComponent
   ],
   imports: [
@@ -86,6 +91,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     MatDialogModule,
     HighchartsChartModule,
     ReactiveFormsModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
