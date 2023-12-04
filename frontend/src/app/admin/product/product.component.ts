@@ -10,6 +10,7 @@ import { LapTopFormComponent } from '../thongSoForm/lap-top-form/lap-top-form.co
 import { ManHinhFormComponent } from '../thongSoForm/man-hinh-form/man-hinh-form.component';
 import { TaiNgheFormComponent } from '../thongSoForm/tai-nghe-form/tai-nghe-form.component';
 import { DienThoaiFormComponent } from '../thongSoForm/dien-thoai-form/dien-thoai-form.component';
+import { FormCreateProductComponent } from '../form-create-product/form-create-product.component';
 
 @Component({
   selector: 'app-product',
@@ -76,21 +77,9 @@ export class ProductComponent implements OnInit, OnDestroy {
   //Chuột
   //Tai Nghe
   openForm() {
-    var nameComponent;
-    if (this.nameProduct === 'Màn Hình') {
-      nameComponent = ManHinhFormComponent;
-    } else if (this.nameProduct === 'Laptop') {
-      nameComponent = LapTopFormComponent;
-    } else if (this.nameProduct === 'Điện Thoại') {
-      nameComponent = DienThoaiFormComponent;
-    } else if (this.nameProduct === 'Chuột') {
-      nameComponent = ChuotFormComponent;
-    } else if (this.nameProduct === 'Bàn Phím') {
-      nameComponent = BanPhimFormComponent;
-    } else if (this.nameProduct === 'Tai Nghe') {
-      nameComponent = TaiNgheFormComponent;
-    }
-    this.popup.open(nameComponent);
+    this.popup.open(FormCreateProductComponent,{
+      data:this.nameProduct
+    });
   }
   // functions
   private productListSource = new BehaviorSubject<any[]>([]);
@@ -98,6 +87,17 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   updateProductList(products: any[]) {
     this.productListSource.next(products);
+  }
+
+  changeToEditProductPage(idSP: string){
+    this.router.navigate(['/admin/edit-product/'+this.nameProduct+'/'+idSP])
+  }
+
+  deleteProduct(idSP: string, tenHang: string){
+    this.http.delete(this.API+'sanpham/deleteProduct/'+this.nameProduct+'/'+tenHang+'/'+idSP).subscribe((data:any) => {
+      console.log(data)
+      window.location.reload()
+    });
   }
   AddFormVisible: boolean = false;
 

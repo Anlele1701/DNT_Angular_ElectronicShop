@@ -38,6 +38,7 @@ import { ResetComponent } from './client/login-regis/forgot-password/reset/reset
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     VerifyNotiComponent,
     HomepageComponent,
     ResetComponent,
+    EditProductComponent,
     ForgotPasswordComponent,
     ClientLayoutComponent
   ],

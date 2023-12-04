@@ -1,66 +1,34 @@
 <body>
   <!-- TOAST SUCCESS -->
-  <div
-    *ngIf="deleted"
-    class="toast align-items-center text-bg-primary border-0 show top-20 end-0"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-    data-bs-autohide="true"
-    style="position: absolute"
-  >
+  <div *ngIf="deleted" class="toast align-items-center text-bg-primary border-0 show top-20 end-0" role="alert"
+    aria-live="assertive" aria-atomic="true" data-bs-autohide="true" style="position: absolute">
     <div class="d-flex">
       <div class="toast-body">Đã xóa hãng thành công!</div>
-      <button
-        type="button"
-        class="btn-close btn-close-white me-2 m-auto"
-        data-bs-dismiss="toast"
-        aria-label="Close"
-      ></button>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
     </div>
   </div>
   <!-- TOAST FAILED -->
-  <div
-    *ngIf="notdelted"
-    class="toast align-items-center bg-danger text-white border-0 show top-20 end-0"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-    data-bs-autohide="true"
-    style="position: absolute"
-  >
+  <div *ngIf="notdelted" class="toast align-items-center bg-danger text-white border-0 show top-20 end-0" role="alert"
+    aria-live="assertive" aria-atomic="true" data-bs-autohide="true" style="position: absolute">
     <div class="d-flex">
       <div class="toast-body">Xóa hãng thất bại!</div>
-      <button
-        type="button"
-        class="btn-close btn-close-white me-2 m-auto"
-        data-bs-dismiss="toast"
-        aria-label="Close"
-      ></button>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
     </div>
   </div>
   <!-- TITLE -->
   <div class="box">
     <h2>QUẢN LÝ HÃNG</h2>
     <form asp-action="Index" method="get">
-      <input
-        type="text"
-        name="SearchString"
-        placeholder="Tìm kiếm qua hãng"
-        class="searchBox form-control"
-      />
+      <input type="text" name="SearchString" placeholder="Tìm kiếm qua hãng" class="searchBox form-control" />
     </form>
     <button class="btnCreate btn btn-dark" (click)="toggleAddForm()">
       THÊM HÃNG MỚI
     </button>
     <div *ngIf="AddFormVisible" class="d-flex mt-2 w-50">
-      <input
-        type="text"
-        class="form-control inputNewBrand me-2"
-        placeholder="Nhập tên hãng hợp tác mới"
-        [(ngModel)]="brandName"
-        name="brandName"
-      />
+      <input type="text" class="form-control inputNewBrand me-2" placeholder="Nhập tên hãng hợp tác mới"
+        [(ngModel)]="brandName" name="brandName" />
       <button id="btnNewBrand" class="btn btn-dark" (click)="createNewBrand()">
         Tạo hãng mới
       </button>
@@ -70,19 +38,14 @@
   <div class="box mt-3">
     <div style="position: relative">
       <h3 class="text-center">DANH SÁCH CÁC HÃNG</h3>
-      <button
-        class="btn btn-dark"
-        style="position: absolute; right: 20px; top: 3px"
-      >
+      <button class="btn btn-dark" style="position: absolute; right: 20px; top: 3px">
         Xuất Excel
       </button>
     </div>
     <!-- List Table -->
     <div class="box mt-3" id="listBox">
       <div class="fixTableHead">
-        <table
-          class="table table-striped table-hover table-bordered text-center"
-        >
+        <table class="table table-striped table-hover table-bordered text-center">
           <thead>
             <tr>
               <th>Tên hãng</th>
@@ -96,73 +59,41 @@
               <td>{{ returnStringLoaiSP(itemHang.cacLoaiSP) }}</td>
               <td>
                 <!-- CHỈNH SỬA HÃNG -->
-                <button
-                  type="button"
-                  class="btn btn-outline-warning me-2"
-                  data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#editModal' + itemHang._id"
-                  (click)="updateBrand(itemHang)"
-                >
+                <button type="button" class="btn btn-outline-warning me-2" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#editModal' + itemHang._id" (click)="updateBrand(itemHang)">
                   <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
                 </button>
                 <!-- MODAL EDIT -->
-                <div
-                  class="modal fade"
-                  [id]="'editModal' + itemHang._id"
-                  tabindex="-1"
-                  aria-labelledby="editModalLabel"
-                  aria-hidden="true"
-                >
+                <div class="modal fade" [id]="'editModal' + itemHang._id" tabindex="-1" aria-labelledby="editModalLabel"
+                  aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">
                           Chỉnh sửa sản phẩm
                         </h1>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <!-- body -->
                       <div class="modal-body">
                         <div class="row align-items-center">
                           <!-- tenNhaSX -->
                           <div class="col-auto">
-                            <label for="name" class="col-form-label"
-                              >Tên hãng</label
-                            >
+                            <label for="name" class="col-form-label">Tên hãng</label>
                           </div>
                           <div class="col-auto">
-                            <input
-                              type="text"
-                              [(ngModel)]="tenNhaSX"
-                              id="name"
-                              class="form-control"
-                            />
+                            <input type="text" [(ngModel)]="tenNhaSX" id="name" class="form-control" />
                           </div>
                         </div>
                         <!-- cacLoaiSP -->
                         <div class="row align-items-center">
                           <div class="col-auto">
-                            <label for="name" class="col-form-label"
-                              >Các loại SP</label
-                            >
+                            <label for="name" class="col-form-label">Các loại SP</label>
                           </div>
                           <div class="col-auto">
-                            <div
-                              class="form-check"
-                              *ngFor="let item of allHang"
-                            >
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="{{ item }}"
-                                [checked]="itemHang.cacLoaiSP.includes(item)"
-                                [(ngModel)]="cacLoaiSP[item]"
-                              />
+                            <div class="form-check" *ngFor="let item of allHang">
+                              <input class="form-check-input" type="checkbox" id="{{ item }}"
+                                [checked]="itemHang.cacLoaiSP.includes(item)" [(ngModel)]="cacLoaiSP[item]" />
                               <label class="form-check-label" for="{{ item }}">
                                 {{ item }}
                               </label>
@@ -172,19 +103,10 @@
                       </div>
                       <!--  -->
                       <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                           Quay lại
                         </button>
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          data-bs-dismiss="modal"
-                          (click)="updateDB()"
-                        >
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateDB()">
                           Cập nhật Hãng
                         </button>
                       </div>
@@ -193,52 +115,30 @@
                 </div>
 
                 <!-- XÓA HÃNG -->
-                <button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#exampleModal' + itemHang._id"
-                >
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#exampleModal' + itemHang._id">
                   <i class="fa fa-trash"></i> Xóa sản phẩm
                 </button>
                 <!-- Modal DELETE -->
-                <div
-                  class="modal fade"
-                  [id]="'exampleModal' + itemHang._id"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
+                <div class="modal fade" [id]="'exampleModal' + itemHang._id" tabindex="-1"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">
                           Xóa sản phẩm
                         </h1>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
                         Bạn có chắc là bạn muốn xóa {{ itemHang.tenNhaSX }}
                       </div>
                       <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                           Quay lại
                         </button>
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          data-bs-dismiss="modal"
-                          (click)="deleteBrand(itemHang._id)"
-                        >
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                          (click)="deleteBrand(itemHang._id)">
                           Xóa hãng
                         </button>
                       </div>
