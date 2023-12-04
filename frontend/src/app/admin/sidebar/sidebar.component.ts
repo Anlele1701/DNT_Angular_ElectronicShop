@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
   activeindex = 0;
   isExpanded = false;
   countLoaiSP: number = 0;
-  listLoaiSP: string[] = [];
+  listLoaiSP: any[] = [];
   readonly API = 'http://localhost:3800';
   onClickSideBar(index: number) {
     // Mỗi khi thao tác click 1 index bất kì thì dropdown sẽ tắt đi
