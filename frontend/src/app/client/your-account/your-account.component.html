@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="row">
+    <div class="column menu"></div>
+    <div class="column content">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center text-justify"><b></b></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <!-- menu -->
+    <div class="column menu">
+      <div class="background-table">
+        <div class="row m-0 p-2">
+          <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
+          <div class="col-8 text-center d-flex align-items-center h5">
+            <b>{{ user.hoTen }}</b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <hr />
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 0 }"
+            [routerLink]="['/client/personal']"
+            (click)="onClickBtnMenu(0)"
+          >
+            <i class="fa-solid fa-house"></i><span>Trang chủ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 1 }"
+            [routerLink]="['/client/purchase-history']"
+            (click)="onClickBtnMenu(1)"
+          >
+            <i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 2 }"
+            (click)="onClickBtnMenu(2)"
+          >
+            <i class="fa-regular fa-face-smile"></i
+            ><span>Tài khoản của bạn</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 3 }"
+            [routerLink]="['/client/membership-class']"
+            (click)="onClickBtnMenu(3)"
+          >
+            <i class="fa-solid fa-medal"></i><span>Hạng thành viên</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 4 }"
+            [routerLink]="['/client/contact']"
+            (click)="onClickBtnMenu(4)"
+          >
+            <i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div class="col-12 p-3 text-center h6" (click)="logOut()">
+            <span>Thoát tài khoản</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div class="column content">
+      <div class="khung-item">
+        <h1>Thông tin tài khoản</h1>
+        <div class="row mt-5">
+          <div class="col-3">
+            <p class="p-change">Tên tài khoản:</p>
+            <p class="p-change">Số điện thoại:</p>
+            <p class="p-change">Email:</p>
+            <p class="p-change">Mật khẩu:</p>
+          </div>
+          <div class="col-8">
+            <input class="input-change " placeholder="{{ user.hoTen }}" />
+            <input class="input-change " placeholder="{{ user.sdt }}" />
+            <input
+              class="input-change"
+              placeholder="{{ user.email }}"
+            />
+            <input
+              class="input-change"
+              placeholder="**************"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

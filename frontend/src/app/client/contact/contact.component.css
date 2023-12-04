@@ -1,0 +1,69 @@
+.column.menu {
+  width: 30%;
+}
+.column.content {
+  width: 70%;
+}
+.background-table {
+  background-color: #f4f4f4;
+  padding: 20px 0px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+.background-table .title-table {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+}
+.background-table .row.text-center {
+  margin: 10px 10px 0px 10px;
+}
+.background-table .row.text-center div {
+  background-color: #fff;
+  padding: 20px 0px;
+  font-weight: 600;
+}
+.background-table i {
+  margin: 10px 20px;
+  font-size: 36px;
+}
+.btn-border {
+  border-radius: 15px;
+  color: black;
+  cursor: pointer;
+}
+.btn-border:hover {
+  border: 0px solid #ccc;
+  background: #ccc;
+}
+.btn-border-bg-black {
+  background-color: #141515 !important;
+  color: #fff;
+}
+.btn-border i {
+  font-size: 24px;
+}
+@media only screen and (max-width: 576px) {
+  .column.menu {
+    width: 100% !important;
+  }
+  .column.content {
+    width: 100% !important;
+  }
+}
+.khung-item {
+  width: 295px;
+  height: 251px;
+  flex-direction: column;
+  border-radius: 20px;
+  background: #f4f4f4;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.img-change{
+  width: 45px;
+  height: 45px;
+}

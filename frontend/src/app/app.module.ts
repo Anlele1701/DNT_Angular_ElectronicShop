@@ -40,6 +40,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { YourAccountComponent } from './client/your-account/your-account.component';
+import { ContactComponent } from './client/contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
@@ -75,7 +77,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ResetComponent,
     EditProductComponent,
     ForgotPasswordComponent,
-    ClientLayoutComponent,
+    ResetComponent,
+    YourAccountComponent,
+    ContactComponent,
+    ClientLayoutComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
 })
 export class PersonalPageComponent implements OnInit{
   user:any
-  activeIndex = 1;
+  activeIndex = 0;
   onClickBtnMenu(index: number) {
     this.activeIndex = index;
   }
