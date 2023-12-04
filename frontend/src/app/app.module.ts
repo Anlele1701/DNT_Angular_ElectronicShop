@@ -77,6 +77,9 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
     EditProductComponent,
     ForgotPasswordComponent,
     ResetComponent,
+    YourAccountComponent,
+    ContactComponent,
+    ClientLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +91,7 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
     MatDialogModule,
     HighchartsChartModule,
     ReactiveFormsModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
