@@ -22,6 +22,7 @@ import { ResetComponent } from './client/login-regis/forgot-password/reset/reset
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
 import { PurchaseComponent } from './client/purchase/purchase.component';
+import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -59,6 +60,7 @@ const routes: Routes = [
         component: FormCreateProductComponent,
       },
       { path: 'categories', component: CategoryComponent },
+      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent}
     ],
   },
   { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
