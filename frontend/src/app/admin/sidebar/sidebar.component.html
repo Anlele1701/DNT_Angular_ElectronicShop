@@ -61,8 +61,11 @@
                 style="overflow: hidden"
               >
                 <li class="dropdown-item">
-                  <a class="" [routerLink]="['/admin/products', item]" (click)="changeToProductPage(item)">
-                    {{ item }}
+                  <a
+                    [routerLink]="['/admin/products', item.tenLoai]"
+                    (click)="changeToProductPage(item.tenLoai)"
+                  >
+                    {{ item.tenLoai }}
                   </a>
                 </li>
               </ul>

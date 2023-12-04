@@ -1,9 +1,9 @@
-<div style="width: 50%;">
+
   <select class="form-select" style="width: 30%;" aria-label="Default select example"[(ngModel)]="tenHang" name="tenHang">
     <option selected>Open this select menu</option>
     <option *ngFor="let item of listHang" [value]="item" >{{ item }}</option>
   </select>
-  
+
 <ng-template [ngIf]="tenLoaiSP=='Bàn Phím'" #banphim>
   <app-ban-phim-form  (dataBanPhim)="createNewProduct($event)"></app-ban-phim-form>
 </ng-template>

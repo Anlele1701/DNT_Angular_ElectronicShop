@@ -30,4 +30,15 @@ export class UserServiceService {
   resetPasswordService(resetObj: any): Observable<any> {
     return this.http.post<any>(this.urlApi + 'reset-password', resetObj);
   }
+
+  checkLogin(){
+    this.user = JSON.parse(localStorage.getItem('user'));
+    if(this.user!=null){
+      return true
+    }else return false
+  }
+
+  logOUt(){
+    localStorage.removeItem('user')
+  }
 }
