@@ -22,6 +22,7 @@ import { ResetComponent } from './client/login-regis/forgot-password/reset/reset
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
 import { PurchaseComponent } from './client/purchase/purchase.component';
+import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { ContactComponent } from './client/contact/contact.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
         component: FormCreateProductComponent,
       },
       { path: 'categories', component: CategoryComponent },
+      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent}
     ],
   },
   { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
@@ -75,7 +77,7 @@ const routes: Routes = [
   { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation:'reload'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

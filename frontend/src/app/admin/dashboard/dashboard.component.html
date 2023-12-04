@@ -66,8 +66,8 @@
           </g>
         </svg>
         <div class="card-body pt-2">
-          <h5 class="card-title">SL Khách hàng</h5>
-          <p class="card-text">500.000 khách</p>
+          <h5 class="card-title">SL khách hàng</h5>
+          <p class="card-text">{{ countKH }} khách</p>
         </div>
       </div>
     </div>
@@ -102,7 +102,7 @@
         </svg>
         <div class="card-body pt-2">
           <h5 class="card-title">SL sản phẩm</h5>
-          <p class="card-text">865 sản phẩm</p>
+          <p class="card-text">{{ countSP }} sản phẩm</p>
         </div>
       </div>
     </div>
@@ -257,5 +257,8 @@
   </div>
 </div>
 <div class="container bg-white mt-2">
-  <div class="graph">Waiting for Data</div>
+  <highcharts-chart
+    [Highcharts]="highcharts"
+    [options]="chartOptions"
+  ></highcharts-chart>
 </div>

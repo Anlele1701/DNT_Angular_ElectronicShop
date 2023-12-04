@@ -1,7 +1,7 @@
 import { UserServiceService } from './../../services/userService/user-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-regis',
@@ -19,7 +19,7 @@ export class LoginRegisComponent {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private UserService: UserServiceService
+    private UserService: UserServiceService,
   ) {}
   readonly API = 'http://localhost:3800/';
   ngAfterViewInit() {
@@ -36,17 +36,19 @@ export class LoginRegisComponent {
     });
   }
 
-  submitFormRegis(){
-    this.http.post(this.API+'khachhang/dangKy',{name:this.name, email:this.email, sdt:this.sdt, password:this.matKhau}).subscribe((data:any)=>{
-      if(data.inValid){
-        console.log(data.inValid)
-      }
-      else if(data.emailExisted)
-      {
-        console.log(data.emailExisted)
-      }
-      else console.log('Success')
-    })
+  submitFormRegis() {
+    this.http
+      .post(this.API + 'khachhang/dangKy', {
+        name: this.name,
+        email: this.email,
+        sdt: this.sdt,
+        password: this.matKhau,
+      })
+      .subscribe((data: any) => {
+        if (data.emailExisted) {
+          console.log(data.emailExisted);
+        } else console.log('Success');
+      });
   }
 
   submitFormLogin(){
@@ -58,7 +60,11 @@ export class LoginRegisComponent {
       else{
         console.log(data)
         this.UserService.setUser(data)
-        this.router.navigate(['/client/personal']);
+        let route=this.router.url
+        if(route==='/client/shopping-cart'){
+          this.router.navigate(['/client/purchase'])
+        }
+        else this.router.navigate(['/client/personal'])
       }
     })
   }

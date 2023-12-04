@@ -69,7 +69,13 @@ export class ShoppingCartComponent implements OnInit{
 
   changeToPurchasePage(){
     if(this.userService.checkLogin()){
-      this.router.navigate(['/client/purchase'])
+      if(this.cartList.length==0)
+      {
+        
+      }
+      else{
+        this.router.navigate(['/client/purchase'])
+      }
     }else{
       const popup = this.popup.open(LoginRegisComponent,{
       });

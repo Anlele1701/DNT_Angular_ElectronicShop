@@ -27,7 +27,7 @@
             [ngClass]="{ selectedItem: activeindex === 1 }"
             (click)="onClickSideBar(1)"
           >
-            <a routerLink="/admin/customers">
+            <a routerLink="/admin/customer">
               <span class="icon"><i class="fa-solid fa-user"></i> </span>
               <span class="cateName">Customers</span>
             </a>
@@ -42,7 +42,6 @@
               data-bs-toggle="collapse"
               href="#collapseExample"
               role="button"
-              aria-expanded="false"
               aria-controls="collapseExample"
             >
               <span class="icon"
@@ -57,15 +56,17 @@
             <div>
               <ul
                 class="collapse mt-2"
-                id="collapseExample"
                 *ngFor="let item of listLoaiSP"
+                id="collapseExample"
+                style="overflow: hidden"
               >
                 <li class="dropdown-item">
                   <a
-                    [routerLink]="['/admin/products', item]"
-                    (click)="changeToProductPage(item)"
-                    >{{ item }}</a
+                    [routerLink]="['/admin/products', item.tenLoai]"
+                    (click)="changeToProductPage(item.tenLoai)"
                   >
+                    {{ item.tenLoai }}
+                  </a>
                 </li>
               </ul>
             </div>

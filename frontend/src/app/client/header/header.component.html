@@ -83,12 +83,17 @@
             <i class="fas fa-shopping-bag" style="color: #f1f1f1; font-size: 1.5rem"></i>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="checkLogin()">
           <a class="nav-link" (click)="changeToPersonalPage()">
             <i
               class="fas fa-user-circle"
               style="color: #f1f1f1; font-size: 1.5rem"
             ></i>
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!checkLogin()">
+          <a class="nav-link" (click)="openLogin('500ms', '500ms')">
+            <p>Đăng nhập</p>
           </a>
         </li>
       </ul>

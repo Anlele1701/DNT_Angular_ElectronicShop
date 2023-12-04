@@ -38,6 +38,8 @@ import { ResetComponent } from './client/login-regis/forgot-password/reset/reset
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 import { ContactComponent } from './client/contact/contact.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
 @NgModule({
@@ -71,13 +73,11 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
     VerifyEmailComponent,
     VerifyNotiComponent,
     HomepageComponent,
-    ClientLayoutComponent,
+    ResetComponent,
+    EditProductComponent,
     ForgotPasswordComponent,
     ResetComponent,
-    ContactComponent,
-    YourAccountComponent,
   ],
-
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -86,7 +86,7 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
     HttpClientModule,
     NgxPaginationModule,
     MatDialogModule,
-    NoopAnimationsModule,
+    HighchartsChartModule,
     ReactiveFormsModule,
   ],
   providers: [],

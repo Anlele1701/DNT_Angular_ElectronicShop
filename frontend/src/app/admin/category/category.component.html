@@ -1,26 +1,38 @@
 <body>
+  <!-- TOAST SUCCESS -->
+  <div *ngIf="isShow && isNotification" class="toast align-items-center text-bg-primary border-0 show top-20 end-0"
+    role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" style="position: absolute">
+    <div class="d-flex">
+      <div class="toast-body">Đã xóa hãng thành công!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
+  <!-- TOAST FAILED -->
+  <div *ngIf="isShow && !isNotification"
+    class="toast align-items-center bg-danger text-white border-0 show top-20 end-0" role="alert" aria-live="assertive"
+    aria-atomic="true" data-bs-autohide="true" style="position: absolute">
+    <div class="d-flex">
+      <div class="toast-body">Xóa hãng thất bại!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
   <!--Title Box -->
   <div class="box">
     <h2>QUẢN LÝ LOẠI SẢN PHẨM</h2>
     <form asp-action="Index" method="get">
-      <input
-        type="text"
-        name="SearchString"
-        placeholder="Tìm kiếm qua gmail hoặc tên"
-        class="searchBox form-control"
-      />
+      <input type="text" name="SearchString" placeholder="Tìm kiếm qua tên loại sản phẩm"
+        class="searchBox form-control" />
     </form>
+
     <button class="btnCreate btn btn-dark" (click)="toggleAddForm()">
       THÊM LOẠI SẢN PHẨM MỚI
     </button>
+
     <div *ngIf="AddFormVisible" class="d-flex mt-2 w-50">
-      <input
-        type="text"
-        class="form-control inputNewBrand me-2"
-        placeholder="Nhập tên loại sản phẩm mới"
-        [(ngModel)]="categoryName"
-        name="categoryName"
-      />
+      <input type="text" class="form-control inputNewBrand me-2" placeholder="Nhập tên loại sản phẩm mới"
+        [(ngModel)]="categoryName" name="categoryName" />
       <button id="btnNewBrand" class="btn btn-dark" (click)="createnewLoaiSP()">
         Tạo
       </button>
@@ -30,38 +42,14 @@
   <div class="box mt-3">
     <div style="position: relative">
       <h3 class="text-center">Danh Sách Loại Sản phẩm</h3>
-      <button
-        class="btn btn-dark"
-        style="position: absolute; right: 20px; top: 3px"
-      >
+      <button class="btn btn-dark" style="position: absolute; right: 20px; top: 3px">
         Xuất Excel
       </button>
     </div>
-    <!-- <table class="table table-hover table-striped">
-      <thead style="background: rgb(0, 0, 0); color: snow">
-        <tr style="text-align: center">
-          <th>Tên loại sản phẩm</th>
-          <th>Hành động</th>
-        </tr>
-      </thead>
-      <tr style="text-align: center" *ngFor="let item of listLoaiSP">
-        <td>{{ item }}</td>
-        <td>
-          <button type="button" class="btn btn-outline-warning">
-            <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
-          </button>
-          <button type="button" class="btn btn-outline-danger">
-            <i class="fa fa-trash"></i> Xóa
-          </button>
-        </td>
-      </tr>
-    </table> -->
     <!-- List Table -->
     <div class="box mt-3" id="listBox">
       <div class="fixTableHead">
-        <table
-          class="table table-striped table-hover table-bordered text-center"
-        >
+        <table class="table table-striped table-hover table-bordered text-center">
           <thead>
             <tr>
               <th>Loại Sản Phẩm</th>
@@ -70,14 +58,95 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of listLoaiSP">
-              <td>{{ item }}</td>
+              <td>{{ item.tenLoai }}</td>
               <td>
-                <button type="button" class="btn btn-outline-warning me-2">
+                <!-- btn edit -->
+                <button type="button" class="btn btn-outline-warning me-2" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#editModal' + item._id">
                   <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
                 </button>
-                <button type="button" class="btn btn-outline-danger">
+                <!-- MODAL EDIT Start-->
+                <div class="modal fade" [id]="'editModal' + item._id" tabindex="-1" aria-labelledby="editModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Chỉnh sửa loại sản phẩm
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <!-- body -->
+                      <div class="modal-body">
+                        <div class="row align-items-center">
+                          <!-- tenNhaSX -->
+                          <div class="col-auto">
+                            <label for="name" class="col-form-label">Tên loại</label>
+                          </div>
+                          <div class="col-auto">
+                            <input type="text" [(ngModel)]="newTenLoai" id="name" class="form-control"
+                              [placeholder]="item.tenLoai" />
+                          </div>
+                        </div>
+                        <!-- cacLoaiSP
+                        <div class=" row align-items-center">
+                            <div class="col-auto">
+                              <label for="name" class="col-form-label">Các loại SP</label>
+                            </div>
+                            <div class="col-auto">
+                              <div class="form-check" *ngFor="let item of allHang">
+                                <input class="form-check-input" type="checkbox" id="{{ item }}"
+                                  [checked]="itemHang.cacLoaiSP.includes(item)" [(ngModel)]="cacLoaiSP[item]" />
+                                <label class="form-check-label" for="{{ item }}">
+                                  {{ item }}
+                                </label>
+                              </div>
+                            </div>
+                          </div> -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                          Quay lại
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                          (click)="updateLSP(item._id,newTenLoai)">
+                          Cập nhật Hãng
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal Edit End  -->
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#exampleModal' + item._id">
                   <i class="fa fa-trash"></i> Xóa
                 </button>
+                <!-- Modal Delete Start -->
+                <div class="modal fade" [id]="'exampleModal' + item._id" tabindex="-1"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Xóa sản phẩm
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Bạn có chắc là bạn muốn xóa loại "{{ item.tenLoai }}"
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                          Quay lại
+                        </button>
+                        <button data-bs-dismiss="modal" class="btn btn-primary" (click)="deleteLSP(item._id)">
+                          Xóa hãng
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal Delete End -->
               </td>
             </tr>
           </tbody>
@@ -86,4 +155,5 @@
     </div>
   </div>
   <!-- </div> -->
+
 </body>
