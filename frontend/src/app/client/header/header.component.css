@@ -19,3 +19,15 @@ nav{
     border-radius: 30px;
     font-weight: 650;
 }
+.iconClass{
+    position:relative;
+  }
+  .iconClass #validCart{
+    position: absolute;
+    top: -5px;
+    right: -12px;
+    font-size: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: block;
+  }
