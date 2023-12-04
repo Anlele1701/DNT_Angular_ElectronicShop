@@ -2,7 +2,63 @@
     padding: 0 0 10px 0;
 }
 
-img {
+.about_us {
+    width: 50%;
+    text-align: center;
+    color: #1C1B1F;
+    padding-top: 50px;
+}
+p {
+    font-size: 18px;
+}
+
+.parallax_scrolling {
+    background-color: #464646;
+    color: #EFEFEF;
+    height: auto;
+    padding: 0 !important;
+}
+.prl-left h2 {
+    padding: 0px 0px 0px 10px;
+    font-size: 70px;
+    font-weight: 500;
+    transform: transform 0.5s ease-out;
+}
+.prl-right h2 {
+    display: flex;
+    justify-content: end;
+    padding: 0px 0px 0px 10px;
+    font-size: 70px;
+    font-weight: 500;
+    transform: transform 0.5s ease-out;
+}
+.prl-left {
+    transform: translateX(0%);
+}
+
+    .prl-right {
+    transform: translateX(0%);
+}
+
+.sanpham {
+    padding: 40px 90px 30px 90px;
+    margin-top:10px;
+}
+
+.sanpham a {
+    cursor: pointer;
+    font-size: 20px;
+}
+#hinh-anh {
+    width: 600px;
+    height: 600px;
+}
+#tenSP {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+#banner {
     padding-top: 32px;
     width: 100%;
 }
@@ -12,8 +68,122 @@ img {
     height: 300px;
     border-radius: 35px;
 }
+
 .container h2 {
     color: #EFEFEF;
     padding-top: 8px;
     font-weight: 700;
+}
+/* ROWCOLOR */
+#phoneSP{
+    background: radial-gradient(circle at 100% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+}
+#laptopSP{
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+}
+/* DANH MUC */
+.cateBox {
+    background: #E6E6E6;
+    width: 413px;
+    height: 375px;
+    margin-bottom: 50px;
+    margin-right: 31px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cateBoxs {
+    background: #E6E6E6;
+    margin-bottom: 50px;
+    margin-right: 42px;
+    width: 630px;
+    height: 375px;
+    position: relative;
+    overflow: hidden;
+}
+
+#biggestBox {
+    width: 97%;
+}
+
+/* CATE */
+#phone {
+    background-image: url('src/assets/client/HomePage/iphone15pro.png');
+    background-color: #768A95;
+}
+
+#laptop {
+    background-image: url('src/assets/client/HomePage/macbook.png');
+    background-size: contain;
+    background-position-y: -30px;
+    background-color: #DFEBF7;
+}
+
+#monitor {
+    background-image: url('src/assets/client/HomePage/monitor.png');
+    background-size: contain;
+    background-color: #AAC7D7;
+}
+#keyboard{
+    background-image: url('src/assets/client/HomePage/ban_phim.png');
+    background-size: contain;
+    background-position: left;
+    background-position-x:70px;
+    background-size:auto 300px;
+    background-color: #31414B;
+}
+#mouse{
+    background-image: url('src/assets/client/HomePage/chuot.png');
+    background-size: contain;
+    background-position: left;
+    background-color: #45576D;
+}
+#headphone{
+    background-image: url('src/assets/client/HomePage/tai_nghe.png');
+    background-size: contain;
+    background-position: center;
+    background-color: #9BABB8;
+}
+/*  ANIMATION*/
+.imgCate {
+    transition: 0.7s;
+    height: 110%;
+    background-repeat: no-repeat;
+}
+.cateBox:hover .imgCate {
+    transform: scale(1.1);
+}
+.cateBox:hover .imgTitle {
+    opacity: 1;
+}
+.cateBox:hover #longTitle {
+    opacity: 1;
+}
+
+.cateBoxs:hover .imgCate {
+    transform: scale(1.1);
+}
+.cateBoxs:hover .imgTitle {
+    opacity: 1;
+}
+
+.imgTitle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 40%;
+    color: white;
+    font-size: 40px;
+    font-weight: 500;
+    opacity: 0;
+    transition: .5s ease;
+}
+#longTitle{
+    position: absolute;
+    right: 15%;
+    bottom:45%;
+    color: white;
+    font-size: 50px;
+    opacity: 0;
+    transition: .5s ease;
 }

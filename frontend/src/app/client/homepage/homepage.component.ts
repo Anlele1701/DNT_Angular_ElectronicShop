@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
@@ -6,19 +6,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  ngOnInit() {}
-  images = [
-    {
-      imageSrc: '/assets/client/AboutUs/image1-About.jpg',
-      imageAlt: 'Cửa hàng Apple',
-    },
-    {
-      imageSrc: '/assets/client/AboutUs/image2-About.jpg',
-      imageAlt: 'Sản phẩm trưng bày',
-    },
-    {
-      imageSrc: '/assets/client/AboutUs/image3-About.jpg',
-      imageAlt: 'iphone 15 Promax',
-    },
-  ];
+  parallaxElements: NodeListOf<Element>;
+
+  constructor(private renderer: Renderer2){}
+  ngOnInit() {
+    this.parallaxElements = document.querySelectorAll(".parallax_scrolling");
+  }
+
+  @HostListener("window:scroll", [])
+  onScroll(): void {
+    for (let i = 0; i < this.parallaxElements.length; i++) {
+      const element = this.parallaxElements[i] as HTMLElement;
+      const bounding = element.getBoundingClientRect();
+      const offset = bounding.top / window.innerHeight;
+      const speed = 0.5;
+  
+      const prlLeft = element.querySelector(".prl-left") as HTMLElement;
+      const prlRight = element.querySelector(".prl-right") as HTMLElement;
+  
+      this.renderer.setStyle(prlLeft, 'transform', `translateX(${offset * speed * 100}%)`);
+      this.renderer.setStyle(prlRight, 'transform', `translateX(${-offset * speed * 100}%)`);
+    }
+  }
 }
