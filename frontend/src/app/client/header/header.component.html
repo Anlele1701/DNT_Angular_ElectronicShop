@@ -1,7 +1,7 @@
 <!-- Content cho navbar -->
 <nav class="navbar navbar-expand-lg px-4" id="navbar-container">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" routerLink="/client/homepage" [routerLinkActive]="['active']">
       <!-- logo -->
       <img src="assets\client\Shared\logo.png" style="width: 75px; image-rendering: optimizeQuality" />
     </a>
@@ -17,47 +17,47 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item ms-5">
-          <a class="nav-link active" aria-current="page">Trang Chủ</a>
+          <a class="nav-link" aria-current="page" routerLink="/client/homepage" [routerLinkActive]="['active']">Trang Chủ</a>
         </li>
         <li class="nav-item ms-5">
-          <a class="nav-link" routerLink="/client/about-us">Về Chúng Tôi</a>
+          <a class="nav-link" routerLink="/client/about-us" [routerLinkActive]="['active']">Về Chúng Tôi</a>
         </li>
         <li class="nav-item dropdown ms-5">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" [routerLinkActive]="['active']" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Danh Mục
           </a>
           <ul class="dropdown-menu">
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Điện Thoại')"
                 >Điện Thoại</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Laptop')"
                 >Laptop</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Màn Hình')"
                 >Màn Hình</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Bàn Phím')"
                 >Bàn Phím</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Chuột')"
                 >Chuột</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Tai Nghe')"
                 >Tai Nghe</a
               >
@@ -77,6 +77,7 @@
             <i class="fas fa-shopping-bag" style="color: #f1f1f1; font-size: 1.5rem"></i>
           </a>
         </li>
+        <!-- LOGIN -->
         <li class="nav-item" *ngIf="checkLogin()">
           <a class="nav-link" (click)="changeToPersonalPage()">
             <i
@@ -85,9 +86,10 @@
             ></i>
           </a>
         </li>
+        <!-- NO LOGIN -->
         <li class="nav-item" *ngIf="!checkLogin()">
           <a class="nav-link" (click)="openLogin('500ms', '500ms')">
-            <p>Đăng nhập</p>
+            <span>Đăng Nhập</span>
           </a>
         </li>
       </ul>
