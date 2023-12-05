@@ -40,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
