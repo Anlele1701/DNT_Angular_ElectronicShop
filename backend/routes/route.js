@@ -53,4 +53,6 @@ router.route("/reset-password").post(khachHangController.resetPassword); //Reset
 
 //ĐƠN HÀNG
 router.route("/donhang/muaHang").post(donHangController.muaHang)
+router.route('/donhang/thanhtoanvnpay').post(donHangController.createpayment);
+router.route('/donhang/vnpay_ipn').get(donHangController.getvnPayIPN);
 module.exports = router;
