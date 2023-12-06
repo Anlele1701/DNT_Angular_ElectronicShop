@@ -1,35 +1,36 @@
 <div>
   <!-- VIDEO -->
-  <video autoplay [muted] ="'muted'" loop style="min-width: 100%; min-height: 100%">
+  <video autoplay [muted]="'muted'" loop style="min-width: 100%; min-height: 100%">
     <source src="assets/client/Shared/video.mp4" type="video/mp4">
   </video>
   <!-- END VIDEO -->
 
   <!-- TÓM TẮT ABOUT US -->
-  <div class ="d-flex justify-content-center">
-  <div class="about_us">
-    <div>
-      <h2>Chinh phục công nghệ cùng Zone14</h2>
-      <p>Chúng tôi không chỉ cung cấp sản phẩm, mà còn mang đến cơ hội và khám phá trong thế giới kỳ diệu của công nghệ. Hãy cùng chúng tôi tạo ra những trải nghiệm đáng nhớ và cuộc sống sống động hơn.</p>
-      <hr />
-    </div>
-    
-    <div class="row">
-      <div class="col-sm">
-        <h3>17</h3>
-        <p>Nhãn hàng đã hợp tác</p>
+  <div class="d-flex justify-content-center">
+    <div class="about_us">
+      <div>
+        <h2>Chinh phục công nghệ cùng Zone14<button (click)="onThanhToanMomoClick()">Thanh Toán Momo</button></h2>
+        <p>Chúng tôi không chỉ cung cấp sản phẩm, mà còn mang đến cơ hội và khám phá trong thế giới kỳ diệu của công
+          nghệ. Hãy cùng chúng tôi tạo ra những trải nghiệm đáng nhớ và cuộc sống sống động hơn.</p>
+        <hr />
       </div>
-      <div class="col-sm">
-        <h3>200+</h3>
-        <p>Sản phẩm đa dạng</p>
-      </div>
-      <div class="col-sm">
-        <h3>100%</h3>
-        <p>Cam kết chính hãng</p>
+
+      <div class="row">
+        <div class="col-sm">
+          <h3>17</h3>
+          <p>Nhãn hàng đã hợp tác</p>
+        </div>
+        <div class="col-sm">
+          <h3>200+</h3>
+          <p>Sản phẩm đa dạng</p>
+        </div>
+        <div class="col-sm">
+          <h3>100%</h3>
+          <p>Cam kết chính hãng</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
   <!-- END TÓM TẮT ABOUT US -->
 
   <!-- PARALlAX SCROLLING -->
@@ -44,70 +45,70 @@
   </section>
   <!-- END PARALLAX SCROLLING -->
 
-<!-- SẢN PHẨM NỔI BẬT -->
+  <!-- SẢN PHẨM NỔI BẬT -->
 
-<!-- SẢN PHẨM 1 -->
-<div class="row sanpham" id="phoneSP">
-  <div class="col">
-    <img src="assets/client/HomePage/iphone15pro.png" id="hinh-anh">
+  <!-- SẢN PHẨM 1 -->
+  <div class="row sanpham" id="phoneSP">
+    <div class="col">
+      <img src="assets/client/HomePage/iphone15pro.png" id="hinh-anh">
+    </div>
+    <div class="col align-self-center justify-content-center">
+      <h1 class="tenSPRight" id="tenSP">iPhone 15 Pro</h1>
+      <a>Tìm Hiểu Thêm <i class="fa-solid fa-angles-right"></i></a>
+    </div>
   </div>
-  <div class="col align-self-center justify-content-center">
-    <h1 class="tenSPRight" id="tenSP">iPhone 15 Pro</h1>
-    <a>Tìm Hiểu Thêm <i class="fa-solid fa-angles-right"></i></a>
-  </div>
-</div>
-<!-- END SẢN PHẨM 1 -->
+  <!-- END SẢN PHẨM 1 -->
 
-<!-- SẢN PHẨM 2 -->
-<div class="row sanpham" id="laptopSP" >
-  <div class="col align-self-center">
-    <h1 class="tenSP-left" id="tenSP">Macbook Air</h1>
-    <a>Tìm Hiểu Thêm <i class="fa-solid fa-angles-right"></i></a>
+  <!-- SẢN PHẨM 2 -->
+  <div class="row sanpham" id="laptopSP">
+    <div class="col align-self-center">
+      <h1 class="tenSP-left" id="tenSP">Macbook Air</h1>
+      <a>Tìm Hiểu Thêm <i class="fa-solid fa-angles-right"></i></a>
+    </div>
+    <div class="col">
+      <img src="assets/client/HomePage/macbook.png" id="hinh-anh">
+    </div>
   </div>
-  <div class="col">
-    <img src="assets/client/HomePage/macbook.png" id="hinh-anh">
-  </div>
-</div>
-<!-- END SẢN PHẨM 2 -->
+  <!-- END SẢN PHẨM 2 -->
 
-<!-- END SẢN PHẨM NỔI BẬT -->
+  <!-- END SẢN PHẨM NỔI BẬT -->
 
   <!-- BANNER -->
   <img id="banner" src="assets/client/Shared/banner_4.png">
   <!-- END BANNER -->
-  
+
   <!-- DANH MỤC -->
   <div class="container-md text-center mt-5">
     <div class="row gx-4 row-cols-3">
-      <div class="cateBox col" >
-        <div class = "imgCate" id="phone"></div>
-          <span class ="imgTitle">Điện Thoại</span>
+      <div class="cateBox col">
+        <div class="imgCate" id="phone"></div>
+        <span class="imgTitle">Điện Thoại</span>
       </div>
       <div class="cateBox col">
-        <div class ="imgCate" id ="laptop"></div>
-          <span class ="imgTitle">Laptop</span>
-        </div>
+        <div class="imgCate" id="laptop"></div>
+        <span class="imgTitle">Laptop</span>
+      </div>
       <div class="cateBox col">
-        <div class ="imgCate" id ="monitor"></div>
-        <span class ="imgTitle">Màn Hình</span>
+        <div class="imgCate" id="monitor"></div>
+        <span class="imgTitle">Màn Hình</span>
       </div>
 
       <div class="cateBox col" id="biggestBox">
-        <div class ="imgCate" id ="keyboard">      
+        <div class="imgCate" id="keyboard">
           <span id="longTitle">Bàn Phím</span>
         </div>
       </div>
       <div class="cateBoxs col">
-        <div class ="imgCate" id ="mouse">   
-        <span class ="imgTitle">Chuột</span>
-      </div>   
+        <div class="imgCate" id="mouse">
+          <span class="imgTitle">Chuột</span>
+        </div>
       </div>
       <div class="cateBoxs col">
-        <div class ="imgCate" id ="headphone">  
-        <span class ="imgTitle">Tai Nghe</span>
-      </div>  
+        <div class="imgCate" id="headphone">
+          <span class="imgTitle">Tai Nghe</span>
+        </div>
       </div>
-      
+
     </div>
   </div>
   <!-- END DANH MỤC  -->

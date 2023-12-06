@@ -12,6 +12,7 @@ import { TaiNgheFormComponent } from '../thongSoForm/tai-nghe-form/tai-nghe-form
 import { DienThoaiFormComponent } from '../thongSoForm/dien-thoai-form/dien-thoai-form.component';
 import { LoadDataService } from '../shared/load-data.service';
 import { FormCreateProductComponent } from '../form-create-product/form-create-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @Component({
   selector: 'app-product',
@@ -78,8 +79,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   //Chuột
   //Tai Nghe
   openForm() {
-    this.popup.open(FormCreateProductComponent,{
-      data:this.nameProduct
+    this.popup.open(FormCreateProductComponent, {
+      data: this.nameProduct,
     });
   }
   // functions
@@ -90,15 +91,27 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.productListSource.next(products);
   }
 
-  changeToEditProductPage(idSP: string){
-    this.router.navigate(['/admin/edit-product/'+this.nameProduct+'/'+idSP])
+  changeToEditProductPage(idSP: string) {
+    this.router.navigate([
+      '/admin/edit-product/' + this.nameProduct + '/' + idSP,
+    ]);
   }
 
-  deleteProduct(idSP: string, tenHang: string){
-    this.http.delete(this.API+'sanpham/deleteProduct/'+this.nameProduct+'/'+tenHang+'/'+idSP).subscribe((data:any) => {
-      console.log(data)
-      window.location.reload()
-    });
+  deleteProduct(idSP: string, tenHang: string) {
+    this.http
+      .delete(
+        this.API +
+          'sanpham/deleteProduct/' +
+          this.nameProduct +
+          '/' +
+          tenHang +
+          '/' +
+          idSP
+      )
+      .subscribe((data: any) => {
+        console.log(data);
+        window.location.reload();
+      });
   }
   AddFormVisible: boolean = false;
 

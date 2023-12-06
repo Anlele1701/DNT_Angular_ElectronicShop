@@ -1,31 +1,62 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, HostListener, Renderer2 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
   parallaxElements: NodeListOf<Element>;
+  url: string = '';
 
-  constructor(private renderer: Renderer2){}
+  constructor(
+    private renderer: Renderer2,
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {}
+
   ngOnInit() {
-    this.parallaxElements = document.querySelectorAll(".parallax_scrolling");
+    this.parallaxElements = document.querySelectorAll('.parallax_scrolling');
   }
 
-  @HostListener("window:scroll", [])
+  @HostListener('window:scroll', [])
   onScroll(): void {
     for (let i = 0; i < this.parallaxElements.length; i++) {
       const element = this.parallaxElements[i] as HTMLElement;
       const bounding = element.getBoundingClientRect();
       const offset = bounding.top / window.innerHeight;
       const speed = 0.5;
-  
-      const prlLeft = element.querySelector(".prl-left") as HTMLElement;
-      const prlRight = element.querySelector(".prl-right") as HTMLElement;
-  
-      this.renderer.setStyle(prlLeft, 'transform', `translateX(${offset * speed * 100}%)`);
-      this.renderer.setStyle(prlRight, 'transform', `translateX(${-offset * speed * 100}%)`);
+
+      const prlLeft = element.querySelector('.prl-left') as HTMLElement;
+      const prlRight = element.querySelector('.prl-right') as HTMLElement;
+
+      this.renderer.setStyle(
+        prlLeft,
+        'transform',
+        `translateX(${offset * speed * 100}%)`
+      );
+      this.renderer.setStyle(
+        prlRight,
+        'transform',
+        `translateX(${-offset * speed * 100}%)`
+      );
     }
+  }
+
+  onThanhToanMomoClick() {
+    var momoEndpoint =
+      'http://localhost:3800/payment/momo/656db7becb23bff5efb49d71';
+    this.http.post(momoEndpoint, {}).subscribe(
+      (data: any) => {
+        console.log('Success:', data);
+        window.location.href = data.payUrl;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }

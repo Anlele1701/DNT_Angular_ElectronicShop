@@ -8,34 +8,38 @@ import { cartItem } from 'src/app/services/cartService/cartItem.service';
   selector: 'app-product-items',
   templateUrl: './product-items.component.html',
   styleUrls: ['./product-items.component.css'],
-  providers: [cartItem]
+  providers: [cartItem],
 })
 export class ProductItemsComponent {
   @Input() product: any;
   @Input() tenSP: string = '';
   loaiSP: string = '';
-  cartitem:cartItem
-  constructor(private activeRoute:ActivatedRoute, private router:Router, private cartService: CartService){}
-  detailPage(){
-    this.activeRoute.params.subscribe(params=>{
-      this.loaiSP=params['loaiSP']
-    })
-    this.router.navigate(['/client/category/'+this.loaiSP,this.tenSP],{
-      queryParams:{product: JSON.stringify(this.product)}
-    })
+  cartitem: cartItem;
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private router: Router,
+    private cartService: CartService
+  ) {}
+  detailPage() {
+    this.activeRoute.params.subscribe((params) => {
+      this.loaiSP = params['loaiSP'];
+    });
+    this.router.navigate(['/client/category/' + this.loaiSP, this.tenSP], {
+      queryParams: { product: JSON.stringify(this.product) },
+    });
   }
 
-  buyNow(){
-    this.cartitem={
+  buyNow() {
+    this.cartitem = {
       idSP: this.product._id,
       tenSP: this.product.tenSP,
       hinhAnh: this.product.hinhAnh[0].tenImageSP,
       soLuongHienCo: this.product.soLuong,
       soLuongMua: 1,
       giaTien: this.product.giaTien,
-      thanhTien: this.product.giaTien
-    }
-    this.cartService.addItemToCart(this.cartitem)
-    this.router.navigate(['/client/shopping-cart'])
+      thanhTien: this.product.giaTien,
+    };
+    this.cartService.addItemToCart(this.cartitem);
+    this.router.navigate(['/client/shopping-cart']);
   }
 }

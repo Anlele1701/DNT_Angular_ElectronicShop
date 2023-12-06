@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 var donHangService= require('../services/donHangService')
 const crypto = require("crypto");
 const moment = require("moment");
@@ -178,3 +179,41 @@ var vnPayReturn = async (req,res) => {
 }
 
 module.exports={muaHang,createpayment,getvnPayIPN,vnPayReturn}
+=======
+var donHangService = require("../services/donHangService");
+var Momo = require("../PaymentGateway/Momo");
+const axios = require("axios");
+var donHangModel = require("../models/donHangModel");
+
+var muaHang = async (req, res) => {
+  try {
+    var result = donHangService.muaHang(req.body.userOrder, req.body.cartList);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const MomoPayment = async (req, res) => {
+  try {
+    const idDH = req.params.idDH;
+    const paymentUrl = await Momo(req, idDH);
+    res.json({ payUrl: paymentUrl });
+  } catch (error) {
+    console.error("Lỗi controller MOMO payment:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+const getAllDonHangById = async (req, res) => {
+  try {
+    const ordersList = await donHangService.getAllDonHangById(req.params.id);
+    res.send(ordersList);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Internal Server Error of getAllDonHangById controller",
+    });
+  }
+};
+module.exports = { muaHang, MomoPayment, getAllDonHangById };
+>>>>>>> Stashed changes

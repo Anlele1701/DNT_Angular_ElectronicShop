@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as Highcharts from 'highcharts';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -15,7 +15,7 @@ import { LoadDataService } from '../shared/load-data.service';
   imports: [HighchartsChartModule],
   providers: [API],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
   chartOptions: any;
   highcharts: typeof Highcharts = Highcharts;
   API: string = '';
@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit {
     this.getCountSP();
     this.getCountKH();
   }
+  ngAfterViewInit(): void {}
   // CHART
   barChart() {
     this.chartOptions = {
