@@ -24,7 +24,6 @@ export class ShoppingCartComponent implements OnInit{
         this.tongTien=this.tongTien+giaTien
         this.tongSLMua++
       }
-      location.reload();
       return this.cartService.plusOneItem(idSP)
     }
     else{
@@ -33,7 +32,6 @@ export class ShoppingCartComponent implements OnInit{
         this.tongTien=this.tongTien-giaTien
         this.tongSLMua--
       }
-      location.reload();
       return this.cartService.minusOneItem(idSP)
     }
   }
@@ -54,12 +52,14 @@ export class ShoppingCartComponent implements OnInit{
     this.getCartList()
     this.tongTien=this.cartService.updateTongTien()
     this.tongSLMua=this.cartService.updateTongSLMua()
+    this.cartService.countCartList();
   }
 
   deleteItemCart(idSP: string){
     this.cartList=this.cartService.deleteItem(idSP)
     this.tongSLMua=this.cartService.updateTongSLMua()
     this.tongTien=this.cartService.updateTongTien()
+    this.cartService.countCartList();
   }
 
   deleteAll()
@@ -67,7 +67,7 @@ export class ShoppingCartComponent implements OnInit{
     this.cartList=this.cartService.deleteAll()
     this.tongSLMua=0
     this.tongTien=0
-    location.reload();
+    this.cartService.countCartList();
   }
 
   changeToPurchasePage(){

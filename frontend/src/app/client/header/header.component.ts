@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginRegisComponent } from '../login-regis/login-regis.component';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 import { CartService } from 'src/app/services/cartService/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,10 @@ export class HeaderComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.countSL();
+    // this.cartService.countCart$.subscribe((value)=>{
+    //   this.slcart=value;
+    //   console.log(this.slcart)
+    // })
   }
   reloadCategory(loaiSP) {
     this.router.navigate(['/client/category', loaiSP]).then(() => {
@@ -39,7 +44,10 @@ export class HeaderComponent implements OnInit {
     });
   }
   countSL(){
-    this.slcart = this.cartService.countCartList();
+   this.cartService.countCartList().subscribe((value)=>{
+      this.slcart=value;
+      console.log(this.slcart);
+    });
   }
   changeToPersonalPage() {
     this.router.navigate(['/client/personal']);
