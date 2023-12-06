@@ -46,6 +46,7 @@ export class HomepageComponent implements OnInit {
     }
   }
 
+  //review
   onThanhToanMomoClick() {
     var momoEndpoint =
       'http://localhost:3800/payment/momo/656db7becb23bff5efb49d71';
