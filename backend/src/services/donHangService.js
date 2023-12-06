@@ -103,30 +103,23 @@ var updateSLSanPham = async (cartList) => {
     });
   });
 };
+var pushItemtoCTDH = async (cartItem) => {
+  var item = {
+    idSP: cartItem.idSP,
+    soLuongMua: cartItem.soLuongMua,
+    thanhTien: cartItem.thanhTien,
+  };
+  return item;
+};
 
-<<<<<<< Updated upstream
-var pushItemtoCTDH=async(cartItem)=>{
-    var item={
-        idSP: cartItem.idSP,
-        soLuongMua: cartItem.soLuongMua,
-        thanhTien: cartItem.thanhTien
-    }
-    return item
-}
-
-var updateSLSanPham=async(cartList)=>{
-    cartList.forEach(async item=>{
-        await sanPhamModel.findById(item.idSP).then(document=>{
-            document.soLuong=item.soLuongHienCo-item.soLuongMua
-            document.save()
-        })
-    })
-}
-
-
-
-module.exports={muaHang}
-=======
+var updateSLSanPham = async (cartList) => {
+  cartList.forEach(async (item) => {
+    await sanPhamModel.findById(item.idSP).then((document) => {
+      document.soLuong = item.soLuongHienCo - item.soLuongMua;
+      document.save();
+    });
+  });
+};
 const getAllDonHangById = async (userOrder) => {
   const customerId = req.params.id;
   try {
@@ -140,4 +133,3 @@ const getAllDonHangById = async (userOrder) => {
   }
 };
 module.exports = { muaHang, getAllDonHangById };
->>>>>>> Stashed changes

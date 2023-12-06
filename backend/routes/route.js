@@ -54,16 +54,14 @@ router.route("/khachhang/countKH").get(khachHangController.countKH); // lấy s�
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
 
 //ĐƠN HÀNG
-<<<<<<< Updated upstream
-router.route("/donhang/muaHang").post(donHangController.muaHang)
-router.route('/donhang/thanhtoanvnpay').post(donHangController.createpayment);
-router.route('/donhang/vnpay_ipn').get(donHangController.getvnPayIPN);
-=======
+router.route("/donhang/muaHang").post(donHangController.muaHang);
+router.route("/donhang/thanhtoanvnpay").post(donHangController.createpayment);
+router.route("/donhang/vnpay_ipn").get(donHangController.getvnPayIPN);
+
 router.route("/donhang/muaHang").post(donHangController.muaHang);
 router
   .route("/donhang/getAllDonHangById/:idkh")
   .get(donHangController.getAllDonHangById); // lấy danh sách các DH theo id khách hàng
 //MOMO PAYMENT
 router.route("/payment/momo/:idDH").post(donHangController.MomoPayment);
->>>>>>> Stashed changes
 module.exports = router;
