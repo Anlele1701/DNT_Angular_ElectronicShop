@@ -43,6 +43,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { YourAccountComponent } from './client/your-account/your-account.component';
 import { ContactComponent } from './client/contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { OrderManagementComponent } from './admin/order-management/order-management.component';
+import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +82,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ResetComponent,
     YourAccountComponent,
     ContactComponent,
-    ClientLayoutComponent
+    ClientLayoutComponent,
+    OrderManagementComponent,
+    DetailOrderAdminComponent
   ],
   imports: [
     BrowserModule,

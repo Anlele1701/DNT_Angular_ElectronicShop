@@ -177,4 +177,25 @@ var vnPayReturn = async (req,res) => {
     }
 }
 
-module.exports={muaHang,createpayment,getvnPayIPN,vnPayReturn}
+var QLDSDonHang=async(req,res)=>{
+    try{
+        var list=await donHangService.QLDSDonHang()
+        res.send(list)
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+var getCTDH=async(req,res)=>{
+    try{
+        var ctdh=await donHangService.getCTDH(req.params.idKH, req.params.idDH)
+        console.log(ctdh)
+        res.send(ctdh)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+module.exports={muaHang,createpayment,getvnPayIPN,vnPayReturn, QLDSDonHang, getCTDH}
