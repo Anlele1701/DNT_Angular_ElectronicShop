@@ -10,5 +10,15 @@ var muaHang=async(req,res)=>{
         console.log(error)
     }
 }
-
-module.exports={muaHang}
+var showdonhang=async(req,res)=>{
+    try{
+        var result=await donHangService.showdonhang(req.params.idKH)
+        console.log(result)
+        res.send(result)
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+module.exports={muaHang, showdonhang}

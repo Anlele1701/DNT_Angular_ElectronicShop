@@ -95,4 +95,11 @@ var updateSLSanPham=async(cartList)=>{
     })
 }
 
-module.exports={muaHang}
+var showdonhang=async(idKH)=>{
+    var arraydh = []
+    var listdonhang = await donHangModel.findOne({idKH:idKH}).then(document=>{
+        document.cacDH.forEach( item =>{ arraydh.push(item)})
+    })
+    return arraydh
+}
+module.exports={muaHang, showdonhang}

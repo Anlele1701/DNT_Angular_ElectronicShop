@@ -53,4 +53,5 @@ router.route("/reset-password").post(khachHangController.resetPassword); //Reset
 
 //ĐƠN HÀNG
 router.route("/donhang/muaHang").post(donHangController.muaHang)
+router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang)
 module.exports = router;
