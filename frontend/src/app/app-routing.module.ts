@@ -23,6 +23,8 @@ import { ClientLayoutComponent } from './client/client-layout/client-layout.comp
 import { ShoppingCartComponent } from './client/shopping-cart/shopping-cart.component';
 import { PurchaseComponent } from './client/purchase/purchase.component';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
+import { ContactComponent } from './client/contact/contact.component';
+import { YourAccountComponent } from './client/your-account/your-account.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -43,7 +45,9 @@ const routes: Routes = [
       { path: 'category/:loaiSP', component: ProductCategoryComponent },
       { path: 'verify-email/:token', component: VerifyEmailComponent },
       { path: 'shopping-cart', component:ShoppingCartComponent},
-      { path: 'purchase',component:PurchaseComponent}
+      { path: 'purchase',component:PurchaseComponent},
+      { path: 'contact',component:ContactComponent},
+      { path: 'your-account',component:YourAccountComponent}
     ],
   },
   // ADMIN

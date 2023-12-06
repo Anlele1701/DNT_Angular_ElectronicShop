@@ -6,12 +6,20 @@ import { cartItem } from './cartItem.service';
 })
 export class CartService {
   listCartItem: cartItem[] = [];
+  countCart: number =0;
   constructor() {}
 
   getCart() {
     this.listCartItem = JSON.parse(localStorage.getItem('cartList'));
     if (this.listCartItem == null) this.listCartItem = [];
     return this.listCartItem
+  }
+  countCartList(){
+    this.getCart()
+    this.listCartItem.forEach(item=>{
+      this.countCart = item.soLuongMua + this.countCart
+    })
+    return this.countCart
   }
   addItemToCart(item: cartItem) {
     //thêm sp vào giỏ hàng
