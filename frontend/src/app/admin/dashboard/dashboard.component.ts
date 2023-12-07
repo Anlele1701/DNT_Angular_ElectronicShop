@@ -6,6 +6,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { count } from 'rxjs';
 import { API } from 'src/app/services/API.service';
 import { LoadDataService } from '../shared/load-data.service';
+import { AdminDashboardService } from 'src/app/services/AdminDashboard/admin-dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,58 +16,59 @@ import { LoadDataService } from '../shared/load-data.service';
   imports: [HighchartsChartModule],
   providers: [API],
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
-  chartOptions: any;
+export class DashboardComponent implements OnInit {
+  piechart: any;
   highcharts: typeof Highcharts = Highcharts;
   API: string = '';
   countSP: number = 0;
   countKH: number = 0;
+  // piechart
+  loaiSP: any[] =[];
+  countLoaiSP: any[]=[];
+
   constructor(
     private api: API,
     public http: HttpClient,
-    private loadData: LoadDataService
+    private loadData: LoadDataService,
+    private adminDashboard: AdminDashboardService
   ) {
     this.API = api.getAPI();
   }
   ngOnInit(): void {
-    this.barChart();
     this.getCountSP();
     this.getCountKH();
+    this.getLoaiSP();
   }
-  ngAfterViewInit(): void {}
-  // CHART
-  barChart() {
-    this.chartOptions = {
+  // PIE CHART
+  getLoaiSP(){
+    this.adminDashboard.getLoaiSP().subscribe((data:any)=>{
+      this.drawLoaiSP(data);
+    })
+  }
+  drawLoaiSP(data:any){
+    var seriesData =[];
+    data.forEach((element: any)=>{
+      this.loaiSP.push(element.tenLoai); 
+      this.countLoaiSP.push(element.cacHang.length);
+      seriesData.push({
+        name:element.tenLoai,
+        y:element.cacHang.length,});
+    });
+    // LOAISP 
+    this.piechart = {
       chart: {
-        type: 'column',
+        type: 'pie',
       },
       title: {
-        text: 'Testing',
+        text: 'Biểu đồ thể hiện cơ cấu sản phẩm trong loại sản phẩm',
       },
-      subtitle: {
-        text: 'phu de',
-      },
-      xAxis: {
-        cate: ['VietName', 'vietName', 'trung quoc', 'nga'],
-      },
-      series: this.chartData,
+      series: [{
+        name: 'Số lượng sản phẩm', 
+        data: seriesData,
+      }]
     };
   }
   //data
-  chartData = [
-    {
-      name: 'Year 1990',
-      data: [631, 727, 3202, 721],
-    },
-    {
-      name: 'Year 2000',
-      data: [814, 841, 3714, 726],
-    },
-    {
-      name: 'Year 2018',
-      data: [1276, 1007, 4561, 746],
-    },
-  ];
 
   // BE
   getCountSP() {
@@ -88,7 +90,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.http.get(this.API + '/khachhang/countKH').subscribe(
       (data: any) => {
         this.countKH = data.result;
-        console.log(this.countKH);
       },
       (error) => {
         console.log(error);
