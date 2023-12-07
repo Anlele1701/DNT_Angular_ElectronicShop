@@ -44,6 +44,7 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
 import { ContactComponent } from './client/contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { API } from './services/API.service';
+import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +83,7 @@ import { API } from './services/API.service';
     YourAccountComponent,
     ContactComponent,
     ClientLayoutComponent,
+    LoginNhanVienComponent,
   ],
   imports: [
     BrowserModule,

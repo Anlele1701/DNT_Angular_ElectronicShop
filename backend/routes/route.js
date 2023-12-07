@@ -43,7 +43,8 @@ router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số l
 router
   .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
   .delete(sanPhamController.deleteProduct);
-
+//NHÂN VIÊN
+router.route("/nhanvien/login").post(nhanVienController.loginNV); // Đăng nhập nhân viên
 //KHÁCH HÀNG
 router.route("/khachhang/dangKy").post(khachHangController.dangKy); //đăng ký tài khoản
 router
