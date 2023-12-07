@@ -1,4 +1,5 @@
 var donHangModel=require('../models/donHangModel')
+const khachHangModel = require('../models/khachHangModel')
 const sanPhamModel = require('../models/sanPhamModel')
 
 var muaHang=async(userOrder,cartList)=>{
@@ -37,6 +38,9 @@ var pushDonHangIntoList=async(userOrder, cartList)=>{
         const idDH=await createIDDonHang(userOrder.id, index)
         var donhang={
             idDonHang:idDH,
+            nguoiNhan: userOrder.hoten,
+            diaChi: userOrder.address,
+            sdt: userOrder.sdt,
             ngayDat: Date.now(),
             hinhThucTT: userOrder.ptTT,
             trangThaiTT: 'Chưa thanh toán',
@@ -95,10 +99,6 @@ var updateSLSanPham=async(cartList)=>{
     })
 }
 
-var showdonhang=async(idKH)=>{
-    var arraydh = []
-    var listdonhang = await donHangModel.findOne({idKH:idKH}).then(document=>{
-        document.cacDH.forEach( item =>{ arraydh.push(item)})
 var QLDSDonHang=async()=>{
     try{
         return await donHangModel.find().then(async documents=>{
@@ -127,7 +127,7 @@ var findUsername=async(idKH)=>{
     let tenKH=await khachHangModel.findById(idKH).then(document=>{
         return document.hoTen
     })
-    return arraydh
+    return tenKH
 }
 
 var getCTDH=async(idKH, idDH)=>{
@@ -197,5 +197,11 @@ var khoiPhucDonHang=async(info)=>{
         console.log(error)
     }
 }
-
-module.exports={muaHang, QLDSDonHang, getCTDH, updateTTDonHang,huyDonHang,khoiPhucDonHang}
+var showdonhang=async(idKH)=>{
+    var arraydh = []
+    var listdonhang = await donHangModel.findOne({idKH:idKH}).then(document=>{
+        document.cacDH.forEach( item =>{ arraydh.push(item)})
+    })
+    return arraydh
+}
+module.exports={muaHang, QLDSDonHang, getCTDH, updateTTDonHang,huyDonHang,khoiPhucDonHang,showdonhang}
