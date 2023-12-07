@@ -8,6 +8,7 @@ var nhanVienController = require("../src/controllers/nhanVienController");
 var sanPhamController = require("../src/controllers/sanPhamController");
 var Momo = require("../src/PaymentGateway/Momo");
 
+const verifyToken = require("../middleware/verifyToken");
 var upload = require("../middleware/upload");
 //HÃNG
 router.route("/hang/createNewHang").post(hangController.createNewHang); //tạo hãng mới
@@ -44,7 +45,9 @@ router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số l
 router
   .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
   .delete(sanPhamController.deleteProduct);
-
+//NHÂN VIÊN
+router.route("/nhanvien/login").post(nhanVienController.loginNV); // Đăng nhập nhân viên
+router.route("/nhanvien/verifyToken").post(verifyToken.verifyToken); // xác thực token nhân viên
 //KHÁCH HÀNG
 router.route("/khachhang/dangKy").post(khachHangController.dangKy); //đăng ký tài khoản
 router

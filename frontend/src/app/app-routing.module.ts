@@ -25,6 +25,8 @@ import { PurchaseComponent } from './client/purchase/purchase.component';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { ContactComponent } from './client/contact/contact.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
+import { AuthGuard } from './admin/shared/auth.guard';
+import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -44,16 +46,17 @@ const routes: Routes = [
       { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
       { path: 'category/:loaiSP', component: ProductCategoryComponent },
       { path: 'verify-email/:token', component: VerifyEmailComponent },
-      { path: 'shopping-cart', component:ShoppingCartComponent},
-      { path: 'purchase',component:PurchaseComponent},
-      { path: 'contact',component:ContactComponent},
-      { path: 'your-account',component:YourAccountComponent}
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'purchase', component: PurchaseComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'your-account', component: YourAccountComponent },
     ],
   },
   // ADMIN
   {
     path: 'admin',
     component: SidebarComponent, // Trang layout admin
+    canActivate: [AuthGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent }, // Component con
       { path: 'customer', component: CustomersComponent },
@@ -64,9 +67,10 @@ const routes: Routes = [
         component: FormCreateProductComponent,
       },
       { path: 'categories', component: CategoryComponent },
-      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent}
+      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent },
     ],
   },
+  { path: 'loginAdmin', component: LoginNhanVienComponent },
   { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
   { path: 'category/:loaiSP', component: ProductCategoryComponent },
   { path: 'personal', component: PersonalPageComponent },
@@ -77,7 +81,7 @@ const routes: Routes = [
   { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation:'reload'})],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
