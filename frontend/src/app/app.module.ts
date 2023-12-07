@@ -41,6 +41,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ContactComponent } from './client/contact/contact.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { OrderManagementComponent } from './admin/order-management/order-management.component';
+import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
+import { EditOrderAdminComponent } from './admin/order-management/edit-order-admin/edit-order-admin.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
 @NgModule({
   declarations: [
@@ -79,7 +83,10 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
     ResetComponent,
     YourAccountComponent,
     ContactComponent,
-    ClientLayoutComponent
+    ClientLayoutComponent,
+    OrderManagementComponent,
+    DetailOrderAdminComponent,
+    EditOrderAdminComponent
   ],
   imports: [
     BrowserModule,
