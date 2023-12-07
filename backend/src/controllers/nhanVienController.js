@@ -7,6 +7,7 @@ const loginNV = async (req, res) => {
       status: dataLogin.status,
       message: dataLogin.message,
       data: dataLogin?.data,
+      token: dataLogin.token,
     });
   } catch (err) {
     console.error("Lỗi controller login nhân viên: ", err);

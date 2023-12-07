@@ -18,10 +18,14 @@ const loginNV = async (req, res) => {
       message: "Password không hợp lệ",
     };
   }
+  const tokenNV = jwt.sign({ userId: findNV._id }, "SECRETKEY-MIMI", {
+    expiresIn: "1h",
+  });
   return {
     status: 200,
     message: "Login thành công",
     data: findNV,
+    token: tokenNV,
   };
 };
 module.exports = { loginNV };

@@ -6,12 +6,11 @@ import { LoginNhanVienComponent } from '../login-nhan-vien/login-nhan-vien.compo
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  private isLoggedIn = false;
-
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    if (LoginNhanVienComponent.isLoggedIn) {
+    const token = localStorage.getItem('token');
+    if (token) {
       return true;
     } else {
       this.router.navigate(['/loginAdmin']); // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập

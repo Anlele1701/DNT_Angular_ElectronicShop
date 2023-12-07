@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginNhanVienComponent } from '../login-nhan-vien/login-nhan-vien.component';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -45,6 +46,10 @@ export class SidebarComponent implements OnInit {
         this.loadData.setLoadingData(false);
       }
     );
+  }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('admin');
   }
   ngOnInit(): void {
     this.countAllLoaiSP();
