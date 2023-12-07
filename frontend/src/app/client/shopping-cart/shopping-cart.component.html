@@ -2,10 +2,10 @@
 <body class="body-change">
   <!--nut back ve-->
   <div class="container">
-  <div class="d-flex mb-5 ">
-    <img src="/assets/client/ShoppingCart/arrow_back.png" />
-    <button class="bt-change-back ms-2">Tiếp tục mua hàng</button>
-  </div>
+    <div class="d-flex mb-5">
+      <img src="/assets/client/ShoppingCart/arrow_back.png" />
+      <button class="bt-change-back ms-2">Tiếp tục mua hàng</button>
+    </div>
   </div>
 
   <div class="container">
@@ -15,7 +15,9 @@
         <p class="p-change-1">Giỏ hàng của bạn</p>
       </div>
       <div class="col-6 text-end">
-        <button class="Delete-all fw-bold" (click)="deleteAll()">Xóa tất cả</button>
+        <button class="Delete-all fw-bold" (click)="deleteAll()">
+          Xóa tất cả
+        </button>
       </div>
     </div>
     <div>
@@ -26,35 +28,57 @@
       <!-- Khung trên -->
       <div class="scrollbar">
         <!-- item -->
-        <div class="con-item d-flex justify-content-center align-items-center" *ngFor="let item of cartList">
-          <div class="col-2  d-flex justify-content-center align-items-center">
-            <img src="http://localhost:3800/images/{{item.hinhAnh}}" class="img-change" />
+        <div
+          class="con-item d-flex justify-content-center align-items-center"
+          *ngFor="let item of cartList"
+        >
+          <div class="col-2 d-flex justify-content-center align-items-center">
+            <img
+              src="http://localhost:3800/images/{{ item.hinhAnh }}"
+              class="img-change"
+            />
           </div>
           <div class="col-3 text-center">
-            <p class="p-change-4">{{item.tenSP}}</p>
+            <p class="p-change-4">{{ item.tenSP }}</p>
           </div>
           <div class="col-3 text-center">
             <p class="p-change-3 mb-3">Số lượng</p>
             <div class="d-flex justify-content-center align-items-center">
               <button
                 class="button-change pe-3 ps-3"
-                (click)="counter('minus', item.idSP, item.giaTien, item.soLuongHienCo)"
+                (click)="
+                  counter('minus', item.idSP, item.giaTien, item.soLuongHienCo)
+                "
               >
                 -
               </button>
-              <p class="button-change pe-3 ps-3">{{ showSoLuongMua(item.idSP) }}</p>
-              <button class="button-change pe-3 ps-3" (click)="counter('add', item.idSP, item.giaTien, item.soLuongHienCo)">
+              <p class="button-change pe-3 ps-3">
+                {{ showSoLuongMua(item.idSP) }}
+              </p>
+              <button
+                class="button-change pe-3 ps-3"
+                (click)="
+                  counter('add', item.idSP, item.giaTien, item.soLuongHienCo)
+                "
+              >
                 +
               </button>
             </div>
           </div>
           <div class="col-3 text-center">
             <p class="p-change-3 mb-2">Đơn giá</p>
-            <p class="p-change-4"><span style="color: red">{{showThanhTien(item.idSP)|currency:"VND":" "}}đ</span></p>
+            <p class="p-change-4">
+              <span style="color: red"
+                >{{ showThanhTien(item.idSP) | currency : "VND" : " " }}đ</span
+              >
+            </p>
           </div>
           <div class="col-1 text-center">
             <button class="button-change-3">
-              <i class="fa-regular fa-circle-xmark icon" (click)="deleteItemCart(item.idSP)"></i>
+              <i
+                class="fa-regular fa-circle-xmark icon"
+                (click)="deleteItemCart(item.idSP)"
+              ></i>
             </button>
           </div>
         </div>
@@ -66,13 +90,20 @@
       </div>
       <div class="d-flex">
         <div class="col-10">
-          <p class="p-change-2 mb-2">Tổng số lượng: {{tongSLMua|currency:"VND":" "}} Sản Phẩm </p>
           <p class="p-change-2">
-            Tổng tiền : <span style="color: red">{{tongTien|currency:"VND":" "}}đ</span>
+            Tổng tiền :
+            <span style="color: red"
+              >{{ tongTien | currency : "VND" : " " }}đ</span
+            >
           </p>
         </div>
         <div class="col-2 text-end">
-          <button class="button-change-2 btn btn-outline-dark" (click)="changeToPurchasePage()">Tiếp tục</button>
+          <button
+            class="button-change-2 btn btn-outline-dark"
+            (click)="changeToPurchasePage()"
+          >
+            Tiếp tục
+          </button>
         </div>
       </div>
     </div>
