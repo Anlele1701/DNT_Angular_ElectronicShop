@@ -17,9 +17,9 @@
               <th>Mã đơn hàng</th>
               <th>Người đặt</th>
               <th>Ngày đặt</th>
-              <th>Tổng số lượng</th>
               <th>Tổng tiền</th>
               <th>PT Thanh toán</th>
+              <th>TT Thanh toán</th>
               <th></th>
             </tr>
           </thead>
@@ -27,11 +27,15 @@
             <tr>
               <td>{{item.donHang.idDonHang}}</td>
               <td>{{item.tenNguoiDat}}</td>
-              <td>{{item.donHang.ngayDat|date:'dd/MM/yyyy'}}</td>
-              <td>{{item.donHang.tongSLMua}}</td>
+              <td>{{item.donHang.ngayDat|date:'dd/MM/yyyy HH:mm:ss'}}</td>
               <td>{{item.donHang.tongTien|currency:' '||'VND'}}</td>
               <td>{{item.donHang.hinhThucTT}}</td>
+              <td *ngIf="item.donHang.trangThaiTT!=='Đã hủy'">{{item.donHang.trangThaiTT}}</td>
+              <td *ngIf="item.donHang.trangThaiTT==='Đã hủy'" style="color:red">{{item.donHang.trangThaiTT}}</td>
               <td>
+                <button type="button" class="btn btn-outline-danger" (click)="editOrder(item)">
+                  <i class="fa-solid fa-circle-info"></i> Chỉnh sửa đơn hàng
+                </button>
                 <button type="button" class="btn btn-outline-primary" (click)="changeToDetailOrder(item.donHang.idDonHang, item.idKH)">
                   <i class="fa-solid fa-circle-info"></i> Xem chi tiết
                 </button>

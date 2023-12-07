@@ -57,5 +57,7 @@ router.route('/donhang/thanhtoanvnpay').post(donHangController.createpayment);
 router.route('/donhang/vnpay_ipn').get(donHangController.getvnPayIPN);
 router.route('/donhang/quanLyDSDonHang').get(donHangController.QLDSDonHang) //show ds đơn hàng --admin
 router.route('/donhang/getCTDH/:idKH/:idDH').get(donHangController.getCTDH) //lấy chi tiết đơn hàng
-
+router.route('/donhang/updateTTDonHang').patch(donHangController.updateTTDonHang) //cập nhật thông tin đơn hàng
+router.route('/donhang/huyDonHang').patch(donHangController.huyDonHang) //hủy đơn hàng
+router.route('/donhang/khoiPhucDonHang').patch(donHangController.khoiPhucDonHang) //khôi phục đơn hàng
 module.exports = router;

@@ -45,6 +45,7 @@ import { ContactComponent } from './client/contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OrderManagementComponent } from './admin/order-management/order-management.component';
 import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
+import { EditOrderAdminComponent } from './admin/order-management/edit-order-admin/edit-order-admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,7 +85,8 @@ import { DetailOrderAdminComponent } from './admin/order-management/detail-order
     ContactComponent,
     ClientLayoutComponent,
     OrderManagementComponent,
-    DetailOrderAdminComponent
+    DetailOrderAdminComponent,
+    EditOrderAdminComponent
   ],
   imports: [
     BrowserModule,

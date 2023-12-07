@@ -101,22 +101,23 @@ var updateSLSanPham=async(cartList)=>{
 
 var QLDSDonHang=async()=>{
     try{
-        var listDH=[]
-        await donHangModel.find().then(async documents=>{
+        return await donHangModel.find().then(async documents=>{
+            var listDH=[]
             await Promise.all(documents.map(async item=>{
-                let a={
-                    idKH: item.idKH,
-                    tenNguoiDat: await findUsername(item.idKH),
-                    donHang: {}
-                }
+                var idKH=item.idKH
+                var tenNguoiDat=await findUsername(item.idKH)
                 await Promise.all(item.cacDH.map(dh=>{
+                    let a={
+                        idKH: idKH,
+                        tenNguoiDat: tenNguoiDat,
+                        donHang: {}
+                    }
                     a.donHang=dh
                     listDH.push(a)
                 }))
             }))
+            return listDH
         })
-        console.log(listDH)
-        return listDH
     }catch(error){
         console.log(error)
     }
@@ -140,4 +141,61 @@ var getCTDH=async(idKH, idDH)=>{
     }
 }
 
-module.exports={muaHang, QLDSDonHang, getCTDH}
+var updateTTDonHang=async(info)=>{
+    try{
+        return await donHangModel.findOne({idKH:info.idKH}).then(document=>{
+            const index=document.cacDH.findIndex(item=>item.idDonHang===info.idDH)
+            if(index!==-1)
+            {
+                document.cacDH[index].diaChi=info.diaChi
+                document.cacDH[index].nguoiNhan=info.nguoiNhan
+                document.cacDH[index].sdt=info.sdt
+                document.cacDH[index].diaChi=info.diaChi
+                document.save()
+            }
+            return 'Success'
+        })
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
+
+var huyDonHang=async(info)=>{
+    try{
+        return await donHangModel.findOne({idKH:info.idKH}).then(document=>{
+            const index=document.cacDH.findIndex(item=>item.idDonHang===info.idDH)
+            if(index!==-1)
+            {
+                document.cacDH[index].trangThaiTT='Đã hủy'
+                document.cacDH[index].trangThaiGiaoHang='Đã hủy'
+                document.save()
+            }
+            return 'Success'
+        })
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
+var khoiPhucDonHang=async(info)=>{
+    try{
+        return await donHangModel.findOne({idKH:info.idKH}).then(document=>{
+            const index=document.cacDH.findIndex(item=>item.idDonHang===info.idDH)
+            if(index!==-1)
+            {
+                document.cacDH[index].trangThaiTT='Chưa thanh toán'
+                document.cacDH[index].trangThaiGiaoHang='Chưa giao hàng'
+                document.save()
+            }
+            return 'Success'
+        })
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
+module.exports={muaHang, QLDSDonHang, getCTDH, updateTTDonHang,huyDonHang,khoiPhucDonHang}

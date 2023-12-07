@@ -7,10 +7,8 @@
         <h1 class="text-content_header">Chi tiết đơn hàng:</h1>
         <p class="m-0 backBtn">Ngày đặt: {{CTDH.ngayDat| date: 'dd/MM/yyyy'}}</p>
       </div>
-      <span class="backBtn">{{CTDH.trangThaiGiaoHang}}</span>
-    </div>
-    <div class="">
-      <div class="btn btn-outline-danger fw-bold">Hủy đơn hàng</div>
+      <span class="backBtn" style="color:red" *ngIf="CTDH.trangThaiGiaoHang==='Đã hủy'">{{CTDH.trangThaiGiaoHang}}</span>
+      <span class="backBtn" *ngIf="CTDH.trangThaiGiaoHang!=='Đã hủy'">{{CTDH.trangThaiGiaoHang}}</span>
     </div>
   </div>
   <div class="row">
@@ -18,7 +16,6 @@
       <div class="customer-info">
         <div class="d-flex justify-content-between" style="padding: 0 12px">
           <h4>Khách hàng</h4>
-          <a href="" class="text-decpration-none">Sửa</a>
         </div>
         <div class="info-details">
           <p class="fw-bold m-0">Họ và tên</p>
@@ -34,7 +31,9 @@
         </div>
         <div class="info-details">
           <p class="fw-bold m-0">Trạng thái thanh toán</p>
-          <p class="color-green">{{CTDH.trangThaiTT}}</p>
+          <p class="color-green" *ngIf="CTDH.trangThaiTT==='Đã thanh toán'">{{CTDH.trangThaiTT}}</p>
+          <p style="color:red" *ngIf="CTDH.trangThaiTT==='Đã hủy'">{{CTDH.trangThaiTT}}</p>
+          <p *ngIf="CTDH.trangThaiTT==='Chưa thanh toán'">{{CTDH.trangThaiTT}}</p>
         </div>
       </div>
     </div>
