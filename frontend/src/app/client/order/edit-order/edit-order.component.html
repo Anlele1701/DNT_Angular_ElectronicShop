@@ -1,8 +1,6 @@
 <div class="popup">
   <form (submit)="updateInfoOrder()">
     <h3 class="text-start fw-semibold pt-2">Chỉnh sửa thông tin nhận hàng</h3>
-    <button *ngIf="infoOrder.ttThanhToan!=='Đã hủy'" class="btn btn-danger" (click)="cancelOrder()">Hủy đơn hàng</button>
-    <button *ngIf="infoOrder.ttThanhToan==='Đã hủy'" class="btn btn-warning" (click)="recoveryOrder()">Khôi phục đơn hàng</button>
     <hr>
     <div class="row">
         <label for="exampleInputPassword1" class="form-label">Tên người nhận:</label>

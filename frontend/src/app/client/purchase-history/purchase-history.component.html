@@ -106,11 +106,12 @@
               <tbody>
                 <tr *ngFor="let item of donhang">
                   <td>{{ item.idDonHang }}</td>
-                  <td>{{item.ngayDat | date:"dd/MM/yyyy"}}</td>
+                  <td>{{item.ngayDat | date:"dd/MM/yyyy HH:mm:ss"}}</td>
                   <td>{{item.tongSLMua}}</td>
-                  <td>{{item.tongTien}}</td>
-                  <td>{{item.trangThaiTT}}</td>
-                  <td><button class="btn btn-outline-primary">Xem chi tiết</button></td>
+                  <td>{{item.tongTien|currency:'VND':' '}}</td>
+                  <td *ngIf="item.trangThaiTT==='Đã hủy'" style="color: red;">{{item.trangThaiTT}}</td>
+                  <td *ngIf="item.trangThaiTT!=='Đã hủy'">{{item.trangThaiTT}}</td>
+                  <td><button class="btn btn-primary" (click)="orderDetail(item.idDonHang)">Xem chi tiết</button></td>
                 </tr>
               </tbody>
             </table>

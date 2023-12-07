@@ -41,7 +41,7 @@ const routes: Routes = [
       { path: 'membership-class', component: MembershipClassComponent },
       { path: 'product-detail', component: ProductDetailComponent },
       { path: 'personal', component: PersonalPageComponent },
-      { path: 'order', component: OrderComponent },
+      { path: 'order/:idKH/:idDH', component: OrderComponent },
       { path: 'category', component: ProductCategoryComponent },
       { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
       { path: 'category/:loaiSP', component: ProductCategoryComponent },

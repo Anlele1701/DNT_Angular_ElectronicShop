@@ -9,6 +9,9 @@ var donHangSchema=new Schema({
                 type:Date,
                 default: Date.now
             },
+            nguoiNhan:{type: String},
+            sdt: {type: String},
+            diaChi: {type: String},
             hìnhThucTT: {type:String},
             trangThaiTT: {type: String},
             trangThaiGiaoHang: {type:String},

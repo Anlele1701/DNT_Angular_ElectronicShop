@@ -188,6 +188,7 @@ var khoiPhucDonHang=async(info)=>{
             {
                 document.cacDH[index].trangThaiTT='Chưa thanh toán'
                 document.cacDH[index].trangThaiGiaoHang='Chưa giao hàng'
+                document.cacDH[index].ngayDat=new Date()
                 document.save()
             }
             return 'Success'

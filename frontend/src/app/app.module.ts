@@ -46,6 +46,8 @@ import { OrderManagementComponent } from './admin/order-management/order-managem
 import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
 import { EditOrderAdminComponent } from './admin/order-management/edit-order-admin/edit-order-admin.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
+import { EditOrderComponent } from './client/order/edit-order/edit-order.component';
+import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +88,9 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
     ClientLayoutComponent,
     OrderManagementComponent,
     DetailOrderAdminComponent,
-    EditOrderAdminComponent
+    EditOrderAdminComponent,
+    EditOrderComponent,
+    CancelOrderComponent
   ],
   imports: [
     BrowserModule,

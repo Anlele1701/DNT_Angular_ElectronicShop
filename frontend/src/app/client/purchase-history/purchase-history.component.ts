@@ -35,4 +35,8 @@ export class PurchaseHistoryComponent {
         this.donhang=data
     })
   }
+
+  orderDetail(idDH: string){
+    this.router.navigate(['/client/order/'+this.user._id+'/'+idDH])
+  }
 }
