@@ -18,14 +18,13 @@ import { AdminDashboardService } from 'src/app/services/AdminDashboard/admin-das
 })
 export class DashboardComponent implements OnInit {
   piechart: any;
+  piechart2: any;
   highcharts: typeof Highcharts = Highcharts;
   API: string = '';
   countSP: number = 0;
   countKH: number = 0;
   // piechart
-  loaiSP: any[] =[];
-  countLoaiSP: any[]=[];
-
+  tenHangSP: any[] = [];
   constructor(
     private api: API,
     public http: HttpClient,
@@ -39,37 +38,72 @@ export class DashboardComponent implements OnInit {
     this.getCountKH();
     this.getLoaiSP();
   }
-  // PIE CHART
-  getLoaiSP(){
-    this.adminDashboard.getLoaiSP().subscribe((data:any)=>{
+  // LOAISP CHART
+  getLoaiSP() {
+    this.adminDashboard.getLoaiSP().subscribe((data: any) => {
       this.drawLoaiSP(data);
-    })
-  }
-  drawLoaiSP(data:any){
-    var seriesData =[];
-    data.forEach((element: any)=>{
-      this.loaiSP.push(element.tenLoai); 
-      this.countLoaiSP.push(element.cacHang.length);
-      seriesData.push({
-        name:element.tenLoai,
-        y:element.cacHang.length,});
+      this.drawSPinLoaiSP(data);
     });
-    // LOAISP 
+  }
+  drawLoaiSP(data: any) {
+    var seriesData = [];
+    data.forEach((element: any) => {
+      seriesData.push({
+        name: element.tenLoai,
+        y: element.cacHang.length,
+      });
+    });
+    // LOAISP
     this.piechart = {
       chart: {
         type: 'pie',
       },
       title: {
-        text: 'Biểu đồ thể hiện cơ cấu sản phẩm trong loại sản phẩm',
+        text: 'Biểu đồ thể hiện cơ cấu hãng trong loại sản phẩm',
       },
-      series: [{
-        name: 'Số lượng sản phẩm', 
-        data: seriesData,
-      }]
+      series: [
+        {
+          name: 'Số lượng hãng',
+          data: seriesData,
+        },
+      ],
     };
   }
-  //data
-
+  drawSPinLoaiSP(data: any) {
+    var seriesData = [];
+    data.forEach((element: any) => {
+      var tenHang = element.tenLoai;
+      var test = 0;
+      console.log(tenHang);
+      this.tenHangSP.push(tenHang);
+      element.cacHang.forEach((element2: any) => {
+        test += element2.idCacSP.length;
+        console.log(test);
+      });
+      seriesData.push({  
+        name: tenHang,
+        data: [test],
+      });
+    });
+    // LOAISP
+    this.piechart2 = {
+      chart: {
+        type: 'bar',
+      },
+      title: {
+        text: 'Biểu đồ thể hiện cơ cấu sản phẩm trong loại sản phẩm',
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true,
+          },
+        },
+      },
+       series: seriesData,
+    };
+  }
+  // 
   // BE
   getCountSP() {
     this.loadData.setLoadingData(true);
