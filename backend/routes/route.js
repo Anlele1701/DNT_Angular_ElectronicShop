@@ -26,6 +26,7 @@ router
 router.route("/loaisp/createLoaiSP").post(loaiSPController.createLoaiSP); //tạo loại sản phẩm mới
 router.route("/loaisp/deleteLoaiSP/:id").delete(loaiSPController.deleteLoaiSP); //xóa loại sản phẩm
 router.route("/loaisp/updateLoaiSP/:id").patch(loaiSPController.updateLoaiSP); // Update loại sản phẩm
+router.route("/loaisp/getAll").get(loaiSPController.getLoaiSP);
 // SẢN PHẨM
 router
   .route("/sanpham/createNewProduct")
