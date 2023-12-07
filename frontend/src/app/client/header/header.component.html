@@ -1,9 +1,16 @@
 <!-- Content cho navbar -->
 <nav class="navbar navbar-expand-lg px-4" id="navbar-container">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a
+      class="navbar-brand"
+      routerLink="/client/homepage"
+      [routerLinkActive]="['active']"
+    >
       <!-- logo -->
-      <img src="assets\client\Shared\logo.png" style="width: 75px; image-rendering: optimizeQuality" />
+      <img
+        src="assets\client\Shared\logo.png"
+        style="width: 75px; image-rendering: optimizeQuality"
+      />
     </a>
 
     <!-- Button cho màn hình mobile -->
@@ -11,8 +18,8 @@
       class="navbar-toggler bg-white"
       type="button"
       data-bs-toggle="collapse"
-      aria-controls="navbarSupportedContent" 
       data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
@@ -23,47 +30,64 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item ms-5">
-          <a class="nav-link active" routerLink="/client/homepage">Trang Chủ</a>
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/client/homepage"
+            [routerLinkActive]="['active']"
+            >Trang Chủ</a
+          >
         </li>
         <li class="nav-item ms-5">
-          <a class="nav-link" routerLink="/client/about-us">Về Chúng Tôi</a>
+          <a
+            class="nav-link"
+            routerLink="/client/about-us"
+            [routerLinkActive]="['active']"
+            >Về Chúng Tôi</a
+          >
         </li>
         <li class="nav-item dropdown ms-5">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a
+            class="nav-link dropdown-toggle"
+            [routerLinkActive]="['active']"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Danh Mục
           </a>
           <ul class="dropdown-menu">
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Điện Thoại')"
                 >Điện Thoại</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Laptop')"
                 >Laptop</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Màn Hình')"
                 >Màn Hình</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Bàn Phím')"
                 >Bàn Phím</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Chuột')"
                 >Chuột</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li [routerLinkActive]="['active']">
               <a class="dropdown-item" (click)="reloadCategory('Tai Nghe')"
                 >Tai Nghe</a
               >
@@ -75,25 +99,44 @@
       <ul class="nav">
         <li class="nav-item me-3">
           <a class="nav-link" aria-current="page" href="#">
-            <i class="fas fa-search fa-lg" style="color: #f1f1f1; font-size: 1.5rem"></i>
-          </a>
-        </li>
-        <li class="nav-item me-3">
-          <a class="nav-link" [routerLink]="['/client/shopping-cart']" >
-            <i class="fas fa-shopping-bag" style="color: #f1f1f1; font-size: 1.5rem"></i>
-          </a>
-        </li>
-        <li class="nav-item" *ngIf="checkLogin()">
-          <a class="nav-link" (click)="changeToPersonalPage()">
             <i
-              class="fas fa-user-circle"
+              class="fas fa-search fa-lg"
               style="color: #f1f1f1; font-size: 1.5rem"
             ></i>
           </a>
         </li>
+        <li class="nav-item me-3">
+          <a
+            class="nav-link iconClass"
+            [routerLink]="['/client/shopping-cart']"
+          >
+            <i
+              class="fas fa-shopping-bag"
+              style="color: #f1f1f1; font-size: 1.5rem; position: relative"
+            >
+              <span
+                class="badge badge-light"
+                id="validCart"
+                *ngIf="slcart != 0; else khackhong"
+                >{{ slcart }}</span
+              >
+              <ng-template #khackhong> </ng-template>
+            </i>
+          </a>
+        </li>
+        <!-- LOGIN -->
+        <li class="nav-item" *ngIf="checkLogin()">
+          <a class="nav-link" (click)="changeToPersonalPage()">
+            <i
+              class="fas fa-user-circle"
+              style="color: #f1f1f1; font-size: 1.5rem; cursor: pointer"
+            ></i>
+          </a>
+        </li>
+        <!-- NO LOGIN -->
         <li class="nav-item" *ngIf="!checkLogin()">
           <a class="nav-link" (click)="openLogin('500ms', '500ms')">
-            <p>Đăng nhập</p>
+            <span>Đăng Nhập</span>
           </a>
         </li>
       </ul>

@@ -1,9 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { error } from 'highcharts';
 import { Observable } from 'rxjs';
+import { LoadDataService } from '../shared/load-data.service';
 
 @Component({
   selector: 'app-category',
@@ -18,23 +26,35 @@ export class CategoryComponent implements OnInit {
   newTenLoai = '';
 
   readonly API = 'http://localhost:3800';
-  constructor(private http: HttpClient, private el: ElementRef) {}
+  constructor(
+    private http: HttpClient,
+    private el: ElementRef,
+    private loadData: LoadDataService
+  ) {}
   ngOnInit(): void {
     this.showAllCategories();
   }
   showAllCategories() {
-    this.http.get(this.API + '/loaisp/countLoaiSP').subscribe((data: any) => {
-      this.listLoaiSP = data.listLoaiSP;
-      //console.log(data);
-    });
+    this.loadData.setLoadingData(true);
+    this.http.get(this.API + '/loaisp/countLoaiSP').subscribe(
+      (data: any) => {
+        this.listLoaiSP = data.listLoaiSP;
+        //console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        this.loadData.setLoadingData(false);
+      }
+    );
   }
 
   createnewLoaiSP() {
     this.http
       .post(this.API + '/loaisp/createLoaiSP', { tenLoai: this.categoryName })
       .subscribe((data: any) => {
-        console.log(data);
-        window.location.reload();
+        this.showAllCategories();
       });
   }
   // FUNCTIONS
