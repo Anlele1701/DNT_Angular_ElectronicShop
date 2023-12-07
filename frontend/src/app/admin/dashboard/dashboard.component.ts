@@ -19,6 +19,7 @@ import { AdminDashboardService } from 'src/app/services/AdminDashboard/admin-das
 export class DashboardComponent implements OnInit {
   piechart: any;
   piechart2: any;
+  spchart: any;
   highcharts: typeof Highcharts = Highcharts;
   API: string = '';
   countSP: number = 0;
@@ -37,6 +38,7 @@ export class DashboardComponent implements OnInit {
     this.getCountSP();
     this.getCountKH();
     this.getLoaiSP();
+    this.getSanPham();
   }
   // LOAISP CHART
   getLoaiSP() {
@@ -53,7 +55,6 @@ export class DashboardComponent implements OnInit {
         y: element.cacHang.length,
       });
     });
-    // LOAISP
     this.piechart = {
       chart: {
         type: 'pie',
@@ -74,13 +75,11 @@ export class DashboardComponent implements OnInit {
     data.forEach((element: any) => {
       var tenHang = element.tenLoai;
       var test = 0;
-      console.log(tenHang);
       this.tenHangSP.push(tenHang);
       element.cacHang.forEach((element2: any) => {
         test += element2.idCacSP.length;
-        console.log(test);
       });
-      seriesData.push({  
+      seriesData.push({
         name: tenHang,
         data: [test],
       });
@@ -100,10 +99,47 @@ export class DashboardComponent implements OnInit {
           },
         },
       },
-       series: seriesData,
+      series: seriesData,
     };
   }
-  // 
+  // SANPHAM CHART
+  getSanPham() {
+    this.adminDashboard.getSanPham().subscribe((data: any) => {
+      this.drawSanPham(data);
+    });
+  }
+  drawSanPham(data: any) {
+    var seriesData = [];
+    var countsByTenHang = new Map<string, number>();
+    data.forEach((element: any) => {
+      var tenHang = element.tenHang;
+      if (countsByTenHang.has(tenHang)) {
+        countsByTenHang.set(tenHang, countsByTenHang.get(tenHang) + 1);
+      } else {
+        countsByTenHang.set(tenHang, 1);
+      }
+    });
+    countsByTenHang.forEach((count, tenHang) => {
+      console.log(tenHang + ' ' + count )
+      seriesData.push({
+        name: tenHang,
+        y: count,
+      })
+    });
+    // CHART
+    this.spchart = {
+      chart: {
+        type: 'pie',
+      },
+      title: {
+        text: 'Biểu đồ thể hiện cơ cấu sản phẩm trong hãng',
+      },
+      series: [{
+        data: seriesData,
+        name: 'Số lượng sản phẩm'
+      }]
+    };
+  }
   // BE
   getCountSP() {
     this.loadData.setLoadingData(true);

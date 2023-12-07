@@ -45,6 +45,7 @@ router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số l
 router
   .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
   .delete(sanPhamController.deleteProduct);
+  router.route("/sanpham/getAll").get(sanPhamController.getAll);
 //NHÂN VIÊN
 router.route("/nhanvien/login").post(nhanVienController.loginNV); // Đăng nhập nhân viên
 router.route("/nhanvien/verifyToken").post(verifyToken.verifyToken); // xác thực token nhân viên
