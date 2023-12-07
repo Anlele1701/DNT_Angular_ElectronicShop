@@ -40,11 +40,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { YourAccountComponent } from './client/your-account/your-account.component';
 import { ContactComponent } from './client/contact/contact.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { OrderManagementComponent } from './admin/order-management/order-management.component';
-import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
+import { YourAccountComponent } from './client/your-account/your-account.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,9 +79,7 @@ import { DetailOrderAdminComponent } from './admin/order-management/detail-order
     ResetComponent,
     YourAccountComponent,
     ContactComponent,
-    ClientLayoutComponent,
-    OrderManagementComponent,
-    DetailOrderAdminComponent
+    ClientLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +91,7 @@ import { DetailOrderAdminComponent } from './admin/order-management/detail-order
     MatDialogModule,
     HighchartsChartModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

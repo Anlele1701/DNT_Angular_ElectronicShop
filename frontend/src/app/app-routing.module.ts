@@ -25,8 +25,6 @@ import { PurchaseComponent } from './client/purchase/purchase.component';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { ContactComponent } from './client/contact/contact.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
-import { OrderManagementComponent } from './admin/order-management/order-management.component';
-import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -66,9 +64,7 @@ const routes: Routes = [
         component: FormCreateProductComponent,
       },
       { path: 'categories', component: CategoryComponent },
-      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent},
-      { path: 'orders', component: OrderManagementComponent},
-      { path: 'detail-order/:idKH/:idDH', component: DetailOrderAdminComponent}
+      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent}
     ],
   },
   { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },

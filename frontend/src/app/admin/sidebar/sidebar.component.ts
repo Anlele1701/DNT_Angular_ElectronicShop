@@ -1,4 +1,3 @@
-import { LoadDataService } from './../shared/load-data.service';
 import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -9,19 +8,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private loadData: LoadDataService
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
   activeindex = 0;
   isExpanded = false;
   countLoaiSP: number = 0;
   listLoaiSP: any[] = [];
   readonly API = 'http://localhost:3800';
-
-  isLoading$ = this.loadData.loadingData$;
-
   onClickSideBar(index: number) {
     // Mỗi khi thao tác click 1 index bất kì thì dropdown sẽ tắt đi
     const collapse = document.querySelectorAll('.collapse');
@@ -31,19 +23,10 @@ export class SidebarComponent implements OnInit {
     this.activeindex = index;
   }
   countAllLoaiSP() {
-    this.loadData.setLoadingData(true);
-    this.http.get(this.API + '/loaisp/countLoaiSP').subscribe(
-      (data: any) => {
-        this.countAllLoaiSP = data.sumLoaiSP;
-        this.listLoaiSP = data.listLoaiSP;
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        this.loadData.setLoadingData(false);
-      }
-    );
+    this.http.get(this.API + '/loaisp/countLoaiSP').subscribe((data: any) => {
+      this.countAllLoaiSP = data.sumLoaiSP;
+      this.listLoaiSP = data.listLoaiSP;
+    });
   }
   ngOnInit(): void {
     this.countAllLoaiSP();

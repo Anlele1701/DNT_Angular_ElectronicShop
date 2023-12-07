@@ -5,14 +5,11 @@ var donHangSchema=new Schema({
     cacDH: {type: [
         {
             idDonHang: {type:String},
-            nguoiNhan: {type: String},
-            diaChi: {type: String},
-            sdt: {type: String},
             ngayDat: {
                 type:Date,
                 default: Date.now
             },
-            hinhThucTT: {type:String},
+            hìnhThucTT: {type:String},
             trangThaiTT: {type: String},
             trangThaiGiaoHang: {type:String},
             tongSLMua: {type:Number, int:true},

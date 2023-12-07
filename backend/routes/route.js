@@ -54,9 +54,4 @@ router.route("/reset-password").post(khachHangController.resetPassword); //Reset
 //ĐƠN HÀNG
 router.route("/donhang/muaHang").post(donHangController.muaHang)
 router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang)
-router.route("/donhang/muaHang").post(donHangController.muaHang) //lưu đơn hàng vào db
-router.route('/donhang/thanhtoanvnpay').post(donHangController.createpayment);
-router.route('/donhang/vnpay_ipn').get(donHangController.getvnPayIPN);
-router.route('/donhang/quanLyDSDonHang').get(donHangController.QLDSDonHang) //show ds đơn hàng --admin
-router.route('/donhang/getCTDH/:idKH/:idDH').get(donHangController.getCTDH) //lấy chi tiết đơn hàng
 module.exports = router;
