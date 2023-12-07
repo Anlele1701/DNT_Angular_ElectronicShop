@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as Highcharts from 'highcharts';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -37,7 +37,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getCountSP();
     this.getCountKH();
-    this.getLoaiSP();
     this.getLoaiSP();
   }
   // PIE CHART

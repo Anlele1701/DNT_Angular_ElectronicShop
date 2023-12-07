@@ -1,5 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  AfterViewInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.models';
 import { API } from 'src/app/services/API.service';
@@ -12,8 +17,9 @@ import { LoadingIndicatorService } from 'src/app/services/LoadingIndicatorServic
   templateUrl: './product-category.component.html',
   styleUrls: ['./product-category.component.css'],
   providers: [API],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
-export class ProductCategoryComponent implements OnInit {
+export class ProductCategoryComponent implements OnInit, AfterViewInit {
   listproduct: any[] = [];
   listBrand: string[] = [];
   loaiSP: string = '';
@@ -38,7 +44,9 @@ export class ProductCategoryComponent implements OnInit {
       this.loaiSP = params['loaiSP'];
     });
   }
-
+  ngAfterViewInit() {
+    this.loadData.setLoadingData(false);
+  }
   getAllProduct() {
     this.loadData.setLoadingData(true);
     this.http
@@ -47,6 +55,7 @@ export class ProductCategoryComponent implements OnInit {
         (data: any) => {
           data.cacHang.forEach((item) => {
             this.getHang(item.idHang);
+            console.log(item.idHang);
             item.idCacSP.forEach((idSP) => {
               this.getSP(idSP);
             });
@@ -74,7 +83,6 @@ export class ProductCategoryComponent implements OnInit {
       )
     );
   }
-
   getSP(idSP) {
     this.requests.push(
       this.http.get(this.api.getAPI() + '/sanpham/getSP/' + idSP).pipe(

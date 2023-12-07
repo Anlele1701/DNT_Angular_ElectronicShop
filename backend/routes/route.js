@@ -6,6 +6,7 @@ var khachHangController = require("../src/controllers/khachHangController");
 var loaiSPController = require("../src/controllers/loaiSPController");
 var nhanVienController = require("../src/controllers/nhanVienController");
 var sanPhamController = require("../src/controllers/sanPhamController");
+var Momo = require("../src/PaymentGateway/Momo");
 
 var upload = require("../middleware/upload");
 //HÃNG
@@ -40,7 +41,9 @@ router
   .route("/sanpham/editSanPham")
   .post(upload.upload.array("hinhAnh", 3), sanPhamController.editProduct); //tạo sản phẩm mới
 router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số lượng SP
-router.route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP").delete(sanPhamController.deleteProduct)
+router
+  .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
+  .delete(sanPhamController.deleteProduct);
 
 //KHÁCH HÀNG
 router.route("/khachhang/dangKy").post(khachHangController.dangKy); //đăng ký tài khoản
@@ -51,9 +54,15 @@ router.route("/khachhang/dangNhap").post(khachHangController.dangNhap); //đăng
 router.route("/khachhang/countKH").get(khachHangController.countKH); // lấy số lượng khách hàng
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
 
-
 //ĐƠN HÀNG
-router.route("/donhang/muaHang").post(donHangController.muaHang)
-router.route('/donhang/thanhtoanvnpay').post(donHangController.createpayment);
-router.route('/donhang/vnpay_ipn').get(donHangController.getvnPayIPN);
+router.route("/donhang/muaHang").post(donHangController.muaHang);
+router.route("/donhang/thanhtoanvnpay").post(donHangController.createpayment);
+router.route("/donhang/vnpay_ipn").get(donHangController.getvnPayIPN);
+
+router.route("/donhang/muaHang").post(donHangController.muaHang);
+router
+  .route("/donhang/getAllDonHangById/:idkh")
+  .get(donHangController.getAllDonHangById); // lấy danh sách các DH theo id khách hàng
+//MOMO PAYMENT
+router.route("/payment/momo/:idDH").post(donHangController.MomoPayment);
 module.exports = router;
