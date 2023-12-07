@@ -257,8 +257,12 @@
   </div>
 </div>
 <div class="container bg-white mt-2">
-  <highcharts-chart
-    [Highcharts]="highcharts"
-    [options]="chartOptions"
-  ></highcharts-chart>
+  <div class="row">
+    <div class="col">
+      <highcharts-chart
+        [Highcharts]="highcharts"
+        [options]="piechart"
+      ></highcharts-chart>
+    </div>
+  </div>
 </div>
