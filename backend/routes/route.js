@@ -62,11 +62,11 @@ router.route("/reset-password").post(khachHangController.resetPassword); //Reset
 router.route("/donhang/muaHang").post(donHangController.muaHang);
 router.route("/donhang/thanhtoanvnpay").post(donHangController.createpayment);
 router.route("/donhang/vnpay_ipn").get(donHangController.getvnPayIPN);
-
 router.route("/donhang/muaHang").post(donHangController.muaHang);
 router
   .route("/donhang/getAllDonHangById/:idkh")
   .get(donHangController.getAllDonHangById); // lấy danh sách các DH theo id khách hàng
+  router.route("/donhang/getAllDonHang").get(donHangController.getAllDonHang); // lấy danh sách các DH theo id khách hàng
 //MOMO PAYMENT
 router.route("/payment/momo/:idDH").post(donHangController.MomoPayment);
 module.exports = router;

@@ -45,6 +45,7 @@ import { ContactComponent } from './client/contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { API } from './services/API.service';
 import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,

@@ -132,4 +132,12 @@ const getAllDonHangById = async (userOrder) => {
       .json({ message: "Internal Server Error of getAllDonHangById" });
   }
 };
-module.exports = { muaHang, getAllDonHangById };
+var getAllDonHang = async () => {
+  try {
+    var result = await donHangModel.find();
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { muaHang, getAllDonHangById, getAllDonHang };

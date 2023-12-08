@@ -7,13 +7,15 @@ import { count } from 'rxjs';
 import { API } from 'src/app/services/API.service';
 import { LoadDataService } from '../shared/load-data.service';
 import { AdminDashboardService } from 'src/app/services/AdminDashboard/admin-dashboard.service';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
-  imports: [HighchartsChartModule],
+  imports: [HighchartsChartModule, CommonModule],
   providers: [API],
 })
 export class DashboardComponent implements OnInit {
@@ -24,6 +26,9 @@ export class DashboardComponent implements OnInit {
   API: string = '';
   countSP: number = 0;
   countKH: number = 0;
+  total:number =0;
+  totalDH: number =0;
+
   // piechart
   tenHangSP: any[] = [];
   constructor(
@@ -36,12 +41,14 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getCountSP();
-    this.getCountKH();
+    this.getCountKH();   
+    this.getTotalMoney();
     this.getLoaiSP();
     this.getSanPham();
   }
   // LOAISP CHART
   getLoaiSP() {
+    this.loadData.setLoadingData(true);
     this.adminDashboard.getLoaiSP().subscribe((data: any) => {
       this.drawLoaiSP(data);
       this.drawSPinLoaiSP(data);
@@ -104,6 +111,7 @@ export class DashboardComponent implements OnInit {
   }
   // SANPHAM CHART
   getSanPham() {
+    this.loadData.setLoadingData(true);
     this.adminDashboard.getSanPham().subscribe((data: any) => {
       this.drawSanPham(data);
     });
@@ -120,7 +128,6 @@ export class DashboardComponent implements OnInit {
       }
     });
     countsByTenHang.forEach((count, tenHang) => {
-      console.log(tenHang + ' ' + count )
       seriesData.push({
         name: tenHang,
         y: count,
@@ -153,6 +160,26 @@ export class DashboardComponent implements OnInit {
       () => {
         this.loadData.setLoadingData(false);
       }
+    );
+  }
+  getTotalMoney() { 
+    this.loadData.setLoadingData(true);
+    let total =0;
+    let totalDH = 0;
+    this.http.get(this.API+'/donhang/getAllDonHang').subscribe(
+      (data: any) => {
+        data.forEach((element:any)=>{
+          totalDH += element.cacDH.length;
+          element.cacDH.forEach((element2:any)=>{
+            total += element2.tongTien;
+          }); 
+        })    
+        this.totalDH = totalDH;
+        this.total = total;     
+      },
+      (error) => {
+        console.log(error);
+      },
     );
   }
   getCountKH() {

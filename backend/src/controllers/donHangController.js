@@ -210,6 +210,14 @@ const getAllDonHangById = async (req, res) => {
     });
   }
 };
+var getAllDonHang = async (req, res) => {
+  try {
+    var result = await donHangService.getAllDonHang();
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
 module.exports = {
   muaHang,
   createpayment,
@@ -217,5 +225,6 @@ module.exports = {
   vnPayReturn,
   MomoPayment,
   getAllDonHangById,
+  getAllDonHang,
 };
 

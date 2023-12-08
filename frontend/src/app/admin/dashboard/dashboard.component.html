@@ -32,7 +32,7 @@
         </svg>
         <div class="card-body pt-2">
           <h5 class="card-title">Tổng tiền bán</h5>
-          <p class="card-text">23.000 VND</p>
+          <p class="card-text">{{ total | currency : "VND" : "" }} VND</p>
         </div>
       </div>
     </div>
@@ -176,12 +176,12 @@
         </svg>
         <div class="card-body pt-2">
           <h5 class="card-title">SL đơn hàng</h5>
-          <p class="card-text">1.000.000 đơn</p>
+          <p class="card-text">{{ totalDH }} đơn</p>
         </div>
       </div>
     </div>
     <!-- SL nhân viên -->
-    <div class="col">
+    <!-- <div class="col">
       <div class="card">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -253,7 +253,7 @@
           <p class="card-text">200 nhân viên</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <div class="px-5 mt-2 pb-5">
