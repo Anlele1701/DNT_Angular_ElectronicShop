@@ -81,7 +81,7 @@ var createpayment = async (req,res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
-    }
+}
 }
 
 var getvnPayIPN = async (req,res) => {
@@ -136,7 +136,7 @@ var getvnPayIPN = async (req,res) => {
                     res.status(200).json({ RspCode: '04', Message: 'Amount invalid' });
                 }
             } else {
-                res.status(200).json({ RspCode: '01', Message: 'Order not found' });
+res.status(200).json({ RspCode: '01', Message: 'Order not found' });
             }
         } else {
             res.status(200).json({ RspCode: '97', Message: 'Checksum failed' });
@@ -177,4 +177,68 @@ var vnPayReturn = async (req,res) => {
     }
 }
 
-module.exports={muaHang,createpayment,getvnPayIPN,vnPayReturn}
+var QLDSDonHang=async(req,res)=>{
+    try{
+        var list=await donHangService.QLDSDonHang()
+        res.send(list)
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+var getCTDH=async(req,res)=>{
+    try{
+        var ctdh=await donHangService.getCTDH(req.params.idKH, req.params.idDH)
+        console.log(ctdh)
+        res.send(ctdh)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+var updateTTDonHang=async(req,res)=>{
+    try{
+        var update=await donHangService.updateTTDonHang(req.body.infoOrder)
+        res.send({noti:update})
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
+
+var huyDonHang=async(req,res)=>{
+    try{
+        var update=await donHangService.huyDonHang(req.body.infoOrder)
+        res.send({noti:update})
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+var khoiPhucDonHang=async(req,res)=>{
+    try{
+        var update=await donHangService.khoiPhucDonHang(req.body.infoOrder)
+        res.send({noti:update})
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+var showdonhang=async(req,res)=>{
+    try{
+        var result=await donHangService.showdonhang(req.params.idKH)
+        console.log(result)
+        res.send(result)
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+module.exports={muaHang,createpayment,getvnPayIPN,vnPayReturn, QLDSDonHang, getCTDH, updateTTDonHang, huyDonHang, khoiPhucDonHang,showdonhang}

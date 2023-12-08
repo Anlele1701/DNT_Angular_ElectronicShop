@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import * as Highcharts from 'highcharts';
+import {  Router } from '@angular/router';
+import * as Highcharts from 'highcharts' ;
 import { HighchartsChartModule } from 'highcharts-angular';
 import { count } from 'rxjs';
 import { API } from 'src/app/services/API.service';
-import { LoadDataService } from '../shared/load-data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,19 +12,16 @@ import { LoadDataService } from '../shared/load-data.service';
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
   imports: [HighchartsChartModule],
-  providers: [API],
+  providers:[API]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit{
   chartOptions: any;
   highcharts: typeof Highcharts = Highcharts;
-  API: string = '';
-  countSP: number = 0;
-  countKH: number = 0;
-  constructor(
-    private api: API,
-    public http: HttpClient,
-    private loadData: LoadDataService
-  ) {
+  API: string=''
+  countSP:number=0;
+  countKH: number =0;
+
+  constructor(private api: API, public http:HttpClient){
     this.API = api.getAPI();
   }
   ngOnInit(): void {
@@ -34,67 +30,52 @@ export class DashboardComponent implements OnInit {
     this.getCountKH();
   }
   // CHART
-  barChart() {
-    this.chartOptions = {
-      chart: {
-        type: 'column',
+  barChart(){
+    this.chartOptions={
+      chart:{
+        type:'column'
       },
-      title: {
-        text: 'Testing',
+      title:{
+        text:'Testing'
       },
-      subtitle: {
-        text: 'phu de',
+      subtitle:{
+        text:'phu de'
       },
-      xAxis: {
-        cate: ['VietName', 'vietName', 'trung quoc', 'nga'],
+      xAxis:{
+        cate:[
+          'VietName', 'vietName','trung quoc','nga'
+        ]
       },
-      series: this.chartData,
-    };
+      series: this.chartData
+    }
   }
   //data
-  chartData = [
+  chartData =[
     {
-      name: 'Year 1990',
-      data: [631, 727, 3202, 721],
+      name:'Year 1990',
+      data:[631,727,3202,721]
     },
     {
-      name: 'Year 2000',
-      data: [814, 841, 3714, 726],
+      name:'Year 2000',
+      data:[814,841,3714,726]
     },
     {
-      name: 'Year 2018',
-      data: [1276, 1007, 4561, 746],
-    },
-  ];
+      name:'Year 2018',
+      data:[1276,1007, 4561, 746]
+    }
+  ]
 
   // BE
-  getCountSP() {
-    this.loadData.setLoadingData(true);
-    this.http.get(this.API + '/sanpham/countSP').subscribe(
-      (data: any) => {
-        this.countSP = data.result;
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        this.loadData.setLoadingData(false);
-      }
-    );
+  getCountSP(){
+    this.http.get(this.API+'/sanpham/countSP').subscribe((data:any)=>
+    {
+      this.countSP = data.result;
+    })
   }
-  getCountKH() {
-    this.loadData.setLoadingData(true);
-    this.http.get(this.API + '/khachhang/countKH').subscribe(
-      (data: any) => {
+  getCountKH(){
+    this.http.get(this.API+'/khachhang/countKH').subscribe((data:any)=>{
         this.countKH = data.result;
-        console.log(this.countKH);
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        this.loadData.setLoadingData(false);
-      }
-    );
+        console.log(this.countKH)
+    })
   }
 }

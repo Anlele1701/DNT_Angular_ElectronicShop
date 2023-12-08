@@ -24,7 +24,6 @@ export class ShoppingCartComponent implements OnInit{
         this.tongTien=this.tongTien+giaTien
         this.tongSLMua++
       }
-      location.reload();
       return this.cartService.plusOneItem(idSP)
     }
     else{
@@ -33,7 +32,6 @@ export class ShoppingCartComponent implements OnInit{
         this.tongTien=this.tongTien-giaTien
         this.tongSLMua--
       }
-      location.reload();
       return this.cartService.minusOneItem(idSP)
     }
   }
@@ -67,7 +65,6 @@ export class ShoppingCartComponent implements OnInit{
     this.cartList=this.cartService.deleteAll()
     this.tongSLMua=0
     this.tongTien=0
-    location.reload();
   }
 
   changeToPurchasePage(){

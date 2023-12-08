@@ -58,15 +58,7 @@
 .button {
     border-radius: 30px;
 }
-#logout{
-    transition: ease-in-out 0.25s;
-}
-#logout:hover{
-    background: #D73444;
-    border-radius: 10px;
-    color:white;
-    cursor: pointer;
-}
+
 @media only screen and (max-width: 576px) {
     .column.menu {
         width: 100% !important;
