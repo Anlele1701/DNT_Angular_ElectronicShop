@@ -12,7 +12,7 @@ var donHangSchema=new Schema({
             nguoiNhan:{type: String},
             sdt: {type: String},
             diaChi: {type: String},
-            hìnhThucTT: {type:String},
+            hinhThucTT: {type:String},
             trangThaiTT: {type: String},
             trangThaiGiaoHang: {type:String},
             tongSLMua: {type:Number, int:true},
