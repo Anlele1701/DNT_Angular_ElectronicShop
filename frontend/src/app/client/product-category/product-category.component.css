@@ -1,8 +1,32 @@
-.banner {
+.banner-banphim {
     background: url('../../../assets/client/Shared/banphim-Banner.png') no-repeat center center/cover;
-    height: 350px;
+    height: 550px;
 }
-
+.banner-chuot {
+  background: url('../../../assets/client/Shared/banner_chuot.png') no-repeat center center/cover;
+  height: 550px;
+}
+.banner-laptop {
+  background: url('../../../assets/client/Shared/banner_laptop.png') no-repeat center center/cover;
+  height: 550px;
+}
+.banner-phone {
+  background: url('../../../assets/client/Shared/banner_phone.png') no-repeat center center/cover;
+  height: 550px;
+}
+.banner-tainghe {
+  background: url('../../../assets/client/Shared/banner_tainghe.png') no-repeat center center/cover;
+  height: 550px;
+}
+.banner-manhinh {
+  background: url('../../../assets/client/Shared/banner_manhinh.png') no-repeat center center/cover;
+  height: 550px;
+}
+.p-change{
+  font-size: 20px;
+  max-width: 500px;
+  text-align: start;
+}
 .controller {
     display: flex;
     align-items: center;

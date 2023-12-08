@@ -6,17 +6,10 @@
 }
 .background-table {
   background-color: #f4f4f4;
-  padding: 20px 0px;
   border-radius: 15px;
-  margin-bottom: 20px;
+
 }
-.background-table .title-table {
-  color: black;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-  margin: 0;
-}
+
 .background-table .row.text-center {
   margin: 10px 10px 0px 10px;
 }
@@ -52,4 +45,9 @@
 }
 .btn-border i {
   font-size: 24px;
+}
+.box {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 1rem;
 }

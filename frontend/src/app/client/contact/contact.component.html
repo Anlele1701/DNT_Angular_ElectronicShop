@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div class="column menu"></div>
+    <div class="column content">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center text-justify"><b>Hỗ trợ</b></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <!-- menu -->
+    <div class="column menu">
+      <div class="background-table">
+        <div class="row m-0 p-2">
+          <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
+          <div class="col-8 text-center d-flex align-items-center h5">
+            <b>{{ user.hoTen }}</b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <hr />
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 0 }"
+            [routerLink]="['/client/personal']"
+            (click)="onClickBtnMenu(0)"
+          >
+            <i class="fa-solid fa-house"></i><span>Trang chủ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 1 }"
+            [routerLink]="['/client/purchase-history']"
+            (click)="onClickBtnMenu(1)"
+          >
+            <i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 2 }"
+            [routerLink]="['/client/your-account']"
+            (click)="onClickBtnMenu(2)"
+          >
+            <i class="fa-regular fa-face-smile"></i
+            ><span>Tài khoản của bạn</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 3 }"
+            [routerLink]="['/client/membership-class']"
+            (click)="onClickBtnMenu(3)"
+          >
+            <i class="fa-solid fa-medal"></i><span>Hạng thành viên</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 4 }"
+            (click)="onClickBtnMenu(4)"
+          >
+            <i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div class="col-12 p-3 text-center h6" (click)="logOut()">
+            <span>Thoát tài khoản</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div class="column content">
+      <div class="d-flex">
+        <div class="khung-item">
+          <img class="img-change mb-3" src="assets/client/Contact/mail.png" />
+          <h4 class="text-center">inyourzone14&#64;gmail.com</h4>
+        </div>
+        <div class="khung-item ms-3">
+          <img class="img-change mb-3" src="assets/client/Contact/call.png" />
+          <h4 class="text-center">0932986626</h4>
+        </div>
+        <div class="khung-item ms-3">
+          <img
+            class="img-change mb-3"
+            src="assets/client/Contact/home_pin.png"
+          />
+          <h4 class="text-center">Số 828 Sư Vạn Hạnh, Phường 13, Quận 10.</h4>
+        </div>
+      </div>
+      <div>
+        <h1 class="text-center mt-5">Cảm ơn bạn đã chọn Zone-14!</h1>
+      </div>
+    </div>
+  </div>
+</div>

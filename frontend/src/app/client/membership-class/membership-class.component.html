@@ -1,104 +1,153 @@
 <div class="container">
-    <div class="row">
-        <!-- menu -->
-        <div class="column menu">
-            <div class="background-table">
-                <div class="row m-0 p-2">
-                    <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
-                    <div class="col-8 text-center d-flex align-items-center h5">
-                        <b>Lê Thành Duy Ân</b>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <hr />
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{ 'btn-border-bg-black': activeIndex === 0 }"
-                        (click)="onClickBtnMenu(0)">
-                        <i class="fa-solid fa-house"></i><span>Trang chủ</span>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{ 'btn-border-bg-black': activeIndex === 1 }"
-                        (click)="onClickBtnMenu(1)">
-                        <i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{ 'btn-border-bg-black': activeIndex === 2 }"
-                        (click)="onClickBtnMenu(2)">
-                        <i class="fa-regular fa-face-smile"></i><span>Tài khoản của bạn</span>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{ 'btn-border-bg-black': activeIndex === 3 }"
-                        (click)="onClickBtnMenu(3)">
-                        <i class="fa-solid fa-medal"></i><span>Hạng thành viên</span>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{ 'btn-border-bg-black': activeIndex === 4 }"
-                        (click)="onClickBtnMenu(4)">
-                        <i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 text-center h6">
-                        <span>Thoát tài khoản</span>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <!-- menu -->
+    <div class="column menu">
+      <div class="background-table">
+        <div class="row m-0 p-2">
+          <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
+          <div class="col-8 text-center d-flex align-items-center h5">
+            <b>{{ user.hoTen }}</b>
+          </div>
         </div>
-        <!-- Content -->
-
-        <div class="column content">
-            <div class="row">
-                <div class="background-content">
-                    <div class="row">
-                        <div class="col h5 mx-4 text-white">Cùng xem hạng mình nhé !</div>
-                    </div>
-                    <div class="row progress-content">
-                        <div class="d-flex justify-content-between">
-                            <p class="h6 mx-3">Lê Thành Duy Ân</p>
-                            <i class="fa-solid fa-star pe-5"></i>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p class="mx-3">575.000đ</p>
-                            <div class="pe-5">Vàng</div>
-                        </div>
-                        <i class="d-flex justify-content-end pe-4 fa-regular fa-flag"></i>
-                        <div class="row">
-                            <div class="col">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="condition-member">
-                <div class="row">
-                    <div class="col-md-12 h5 text-black">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed luctus
-                        lacus ac ante aliquet, vel pulvinar nisi porttitor. Ut blandit ipsum
-                        quis leo tristique, a viverra neque imperdiet. Fusce ac sagittis
-                        nulla. Nam neque lacus, dictum id quam eget, posuere sodales libero.
-                        In hac habitasse platea dictumst. Phasellus congue, tortor sagittis
-                        bibendum sodales, massa nibh pretium nibh, congue aliquet lacus erat
-                        ac metus. Phasellus hendrerit, nibh sed fermentum viverra, turpis
-                        orci viverra lacus, nec elementum nisi velit non tortor. Mauris
-                        imperdiet, lorem ut maximus iaculis, ligula magna interdum enim, sit
-                        amet molestie ipsum tellus vitae ex.
-                    </div>
-                </div>
-                <div class="condition-top">
-                    <div>Điều kiện xếp hạng</div>
-                </div>
-            </div>
+        <div class="row">
+          <div class="col-12">
+            <hr />
+          </div>
         </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 0 }"
+            [routerLink]="['/client/personal']"
+            (click)="onClickBtnMenu(0)"
+          >
+            <i class="fa-solid fa-house"></i><span>Trang chủ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 1 }"
+            [routerLink]="['/client/purchase-history']"
+            (click)="onClickBtnMenu(1)"
+          >
+            <i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 2 }"
+            [routerLink]="['/client/your-account']"
+            (click)="onClickBtnMenu(2)"
+          >
+            <i class="fa-regular fa-face-smile"></i
+            ><span>Tài khoản của bạn</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 3 }"
+            (click)="onClickBtnMenu(3)"
+          >
+            <i class="fa-solid fa-medal"></i><span>Hạng thành viên</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 4 }"
+            [routerLink]="['/client/contact']"
+            (click)="onClickBtnMenu(4)"
+          >
+            <i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div class="col-12 p-3 text-center h6" (click)="logOut()">
+            <span>Thoát tài khoản</span>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- Content -->
+
+    <div class="column content">
+      <div class="row">
+        <div class="background-content">
+          <div class="row">
+            <div class="col h5 mx-4 text-white">Cùng xem hạng mình nhé !</div>
+          </div>
+          <div class="row progress-content">
+            <div class="d-flex justify-content-between">
+              <p class="h6 mx-3">{{ user.hoTen }}</p>
+              <i class="fa-solid fa-star pe-5"></i>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="mx-3">575.000đ</p>
+              <div class="pe-5">Vàng</div>
+            </div>
+            <i class="d-flex justify-content-end pe-4 fa-regular fa-flag"></i>
+            <div class="row">
+              <div class="col">
+                <div class="progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 50%"
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="condition-member mb-5">
+        <div class="row">
+          <div class="col-md-12 ps-5 pe-5 p-change">
+            <p class="text-black">
+              Hạng thành viên không chỉ là một tính năng - đó là một trải nghiệm
+              đặc biệt được tạo ra để mang lại những phần quà hấp dẫn và những
+              ưu đãi độc quyền cho những khách hàng thân thiết của zone-14. Đây
+              là cách chúng tôi diễn đạt lòng biết ơn chân thành đối với những
+              người đã đồng hành với chúng tôi qua thời gian. Hãy để chúng tôi
+              cùng bạn chia sẻ niềm vui và trải nghiệm những điều tuyệt vời nhất
+              của thế giới zone-14!
+            </p>
+            <h5 style="margin: 0px">Điểm tích lũy sẽ được tính như sau:</h5>
+            <p>
+              Mỗi khi bạn mua sản phẩm, bạn không chỉ nhận được sản phẩm chất
+              lượng mà còn nhận thêm diểm thưởng.
+              <span style="color: red"
+                >Mỗi 10.000 VNĐ bạn chi tiêu, bạn sẽ được tặng 1 điểm
+                thưởng</span
+              >. Khi bạn tích đủ điểm, tài khoản của bạn sẽ được nâng cấp lên
+              một hạng cao hơn, mang đến cho bạn những ưu đãi và phúc lợi tốt
+              hơn.
+            </p>
+            <h5 class="mb-3">Các mức hạng tài khoản :</h5>
+            <div class="d-flex">
+              <i class="fa-solid fa-star" style="color: burlywood"></i>
+              <p class="ms-3">Đồng:<span> 0 - 999(điểm)</span></p>
+            </div>
+            <div class="d-flex">
+              <i class="fa-solid fa-star" style="color: #B0C4DE"></i>
+              <p class="ms-3">Bạc:<span> 1000 - 2499(điểm)</span></p>
+            </div>
+            <div class="d-flex">
+              <i class="fa-solid fa-star" style="color: #FFCC00"></i>
+              <p class="ms-3">Vàng:<span> lớn hơn 2499(điểm)</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="condition-top">
+          <div>Điều kiện xếp hạng</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

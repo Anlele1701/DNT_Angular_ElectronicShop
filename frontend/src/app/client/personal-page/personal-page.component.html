@@ -12,7 +12,7 @@
         <div class="row m-0 p-2">
           <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
           <div class="col-8 text-center d-flex align-items-center h5">
-            <b>{{user.hoTen}}</b>
+            <b>{{ user.hoTen }}</b>
           </div>
         </div>
         <div class="row">
@@ -33,6 +33,7 @@
           <div
             class="col-12 p-3 btn-border"
             [ngClass]="{ 'btn-border-bg-black': activeIndex === 1 }"
+            [routerLink]="['/client/purchase-history']"
             (click)="onClickBtnMenu(1)"
           >
             <i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
@@ -42,6 +43,7 @@
           <div
             class="col-12 p-3 btn-border"
             [ngClass]="{ 'btn-border-bg-black': activeIndex === 2 }"
+            [routerLink]="['/client/your-account']"
             (click)="onClickBtnMenu(2)"
           >
             <i class="fa-regular fa-face-smile"></i
@@ -53,6 +55,7 @@
             class="col-12 p-3 btn-border"
             [ngClass]="{ 'btn-border-bg-black': activeIndex === 3 }"
             (click)="onClickBtnMenu(3)"
+            [routerLink]="['/client/membership-class']"
           >
             <i class="fa-solid fa-medal"></i><span>Hạng thành viên</span>
           </div>
@@ -61,6 +64,7 @@
           <div
             class="col-12 p-3 btn-border"
             [ngClass]="{ 'btn-border-bg-black': activeIndex === 4 }"
+            [routerLink]="['/client/contact']"
             (click)="onClickBtnMenu(4)"
           >
             <i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
@@ -77,7 +81,7 @@
 
     <div class="column content">
       <div class="wraper p-4">
-        <h4>Chào mừng {{user.hoTen}} đến không gian của mình!</h4>
+        <h4>Chào mừng {{ user.hoTen }} đến không gian của mình!</h4>
         <div class="container">
           <div class="row">
             <div class="col-lg-4">
@@ -86,7 +90,7 @@
                 <div class="icon">
                   <i class="fa-solid fa-calendar-days"></i>
                 </div>
-                <span>{{user.dateCreated |date:'dd/MM/yyyy'}}</span>
+                <span>{{ user.dateCreated | date : "dd/MM/yyyy" }}</span>
               </div>
             </div>
             <div class="col-lg-4">
@@ -95,7 +99,7 @@
                 <div class="icon">
                   <i class="fa-solid fa-star"></i>
                 </div>
-                <span>{{user.hangThanhVien}}</span>
+                <span>{{ user.hangThanhVien }}</span>
               </div>
             </div>
             <div class="col-lg-4">
@@ -104,7 +108,7 @@
                 <div class="icon">
                   <i class="fa-solid fa-dollar-sign"></i>
                 </div>
-                <span>{{user.diem}}</span>
+                <span>{{ user.diem }}</span>
               </div>
             </div>
           </div>
