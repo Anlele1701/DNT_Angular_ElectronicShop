@@ -1,7 +1,7 @@
-<div class="container">
-  <h3 class="backBtn pt-3">
+<div class="container mb-5 mt-5">
+  <h3 class="backBtn pt-3 mb-3" (click)="Gobackpage()">
     <i class="fa-solid fa-arrow-left"></i>
-    <a href="" class="text-decoration-none backBtn">Quay về lịch sử đơn hàng</a>
+    <a class="text-decoration-none backBtn" >Quay về lịch sử đơn hàng</a>
   </h3>
   <div class="d-flex justify-content-between">
     <div class="text-content">
@@ -56,7 +56,7 @@
                   src="http://localhost:3800/images/{{item.sp.hinhAnh[0].tenImageSP}}"
                   alt=""
                 />
-                <span class="backBtn">{{item.sp.tenSP}}</span>
+                <span class="backBtn" style="max-width: 207px;">{{item.sp.tenSP}}</span>
                 <span class="backBtn item-price">{{item.sp.giaTien|currency:'VND':' '}}</span>
                 <span class="backBtn item-quantity">x {{item.soLuongMua}}</span>
                 <span class="backBtn item-price">{{item.thanhTien|currency:'VND':' '}}</span>

@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router} from '@angular/router';
 import { API } from 'src/app/services/API.service';
 import { EditOrderComponent } from './edit-order/edit-order.component';
 import { CancelOrderComponent } from './cancel-order/cancel-order.component';
-
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -13,7 +12,7 @@ import { CancelOrderComponent } from './cancel-order/cancel-order.component';
   providers:[API]
 })
 export class OrderComponent {
-  constructor(private api: API, private http: HttpClient, private activeRoute: ActivatedRoute, private matdialog:MatDialog){}
+  constructor(private router:Router , private api: API, private http: HttpClient, private activeRoute: ActivatedRoute, private matdialog:MatDialog){}
   idKH: string
   idDH: string
   CTDH:any
@@ -92,5 +91,8 @@ export class OrderComponent {
   ngOnInit(): void {
     this.getParams()
     this.getCTDH()
+  }
+  Gobackpage(){
+    this.router.navigate(['/client/purchase-history'])
   }
 }

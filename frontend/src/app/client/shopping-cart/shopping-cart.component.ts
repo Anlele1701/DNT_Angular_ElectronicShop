@@ -10,79 +10,79 @@ import { LoginRegisComponent } from '../login-regis/login-regis.component';
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css'],
-  providers:[cartItem]
+  providers: [cartItem],
 })
-export class ShoppingCartComponent implements OnInit{
-  constructor(private cartService: CartService, private cartitem:cartItem, private userService: UserServiceService, private router:Router, private popup: MatDialog){}
-  tongTien: number
-  tongSLMua: number
-  cartList:cartItem[]=[]
-  counter(type:string, idSP: string, giaTien: number, slHienCo: number){
-    if(type === 'add'){
-      if(this.showSoLuongMua(idSP)+1<=slHienCo)
-      {
-        this.tongTien=this.tongTien+giaTien
-        this.tongSLMua++
+export class ShoppingCartComponent implements OnInit {
+  constructor(
+    private cartService: CartService,
+    private cartitem: cartItem,
+    private userService: UserServiceService,
+    private router: Router,
+    private popup: MatDialog
+  ) {}
+  tongTien: number;
+  tongSLMua: number;
+  cartList: cartItem[] = [];
+  counter(type: string, idSP: string, giaTien: number, slHienCo: number) {
+    if (type === 'add') {
+      if (this.showSoLuongMua(idSP) + 1 <= slHienCo) {
+        this.tongTien = this.tongTien + giaTien;
+        this.tongSLMua++;
       }
-      return this.cartService.plusOneItem(idSP)
-    }
-    else{
-      if(this.showSoLuongMua(idSP)-1>=1)
-      {
-        this.tongTien=this.tongTien-giaTien
-        this.tongSLMua--
+      return this.cartService.plusOneItem(idSP);
+    } else {
+      if (this.showSoLuongMua(idSP) - 1 >= 1) {
+        this.tongTien = this.tongTien - giaTien;
+        this.tongSLMua--;
       }
-      return this.cartService.minusOneItem(idSP)
+      return this.cartService.minusOneItem(idSP);
     }
   }
 
-  showSoLuongMua(idSP){
-    return this.cartService.showSLMua(idSP)
+  showSoLuongMua(idSP) {
+    return this.cartService.showSLMua(idSP);
   }
 
-  showThanhTien(idSP){
-    return this.cartService.updateThanhTien(idSP)
+  showThanhTien(idSP) {
+    return this.cartService.updateThanhTien(idSP);
   }
 
-  getCartList(){
-    this.cartList=this.cartService.getCart()
+  getCartList() {
+    this.cartList = this.cartService.getCart();
   }
 
   ngOnInit(): void {
-    this.getCartList()
-    this.tongTien=this.cartService.updateTongTien()
-    this.tongSLMua=this.cartService.updateTongSLMua()
+    this.getCartList();
+    this.tongTien = this.cartService.updateTongTien();
+    this.tongSLMua = this.cartService.updateTongSLMua();
   }
 
-  deleteItemCart(idSP: string){
-    this.cartList=this.cartService.deleteItem(idSP)
-    this.tongSLMua=this.cartService.updateTongSLMua()
-    this.tongTien=this.cartService.updateTongTien()
+  deleteItemCart(idSP: string) {
+    this.cartList = this.cartService.deleteItem(idSP);
+    this.tongSLMua = this.cartService.updateTongSLMua();
+    this.tongTien = this.cartService.updateTongTien();
   }
 
-  deleteAll()
-  {
-    this.cartList=this.cartService.deleteAll()
-    this.tongSLMua=0
-    this.tongTien=0
+  deleteAll() {
+    this.cartList = this.cartService.deleteAll();
+    this.tongSLMua = 0;
+    this.tongTien = 0;
   }
 
-  changeToPurchasePage(){
-    if(this.userService.checkLogin()){
-      if(this.cartList.length==0)
-      {
-        
+  changeToPurchasePage() {
+    if (this.userService.checkLogin()) {
+      if (this.cartList.length == 0) {
+      } else {
+        this.router.navigate(['/client/purchase']);
       }
-      else{
-        this.router.navigate(['/client/purchase'])
-      }
-    }else{
-      const popup = this.popup.open(LoginRegisComponent,{
-      });
-      popup.afterClosed().subscribe(result =>{
+    } else {
+      const popup = this.popup.open(LoginRegisComponent, {});
+      popup.afterClosed().subscribe((result) => {
         console.log(result);
-      })
+      });
     }
   }
+  Gobackpage() {
+    this.router.navigate(['/client/category/Điện Thoại'])
+  }
 }
-
