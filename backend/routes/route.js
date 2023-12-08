@@ -50,6 +50,10 @@ router.route("/khachhang/dangNhap").post(khachHangController.dangNhap); //đăng
 router.route("/khachhang/countKH").get(khachHangController.countKH); // lấy số lượng khách hàng
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
 
+router.route("/khachhang/createNewCus").post(khachHangController.createNewKH); // admin tạo khách hàng mới
+router.route("/khachhang/editCusDetail/:id").patch(khachHangController.editKHDetail); // admin chỉnh sửa thông tin của khách hàng
+router.route("/khachhang/getKHDetail/:id").get(khachHangController.getKH); // get dữ liệu của 1 khách hàng
+router.route("/khachhang/allCusInfo").get(khachHangController.getAllKH); // get dữ liệu của tất cả khách hàng
 
 //ĐƠN HÀNG
 router.route("/donhang/muaHang").post(donHangController.muaHang)
