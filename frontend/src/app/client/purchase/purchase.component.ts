@@ -79,4 +79,7 @@ export class PurchaseComponent implements OnInit{
       this.getTamTinh()
       this.getTongSL()
   }
+  Gobackpage(){
+    this.router.navigate(['/client/shopping-cart'])
+  }
 }
