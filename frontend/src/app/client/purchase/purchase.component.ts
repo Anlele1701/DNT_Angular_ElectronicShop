@@ -24,7 +24,7 @@ export class PurchaseComponent implements OnInit{
     ptTT: 'Thanh toán tiền mặt',
     tongSL: 0,
     tamTinh:0,
-    tienKM:20000,
+    tienKM:0,
     thueVAT:0,
     tongTien:0
   }
@@ -43,7 +43,19 @@ export class PurchaseComponent implements OnInit{
 
   getTamTinh(){
     this.userOrder.tamTinh=this.cartService.updateTongTien()
-    this.userOrder.tongTien=this.userOrder.tamTinh
+    if(this.userInfo.hangThanhVien==='Đồng')
+    {
+      this.userOrder.tienKM=this.userOrder.tamTinh*3/100
+    }
+    else if(this.userInfo.hangThanhVien==='Bạc')
+    {
+      this.userOrder.tienKM=this.userOrder.tamTinh*5/100
+    }
+    else{
+      this.userOrder.tienKM=this.userOrder.tamTinh*7/100
+    }
+    this.userOrder.thueVAT=this.userOrder.tamTinh*8/100
+    this.userOrder.tongTien=this.userOrder.tamTinh-this.userOrder.tienKM+this.userOrder.thueVAT
   }
 
   getTongSL(){

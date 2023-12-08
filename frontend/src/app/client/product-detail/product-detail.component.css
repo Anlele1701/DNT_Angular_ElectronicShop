@@ -1,5 +1,5 @@
 body{
-  padding:200px
+  padding:40px 200px
 }
 .purchase-button{
   width: 100%;
@@ -33,7 +33,7 @@ border: 1px solid black;
 }
 .img-size-des{
   width: 800px;
-  height: 800px;
+  height: auto;
 }
 p{
   margin:0px;

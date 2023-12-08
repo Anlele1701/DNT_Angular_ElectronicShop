@@ -7,9 +7,15 @@ var muaHang=async(userOrder,cartList)=>{
         var findUser=await donHangModel.findOne({idKH:userOrder.id}).then(async document=>{
             if(!document){
                 await createUserInDonHang(userOrder.id)
+                await changeDiemThanhVien(userOrder.id,userOrder.tongTien)
                 return await pushDonHangIntoList(userOrder,cartList)
-            }else return await pushDonHangIntoList(userOrder,cartList)
+            }else 
+            {
+                await changeDiemThanhVien(userOrder.id,userOrder.tongTien)
+                return await pushDonHangIntoList(userOrder,cartList)
+            }
         })
+        
         console.log(findUser)
         return findUser
     }catch(error)
@@ -205,4 +211,26 @@ var showdonhang=async(idKH)=>{
     })
     return arraydh
 }
+
+
+var changeDiemThanhVien=async(idKH, tongTien)=>{
+    try{
+        return await khachHangModel.findById(idKH).then(document=>{
+            document.diem=document.diem+(tongTien/10000)
+            if(document.diem>=1000&&document.diem<=2499){
+                document.hangThanhVien='Bạc'
+            }
+            if(document.diem>2499)
+            {
+                document.hangThanhVien='Vàng'
+            }
+            console.log(document.diem+' '+document.hangThanhVien)
+            document.save()
+        })
+    }catch(error)
+    {
+        console.log(error)
+    }
+}
+
 module.exports={muaHang, QLDSDonHang, getCTDH, updateTTDonHang,huyDonHang,khoiPhucDonHang,showdonhang}
