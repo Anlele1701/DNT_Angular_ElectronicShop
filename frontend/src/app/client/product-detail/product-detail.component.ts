@@ -1,5 +1,5 @@
 import { CartService } from './../../services/cartService/cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ElementRef,ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.models';
 import { API } from 'src/app/services/API.service';
@@ -13,6 +13,7 @@ import { cartItem } from 'src/app/services/cartService/cartItem.service';
 export class ProductDetailComponent implements OnInit{
   loaiSP:string=''
   product:any
+  hinh:number = 0;
   constructor(private api:API, private activeRoute:ActivatedRoute, private router:Router, private cartService:CartService, private cartitem:cartItem){
     this.product=this.activeRoute.snapshot.params['detail']
   }
@@ -26,7 +27,6 @@ export class ProductDetailComponent implements OnInit{
       this.loaiSP=params['loaiSP']
       console.log(this.loaiSP)
     })
-    window.scrollTo(0,0)
   }
 
   addItemToCart(){
@@ -46,4 +46,12 @@ export class ProductDetailComponent implements OnInit{
     this.addItemToCart()
     this.router.navigate(['/client/shopping-cart'])
   }
+  Hinhchange(soHinh: number): void {
+    this.hinh = soHinh;
+  }
+  @ViewChild('firstButton') firstButton!: ElementRef;
+  ngAfterViewInit(): void {
+  this.firstButton.nativeElement.focus();
+  window.scrollTo(0,0);
+}
 }
