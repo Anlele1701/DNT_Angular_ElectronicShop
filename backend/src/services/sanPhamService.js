@@ -299,7 +299,25 @@ const getSPCompare = async (category, product1ID, product2ID) => {
     throw error;
   }
 };
-
+const searchSP = async (category, searchTerm) => {
+  try {
+    const loaiSP = await loaiSPModel.findOne({ tenLoai: category });
+    if (!loaiSP) {
+      return [];
+    }
+    const idCacSPArray = loaiSP.cacHang.map((item) => item.idCacSP).flat();
+    console.log(idCacSPArray);
+    const query = {
+      tenSP: { $regex: `^${searchTerm}`, $options: "i" },
+      _id: { $in: idCacSPArray },
+    };
+    const result = await sanPhamModel.find(query);
+    console.log("KQ TÌM KIẾM", result);
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
   listSP,
   getAllProduct,
