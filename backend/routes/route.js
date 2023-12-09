@@ -72,7 +72,7 @@ router.route('/donhang/updateTTDonHang').patch(donHangController.updateTTDonHang
 router.route('/donhang/huyDonHang').patch(donHangController.huyDonHang) //hủy đơn hàng
 router.route('/donhang/khoiPhucDonHang').patch(donHangController.khoiPhucDonHang) //khôi phục đơn hàng
 router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang)
-  router.route("/donhang/getAllDonHang").get(donHangController.getAllDonHang); // lấy danh sách các DH theo id khách hàng
+  router.route('/donhang/getAllDonHang').get(donHangController.getAllDonHang) // lấy danh sách các DH theo id khách hàng
 //MOMO PAYMENT
 router.route("/payment/momo/:idDH").post(donHangController.MomoPayment);
 module.exports = router;

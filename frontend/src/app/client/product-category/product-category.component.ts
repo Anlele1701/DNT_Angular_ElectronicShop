@@ -49,21 +49,22 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
   getAllProduct() {
     this.http
       .get(this.api.getAPI() + '/sanpham/getAllSanPham/' + this.loaiSP)
-      .subscribe(
-        (data: any) => {
-          data.cacHang.forEach((item) => {
-            this.getHang(item.idHang);
-            item.idCacSP.forEach((idSP) => {
-              this.getSP(idSP);
-            });
+      .subscribe((data: any) => {
+        data.cacHang.forEach((item) => {
+          this.getHang(item.idHang);
+          item.idCacSP.forEach((idSP) => {
+            this.getSP(idSP);
           });
         });
 
         forkJoin(this.requests).subscribe(() => {
           //hoàn thành load tất cả dữ liệu rồi mới show
           this.loading = false;
+          this.loadData.setLoadingData(true);
+
         });
-      };
+      });
+  }
   getHang(idHang) {
     this.requests.push(
       this.http.get(this.api.getAPI() + '/hang/getHang/' + idHang).pipe(
@@ -73,6 +74,7 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
       )
     );
   }
+
   getSP(idSP) {
     this.requests.push(
       this.http.get(this.api.getAPI() + '/sanpham/getSP/' + idSP).pipe(

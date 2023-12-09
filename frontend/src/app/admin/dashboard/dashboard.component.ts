@@ -42,9 +42,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getCountSP();
     this.getCountKH();   
-    this.getTotalMoney();
     this.getLoaiSP();
     this.getSanPham();
+    this.getTotalMoney();
   }
   // LOAISP CHART
   getLoaiSP() {
