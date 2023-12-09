@@ -48,7 +48,7 @@ router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số l
 router
   .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
   .delete(sanPhamController.deleteProduct);
-  router.route("/sanpham/getAll").get(sanPhamController.getAll);
+router.route("/loaisp/getAll").get(loaiSPController.getLoaiSP);
 router
   .route("/sanpham/find/:nameProduct/:searchTerm")
   .get(sanPhamController.searchSP); // Tìm kiếm sp
@@ -74,16 +74,20 @@ router.route("/donhang/muaHang").post(donHangController.muaHang);
 router.route("/donhang/thanhtoanvnpay").post(donHangController.createpayment);
 router.route("/donhang/vnpay_ipn").get(donHangController.getvnPayIPN);
 router.route("/donhang/muaHang").post(donHangController.muaHang);
-router.route('/donhang/quanLyDSDonHang').get(donHangController.QLDSDonHang) //show ds đơn hàng --admin
+router.route("/donhang/quanLyDSDonHang").get(donHangController.QLDSDonHang); //show ds đơn hàng --admin
 router
   .route("/donhang/getAllDonHangById/:idkh")
   .get(donHangController.getAllDonHangById); // lấy danh sách các DH theo id khách hàng
-router.route('/donhang/getCTDH/:idKH/:idDH').get(donHangController.getCTDH) //lấy chi tiết đơn hàng
-router.route('/donhang/updateTTDonHang').patch(donHangController.updateTTDonHang) //cập nhật thông tin đơn hàng
-router.route('/donhang/huyDonHang').patch(donHangController.huyDonHang) //hủy đơn hàng
-router.route('/donhang/khoiPhucDonHang').patch(donHangController.khoiPhucDonHang) //khôi phục đơn hàng
-router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang)
-  router.route('/donhang/getAllDonHang').get(donHangController.getAllDonHang) // lấy danh sách các DH theo id khách hàng
+router.route("/donhang/getCTDH/:idKH/:idDH").get(donHangController.getCTDH); //lấy chi tiết đơn hàng
+router
+  .route("/donhang/updateTTDonHang")
+  .patch(donHangController.updateTTDonHang); //cập nhật thông tin đơn hàng
+router.route("/donhang/huyDonHang").patch(donHangController.huyDonHang); //hủy đơn hàng
+router
+  .route("/donhang/khoiPhucDonHang")
+  .patch(donHangController.khoiPhucDonHang); //khôi phục đơn hàng
+router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang);
+router.route("/donhang/getAllDonHang").get(donHangController.getAllDonHang); // lấy danh sách các DH theo id khách hàng
 //MOMO PAYMENT
 router.route("/payment/momo/:idDH").post(donHangController.MomoPayment);
 module.exports = router;

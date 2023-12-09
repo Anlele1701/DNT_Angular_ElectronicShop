@@ -58,7 +58,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     });
   }
   getProductFromCate() {
-    this.loadDataService.setLoadingData(true);
+    this.isLoading.setLoadingData(true);
     const listProductSubject = new BehaviorSubject<any[]>([]);
 
     this.http
@@ -76,7 +76,7 @@ export class ProductComponent implements OnInit, OnDestroy {
           console.error('Error fetching data', error);
         },
         () => {
-          this.isLoading.setLoadingData(false)
+          this.isLoading.setLoadingData(false);
         }
       );
     this.listProduct$ = listProductSubject.asObservable();

@@ -27,6 +27,7 @@ export class ProductCategoryComponent implements OnInit {
   requests = [];
   pageSize = 9; //số lượng sản phẩm trong 1 trang
   currentPage = 1;
+  content: any;
 
   constructor(
     private http: HttpClient,

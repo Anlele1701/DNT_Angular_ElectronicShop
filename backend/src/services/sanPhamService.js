@@ -138,15 +138,15 @@ var getProductFromID = (idProduct) => {
   }
 };
 
-var getAllSanPham=async(loaiSP)=>{
-    try{
-        var listSP=await loaiSPModel.findOne({tenLoai:loaiSP})
-        console.log(listSP)
-        return listSP
-    }catch(error){
-        console.log(error)
-    }
-}
+var getAllSanPham = async (loaiSP) => {
+  try {
+    var listSP = await loaiSPModel.findOne({ tenLoai: loaiSP });
+    console.log(listSP);
+    return listSP;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 var getSP = async (idSP) => {
   try {
@@ -204,66 +204,114 @@ var editSanPham = async (product, loaiSP, hangCu) => {
   }
 };
 
-var changeProductToNewHang=async(idSP, tenHang, loaiSP, hangCu)=>{
-    try{
-        let idhang=''
-        var hang=await hangModel.findOne({tenNhaSX:tenHang}).then( document=>{
-            idhang= document._id
-        })
-        let idhangCu=''
-        await hangModel.findOne({tenNhaSX:hangCu}).then(hang=>{
-            idhangCu=hang._id
-        })
-        console.log(idhangCu)
-        await loaiSPModel.findOne({tenLoai:loaiSP}).then(document=>{ //remove idsp in old idhang to new id hang
-            document.cacHang.forEach(item=>{
-                if(item.idHang.equals(idhangCu)){
-                    console.log(item.idCacSP)
-                    const index=item.idCacSP.indexOf(idSP)
-                    if(index!=-1)
-                    {
-                        item.idCacSP.splice(index,1)
-                    }
-                    console.log(item.idCacSP)
-                }
-                if(item.idHang.equals(idhang)){
-                    console.log(item.idCacSP)
-                    const index=item.idCacSP.indexOf(idSP)
-                    if(index==-1)
-                    {
-                        item.idCacSP.push(idSP)
-                    }
-                    console.log(item.idCacSP)
-                }
-            })
-            document.save()
-        })
-    }catch(error)
-    {
-        console.log(error)
+var changeProductToNewHang = async (idSP, tenHang, loaiSP, hangCu) => {
+  try {
+    let idhang = "";
+    var hang = await hangModel
+      .findOne({ tenNhaSX: tenHang })
+      .then((document) => {
+        idhang = document._id;
+      });
+    let idhangCu = "";
+    await hangModel.findOne({ tenNhaSX: hangCu }).then((hang) => {
+      idhangCu = hang._id;
+    });
+    console.log(idhangCu);
+    await loaiSPModel.findOne({ tenLoai: loaiSP }).then((document) => {
+      //remove idsp in old idhang to new id hang
+      document.cacHang.forEach((item) => {
+        if (item.idHang.equals(idhangCu)) {
+          console.log(item.idCacSP);
+          const index = item.idCacSP.indexOf(idSP);
+          if (index != -1) {
+            item.idCacSP.splice(index, 1);
+          }
+          console.log(item.idCacSP);
+        }
+        if (item.idHang.equals(idhang)) {
+          console.log(item.idCacSP);
+          const index = item.idCacSP.indexOf(idSP);
+          if (index == -1) {
+            item.idCacSP.push(idSP);
+          }
+          console.log(item.idCacSP);
+        }
+      });
+      document.save();
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+var deleteProduct = async (idSP, loaiSP, tenHang) => {
+  console.log(idSP);
+  console.log(loaiSP);
+  console.log(tenHang);
+  let idHang = "";
+  await hangModel.findOne({ tenNhaSX: tenHang }).then((document) => {
+    idHang = document._id;
+  });
+  await loaiSPModel.findOne({ tenLoai: loaiSP }).then((document) => {
+    document.cacHang.forEach((item) => {
+      if (item.idHang.equals(idHang)) {
+        const index = item.idCacSP.indexOf(idSP);
+        if (index !== -1) {
+          item.idCacSP.splice(index, 1);
+        }
+      }
+    });
+    document.save();
+  });
+  await sanPhamModel.findByIdAndDelete(idSP);
+};
+const getProductFromCategory = async (category) => {
+  try {
+    const findCategory = await loaiSPModel.findOne({ tenLoai: category });
+    if (!findCategory) {
+      return { message: "Category not found" };
     }
-}
+    const idCacSP = findCategory.cacHang.map((item) => item.idCacSP).flat();
+    console.log(idCacSP);
+    const product = await sanPhamModel.find({ _id: { $in: idCacSP } });
+    return product;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+const getSPCompare = async (category, product1ID, product2ID) => {
+  try {
+    const loaiSP = await loaiSPModel.findOne({ tenLoai: category });
+    if (!loaiSP) {
+      return { error: `Loại sản phẩm không tìm thấy !` };
+    }
+    const idCacSP = loaiSP.cacHang.map((item) => item.idCacSP).flat();
+    console.log(idCacSP);
+    const product = await sanPhamModel.find({ _id: { $in: idCacSP } });
+    const product1 = product.find((item) => item._id.equals(product1ID));
+    const product2 = product.find((item) => item._id.equals(product2ID));
+    if (!product1 || !product2) {
+      return { error: `Product không tìm thấy trong loại ${category}` };
+    }
+    return { product1, product2 };
+  } catch (error) {
+    throw error;
+  }
+};
 
-var deleteProduct=async(idSP, loaiSP, tenHang)=>{
-    console.log(idSP)
-    console.log(loaiSP)
-    console.log(tenHang)
-    let idHang=''
-    await hangModel.findOne({tenNhaSX:tenHang}).then(document=>{
-        idHang=document._id
-    })
-    await loaiSPModel.findOne({tenLoai: loaiSP}).then(document=>{
-        document.cacHang.forEach(item=>{
-            if(item.idHang.equals(idHang)){
-                const index=item.idCacSP.indexOf(idSP)
-                if(index!==-1){
-                    item.idCacSP.splice(index,1)
-                }
-            }
-        })
-        document.save()
-    })
-    await sanPhamModel.findByIdAndDelete(idSP)
-}
-
-module.exports={listSP,getAllProduct,getProductFromID,getProductOfCompany,createNewCateProduct,createNewProduct, getAllSanPham, getSP, editSanPham, deleteProduct, countSP}
+module.exports = {
+  listSP,
+  getAllProduct,
+  getProductFromID,
+  getProductOfCompany,
+  createNewCateProduct,
+  createNewProduct,
+  getAllSanPham,
+  getSP,
+  editSanPham,
+  deleteProduct,
+  countSP,
+  getProductFromCategory,
+  getSPCompare,
+};
