@@ -1,14 +1,22 @@
 <div class="container">
-  <h3 class="backBtn pt-3">
-  </h3>
+  <h3 class="backBtn pt-3"></h3>
   <div class="d-flex justify-content-between">
     <div class="text-content">
       <div class="d-flex align-items-center gap-2">
         <h1 class="text-content_header">Chi tiết đơn hàng:</h1>
-        <p class="m-0 backBtn">Ngày đặt: {{CTDH.ngayDat| date: 'dd/MM/yyyy'}}</p>
+        <p class="m-0 backBtn">
+          Ngày đặt: {{ CTDH.ngayDat | date : "dd/MM/yyyy" }}
+        </p>
       </div>
-      <span class="backBtn" style="color:red" *ngIf="CTDH.trangThaiGiaoHang==='Đã hủy'">{{CTDH.trangThaiGiaoHang}}</span>
-      <span class="backBtn" *ngIf="CTDH.trangThaiGiaoHang!=='Đã hủy'">{{CTDH.trangThaiGiaoHang}}</span>
+      <span
+        class="backBtn"
+        style="color: red"
+        *ngIf="CTDH.trangThaiGiaoHang === 'Đã hủy'"
+        >{{ CTDH.trangThaiGiaoHang }}</span
+      >
+      <span class="backBtn" *ngIf="CTDH.trangThaiGiaoHang !== 'Đã hủy'">{{
+        CTDH.trangThaiGiaoHang
+      }}</span>
     </div>
   </div>
   <div class="row">
@@ -19,21 +27,27 @@
         </div>
         <div class="info-details">
           <p class="fw-bold m-0">Họ và tên</p>
-          <p class="backBtn">{{CTDH.nguoiNhan}}</p>
+          <p class="backBtn">{{ CTDH.nguoiNhan }}</p>
         </div>
         <div class="info-details">
           <p class="fw-bold m-0">Liên hệ</p>
-          <p class="backBtn">{{CTDH.sdt}}</p>
+          <p class="backBtn">{{ CTDH.sdt }}</p>
         </div>
         <div class="info-details">
           <p class="fw-bold m-0">Địa chỉ giao hàng</p>
-          <p class="backBtn">{{CTDH.diaChi}}</p>
+          <p class="backBtn">{{ CTDH.diaChi }}</p>
         </div>
         <div class="info-details">
           <p class="fw-bold m-0">Trạng thái thanh toán</p>
-          <p class="color-green" *ngIf="CTDH.trangThaiTT==='Đã thanh toán'">{{CTDH.trangThaiTT}}</p>
-          <p style="color:red" *ngIf="CTDH.trangThaiTT==='Đã hủy'">{{CTDH.trangThaiTT}}</p>
-          <p *ngIf="CTDH.trangThaiTT==='Chưa thanh toán'">{{CTDH.trangThaiTT}}</p>
+          <p class="color-green" *ngIf="CTDH.trangThaiTT === 'Đã thanh toán'">
+            {{ CTDH.trangThaiTT }}
+          </p>
+          <p style="color: red" *ngIf="CTDH.trangThaiTT === 'Đã hủy'">
+            {{ CTDH.trangThaiTT }}
+          </p>
+          <p *ngIf="CTDH.trangThaiTT === 'Chưa thanh toán'">
+            {{ CTDH.trangThaiTT }}
+          </p>
         </div>
       </div>
     </div>
@@ -42,17 +56,27 @@
         <div class="p-2">
           <h3 class="">Danh sách các sản phẩm</h3>
           <div class="product-list">
-            <div class="">
-              <div class="d-flex align-items-center justify-content-around" *ngFor="let item of listSP">
+            <div class="" *ngFor="let item of listSP">
+              <div class="d-flex align-items-center justify-content-around">
                 <img
                   class="item-img"
-                  src="http://localhost:3800/images/{{item.sp.hinhAnh[0].tenImageSP}}"
+                  src="http://localhost:3800/images/{{
+                    item.sp.hinhAnh[0].tenImageSP
+                  }}"
                   alt=""
                 />
-                <span class="backBtn">{{item.sp.tenSP}}</span>
-                <span class="backBtn item-price">{{item.sp.giaTien|currency:'VND':' '}}</span>
-                <span class="backBtn item-quantity">x {{item.soLuongMua}}</span>
-                <span class="backBtn item-price">{{item.thanhTien|currency:'VND':' '}}</span>
+                <span class="backBtn" style="width: 207px">{{
+                  item.sp.tenSP
+                }}</span>
+                <span class="backBtn item-price">{{
+                  item.sp.giaTien | currency : "VND" : " "
+                }}</span>
+                <span class="backBtn item-quantity"
+                  >x {{ item.soLuongMua }}</span
+                >
+                <span class="backBtn item-price">{{
+                  item.thanhTien | currency : "VND" : " "
+                }}</span>
               </div>
               <hr />
             </div>
@@ -63,26 +87,28 @@
               <div class="col-lg-6">
                 <div class="d-flex align-items-center">
                   <img src="../../../assets/client/Shared/vnpay.png" alt="" />
-                  <span class="vnpay-text">{{CTDH.hinhThucTT}}</span>
+                  <span class="vnpay-text">{{ CTDH.hinhThucTT }}</span>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="">
                   <div class="d-flex justify-content-between">
                     <p>Tạm tính:</p>
-                    <p>{{CTDH.tamTinh|currency:'VND':' '}}đ</p>
+                    <p>{{ CTDH.tamTinh | currency : "VND" : " " }}đ</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p>Tiền KM:</p>
-                    <p>{{CTDH.tienKM|currency:'VND':' '}}đ</p>
+                    <p>{{ CTDH.tienKM | currency : "VND" : " " }}đ</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p>Thuế VAT</p>
-                    <p>{{CTDH.thueVAT|currency:'VND':' '}}đ</p>
+                    <p>{{ CTDH.thueVAT | currency : "VND" : " " }}đ</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <h4>Tổng tiền:</h4>
-                    <p class="fw-bold">{{CTDH.tongTien|currency:'VND':' '}}đ</p>
+                    <p class="fw-bold">
+                      {{ CTDH.tongTien | currency : "VND" : " " }}đ
+                    </p>
                   </div>
                 </div>
               </div>
