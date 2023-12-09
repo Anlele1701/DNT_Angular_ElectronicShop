@@ -6,8 +6,7 @@ import { LoginNhanVienComponent } from '../login-nhan-vien/login-nhan-vien.compo
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
