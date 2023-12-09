@@ -1,5 +1,9 @@
 <div>
   <body>
+    <!-- SPINNER -->
+    <div *ngIf="isLoading$ | async" class="overlay">
+      <mat-spinner class="spinner"></mat-spinner>
+    </div>
     <!-- SIDEBAR -->
     <div class="sidebar">
       <!-- Logo -->
@@ -107,7 +111,8 @@
           <li class="nav-link">
             <a routerLink="/loginAdmin">
               <span class="icon">
-                <i class="fa-solid fa-right-from-bracket"></i></span>
+                <i class="fa-solid fa-right-from-bracket"></i
+              ></span>
               <span class="cateName" (click)="logout()">Logout</span>
             </a>
           </li>

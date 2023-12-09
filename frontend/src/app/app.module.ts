@@ -106,6 +106,8 @@ import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.c
     MatDialogModule,
     HighchartsChartModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
+
   ],
   providers: [API],
   bootstrap: [AppComponent],

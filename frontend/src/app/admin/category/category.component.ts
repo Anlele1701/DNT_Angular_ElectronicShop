@@ -4,6 +4,7 @@ import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { error } from 'highcharts';
 import { Observable } from 'rxjs';
+import { LoadDataService } from '../shared/load-data.service';
 
 @Component({
   selector: 'app-category',
@@ -18,14 +19,23 @@ export class CategoryComponent implements OnInit {
   newTenLoai = '';
 
   readonly API = 'http://localhost:3800';
-  constructor(private http: HttpClient, private el: ElementRef) {}
+  constructor(private http: HttpClient, private el: ElementRef, private loadData: LoadDataService) {}
   ngOnInit(): void {
     this.showAllCategories();
   }
   showAllCategories() {
-    this.http.get(this.API + '/loaisp/countLoaiSP').subscribe((data: any) => {
-      this.listLoaiSP = data.listLoaiSP;
-    });
+    this.loadData.setLoadingData(true);
+    this.http.get(this.API + '/loaisp/countLoaiSP').subscribe(
+      (data: any) => {
+        this.listLoaiSP = data.listLoaiSP;
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        this.loadData.setLoadingData(false);
+      }
+    );
   }
 
   createnewLoaiSP() {
