@@ -48,15 +48,15 @@
       <div class="product-container">
         <div class="p-2">
           <h3 class="">Danh sách các sản phẩm</h3>
-          <div class="product-list" *ngFor="let item of listSP">
-            <div class="">
+          <div class="product-list" >
+            <div class=""*ngFor="let item of listSP">
               <div class="d-flex align-items-center justify-content-around">
                 <img
                   class="item-img"
                   src="http://localhost:3800/images/{{item.sp.hinhAnh[0].tenImageSP}}"
                   alt=""
                 />
-                <span class="backBtn" style="max-width: 207px;">{{item.sp.tenSP}}</span>
+                <span class="backBtn" style="width: 207px;">{{item.sp.tenSP}}</span>
                 <span class="backBtn item-price">{{item.sp.giaTien|currency:'VND':' '}}</span>
                 <span class="backBtn item-quantity">x {{item.soLuongMua}}</span>
                 <span class="backBtn item-price">{{item.thanhTien|currency:'VND':' '}}</span>
