@@ -11,13 +11,13 @@ export class UserServiceService {
   private readonly urlApi = 'http://localhost:3800/';
   setUser(user: any) {
     this.user = user;
-    localStorage.setItem('user', JSON.stringify(this.user));
+    sessionStorage.setItem('user', JSON.stringify(this.user));
   }
 
   getUser() {
     if (!this.user) {
-      // Retrieve from local storage if not available in the service
-      this.user = JSON.parse(localStorage.getItem('user'));
+      // Retrieve from session storage if not available in the service
+      this.user = JSON.parse(sessionStorage.getItem('user'));
     }
     return this.user;
   }
@@ -32,13 +32,13 @@ export class UserServiceService {
   }
 
   checkLogin(){
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user = JSON.parse(sessionStorage.getItem('user'));
     if(this.user!=null){
       return true
     }else return false
   }
 
   logOUt(){
-    localStorage.removeItem('user')
+    sessionStorage.removeItem('user')
   }
 }

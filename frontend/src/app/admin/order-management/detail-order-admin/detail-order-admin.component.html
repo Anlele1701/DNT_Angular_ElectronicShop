@@ -41,9 +41,9 @@
       <div class="product-container">
         <div class="p-2">
           <h3 class="">Danh sách các sản phẩm</h3>
-          <div class="product-list" *ngFor="let item of listSP">
+          <div class="product-list">
             <div class="">
-              <div class="d-flex align-items-center justify-content-around">
+              <div class="d-flex align-items-center justify-content-around" *ngFor="let item of listSP">
                 <img
                   class="item-img"
                   src="http://localhost:3800/images/{{item.sp.hinhAnh[0].tenImageSP}}"
