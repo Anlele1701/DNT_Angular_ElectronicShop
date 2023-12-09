@@ -13,6 +13,7 @@ import { cartItem } from 'src/app/services/cartService/cartItem.service';
 export class ProductDetailComponent implements OnInit {
   loaiSP: string = '';
   product: any;
+  hinh:number = 0;
   constructor(
     private api: API,
     private activeRoute: ActivatedRoute,

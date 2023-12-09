@@ -280,4 +280,10 @@ module.exports = {
   MomoPayment,
   getAllDonHangById,
   getAllDonHang,
+  khoiPhucDonHang,
+  huyDonHang,
+  updateTTDonHang,
+  QLDSDonHang,
+  getCTDH,
+  showdonhang,  
 };

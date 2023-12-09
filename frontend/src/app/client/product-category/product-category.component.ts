@@ -10,6 +10,7 @@ import { Product } from 'src/app/models/product.models';
 import { API } from 'src/app/services/API.service';
 import { async, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LoadDataService } from 'src/app/admin/shared/load-data.service';
 @Component({
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
@@ -29,7 +30,8 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
   constructor(
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
-    private api: API
+    private api: API,
+    private loadData: LoadDataService,
   ) {}
   ngOnInit() {
     this.checkUrlLoaiSP();
@@ -51,7 +53,6 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
         (data: any) => {
           data.cacHang.forEach((item) => {
             this.getHang(item.idHang);
-            console.log(item.idHang);
             item.idCacSP.forEach((idSP) => {
               this.getSP(idSP);
             });
@@ -62,8 +63,7 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
           //hoàn thành load tất cả dữ liệu rồi mới show
           this.loading = false;
         });
-      });
-  }
+      };
   getHang(idHang) {
     this.requests.push(
       this.http.get(this.api.getAPI() + '/hang/getHang/' + idHang).pipe(

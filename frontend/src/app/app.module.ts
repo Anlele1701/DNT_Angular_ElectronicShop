@@ -93,8 +93,7 @@ import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.c
     DetailOrderAdminComponent,
     EditOrderAdminComponent,
     EditOrderComponent,
-    CancelOrderComponent
-    ClientLayoutComponent,
+    CancelOrderComponent,
     LoginNhanVienComponent,
   ],
   imports: [
@@ -107,7 +106,6 @@ import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.c
     MatDialogModule,
     HighchartsChartModule,
     ReactiveFormsModule,
-    NoopAnimationsModule
   ],
   providers: [API],
   bootstrap: [AppComponent],

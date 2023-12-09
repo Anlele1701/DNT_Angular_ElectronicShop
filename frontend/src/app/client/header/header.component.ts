@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router:Router, public popUp: MatDialog, private userService: UserServiceService) {}
+  slcart:number=0; 
+  constructor(private router:Router, public popUp: MatDialog, private userService: UserServiceService, private cartService:CartService) {}
   ngOnInit(): void {
     this.countSL();
     // this.cartService.countCart$.subscribe((value)=>{
