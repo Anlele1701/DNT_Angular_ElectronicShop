@@ -1,12 +1,36 @@
-<div>
-  <div class="w-100 banner d-flex align-items-center">
-    <h1 class="p-4">Bàn phím</h1>
-  </div>
-  <div class="container d-flex justify-content-end align-items-center">
-    <p class="filter m-0 p-2">Lọc theo: nổi bật</p>
-  </div>
+<div *ngIf="!loading; else content">
+  <ng-container [ngSwitch]="loaiSP">
+    <ng-container *ngSwitchCase="'Bàn Phím'">
+      <ng-container *ngTemplateOutlet="banphim"></ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container [ngSwitch]="loaiSP">
+    <ng-container *ngSwitchCase="'Chuột'">
+      <ng-container *ngTemplateOutlet="chuot"></ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container [ngSwitch]="loaiSP">
+    <ng-container *ngSwitchCase="'Laptop'">
+      <ng-container *ngTemplateOutlet="laptop"></ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container [ngSwitch]="loaiSP">
+    <ng-container *ngSwitchCase="'Điện Thoại'">
+      <ng-container *ngTemplateOutlet="dienthoai"></ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container [ngSwitch]="loaiSP">
+    <ng-container *ngSwitchCase="'Màn Hình'">
+      <ng-container *ngTemplateOutlet="manhinh"></ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container [ngSwitch]="loaiSP">
+    <ng-container *ngSwitchCase="'Tai Nghe'">
+      <ng-container *ngTemplateOutlet="tainghe"></ng-container>
+    </ng-container>
+  </ng-container>
   <hr />
-  <div class="container">
+  <div class="container mb-5">
     <div class="row">
       <div class="col-lg-4">
         <h1 class="sidebar_header">Thương hiệu</h1>
@@ -14,21 +38,101 @@
           <li class="sidebar-list_item fs-4">
             <div class="controller">
               <input type="checkbox" />
-              {{item}}
+              <span>{{ item }}</span>
             </div>
           </li>
         </ul>
       </div>
       <div class="col-lg-8">
         <div class="row">
-          <div class="col-lg-4"
-            *ngFor="let product of listproduct| paginate:{itemsPerPage:pageSize, currentPage:currentPage}">
-            <app-product-items [product]="product" [tenSP]="product.tenSP"></app-product-items>
+          <div
+            class="col-lg-4"
+            *ngFor="
+              let product of listproduct
+                | paginate
+                  : { itemsPerPage: pageSize, currentPage: currentPage }
+            "
+          >
+            <app-product-items
+              [product]="product"
+              [tenSP]="product.tenSP"
+            ></app-product-items>
           </div>
-          <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+          <pagination-controls
+            (pageChange)="currentPage = $event"
+          ></pagination-controls>
         </div>
       </div>
     </div>
   </div>
-
 </div>
+
+<ng-template #banphim>
+  <div class="w-100 banner-banphim d-flex align-items-center">
+    <div>
+      <h1 class="ms-5">Bàn phím</h1>
+      <p class="ms-5 p-change">
+        Mua ngay bàn phím nâng cao trải nghiệm chơi game, làm việc và hơn thế
+        nữa.
+      </p>
+    </div>
+  </div>
+</ng-template>
+<ng-template #chuot>
+  <div class="w-100 banner-chuot d-flex align-items-center">
+    <div>
+      <h1 class="ms-5">Chuột</h1>
+      <p class="ms-5 p-change">
+        Có ngay trong tay chuột thông minh thế hệ mới giúp bạn đạt hiệu quả hơn
+        trong công việc và gaming.
+      </p>
+    </div>
+  </div>
+</ng-template>
+<ng-template #laptop>
+  <div class="w-100 banner-laptop d-flex align-items-center">
+    <div>
+      <h1 class="ms-5">Laptop</h1>
+      <p class="ms-5 p-change">
+        Sở hữu chiếc máy tính sách tay tân tiến nhất để tối ưu hóa làm việc và
+        giải trí mọi lúc mọi nơi.
+      </p>
+    </div>
+  </div>
+</ng-template>
+<ng-template #dienthoai>
+  <div class="w-100 banner-phone d-flex align-items-center">
+    <div>
+      <h1 class="ms-5">Điện thoại</h1>
+      <p class="ms-5 p-change">
+        Sở hữu ngay những chiếc điện thoại mới nhất để khoe cá tính của cá nhân
+        bạn.
+      </p>
+    </div>
+  </div>
+</ng-template>
+<ng-template #tainghe>
+  <div class="w-100 banner-tainghe d-flex align-items-center">
+    <div>
+      <h1 class="ms-5">Tai nghe</h1>
+      <p class="ms-5 p-change">
+        Tai nghe mới mẻ chính hảng của nhiều thương hiệu lớn tăng trải nghiệm
+        của bạn về âm thâm mọi lúc mọi nơi.
+      </p>
+    </div>
+  </div>
+</ng-template>
+<ng-template #manhinh>
+  <div class="w-100 banner-manhinh d-flex align-items-center">
+    <div>
+      <h1 class="ms-5">Màn hình</h1>
+      <p class="ms-5 p-change">
+        Sở hữu ngay những chiếc màn hình hơn 144hz để tối ưu hóa về đồ họa, nâng
+        cao trải nghiệm của bản thân.
+      </p>
+    </div>
+  </div>
+</ng-template>
+<ng-template #content>
+  <p>loading</p>
+</ng-template>

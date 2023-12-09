@@ -12,13 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  slcart:number;
-  constructor(
-    private router: Router,
-    public popUp: MatDialog,
-    private userService: UserServiceService,
-    private cartService: CartService
-  ) {}
+  constructor(private router:Router, public popUp: MatDialog, private userService: UserServiceService) {}
   ngOnInit(): void {
     this.countSL();
     // this.cartService.countCart$.subscribe((value)=>{
@@ -39,9 +33,13 @@ export class HeaderComponent implements OnInit {
       enterAnimationDuration,
       exitAnimationDuration,
     });
-    popup.afterClosed().subscribe((result) => {
+    popup.afterClosed().subscribe(result =>{
       console.log(result);
-    });
+    })
+    }
+
+  changeToPersonalPage(){
+    this.router.navigate(['/client/personal'])
   }
   countSL(){
    this.cartService.countCartList().subscribe((value)=>{
@@ -49,10 +47,8 @@ export class HeaderComponent implements OnInit {
       console.log(this.slcart);
     });
   }
-  changeToPersonalPage() {
-    this.router.navigate(['/client/personal']);
-  }
-  checkLogin() {
-    return this.userService.checkLogin();
+
+  checkLogin(){
+    return this.userService.checkLogin()
   }
 }

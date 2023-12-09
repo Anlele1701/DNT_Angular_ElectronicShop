@@ -10,19 +10,24 @@ import { LoginRegisComponent } from '../login-regis/login-regis.component';
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css'],
-  providers:[cartItem]
+  providers: [cartItem],
 })
-export class ShoppingCartComponent implements OnInit{
-  constructor(private cartService: CartService, private cartitem:cartItem, private userService: UserServiceService, private router:Router, private popup: MatDialog){}
-  tongTien: number
-  tongSLMua: number
-  cartList:cartItem[]=[]
-  counter(type:string, idSP: string, giaTien: number, slHienCo: number){
-    if(type === 'add'){
-      if(this.showSoLuongMua(idSP)+1<=slHienCo)
-      {
-        this.tongTien=this.tongTien+giaTien
-        this.tongSLMua++
+export class ShoppingCartComponent implements OnInit {
+  constructor(
+    private cartService: CartService,
+    private cartitem: cartItem,
+    private userService: UserServiceService,
+    private router: Router,
+    private popup: MatDialog
+  ) {}
+  tongTien: number;
+  tongSLMua: number;
+  cartList: cartItem[] = [];
+  counter(type: string, idSP: string, giaTien: number, slHienCo: number) {
+    if (type === 'add') {
+      if (this.showSoLuongMua(idSP) + 1 <= slHienCo) {
+        this.tongTien = this.tongTien + giaTien;
+        this.tongSLMua++;
       }
       return this.cartService.plusOneItem(idSP)
     }
@@ -36,16 +41,16 @@ export class ShoppingCartComponent implements OnInit{
     }
   }
 
-  showSoLuongMua(idSP){
-    return this.cartService.showSLMua(idSP)
+  showSoLuongMua(idSP) {
+    return this.cartService.showSLMua(idSP);
   }
 
-  showThanhTien(idSP){
-    return this.cartService.updateThanhTien(idSP)
+  showThanhTien(idSP) {
+    return this.cartService.updateThanhTien(idSP);
   }
 
-  getCartList(){
-    this.cartList=this.cartService.getCart()
+  getCartList() {
+    this.cartList = this.cartService.getCart();
   }
 
   ngOnInit(): void {
@@ -70,22 +75,20 @@ export class ShoppingCartComponent implements OnInit{
     this.cartService.countCartList();
   }
 
-  changeToPurchasePage(){
-    if(this.userService.checkLogin()){
-      if(this.cartList.length==0)
-      {
-        
+  changeToPurchasePage() {
+    if (this.userService.checkLogin()) {
+      if (this.cartList.length == 0) {
+      } else {
+        this.router.navigate(['/client/purchase']);
       }
-      else{
-        this.router.navigate(['/client/purchase'])
-      }
-    }else{
-      const popup = this.popup.open(LoginRegisComponent,{
-      });
-      popup.afterClosed().subscribe(result =>{
+    } else {
+      const popup = this.popup.open(LoginRegisComponent, {});
+      popup.afterClosed().subscribe((result) => {
         console.log(result);
-      })
+      });
     }
   }
+  Gobackpage() {
+    this.router.navigate(['/client/category/Điện Thoại'])
+  }
 }
-

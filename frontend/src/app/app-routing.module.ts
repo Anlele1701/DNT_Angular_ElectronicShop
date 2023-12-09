@@ -27,6 +27,8 @@ import { ContactComponent } from './client/contact/contact.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
 import { AuthGuard } from './admin/shared/auth.guard';
 import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
+import { OrderManagementComponent } from './admin/order-management/order-management.component';
+import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -41,7 +43,7 @@ const routes: Routes = [
       { path: 'membership-class', component: MembershipClassComponent },
       { path: 'product-detail', component: ProductDetailComponent },
       { path: 'personal', component: PersonalPageComponent },
-      { path: 'order', component: OrderComponent },
+      { path: 'order/:idKH/:idDH', component: OrderComponent },
       { path: 'category', component: ProductCategoryComponent },
       { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
       { path: 'category/:loaiSP', component: ProductCategoryComponent },
@@ -67,7 +69,8 @@ const routes: Routes = [
         component: FormCreateProductComponent,
       },
       { path: 'categories', component: CategoryComponent },
-      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent },
+      { path: 'orders', component: OrderManagementComponent},
+      { path: 'detail-order/:idKH/:idDH', component: DetailOrderAdminComponent}
     ],
   },
   { path: 'loginAdmin', component: LoginNhanVienComponent },

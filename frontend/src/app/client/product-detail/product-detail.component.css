@@ -1,10 +1,10 @@
-#font{
-  font-family:'Inter'
+body{
+  padding:40px 200px
 }
-#purchase-button{
-  height: 70px;
+.purchase-button{
+  width: 100%;
 }
-#rounded-button{
+.rounded-button{
   width: 90px;
   height: 90px;
   background: #ffffff;
@@ -12,31 +12,31 @@
   align-items: center;
   justify-content: center;
   cursor:pointer;
-  border-radius: 50%;
+  border-radius: 10px;
   transition: background 0.2s;
+  border: 1px solid #DDDDDD;
 }
-#rounded-button:hover{
-  background: #837e7e;
+.rounded-button:hover{
+  border: 1px solid black;
 }
-#rounded-button:focus{
-  background-color: #837e7e;
+.rounded-button:focus{
+transform: scale(1.2);
+border: 1px solid black;
 }
-#img-size{
+.img-size-main{
+  height: 500px;
+  background-size: cover;
+}
+.img-size-button{
   width: 60px;
   height: 60px;
-  object-fit: contain;
-  mix-blend-mode: multiply;
 }
-#margin-top{
-  margin-top: 100px;
+.img-size-des{
+  width: 800px;
+  height: auto;
 }
-#margin-top-mua{
-  margin-top: 70px;
-}
-#margin-adjust{
-  margin-bottom: 200px;
-}
-#purchase-button{
-  padding : 7px;
+p{
+  margin:0px;
+  font-size: 25px;
 }
 

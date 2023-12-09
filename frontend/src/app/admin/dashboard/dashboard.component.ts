@@ -148,19 +148,11 @@ export class DashboardComponent implements OnInit {
     };
   }
   // BE
-  getCountSP() {
-    this.loadData.setLoadingData(true);
-    this.http.get(this.API + '/sanpham/countSP').subscribe(
-      (data: any) => {
-        this.countSP = data.result;
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        this.loadData.setLoadingData(false);
-      }
-    );
+  getCountSP(){
+    this.http.get(this.API+'/sanpham/countSP').subscribe((data:any)=>
+    {
+      this.countSP = data.result;
+    })
   }
   getTotalMoney() { 
     this.loadData.setLoadingData(true);

@@ -1,5 +1,5 @@
 import { CartService } from './../../services/cartService/cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ElementRef,ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.models';
 import { API } from 'src/app/services/API.service';
@@ -52,4 +52,12 @@ export class ProductDetailComponent implements OnInit {
     this.addItemToCart();
     this.router.navigate(['/client/shopping-cart']);
   }
+  Hinhchange(soHinh: number): void {
+    this.hinh = soHinh;
+  }
+  @ViewChild('firstButton') firstButton!: ElementRef;
+  ngAfterViewInit(): void {
+  this.firstButton.nativeElement.focus();
+  window.scrollTo(0,0);
+}
 }

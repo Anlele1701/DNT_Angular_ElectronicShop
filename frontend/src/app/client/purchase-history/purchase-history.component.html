@@ -1,136 +1,123 @@
 <div class="container">
-    <div class="row">
-        <div class="column menu"></div>
-        <div class="column content">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-center text-justify"><b>Lịch sử mua hàng</b></h1>
-                </div>
-            </div>
+  <div class="row">
+    <div class="column menu"></div>
+    <div class="column content">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center text-justify"><b>Lịch sử mua hàng</b></h1>
         </div>
+      </div>
     </div>
-
+  </div>
 </div>
-<div class="container">
-    <div class="row">
-        <!-- menu -->
-        <div class="column menu">
-            <div class="background-table">
-                <div class="row m-0 p-2">
-                    <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
-                    <div class="col-8 text-center d-flex align-items-center h5"><b>{{user.hoTen}}</b></div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <hr>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 0}"[routerLink]="['/client/personal']"
-                        (click)="onClickBtnMenu(0)"><i class="fa-solid fa-house"></i><span>Trang chủ</span>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 1}"
-                        (click)="onClickBtnMenu(1)"><i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 2}" [routerLink]="['/client/your-account']"
-                        (click)="onClickBtnMenu(2)"><i class="fa-regular fa-face-smile"></i><span>Tài khoản của
-                            bạn</span></div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 3}" [routerLink]="['/client/membership-class']"
-                        (click)="onClickBtnMenu(3)"><i class="fa-solid fa-medal"></i><span>Hạng thành viên</span></div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 btn-border" [ngClass]="{'btn-border-bg-black': activeIndex === 4}"[routerLink]="['/client/contact']"
-                        (click)="onClickBtnMenu(4)"><i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
-                    </div>
-                </div>
-                <div class="row m-0 p-2">
-                    <div class="col-12 p-3 text-center h6" (click)="logOut()"><span>Thoát tài khoản</span>
-                    </div>
-                </div>
-            </div>
+<div class="container mb-5">
+  <div class="row">
+    <!-- menu -->
+    <div class="column menu">
+      <div class="background-table">
+        <div class="row m-0 p-2">
+          <div class="col-4"><i class="fa-regular fa-circle-user"></i></div>
+          <div class="col-8 text-center d-flex align-items-center h5">
+            <b>{{ user.hoTen }}</b>
+          </div>
         </div>
-
-        <!-- Content -->
-        <div class="column content">
-            <div class="background-table">
-                <div class="row title-table">
-                    <div class="col-3">Sản phẩm</div>
-                    <div class="col-2">Ngày mua</div>
-                    <div class="col-2">Số lượng</div>
-                    <div class="col-2">Giá</div>
-                    <div class="col-2">Trạng thái</div>
-                </div>
-                <div class="row text-center shadow-sm">
-                    <div class="col-3">Laptop LMHT</div>
-                    <div class="col-2">08/09/2023</div>
-                    <div class="col-2">1</div>
-                    <div class="col-2">16.000.000VND</div>
-                    <div class="col-2">Chuyển khoản</div>
-                    <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
-                </div>
-                <div class="row text-center shadow-sm">
-                    <div class="col-3">Laptop LMHT</div>
-                    <div class="col-2">08/09/2023</div>
-                    <div class="col-2">1</div>
-                    <div class="col-2">16.000.000VND</div>
-                    <div class="col-2">Chuyển khoản</div>
-                    <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
-                </div>
-                <div class="row text-center shadow-sm">
-                    <div class="col-3">Laptop LMHT</div>
-                    <div class="col-2">08/09/2023</div>
-                    <div class="col-2">1</div>
-                    <div class="col-2">16.000.000VND</div>
-                    <div class="col-2">Chuyển khoản</div>
-                    <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
-                </div>
-                <div class="row text-center shadow-sm">
-                    <div class="col-3">Laptop LMHT</div>
-                    <div class="col-2">08/09/2023</div>
-                    <div class="col-2">1</div>
-                    <div class="col-2">16.000.000VND</div>
-                    <div class="col-2">Chuyển khoản</div>
-                    <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
-                </div>
-                <div class="row text-center shadow-sm">
-                    <div class="col-3">Laptop LMHT</div>
-                    <div class="col-2">08/09/2023</div>
-                    <div class="col-2">1</div>
-                    <div class="col-2">16.000.000VND</div>
-                    <div class="col-2">Chuyển khoản</div>
-                    <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
-                </div>
-                <div class="row text-center shadow-sm">
-                    <div class="col-3">Laptop LMHT</div>
-                    <div class="col-2">08/09/2023</div>
-                    <div class="col-2">1</div>
-                    <div class="col-2">16.000.000VND</div>
-                    <div class="col-2">Chuyển khoản</div>
-                    <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
-                </div>
-                <div class="row text-center shadow-sm">
-                    <div class="col-3">Laptop LMHT</div>
-                    <div class="col-2">08/09/2023</div>
-                    <div class="col-2">1</div>
-                    <div class="col-2">16.000.000VND</div>
-                    <div class="col-2">Chuyển khoản</div>
-                    <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
-                </div>
-                <div class="row text-center shadow-sm">
-                  <div class="col-3">Laptop LMHT</div>
-                  <div class="col-2">08/09/2023</div>
-                  <div class="col-2">1</div>
-                  <div class="col-2">16.000.000VND</div>
-                  <div class="col-2">Chuyển khoản</div>
-                  <div class="col-1"><a href="#" style="font-size: 13px;">Xem chi tiết</a></div>
-              </div>
-            </div>
+        <div class="row">
+          <div class="col-12">
+            <hr />
+          </div>
         </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 0 }"
+            [routerLink]="['/client/personal']"
+            (click)="onClickBtnMenu(0)"
+          >
+            <i class="fa-solid fa-house"></i><span>Trang chủ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 1 }"
+            (click)="onClickBtnMenu(1)"
+          >
+            <i class="fa-solid fa-file-pen"></i><span>Lịch sử mua hàng</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 2 }"
+            [routerLink]="['/client/your-account']"
+            (click)="onClickBtnMenu(2)"
+          >
+            <i class="fa-regular fa-face-smile"></i
+            ><span>Tài khoản của bạn</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 3 }"
+            [routerLink]="['/client/membership-class']"
+            (click)="onClickBtnMenu(3)"
+          >
+            <i class="fa-solid fa-medal"></i><span>Hạng thành viên</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div
+            class="col-12 p-3 btn-border"
+            [ngClass]="{ 'btn-border-bg-black': activeIndex === 4 }"
+            [routerLink]="['/client/contact']"
+            (click)="onClickBtnMenu(4)"
+          >
+            <i class="fa-regular fa-circle-question"></i><span>Hỗ trợ</span>
+          </div>
+        </div>
+        <div class="row m-0 p-2">
+          <div class="col-12 p-3 text-center h6" (click)="logOut()">
+            <span>Thoát tài khoản</span>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- Content -->
+
+    <div class="column content">
+      <div class="background-table">
+        <!-- List Table -->
+        <div class="box mt-3" id="listBox">
+          <div class="fixTableHead">
+            <table
+              class="table table-striped table-hover table-bordered text-center"
+            >
+              <thead>
+                <tr>
+                  <th>Mã đơn hàng</th>
+                  <th>Ngày mua</th>
+                  <th>Số lượng</th>
+                  <th>Tổng tiền (VND)</th>
+                  <th>Trạng thái</th>
+                  <th>Hành động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of donhang">
+                  <td>{{ item.idDonHang }}</td>
+                  <td>{{item.ngayDat | date:"dd/MM/yyyy HH:mm:ss"}}</td>
+                  <td>{{item.tongSLMua}}</td>
+                  <td>{{item.tongTien|currency:'VND':' '}}</td>
+                  <td *ngIf="item.trangThaiTT==='Đã hủy'" style="color: red;">{{item.trangThaiTT}}</td>
+                  <td *ngIf="item.trangThaiTT!=='Đã hủy'">{{item.trangThaiTT}}</td>
+                  <td><button class="btn btn-primary" (click)="orderDetail(item.idDonHang)">Xem chi tiết</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
