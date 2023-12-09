@@ -63,6 +63,16 @@ const sendEmail = async (req, res) => {
     console.log("Lỗi trong controller của sendEmail");
   }
 };
+const searchKH = async (req, res) => {
+  try {
+    const searchTerm = req.params.searchTerm;
+    const items = await khacHangService.searchKH(searchTerm);
+    res.json(items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 module.exports = {
   dangKy,
   verifyEmail,
@@ -70,4 +80,5 @@ module.exports = {
   sendEmail,
   resetPassword,
   countKH,
+  searchKH,
 };

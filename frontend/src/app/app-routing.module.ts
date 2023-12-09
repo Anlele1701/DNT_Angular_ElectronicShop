@@ -27,6 +27,7 @@ import { ContactComponent } from './client/contact/contact.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
 import { AuthGuard } from './admin/shared/auth.guard';
 import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
+import { CompareProductComponent } from './client/compare-product/compare-product.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -50,6 +51,7 @@ const routes: Routes = [
       { path: 'purchase', component: PurchaseComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'your-account', component: YourAccountComponent },
+      { path: 'compare-products/:loaiSP', component: CompareProductComponent },
     ],
   },
   // ADMIN

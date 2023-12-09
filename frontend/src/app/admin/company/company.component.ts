@@ -17,6 +17,8 @@ export class CompanyComponent implements OnInit {
   brandList$: Observable<any[]>;
   tenNhaSX: string = '';
   brandID: any;
+  items: any[] = [];
+  searchTerm = '';
   allHang: string[] = [
     'Điện Thoại',
     'Màn Hình',
@@ -65,6 +67,25 @@ export class CompanyComponent implements OnInit {
         }
       });
   }
+  onSearch() {
+    if (this.searchTerm.trim() !== '') {
+      const searchResultSubject = new BehaviorSubject<any[]>([]);
+
+      this.http.get(this.API + '/hang/find/' + this.searchTerm).subscribe(
+        (data: any) => {
+          searchResultSubject.next(data);
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {}
+      );
+
+      this.brandList$ = searchResultSubject.asObservable();
+    } else {
+      this.showAllBrand();
+    }
+  }
   updateBrand(data: any) {
     this.tenNhaSX = data.tenNhaSX;
     this.brandID = data._id;
@@ -98,7 +119,6 @@ export class CompanyComponent implements OnInit {
   }
   // FUNCTIONS
   AddFormVisible: boolean = false;
-
   toggleAddForm() {
     this.AddFormVisible = !this.AddFormVisible;
   }

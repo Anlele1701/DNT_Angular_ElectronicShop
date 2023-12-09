@@ -37,6 +37,16 @@ var updateHang = async (req, res) => {
     res.send({ status: false, message: "Wat the fuck" });
   }
 };
+const searchHang = async (req, res) => {
+  try {
+    const searchTerm = req.params.searchTerm;
+    const items = await hangService.searchHang(searchTerm);
+    res.json(items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 module.exports = {
   createNewHang,
   getAllHang,
@@ -44,4 +54,5 @@ module.exports = {
   deleteHang,
   getHang,
   updateHang,
+  searchHang,
 };
