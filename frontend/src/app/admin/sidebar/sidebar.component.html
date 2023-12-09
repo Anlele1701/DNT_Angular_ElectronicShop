@@ -3,7 +3,7 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
       <!-- Logo -->
-      <a routerLink="/admin/dashboard" style="margin-left: -15px">
+      <a routerLink="/admin/dashboard" style="margin-left: -30px">
         <img src="assets/admin/logo.png" style="height: 85px" />
         <span class="imgTitle">HỆ THỐNG QUẢN LÝ</span>
       </a>
@@ -105,11 +105,10 @@
             </a>
           </li>
           <li class="nav-link">
-            <a routerLink="/categories">
+            <a routerLink="/loginAdmin">
               <span class="icon">
-                <i class="fa-solid fa-right-from-bracket"></i
-              ></span>
-              <span class="cateName">Logout</span>
+                <i class="fa-solid fa-right-from-bracket"></i></span>
+              <span class="cateName" (click)="logout()">Logout</span>
             </a>
           </li>
         </ul>

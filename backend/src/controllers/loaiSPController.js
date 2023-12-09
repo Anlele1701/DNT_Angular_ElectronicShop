@@ -45,11 +45,15 @@ const updateLoaiSP = async (req, res) => {
     res.send({ error: "Lỗi controller updateLoaiSP" });
   }
 };
-
+var getLoaiSP = async(req,res)=>{
+ var listLoaiSP = await loaiSPService.getAllLoaiSP();
+ res.send(listLoaiSP);
+};
 module.exports = {
   createnewLoaiSPtoHang,
   countLoaiSP,
   createLoaiSP,
   deleteLoaiSP,
   updateLoaiSP,
+  getLoaiSP,
 };

@@ -6,7 +6,9 @@ var khachHangController = require("../src/controllers/khachHangController");
 var loaiSPController = require("../src/controllers/loaiSPController");
 var nhanVienController = require("../src/controllers/nhanVienController");
 var sanPhamController = require("../src/controllers/sanPhamController");
+var Momo = require("../src/PaymentGateway/Momo");
 
+const verifyToken = require("../middleware/verifyToken");
 var upload = require("../middleware/upload");
 //HÃNG
 router.route("/hang/createNewHang").post(hangController.createNewHang); //tạo hãng mới
@@ -26,6 +28,7 @@ router
 router.route("/loaisp/createLoaiSP").post(loaiSPController.createLoaiSP); //tạo loại sản phẩm mới
 router.route("/loaisp/deleteLoaiSP/:id").delete(loaiSPController.deleteLoaiSP); //xóa loại sản phẩm
 router.route("/loaisp/updateLoaiSP/:id").patch(loaiSPController.updateLoaiSP); // Update loại sản phẩm
+router.route("/loaisp/getAll").get(loaiSPController.getLoaiSP);
 // SẢN PHẨM
 router
   .route("/sanpham/createNewProduct")
@@ -39,8 +42,13 @@ router
   .route("/sanpham/editSanPham")
   .post(upload.upload.array("hinhAnh", 3), sanPhamController.editProduct); //tạo sản phẩm mới
 router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số lượng SP
-router.route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP").delete(sanPhamController.deleteProduct)
-
+router
+  .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
+  .delete(sanPhamController.deleteProduct);
+  router.route("/sanpham/getAll").get(sanPhamController.getAll);
+//NHÂN VIÊN
+router.route("/nhanvien/login").post(nhanVienController.loginNV); // Đăng nhập nhân viên
+router.route("/nhanvien/verifyToken").post(verifyToken.verifyToken); // xác thực token nhân viên
 //KHÁCH HÀNG
 router.route("/khachhang/dangKy").post(khachHangController.dangKy); //đăng ký tài khoản
 router
@@ -50,15 +58,21 @@ router.route("/khachhang/dangNhap").post(khachHangController.dangNhap); //đăng
 router.route("/khachhang/countKH").get(khachHangController.countKH); // lấy số lượng khách hàng
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
 
-
 //ĐƠN HÀNG
-router.route("/donhang/muaHang").post(donHangController.muaHang) //lưu đơn hàng vào db
-router.route('/donhang/thanhtoanvnpay').post(donHangController.createpayment);
-router.route('/donhang/vnpay_ipn').get(donHangController.getvnPayIPN);
+router.route("/donhang/muaHang").post(donHangController.muaHang);
+router.route("/donhang/thanhtoanvnpay").post(donHangController.createpayment);
+router.route("/donhang/vnpay_ipn").get(donHangController.getvnPayIPN);
+router.route("/donhang/muaHang").post(donHangController.muaHang);
 router.route('/donhang/quanLyDSDonHang').get(donHangController.QLDSDonHang) //show ds đơn hàng --admin
+router
+  .route("/donhang/getAllDonHangById/:idkh")
+  .get(donHangController.getAllDonHangById); // lấy danh sách các DH theo id khách hàng
 router.route('/donhang/getCTDH/:idKH/:idDH').get(donHangController.getCTDH) //lấy chi tiết đơn hàng
 router.route('/donhang/updateTTDonHang').patch(donHangController.updateTTDonHang) //cập nhật thông tin đơn hàng
 router.route('/donhang/huyDonHang').patch(donHangController.huyDonHang) //hủy đơn hàng
 router.route('/donhang/khoiPhucDonHang').patch(donHangController.khoiPhucDonHang) //khôi phục đơn hàng
 router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang)
+  router.route('/donhang/getAllDonHang').get(donHangController.getAllDonHang) // lấy danh sách các DH theo id khách hàng
+//MOMO PAYMENT
+router.route("/payment/momo/:idDH").post(donHangController.MomoPayment);
 module.exports = router;

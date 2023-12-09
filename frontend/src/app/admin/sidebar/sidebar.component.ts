@@ -1,11 +1,13 @@
 import { map } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginNhanVienComponent } from '../login-nhan-vien/login-nhan-vien.component';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
@@ -27,6 +29,10 @@ export class SidebarComponent implements OnInit {
       this.countAllLoaiSP = data.sumLoaiSP;
       this.listLoaiSP = data.listLoaiSP;
     });
+  }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('admin');
   }
   ngOnInit(): void {
     this.countAllLoaiSP();

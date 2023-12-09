@@ -3,6 +3,9 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  overflow:visible;
+  height:auto;
+  min-height:100%;
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -25,7 +28,7 @@ body {
   left: 0;
   bottom: 0;
   width: 110px;
-  z-index: 1;
+  z-index: 3;
   padding: 0 1.7rem;
   overflow-x: hidden;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
@@ -71,7 +74,7 @@ a {
 .sidebar:hover {
   width: 350px;
   transition: width 0.25s linear;
-  z-index: 1;
+  z-index: 3;
 }
 /* Animation */
 li:hover {
@@ -85,6 +88,8 @@ li:hover {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   margin-left: 100px;
   position: sticky;
+  top:0;
+  z-index: 2;
 }
 #avataradmin {
   object-fit: contain;
@@ -93,7 +98,8 @@ li:hover {
 }
 .content {
   margin-left: 100px;
-  height: 100vh;
+  height: auto;
+  min-height:100vh;
 }
 .dropdown-item:hover {
   background-color: #494949;

@@ -75,8 +75,13 @@ p {
     font-weight: 700;
 }
 /* ROWCOLOR */
-#phoneSP{
-    background: radial-gradient(circle at 100% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+#phoneSP {
+  background: radial-gradient(
+    circle at 100% 37.8%,
+    rgb(250, 250, 250) 0%,
+    rgb(225, 234, 238) 90%
+  );
+  cursor: pointer;
 }
 #laptopSP{
     background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);

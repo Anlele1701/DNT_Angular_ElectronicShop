@@ -1,17 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  AfterViewInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.models';
 import { API } from 'src/app/services/API.service';
 import { async, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LoadDataService } from 'src/app/admin/shared/load-data.service';
 @Component({
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
   styleUrls: ['./product-category.component.css'],
   providers: [API],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
-export class ProductCategoryComponent implements OnInit {
+export class ProductCategoryComponent implements OnInit, AfterViewInit {
   listproduct: any[] = [];
   listBrand: string[] = [];
   loaiSP: string = '';
@@ -23,7 +30,8 @@ export class ProductCategoryComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
-    private api: API
+    private api: API,
+    private loadData: LoadDataService,
   ) {}
   ngOnInit() {
     this.checkUrlLoaiSP();
@@ -35,7 +43,9 @@ export class ProductCategoryComponent implements OnInit {
       this.loaiSP = params['loaiSP'];
     });
   }
-
+  ngAfterViewInit() {
+    this.loadData.setLoadingData(false);
+  }
   getAllProduct() {
     this.http
       .get(this.api.getAPI() + '/sanpham/getAllSanPham/' + this.loaiSP)
@@ -50,6 +60,8 @@ export class ProductCategoryComponent implements OnInit {
         forkJoin(this.requests).subscribe(() => {
           //hoàn thành load tất cả dữ liệu rồi mới show
           this.loading = false;
+          this.loadData.setLoadingData(true);
+
         });
       });
   }

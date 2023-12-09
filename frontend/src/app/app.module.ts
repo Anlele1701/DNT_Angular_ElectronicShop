@@ -42,6 +42,9 @@ import { EditProductComponent } from './admin/product/edit-product/edit-product.
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ContactComponent } from './client/contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { API } from './services/API.service';
+import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { OrderManagementComponent } from './admin/order-management/order-management.component';
 import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
 import { EditOrderAdminComponent } from './admin/order-management/edit-order-admin/edit-order-admin.component';
@@ -90,7 +93,8 @@ import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.c
     DetailOrderAdminComponent,
     EditOrderAdminComponent,
     EditOrderComponent,
-    CancelOrderComponent
+    CancelOrderComponent,
+    LoginNhanVienComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,9 +106,8 @@ import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.c
     MatDialogModule,
     HighchartsChartModule,
     ReactiveFormsModule,
-    NoopAnimationsModule
   ],
-  providers: [],
+  providers: [API],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

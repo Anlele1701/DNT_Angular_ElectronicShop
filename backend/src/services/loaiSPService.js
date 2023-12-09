@@ -151,6 +151,13 @@ const updateLoaiSP = async (req) => {
     return { status: 500, message: "Lỗi service update Loại Sản Phẩm" };
   }
 };
+var getAllLoaiSP = async ()=>{
+    var listLoaiSP = await loaiSPModel.find({}).then((document)=>{
+      console.log(document);
+      return document;
+    })
+    return listLoaiSP;
+}
 module.exports = {
   listIDSP,
   getProductsOfCompany,
@@ -161,4 +168,5 @@ module.exports = {
   createLoaiSP,
   deleteLoaiSP,
   updateLoaiSP,
+  getAllLoaiSP,
 };
