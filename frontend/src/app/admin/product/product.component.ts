@@ -18,9 +18,9 @@ import { LapTopFormComponent } from '../thongSoForm/lap-top-form/lap-top-form.co
 import { ManHinhFormComponent } from '../thongSoForm/man-hinh-form/man-hinh-form.component';
 import { TaiNgheFormComponent } from '../thongSoForm/tai-nghe-form/tai-nghe-form.component';
 import { DienThoaiFormComponent } from '../thongSoForm/dien-thoai-form/dien-thoai-form.component';
-import { LoadDataService } from '../shared/load-data.service';
 import { FormCreateProductComponent } from '../form-create-product/form-create-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { LoadDataService } from '../shared/load-data.service';
 
 @Component({
   selector: 'app-product',
@@ -40,7 +40,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private popup: MatDialog,
-    private loadDataService: LoadDataService
+    private isLoading: LoadDataService
   ) {}
   ngOnInit(): void {
     this.loadData();
@@ -76,7 +76,7 @@ export class ProductComponent implements OnInit, OnDestroy {
           console.error('Error fetching data', error);
         },
         () => {
-          this.loadDataService.setLoadingData(false);
+          this.isLoading.setLoadingData(false)
         }
       );
     this.listProduct$ = listProductSubject.asObservable();

@@ -28,6 +28,8 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
 import { AuthGuard } from './admin/shared/auth.guard';
 import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
 import { CompareProductComponent } from './client/compare-product/compare-product.component';
+import { OrderManagementComponent } from './admin/order-management/order-management.component';
+import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -42,7 +44,7 @@ const routes: Routes = [
       { path: 'membership-class', component: MembershipClassComponent },
       { path: 'product-detail', component: ProductDetailComponent },
       { path: 'personal', component: PersonalPageComponent },
-      { path: 'order', component: OrderComponent },
+      { path: 'order/:idKH/:idDH', component: OrderComponent },
       { path: 'category', component: ProductCategoryComponent },
       { path: 'category/:loaiSP/:tenSP', component: ProductDetailComponent },
       { path: 'category/:loaiSP', component: ProductCategoryComponent },
@@ -69,7 +71,8 @@ const routes: Routes = [
         component: FormCreateProductComponent,
       },
       { path: 'categories', component: CategoryComponent },
-      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent },
+      { path: 'orders', component: OrderManagementComponent},
+      { path: 'detail-order/:idKH/:idDH', component: DetailOrderAdminComponent}
     ],
   },
   { path: 'loginAdmin', component: LoginNhanVienComponent },
@@ -83,7 +86,10 @@ const routes: Routes = [
   { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+  imports: [RouterModule.forRoot(routes, { 
+    onSameUrlNavigation: 'reload',
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

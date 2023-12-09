@@ -40,11 +40,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { YourAccountComponent } from './client/your-account/your-account.component';
 import { ContactComponent } from './client/contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { API } from './services/API.service';
 import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { OrderManagementComponent } from './admin/order-management/order-management.component';
+import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
+import { EditOrderAdminComponent } from './admin/order-management/edit-order-admin/edit-order-admin.component';
+import { YourAccountComponent } from './client/your-account/your-account.component';
+import { EditOrderComponent } from './client/order/edit-order/edit-order.component';
+import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.component';
 import { CompareProductComponent } from './client/compare-product/compare-product.component';
 @NgModule({
   declarations: [
@@ -84,6 +90,11 @@ import { CompareProductComponent } from './client/compare-product/compare-produc
     YourAccountComponent,
     ContactComponent,
     ClientLayoutComponent,
+    OrderManagementComponent,
+    DetailOrderAdminComponent,
+    EditOrderAdminComponent,
+    EditOrderComponent,
+    CancelOrderComponent,
     LoginNhanVienComponent,
     CompareProductComponent,
   ],
@@ -98,6 +109,7 @@ import { CompareProductComponent } from './client/compare-product/compare-produc
     HighchartsChartModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+
   ],
   providers: [API],
   bootstrap: [AppComponent],

@@ -1,12 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { error } from 'highcharts';
@@ -28,11 +21,7 @@ export class CategoryComponent implements OnInit {
   searchTerm = '';
 
   readonly API = 'http://localhost:3800';
-  constructor(
-    private http: HttpClient,
-    private el: ElementRef,
-    private loadData: LoadDataService
-  ) {}
+  constructor(private http: HttpClient, private el: ElementRef, private loadData: LoadDataService) {}
   ngOnInit(): void {
     this.showAllCategories();
   }
@@ -57,7 +46,8 @@ export class CategoryComponent implements OnInit {
     this.http
       .post(this.API + '/loaisp/createLoaiSP', { tenLoai: this.categoryName })
       .subscribe((data: any) => {
-        this.showAllCategories();
+        console.log(data);
+        window.location.reload();
       });
   }
   // FUNCTIONS
@@ -109,7 +99,6 @@ export class CategoryComponent implements OnInit {
     this.http
       .patch(this.API + '/loaisp/updateLoaiSP/' + idLSP, data)
       .subscribe((data: any) => {
-        //console.log(data);
         if (data.status) {
           alert('Cập nhật thành công!');
         } else {

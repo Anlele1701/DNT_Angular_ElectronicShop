@@ -1,0 +1,22 @@
+<div class="popup">
+  <form (submit)="updateInfoOrder()">
+    <h3 class="text-start fw-semibold pt-2">Chỉnh sửa thông tin nhận hàng</h3>
+    <hr>
+    <div class="row">
+        <label for="exampleInputPassword1" class="form-label">Tên người nhận:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="infoOrder.nguoiNhan"
+          name="infoOrder.nguoiNhan">
+        <label for="exampleInputPassword1" class="form-label">Số điện thoại:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="infoOrder.sdt"
+          name="infoOrder.sdt">
+        <label for="exampleInputPassword1" class="form-label">Địa chỉ:</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="infoOrder.diaChi"
+          name="infoOrder.diaChi">
+    </div>
+    <hr>
+    <div class="text-center float-end">
+      <button mat-dialog-close class="btn btn-danger me-3">Cancel</button>
+      <button type="submit" class="btn btn-primary me-3">Submit</button>
+    </div>
+  </form>
+</div>

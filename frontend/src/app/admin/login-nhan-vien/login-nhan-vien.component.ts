@@ -29,7 +29,7 @@ export class LoginNhanVienComponent implements OnInit {
         if (data.status === 200) {
           this.setAdmin(data);
           localStorage.setItem('token', data.token);
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/admin/dashboard']);
         }
       });
   }

@@ -54,7 +54,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let itemHang of brandList$ | async">
+            <tr
+              *ngFor="let itemHang of brandList$ | async"
+              class="align-middle"
+            >
               <td>{{ itemHang.tenNhaSX }}</td>
               <td>{{ returnStringLoaiSP(itemHang.cacLoaiSP) }}</td>
               <td>

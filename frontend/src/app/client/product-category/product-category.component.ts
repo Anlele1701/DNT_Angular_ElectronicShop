@@ -11,7 +11,7 @@ import { API } from 'src/app/services/API.service';
 import { async, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoadDataService } from 'src/app/admin/shared/load-data.service';
-import { LoadingIndicatorService } from 'src/app/services/LoadingIndicatorService/LoadingIndicator.Service';
+import { LoadingIndicatorService } from 'src/app/services/loading-indicator.service';
 @Component({
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
@@ -19,7 +19,7 @@ import { LoadingIndicatorService } from 'src/app/services/LoadingIndicatorServic
   providers: [API],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class ProductCategoryComponent implements OnInit, AfterViewInit {
+export class ProductCategoryComponent implements OnInit {
   listproduct: any[] = [];
   listBrand: string[] = [];
   loaiSP: string = '';
@@ -38,14 +38,10 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
     this.checkUrlLoaiSP();
     this.getAllProduct();
   }
-
   checkUrlLoaiSP() {
     this.activatedRoute.params.subscribe((params) => {
       this.loaiSP = params['loaiSP'];
     });
-  }
-  ngAfterViewInit() {
-    this.loadData.setLoadingData(false);
   }
   getAllProduct() {
     this.loadData.setLoadingData(true);
@@ -55,22 +51,18 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
         (data: any) => {
           data.cacHang.forEach((item) => {
             this.getHang(item.idHang);
-            console.log(item.idHang);
             item.idCacSP.forEach((idSP) => {
               this.getSP(idSP);
             });
           });
 
           forkJoin(this.requests).subscribe(() => {
-            //hoàn thành load tất cả dữ liệu rồi mới show
             this.loading = false;
+            this.loadData.setLoadingData(false);
           });
         },
         (error) => {
           console.log(error);
-        },
-        () => {
-          this.loadData.setLoadingData(false);
         }
       );
   }
@@ -83,6 +75,7 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
       )
     );
   }
+
   getSP(idSP) {
     this.requests.push(
       this.http.get(this.api.getAPI() + '/sanpham/getSP/' + idSP).pipe(

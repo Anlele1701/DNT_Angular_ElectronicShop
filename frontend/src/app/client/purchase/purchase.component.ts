@@ -36,9 +36,9 @@ export class PurchaseComponent implements OnInit, OnDestroy{
     ptTT: 'Thanh toán tiền mặt',
     tongSL: 0,
     tamTinh:0,
-    tienKM:20000,
+    tienKM:0,
     thueVAT:0,
-    tongTien:0,
+    tongTien:0
   }
   orderForm: FormGroup
   ngUnsubscribe$ = new Subject<void>();
@@ -57,7 +57,19 @@ export class PurchaseComponent implements OnInit, OnDestroy{
 
   getTamTinh(){
     this.userOrder.tamTinh=this.cartService.updateTongTien()
-    this.userOrder.tongTien=this.userOrder.tamTinh
+    if(this.userInfo.hangThanhVien==='Đồng')
+    {
+      this.userOrder.tienKM=this.userOrder.tamTinh*3/100
+    }
+    else if(this.userInfo.hangThanhVien==='Bạc')
+    {
+      this.userOrder.tienKM=this.userOrder.tamTinh*5/100
+    }
+    else{
+      this.userOrder.tienKM=this.userOrder.tamTinh*7/100
+    }
+    this.userOrder.thueVAT=this.userOrder.tamTinh*8/100
+    this.userOrder.tongTien=this.userOrder.tamTinh-this.userOrder.tienKM+this.userOrder.thueVAT
   }
 
   getTongSL(){
@@ -87,7 +99,6 @@ export class PurchaseComponent implements OnInit, OnDestroy{
         }
       });
   }
-
   saveOrderToDB() {
     return this.http.post<ApiResponse>(this.api.getAPI() + '/donhang/muaHang', {userOrder: this.userOrder, cartList: this.cartList})
       .pipe(takeUntil(this.ngUnsubscribe$));
@@ -106,7 +117,9 @@ export class PurchaseComponent implements OnInit, OnDestroy{
       this.getTamTinh()
       this.getTongSL()
   }
-
+  Gobackpage(){
+    this.router.navigate(['/client/shopping-cart'])
+  }
   ngOnDestroy() {
     this.ngUnsubscribe$.next();
     this.ngUnsubscribe$.complete();

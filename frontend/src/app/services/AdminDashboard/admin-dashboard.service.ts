@@ -11,4 +11,7 @@ export class AdminDashboardService {
   getLoaiSP():Observable<any>{
     return this.http.get<any>('http://localhost:3800/loaisp/getAll');
   }
+  getSanPham():Observable<any>{
+    return this.http.get<any>('http://localhost:3800/sanpham/getAll');
+  }
 }

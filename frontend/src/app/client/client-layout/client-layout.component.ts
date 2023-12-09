@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadDataService } from 'src/app/admin/shared/load-data.service';
-import { LoadingIndicatorService } from 'src/app/services/LoadingIndicatorService/LoadingIndicator.Service';
-
+import { LoadingIndicatorService } from 'src/app/services/loading-indicator.service';
 @Component({
   selector: 'app-client-layout',
   templateUrl: './client-layout.component.html',

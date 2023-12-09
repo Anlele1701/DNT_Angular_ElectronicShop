@@ -64,10 +64,7 @@ export class LoginRegisComponent {
         if(route==='/client/shopping-cart'){
           this.router.navigate(['/client/purchase'])
         }
-        else
-        { this.router.navigate(['/client/homepage']) 
-               alert("da dang nhap");
-        }
+        else this.router.navigate(['/client/personal'])
       }
     })
   }
