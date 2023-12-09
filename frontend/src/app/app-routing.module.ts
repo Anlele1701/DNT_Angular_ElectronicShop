@@ -70,7 +70,8 @@ const routes: Routes = [
       },
       { path: 'categories', component: CategoryComponent },
       { path: 'orders', component: OrderManagementComponent},
-      { path: 'detail-order/:idKH/:idDH', component: DetailOrderAdminComponent}
+      { path: 'detail-order/:idKH/:idDH', component: DetailOrderAdminComponent},
+      { path: 'edit-product/:loaiSP/:idSP', component:EditProductComponent}
     ],
   },
   { path: 'loginAdmin', component: LoginNhanVienComponent },
@@ -84,7 +85,7 @@ const routes: Routes = [
   { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { 
+  imports: [RouterModule.forRoot(routes, {
     onSameUrlNavigation: 'reload',
     scrollPositionRestoration: 'enabled'
   })],

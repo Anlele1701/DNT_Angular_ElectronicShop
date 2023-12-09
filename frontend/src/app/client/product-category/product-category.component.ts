@@ -11,6 +11,7 @@ import { API } from 'src/app/services/API.service';
 import { async, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoadDataService } from 'src/app/admin/shared/load-data.service';
+import { LoadingIndicatorService } from 'src/app/services/loading-indicator.service';
 @Component({
   selector: 'app-product-category',
   templateUrl: './product-category.component.html',
@@ -18,7 +19,7 @@ import { LoadDataService } from 'src/app/admin/shared/load-data.service';
   providers: [API],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class ProductCategoryComponent implements OnInit, AfterViewInit {
+export class ProductCategoryComponent implements OnInit {
   listproduct: any[] = [];
   listBrand: string[] = [];
   loaiSP: string = '';
@@ -31,39 +32,39 @@ export class ProductCategoryComponent implements OnInit, AfterViewInit {
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
     private api: API,
-    private loadData: LoadDataService,
+    private loadData: LoadingIndicatorService
   ) {}
   ngOnInit() {
     this.checkUrlLoaiSP();
     this.getAllProduct();
   }
-
   checkUrlLoaiSP() {
     this.activatedRoute.params.subscribe((params) => {
       this.loaiSP = params['loaiSP'];
     });
   }
-  ngAfterViewInit() {
-    this.loadData.setLoadingData(false);
-  }
   getAllProduct() {
+    this.loadData.setLoadingData(true);
     this.http
       .get(this.api.getAPI() + '/sanpham/getAllSanPham/' + this.loaiSP)
-      .subscribe((data: any) => {
-        data.cacHang.forEach((item) => {
-          this.getHang(item.idHang);
-          item.idCacSP.forEach((idSP) => {
-            this.getSP(idSP);
+      .subscribe(
+        (data: any) => {
+          data.cacHang.forEach((item) => {
+            this.getHang(item.idHang);
+            item.idCacSP.forEach((idSP) => {
+              this.getSP(idSP);
+            });
           });
-        });
 
-        forkJoin(this.requests).subscribe(() => {
-          //hoàn thành load tất cả dữ liệu rồi mới show
-          this.loading = false;
-          this.loadData.setLoadingData(true);
-
-        });
-      });
+          forkJoin(this.requests).subscribe(() => {
+            this.loading = false;
+            this.loadData.setLoadingData(false);
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
   getHang(idHang) {
     this.requests.push(

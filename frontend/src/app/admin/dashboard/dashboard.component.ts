@@ -111,7 +111,6 @@ export class DashboardComponent implements OnInit {
   }
   // SANPHAM CHART
   getSanPham() {
-    this.loadData.setLoadingData(true);
     this.adminDashboard.getSanPham().subscribe((data: any) => {
       this.drawSanPham(data);
     });
@@ -155,7 +154,6 @@ export class DashboardComponent implements OnInit {
     })
   }
   getTotalMoney() { 
-    this.loadData.setLoadingData(true);
     let total =0;
     let totalDH = 0;
     this.http.get(this.API+'/donhang/getAllDonHang').subscribe(
@@ -175,7 +173,6 @@ export class DashboardComponent implements OnInit {
     );
   }
   getCountKH() {
-    this.loadData.setLoadingData(true);
     this.http.get(this.API + '/khachhang/countKH').subscribe(
       (data: any) => {
         this.countKH = data.result;

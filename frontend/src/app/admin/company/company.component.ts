@@ -1,6 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, flatMap } from 'rxjs';
+import { LoadDataService } from '../shared/load-data.service';
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -8,7 +9,7 @@ import { BehaviorSubject, Observable, flatMap } from 'rxjs';
 })
 export class CompanyComponent implements OnInit {
   stringLoaiSP: string = '';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private loadData: LoadDataService) {}
   brandName: string = '';
   brandList: any[] = [];
   deleted: boolean;
@@ -30,9 +31,16 @@ export class CompanyComponent implements OnInit {
     });
     }
   showAllBrand() {
+    this.loadData.setLoadingData(true);
     const brandListSubject = new BehaviorSubject<any[]>([]);
     this.http.get(this.API + '/hang/getAllHang').subscribe((data: any) => {
       brandListSubject.next(data);
+    },
+    (error) => {
+      console.log(error);
+    },
+    () => {
+      this.loadData.setLoadingData(false);
     });
     this.brandList$ = brandListSubject.asObservable();
   }
