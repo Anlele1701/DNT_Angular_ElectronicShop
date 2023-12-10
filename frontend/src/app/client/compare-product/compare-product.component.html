@@ -148,15 +148,15 @@
     <div class="row">
         <div class="col-md-6 mb-3">
             <div *ngIf="product1">
-                <div class="image-container" *ngFor="let image of product1.hinhAnh">
-                    <img [src]="getImageUrl(image.tenImageSP)" alt="Product Image">
+                <div class="image-container">
+                    <img [src]="getImageUrl(product1.hinhAnh[0].tenImageSP)" alt="Product Image">
                 </div>
             </div>
         </div>
         <div class="col-md-6 mb-3">
             <div *ngIf="product2">
-                <div class="image-container" *ngFor="let image of product2.hinhAnh">
-                    <img [src]="getImageUrl(image.tenImageSP)" alt="Product Image">
+                <div class="image-container">
+                    <img [src]="getImageUrl(product2.hinhAnh[0].tenImageSP)" alt="Product Image">
                 </div>
             </div>
         </div>
