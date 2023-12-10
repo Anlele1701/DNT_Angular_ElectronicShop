@@ -37,7 +37,7 @@
         <ul class="sidebar-list list-unstyled" *ngFor="let item of listBrand">
           <li class="sidebar-list_item fs-4">
             <div class="controller">
-              <input type="checkbox" />
+              <input type="checkbox" (change)="checkBrand($event,item)"/>
               <span>{{ item }}</span>
             </div>
           </li>
@@ -48,7 +48,7 @@
           <div
             class="col-lg-4"
             *ngFor="
-              let product of listproduct
+              let product of findListProduct
                 | paginate
                   : { itemsPerPage: pageSize, currentPage: currentPage }
             "
