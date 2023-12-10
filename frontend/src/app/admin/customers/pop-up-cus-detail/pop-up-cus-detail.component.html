@@ -1,0 +1,43 @@
+<div class="form-container">
+    <h2>Thông Tin Của Khách Hàng</h2>
+    <div class="hr-container">
+        <hr class="centered-hr" />
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 px-5">
+                <label for="exampleInputPassword1" class="form-label">Họ Tên:</label>
+                <input type="text" disabled readonly class="form-control" id="exampleInputPassword1"
+                    value="{{user.hoTen}}" name="user.hoTen">
+            </div>
+            <div class="mb-3 px-5">
+                <label for="exampleInputPassword1" class="form-label">Email:</label>
+                <input type="email" disabled readonly class="form-control" id="exampleInputPassword1"
+                    value="{{user.email}}" name="user.email">
+            </div>
+            <div class="mb-3 px-5">
+                <label for="exampleInputPassword1" class="form-label">Số Điện Thoại:</label>
+                <input type="text" disabled readonly class="form-control" id="exampleInputPassword1"
+                    value="{{user.sdt}}" name="user.sdt">
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3 px-5">
+                <label for="exampleInputPassword1" class="form-label">Điểm:</label>
+                <input type="text" disabled readonly class="form-control" id="exampleInputPassword1"
+                    value="{{user.diem}}" name="user.diem">
+            </div>
+            <div class="mb-3 px-5">
+                <label for="exampleInputPassword1" class="form-label">Hạng Thành Viên:</label>
+                <input type="text" disabled readonly class="form-control" id="exampleInputPassword1"
+                    value="{{user.hangThanhVien}}" name="user.hangThanhVien">
+            </div>
+            <div class="mb-3 px-5">
+                <label for="exampleInputPassword1" class="form-label">Ngày Tạo Tài Khoản:</label>
+                <input type="text" disabled readonly class="form-control" id="exampleInputPassword1"
+                    value="{{user.dateCreated | date: 'dd/MM/yyyy'}}" name="user.dateCreated">
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success mt-3 mx-5" mat-dialog-close>Xong</button>
+</div>

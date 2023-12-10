@@ -1,29 +1,29 @@
 <div class="form-container">
-    <form (submit)="onCreateKH()">
-        <h2>Thông Tin Khách Hàng Mới</h2>
+    <form>
+        <h2>Chỉnh Sửa Thông Tin Của Khách Hàng</h2>
         <div class="hr-container">
             <hr class="centered-hr" />
         </div>
         <div class="mb-3 px-5">
             <label for="exampleInputPassword1" class="form-label">Họ Tên KH:</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" value="{{user.hoTen}}"
+            <input type="text" class="form-control" id="exampleInputPassword1"
                 [(ngModel)]="user.hoTen" name="user.hoTen">
         </div>
         <div class="mb-3 px-5">
             <label for="exampleInputPassword1" class="form-label">Email:</label>
-            <input type="email" placeholder="name@example.com" class="form-control" id="exampleInputPassword1" value="{{user.email}}"
+            <input type="email" class="form-control" id="exampleInputPassword1"
                 [(ngModel)]="user.email" name="user.email">
         </div>
         <div class="mb-3 px-5">
             <label for="exampleInputPassword1" class="form-label">Số Điện Thoại:</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" value="{{user.sdt}}"
+            <input type="text" class="form-control" id="exampleInputPassword1"
                 [(ngModel)]="user.sdt" name="user.sdt">
         </div>
         <div class="mb-3 px-5">
             <label for="exampleInputPassword1" class="form-label">Mật Khẩu:</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" value="{{user.matKhau}}"
+            <input type="password" class="form-control" id="exampleInputPassword1"
                 [(ngModel)]="user.matKhau" name="user.matKhau">
         </div>
-        <button type="submit" class="btn btn-success mt-3 mx-5">Tạo</button>
+        <button type="button" class="btn btn-success mt-3 mx-5" mat-dialog-close (click)="onEditKHInfo()">Cập Nhật</button>
     </form>
 </div>
