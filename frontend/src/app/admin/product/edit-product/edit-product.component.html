@@ -4,7 +4,7 @@
     <option *ngFor="let item of listHang" [value]="item" >{{ item }}</option>
   </select>
   <form (submit)="editProduct()">
-     <div class="mb-3">
+    <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Tên sản phẩm:</label>
       <input type="text" class="form-control" id="exampleInputPassword1"  value="{{product.tenSP}}" [(ngModel)]="product.tenSP" name="banphim.tenSP">
     </div>

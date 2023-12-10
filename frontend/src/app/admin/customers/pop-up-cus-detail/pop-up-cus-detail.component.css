@@ -1,10 +1,12 @@
 .form-container {
     position: relative;
     width: 850px;
-    height: 500px;
+    height: auto;
     background-color: #fff;
     box-shadow: 25px 30px 55px #5557;
     border-radius: 13px;
+    overflow: hidden;
+    padding-bottom: 10px;
 }
 h2 {
     margin: 0;

@@ -90,7 +90,7 @@ var editKHDetail = async (req, res) => {
 var getKH = async(req, res) => {
   var result = await khacHangService.getKHDetail(req.params.id);
   if (result) {
-    res.send({"status": true, "message": "Dữ liệu khách hàng tồn tại!"});
+    res.send({"status": true, "message": "Dữ liệu khách hàng tồn tại!", result});
   }
   else {
     res.send({"status": false, "message": "Dữ liệu khách hàng không tồn tại!"});
