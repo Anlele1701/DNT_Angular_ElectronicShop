@@ -56,6 +56,7 @@ router
   .get(khachHangController.verifyEmail); //xác thực tài khoản đăng ký
 router.route("/khachhang/dangNhap").post(khachHangController.dangNhap); //đăng nhập
 router.route("/khachhang/countKH").get(khachHangController.countKH); // lấy số lượng khách hàng
+router.route("/send-email").post(khachHangController.sendEmail); //Gửi email reset mật khẩu
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
 
 //ĐƠN HÀNG

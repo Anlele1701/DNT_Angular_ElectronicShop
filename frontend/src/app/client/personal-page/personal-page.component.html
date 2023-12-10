@@ -123,8 +123,8 @@
                   <i class="box_img fa-solid fa-box"></i>
                 </div>
                 <h2>Đơn hàng của bạn</h2>
-                <p class="fs-5 text-secondary">5 đơn hàng</p>
-                <button class="btn btn-dark w-100 button">Xem chi tiết</button>
+                <p class="fs-5 text-secondary">{{countDH}} đơn hàng</p>
+                <button class="btn btn-dark w-100 button" (click)="onClickBtnMenu(1)" [routerLink]="['/client/purchase-history']">Xem chi tiết</button>
               </div>
             </div>
           </div>
@@ -137,8 +137,8 @@
                   <i class="box_img fa-solid fa-crown"></i>
                 </div>
                 <h2>Hạng thành viên</h2>
-                <p class="fs-5 text-secondary">Bạn đang là vàng</p>
-                <button class="btn btn-dark w-100 button">Xem chi tiết</button>
+                <p class="fs-5 text-secondary">Bạn đang là {{user.hangThanhVien}}</p>
+                <button class="btn btn-dark w-100 button" (click)="onClickBtnMenu(3)" [routerLink]="['/client/membership-class']">Xem chi tiết</button>
               </div>
             </div>
           </div>
