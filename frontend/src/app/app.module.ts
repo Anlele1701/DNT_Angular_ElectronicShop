@@ -52,6 +52,8 @@ import { YourAccountComponent } from './client/your-account/your-account.compone
 import { EditOrderComponent } from './client/order/edit-order/edit-order.component';
 import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.component';
 import { CompareProductComponent } from './client/compare-product/compare-product.component';
+import { CustomersComponent } from './admin/customers/customers.component';
+import { PopUpCreateCusComponent } from './admin/customers/pop-up-create-cus/pop-up-create-cus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,6 +92,7 @@ import { CompareProductComponent } from './client/compare-product/compare-produc
     YourAccountComponent,
     ContactComponent,
     ClientLayoutComponent,
+    CustomersComponent,
     OrderManagementComponent,
     DetailOrderAdminComponent,
     EditOrderAdminComponent,
@@ -97,6 +100,7 @@ import { CompareProductComponent } from './client/compare-product/compare-produc
     CancelOrderComponent,
     LoginNhanVienComponent,
     CompareProductComponent,
+    PopUpCreateCusComponent
   ],
   imports: [
     BrowserModule,

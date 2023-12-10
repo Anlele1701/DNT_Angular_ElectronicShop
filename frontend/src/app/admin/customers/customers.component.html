@@ -5,16 +5,20 @@
     <form asp-action="Index" method="get">
       <input
         type="text"
-        name="SearchString"
-        placeholder="Tìm kiếm qua hãng"
+        placeholder="Tìm kiếm tên khách hàng"
         class="searchBox form-control"
       />
     </form>
-    <button class="btnCreate btn btn-dark">Thêm khách hàng mới</button>
+    <button
+      class="btnCreate btn btn-dark"
+      (click)="popUpCreateKH('300ms', '300ms')"
+    >
+      Thêm khách hàng mới
+    </button>
   </div>
   <div class="box mt-3">
     <div style="position: relative">
-      <h3 class="text-center">Danh Sách Loại Sản phẩm</h3>
+      <h3 class="text-center">Danh Sách Khách Hàng</h3>
       <button
         class="btn btn-dark"
         style="position: absolute; right: 20px; top: 3px"
@@ -29,30 +33,27 @@
         >
           <thead>
             <tr>
-              <th>Tên sản phẩm</th>
-              <th>Loại sản phẩm</th>
-              <th>Hình ảnh sản phẩm</th>
-              <th>Số lượng</th>
-              <th>Đơn giá</th>
-              <th>Hành động</th>
+              <th>Số Thứ Tự</th>
+              <th>Họ Tên KH</th>
+              <th>Số Điện Thoại</th>
+              <th>Điển Tích Lũy</th>
+              <th>Hạng Thành Viên</th>
+              <th>Hành Động</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor="let item of listCus; let i = index">
+              <td>{{ [i + 1] }}</td>
+              <td>{{ item.hoTen }}</td>
+              <td>{{ item.sdt }}</td>
+              <td>{{ item.diem }}</td>
+              <td>{{ item.hangThanhVien }}</td>
               <td>
                 <button type="button" class="btn btn-outline-primary">
                   <i class="fa-solid fa-circle-info"></i> Xem chi tiết
                 </button>
                 <button type="button" class="btn btn-outline-warning">
                   <i class="fa-solid fa-square-pen"></i> Chỉnh sửa
-                </button>
-                <button type="button" class="btn btn-outline-danger">
-                  <i class="fa fa-trash"></i> Xóa sản phẩm
                 </button>
               </td>
             </tr>
