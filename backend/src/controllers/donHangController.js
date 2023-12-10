@@ -87,89 +87,86 @@ var createpayment = async (req, res) => {
   }
 };
 
-var getvnPayIPN = async (req,res) => {
+var getvnPayIPN = async (req, res) => {
   try {
-      let vnp_Params = req.query;
-      let secureHash = vnp_Params['vnp_SecureHash'];
+    let vnp_Params = req.query;
+    let secureHash = vnp_Params["vnp_SecureHash"];
 
-      let orderId = vnp_Params['vnp_TxnRef'];
-      let rspCode = vnp_Params['vnp_ResponseCode'];
+    let orderId = vnp_Params["vnp_TxnRef"];
+    let rspCode = vnp_Params["vnp_ResponseCode"];
 
-      delete vnp_Params['vnp_SecureHash'];
-      delete vnp_Params['vnp_SecureHashType'];
+    delete vnp_Params["vnp_SecureHash"];
+    delete vnp_Params["vnp_SecureHashType"];
 
-      vnp_Params = sortObject(vnp_Params);
-      let secretKey = process.env.vnp_HashSecret;
-      let querystring = require('qs');
-      let signData = querystring.stringify(vnp_Params, { encode: false });
-      let crypto = require('crypto');
-      let hmac = crypto.createHmac('sha512', secretKey);
-      let signed = hmac.update(new Buffer(signData, 'utf-8')).digest('hex');
+    vnp_Params = sortObject(vnp_Params);
+    let secretKey = process.env.vnp_HashSecret;
+    let querystring = require("qs");
+    let signData = querystring.stringify(vnp_Params, { encode: false });
+    let crypto = require("crypto");
+    let hmac = crypto.createHmac("sha512", secretKey);
+    let signed = hmac.update(new Buffer(signData, "utf-8")).digest("hex");
 
-      let paymentStatus = '0';
-      let checkOrderId = true;
-      let checkAmount = true;
-      if (secureHash === signed) {
-          if (checkOrderId) {
-              if (checkAmount) {
-                  if (paymentStatus == '0') {
-              
-                      if (rspCode == '00') {
-                          
-                          res.status(200).json({ RspCode: '00', Message: 'Success' });
-                      } else {
-                         
-                          res.status(200).json({ RspCode: '00', Message: 'Success' });
-                      }
-                  } else {
-                      res.status(200).json({
-                          RspCode: '02',
-                          Message: 'This order has been updated to the payment status',
-                      });
-                  }
-              } else {
-                  res.status(200).json({ RspCode: '04', Message: 'Amount invalid' });
-              }
+    let paymentStatus = "0";
+    let checkOrderId = true;
+    let checkAmount = true;
+    if (secureHash === signed) {
+      if (checkOrderId) {
+        if (checkAmount) {
+          if (paymentStatus == "0") {
+            if (rspCode == "00") {
+              res.status(200).json({ RspCode: "00", Message: "Success" });
+            } else {
+              res.status(200).json({ RspCode: "00", Message: "Success" });
+            }
           } else {
-res.status(200).json({ RspCode: '01', Message: 'Order not found' });
+            res.status(200).json({
+              RspCode: "02",
+              Message: "This order has been updated to the payment status",
+            });
           }
+        } else {
+          res.status(200).json({ RspCode: "04", Message: "Amount invalid" });
+        }
       } else {
-          res.status(200).json({ RspCode: '97', Message: 'Checksum failed' });
+        res.status(200).json({ RspCode: "01", Message: "Order not found" });
       }
+    } else {
+      res.status(200).json({ RspCode: "97", Message: "Checksum failed" });
+    }
   } catch (err) {
-      res.status(500).json(err)
+    res.status(500).json(err);
   }
-}
+};
 
-var vnPayReturn = async (req,res) => {
+var vnPayReturn = async (req, res) => {
   try {
-      let vnp_Params = req.query;
+    let vnp_Params = req.query;
 
-      let secureHash = vnp_Params['vnp_SecureHash'];
+    let secureHash = vnp_Params["vnp_SecureHash"];
 
-      delete vnp_Params['vnp_SecureHash'];
-      delete vnp_Params['vnp_SecureHashType'];
+    delete vnp_Params["vnp_SecureHash"];
+    delete vnp_Params["vnp_SecureHashType"];
 
-      vnp_Params = sortObject(vnp_Params);
+    vnp_Params = sortObject(vnp_Params);
 
-      let tmnCode = process.env.vnp_TmnCode;
-      let secretKey = process.env.vnp_HashSecret;
+    let tmnCode = process.env.vnp_TmnCode;
+    let secretKey = process.env.vnp_HashSecret;
 
-      let querystring = require('qs');
-      let signData = querystring.stringify(vnp_Params, { encode: false });
-      let crypto = require('crypto');
-      let hmac = crypto.createHmac('sha512', secretKey);
-      let signed = hmac.update(new Buffer(signData, 'utf-8')).digest('hex');
+    let querystring = require("qs");
+    let signData = querystring.stringify(vnp_Params, { encode: false });
+    let crypto = require("crypto");
+    let hmac = crypto.createHmac("sha512", secretKey);
+    let signed = hmac.update(new Buffer(signData, "utf-8")).digest("hex");
 
-      if (secureHash === signed) {
-          res.status(200).json({ code: vnp_Params['vnp_ResponseCode'] });
-      } else {
-          res.status(500).json({code: '97'})
-      }
+    if (secureHash === signed) {
+      res.status(200).json({ code: vnp_Params["vnp_ResponseCode"] });
+    } else {
+      res.status(500).json({ code: "97" });
+    }
   } catch (err) {
-      res.status(500).json(err)
+    res.status(500).json(err);
   }
-}
+};
 
 var muaHang = async (req, res) => {
   try {
@@ -179,25 +176,26 @@ var muaHang = async (req, res) => {
     console.log(error);
   }
 };
-var QLDSDonHang=async(req,res)=>{
-    try{
-        var list=await donHangService.QLDSDonHang()
-        res.send(list)
-    }
-    catch(error)
-    {
-        console.log(error)
-    }
-}
-var getCTDH=async(req,res)=>{
-    try{
-        var ctdh=await donHangService.getCTDH(req.params.idKH, req.params.idDH)
-        console.log(ctdh)
-        res.send(ctdh)
-    }catch(error){
-        console.log(error)
-    }
-}
+var QLDSDonHang = async (req, res) => {
+  try {
+    const searchTerm = req.query.searchTerm;
+    console.log(searchTerm);
+    var list = await donHangService.QLDSDonHang(searchTerm);
+    res.send(list);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+var getCTDH = async (req, res) => {
+  try {
+    var ctdh = await donHangService.getCTDH(req.params.idKH, req.params.idDH);
+    console.log(ctdh);
+    res.send(ctdh);
+  } catch (error) {
+    console.log(error);
+  }
+};
 const MomoPayment = async (req, res) => {
   try {
     const idDH = req.params.idDH;
@@ -208,15 +206,14 @@ const MomoPayment = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-var updateTTDonHang=async(req,res)=>{
-    try{
-        var update=await donHangService.updateTTDonHang(req.body.infoOrder)
-        res.send({noti:update})
-    }catch(error)
-    {
-        console.log(error)
-    }
-}
+var updateTTDonHang = async (req, res) => {
+  try {
+    var update = await donHangService.updateTTDonHang(req.body.infoOrder);
+    res.send({ noti: update });
+  } catch (error) {
+    console.log(error);
+  }
+};
 const getAllDonHangById = async (req, res) => {
   try {
     const ordersList = await donHangService.getAllDonHangById(req.params.id);
@@ -236,36 +233,31 @@ var getAllDonHang = async (req, res) => {
     console.log(error);
   }
 };
-var huyDonHang=async(req,res)=>{
-    try{
-        var update=await donHangService.huyDonHang(req.body.infoOrder)
-        res.send({noti:update})
-    }
-    catch(error)
-    {
-        console.log(error)
-    }
-}
-var khoiPhucDonHang=async(req,res)=>{
-    try{
-        var update=await donHangService.khoiPhucDonHang(req.body.infoOrder)
-        res.send({noti:update})
-    }catch(error)
-    {
-        console.log(error)
-    }
-}
-var showdonhang=async(req,res)=>{
-    try{
-        var result=await donHangService.showdonhang(req.params.idKH)
-        console.log(result)
-        res.send(result)
-    }
-    catch(error)
-    {
-        console.log(error)
-    }
-}
+var huyDonHang = async (req, res) => {
+  try {
+    var update = await donHangService.huyDonHang(req.body.infoOrder);
+    res.send({ noti: update });
+  } catch (error) {
+    console.log(error);
+  }
+};
+var khoiPhucDonHang = async (req, res) => {
+  try {
+    var update = await donHangService.khoiPhucDonHang(req.body.infoOrder);
+    res.send({ noti: update });
+  } catch (error) {
+    console.log(error);
+  }
+};
+var showdonhang = async (req, res) => {
+  try {
+    var result = await donHangService.showdonhang(req.params.idKH);
+    console.log(result);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
 module.exports = {
   muaHang,
   createpayment,
@@ -279,5 +271,5 @@ module.exports = {
   updateTTDonHang,
   QLDSDonHang,
   getCTDH,
-  showdonhang,  
+  showdonhang,
 };

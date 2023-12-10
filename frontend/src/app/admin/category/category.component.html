@@ -42,14 +42,12 @@
   <!--Title Box -->
   <div class="box">
     <h2>QUẢN LÝ LOẠI SẢN PHẨM</h2>
-    <form asp-action="Index" method="get">
-      <input
-        type="text"
-        name="SearchString"
-        placeholder="Tìm kiếm qua tên loại sản phẩm"
-        class="searchBox form-control"
-      />
-    </form>
+    <input
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+      class="searchBox form-control"
+      placeholder="Tìm kiếm tên loại..."
+    />
 
     <button class="btnCreate btn btn-dark" (click)="toggleAddForm()">
       THÊM LOẠI SẢN PHẨM MỚI
@@ -92,7 +90,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of listLoaiSP" class="align-middle">
+            <tr *ngFor="let item of listLoaiSP$ | async">
               <td>{{ item.tenLoai }}</td>
               <td>
                 <!-- btn edit -->

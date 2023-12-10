@@ -6,6 +6,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { reject } = require("bluebird");
 
 //
 var transporter = nodemailer.createTransport({
@@ -108,9 +109,8 @@ var dangNhap = async (req) => {
         } else {
           return "Invalid password!";
         }
-      }
-      else {
-        return "Email's not existed!"
+      } else {
+        return "Email's not existed!";
       }
     }
   } catch (error) {
@@ -118,11 +118,10 @@ var dangNhap = async (req) => {
   }
 };
 
-var countKH = async() =>{
-  
-  return new Promise(function myFn(resolve, reject)
-  {
-      khachHangModel.countDocuments({})
+var countKH = async () => {
+  return new Promise(function myFn(resolve, reject) {
+    khachHangModel
+      .countDocuments({})
       .then((count) => {
         resolve(count);
         console.log(count);
@@ -130,8 +129,8 @@ var countKH = async() =>{
       .catch((error) => {
         reject(error);
       });
-  })
-}
+  });
+};
 var checkAccountValid = (account) => {
   if (
     /[a-zA-Z]/.test(account.name) == false ||
@@ -257,4 +256,79 @@ function verifyToken(token) {
     return null;
   }
 }
-module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword, countKH};
+const searchKH = async (searchTerm) => {
+  try {
+    const result = await khachHangModel.find({
+      $or: [
+        { hoTen: { $regex: `^${searchTerm}`, $options: "i" } },
+        { email: { $regex: `^${searchTerm}`, $options: "i" } },
+        { sdt: { $regex: `^${searchTerm}`, $options: "i" } },
+      ],
+    });
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+module.exports = {
+  dangKy,
+  verifyEmail,
+  dangNhap,
+  sendEmail,
+  resetPassword,
+  countKH,
+  searchKH,
+};
+
+// QUẢN LÝ CỦA ADMIN
+// thêm khách hàng mới
+var createKH = async (khachhangDetail) => {
+  return new Promise((resolve, reject) => {
+    var khachhangData = new khachHangModel();
+    khachhangData.hoTen = khachhangDetail.hoTen;
+    khachhangData.email = khachhangDetail.email;
+    khachhangData.sdt = khachhangDetail.sdt;
+    khachhangData.matKhau = khachhangDetail.matKhau;
+
+    khachhangData.save().then(result => {
+      resolve(result);
+      return(result);
+    })
+    .catch(error => {
+      reject(error);
+    })
+  });
+};
+// sửa thông tin khách hàng
+var updateKH = async (id, khachhangDetail) => {
+  return new Promise((resolve, reject) => {
+    khachHangModel.findByIdAndUpdate(id, khachhangDetail, { new: true})
+    .exec().then(result => {
+      resolve(result);
+      return(result);
+    })
+    .catch(error => {
+      reject(error);
+    })
+  });
+};
+// get dữ liệu của 1 khách hàng
+var getKHDetail = async(idKH) => {
+  try {
+    var result = await khachHangModel.findById(idKH);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+// get dữ liệu của tất cả khách hàng
+var getAllKH = async() => {
+  try {
+    var result = await khachHangModel.find({});
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword, countKH, createKH, updateKH, getKHDetail, getAllKH};

@@ -1,7 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, Subject, filter, pipe, take, takeUntil } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  filter,
+  pipe,
+  take,
+  takeUntil,
+} from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BanPhimFormComponent } from '../thongSoForm/ban-phim-form/ban-phim-form.component';
@@ -21,9 +29,9 @@ import { LoadDataService } from '../shared/load-data.service';
 })
 export class ProductComponent implements OnInit, OnDestroy {
   nameProduct: String = '';
-  listProduct: any[] = [];
-  // isLoading = false;
+  listProduct$: Observable<any[]>;
   private unsubscribe$ = new Subject<void>();
+  searchTerm = '';
 
   readonly API = 'http://localhost:3800/';
   constructor(
@@ -36,6 +44,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.loadData();
+    console.log(this.nameProduct);
+    console.log(this.searchTerm);
   }
   ngOnDestroy(): void {
     this.unsubscribe$.next();
@@ -49,6 +59,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
   getProductFromCate() {
     this.isLoading.setLoadingData(true);
+    const listProductSubject = new BehaviorSubject<any[]>([]);
+
     this.http
       .post(this.API + 'sanpham/getAllSanPham', {
         nameProductCate: this.nameProduct,
@@ -56,18 +68,45 @@ export class ProductComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(
         (data: any) => {
-          this.listProduct = data;
+          listProductSubject.next(data);
+          //this.listProduct = data;
           console.log(data);
         },
         (error) => {
           console.error('Error fetching data', error);
         },
         () => {
-          this.isLoading.setLoadingData(false)
+          this.isLoading.setLoadingData(false);
         }
       );
+    this.listProduct$ = listProductSubject.asObservable();
   }
+  onSearch() {
+    console.log(this.nameProduct);
+    console.log(this.searchTerm);
+    if (this.searchTerm.trim() !== '') {
+      const searchResultSubject = new BehaviorSubject<any[]>([]);
 
+      this.http
+        .get(
+          this.API + 'sanpham/find/' + this.nameProduct + '/' + this.searchTerm
+        )
+        .subscribe(
+          (data: any) => {
+            console.log(data);
+            searchResultSubject.next(data);
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {}
+        );
+
+      this.listProduct$ = searchResultSubject.asObservable();
+    } else {
+      this.loadData();
+    }
+  }
   getFormCreateProductPage(nameProduct: String) {
     this.router.navigate([`/admin/createNewProduct`, nameProduct]);
     this.nameProduct = nameProduct;

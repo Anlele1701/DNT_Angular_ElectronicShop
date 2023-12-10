@@ -5,6 +5,7 @@ var loaiSPModel = require("../models/loaiSPModel");
 var loaiSPService = require("../services/loaiSPService");
 const { error } = require("console");
 const hangModel = require("../models/hangModel");
+const { json } = require("body-parser");
 var listSP = [];
 
 //lấy tất cả sp theo hãng và loại sp đó
@@ -264,10 +265,63 @@ var deleteProduct = async (idSP, loaiSP, tenHang) => {
   });
   await sanPhamModel.findByIdAndDelete(idSP);
 };
+const getProductFromCategory = async (category) => {
+  try {
+    const findCategory = await loaiSPModel.findOne({ tenLoai: category });
+    if (!findCategory) {
+      return { message: "Category not found" };
+    }
+    const idCacSP = findCategory.cacHang.map((item) => item.idCacSP).flat();
+    console.log(idCacSP);
+    const product = await sanPhamModel.find({ _id: { $in: idCacSP } });
+    return product;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+const getSPCompare = async (category, product1ID, product2ID) => {
+  try {
+    const loaiSP = await loaiSPModel.findOne({ tenLoai: category });
+    if (!loaiSP) {
+      return { error: `Loại sản phẩm không tìm thấy !` };
+    }
+    const idCacSP = loaiSP.cacHang.map((item) => item.idCacSP).flat();
+    console.log(idCacSP);
+    const product = await sanPhamModel.find({ _id: { $in: idCacSP } });
+    const product1 = product.find((item) => item._id.equals(product1ID));
+    const product2 = product.find((item) => item._id.equals(product2ID));
+    if (!product1 || !product2) {
+      return { error: `Product không tìm thấy trong loại ${category}` };
+    }
+    return { product1, product2 };
+  } catch (error) {
+    throw error;
+  }
+};
+const searchSP = async (category, searchTerm) => {
+  try {
+    const loaiSP = await loaiSPModel.findOne({ tenLoai: category });
+    if (!loaiSP) {
+      return [];
+    }
+    const idCacSPArray = loaiSP.cacHang.map((item) => item.idCacSP).flat();
+    console.log(idCacSPArray);
+    const query = {
+      tenSP: { $regex: `^${searchTerm}`, $options: "i" },
+      _id: { $in: idCacSPArray },
+    };
+    const result = await sanPhamModel.find(query);
+    console.log("KQ TÌM KIẾM", result);
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
 var getAll = async () => {
   try {
-    var list = await sanPhamModel.find();
-    return list;
+    var listSP = await sanPhamModel.find();
+    return listSP;
   } catch (error) {
     console.log(error);
   }
@@ -284,5 +338,8 @@ module.exports = {
   editSanPham,
   deleteProduct,
   countSP,
+  getProductFromCategory,
+  getSPCompare,
+  searchSP,
   getAll,
 };

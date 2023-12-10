@@ -3,7 +3,7 @@ import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { error } from 'highcharts';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LoadDataService } from '../shared/load-data.service';
 
 @Component({
@@ -13,10 +13,12 @@ import { LoadDataService } from '../shared/load-data.service';
 })
 export class CategoryComponent implements OnInit {
   categoryName: string = '';
-  listLoaiSP: any[] = [];
+  //listLoaiSP: any[] = [];
+  listLoaiSP$: Observable<any[]>;
   isShow = false;
   isNotification = false;
   newTenLoai = '';
+  searchTerm = '';
 
   readonly API = 'http://localhost:3800';
   constructor(private http: HttpClient, private el: ElementRef, private loadData: LoadDataService) {}
@@ -25,9 +27,10 @@ export class CategoryComponent implements OnInit {
   }
   showAllCategories() {
     this.loadData.setLoadingData(true);
+    const listLoaiSPSubject = new BehaviorSubject<any[]>([]);
     this.http.get(this.API + '/loaisp/countLoaiSP').subscribe(
       (data: any) => {
-        this.listLoaiSP = data.listLoaiSP;
+        listLoaiSPSubject.next(data.listLoaiSP);
       },
       (error) => {
         console.log(error);
@@ -36,6 +39,7 @@ export class CategoryComponent implements OnInit {
         this.loadData.setLoadingData(false);
       }
     );
+    this.listLoaiSP$ = listLoaiSPSubject.asObservable();
   }
 
   createnewLoaiSP() {
@@ -55,7 +59,25 @@ export class CategoryComponent implements OnInit {
   hideAddForm() {
     this.AddFormVisible = false;
   }
+  onSearch() {
+    if (this.searchTerm.trim() !== '') {
+      const searchResultSubject = new BehaviorSubject<any[]>([]);
 
+      this.http.get(this.API + '/loaisp/find/' + this.searchTerm).subscribe(
+        (data: any) => {
+          searchResultSubject.next(data);
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {}
+      );
+
+      this.listLoaiSP$ = searchResultSubject.asObservable();
+    } else {
+      this.showAllCategories();
+    }
+  }
   //Xóa loại sp
   deleteLSP(idLSP: string) {
     this.http

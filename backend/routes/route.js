@@ -19,6 +19,7 @@ router
 router.route("/hang/delete/:id").delete(hangController.deleteHang);
 router.route("/hang/getHang/:idHang").get(hangController.getHang); //lấy thông tin hãng
 router.route("/hang/update/:id").patch(hangController.updateHang); //Cập nhật thông tin của hãng
+router.route("/hang/find/:searchTerm").get(hangController.searchHang); //Tìm kiếm tên NSX
 
 //LOẠI SẢN PHẨM
 router.route("/loaisp/countLoaiSP").get(loaiSPController.countLoaiSP); //lấy số lượng loại sản phẩm
@@ -29,6 +30,8 @@ router.route("/loaisp/createLoaiSP").post(loaiSPController.createLoaiSP); //tạ
 router.route("/loaisp/deleteLoaiSP/:id").delete(loaiSPController.deleteLoaiSP); //xóa loại sản phẩm
 router.route("/loaisp/updateLoaiSP/:id").patch(loaiSPController.updateLoaiSP); // Update loại sản phẩm
 router.route("/loaisp/getAll").get(loaiSPController.getLoaiSP);
+router.route("/loaisp/find/:searchTerm").get(loaiSPController.searchLoai); //Tìm kiếm tên loại sp
+
 // SẢN PHẨM
 router
   .route("/sanpham/createNewProduct")
@@ -46,6 +49,15 @@ router
   .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
   .delete(sanPhamController.deleteProduct);
   router.route("/sanpham/getAll").get(sanPhamController.getAll);
+
+router.route("/loaisp/getAll").get(loaiSPController.getLoaiSP);
+router
+  .route("/sanpham/find/:nameProduct/:searchTerm")
+  .get(sanPhamController.searchSP); // Tìm kiếm sp
+router
+  .route("/sanpham/:category")
+  .get(sanPhamController.getProductFromCategory); // Lấy sp theo category
+router.route("/sanpham/compare/:category").post(sanPhamController.getSPCompare); // Lay SP So Sanh
 //NHÂN VIÊN
 router.route("/nhanvien/login").post(nhanVienController.loginNV); // Đăng nhập nhân viên
 router.route("/nhanvien/verifyToken").post(verifyToken.verifyToken); // xác thực token nhân viên
@@ -58,22 +70,32 @@ router.route("/khachhang/dangNhap").post(khachHangController.dangNhap); //đăng
 router.route("/khachhang/countKH").get(khachHangController.countKH); // lấy số lượng khách hàng
 router.route("/send-email").post(khachHangController.sendEmail); //Gửi email reset mật khẩu
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
+router.route("/khachhang/find/:searchTerm").get(khachHangController.searchKH); // tìm kiếm khách hàng
+
+router.route("/khachhang/createNewCus").post(khachHangController.createNewKH); // admin tạo khách hàng mới
+router.route("/khachhang/editCusDetail/:id").patch(khachHangController.editKHDetail); // admin chỉnh sửa thông tin của khách hàng
+router.route("/khachhang/getKHDetail/:id").get(khachHangController.getKH); // get dữ liệu của 1 khách hàng
+router.route("/khachhang/allCusInfo").get(khachHangController.getAllKH); // get dữ liệu của tất cả khách hàng
 
 //ĐƠN HÀNG
 router.route("/donhang/muaHang").post(donHangController.muaHang);
 router.route("/donhang/thanhtoanvnpay").post(donHangController.createpayment);
 router.route("/donhang/vnpay_ipn").get(donHangController.getvnPayIPN);
 router.route("/donhang/muaHang").post(donHangController.muaHang);
-router.route('/donhang/quanLyDSDonHang').get(donHangController.QLDSDonHang) //show ds đơn hàng --admin
+router.route("/donhang/quanLyDSDonHang").get(donHangController.QLDSDonHang); //show ds đơn hàng --admin
 router
   .route("/donhang/getAllDonHangById/:idkh")
   .get(donHangController.getAllDonHangById); // lấy danh sách các DH theo id khách hàng
-router.route('/donhang/getCTDH/:idKH/:idDH').get(donHangController.getCTDH) //lấy chi tiết đơn hàng
-router.route('/donhang/updateTTDonHang').patch(donHangController.updateTTDonHang) //cập nhật thông tin đơn hàng
-router.route('/donhang/huyDonHang').patch(donHangController.huyDonHang) //hủy đơn hàng
-router.route('/donhang/khoiPhucDonHang').patch(donHangController.khoiPhucDonHang) //khôi phục đơn hàng
-router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang)
-  router.route('/donhang/getAllDonHang').get(donHangController.getAllDonHang) // lấy danh sách các DH theo id khách hàng
+router.route("/donhang/getCTDH/:idKH/:idDH").get(donHangController.getCTDH); //lấy chi tiết đơn hàng
+router
+  .route("/donhang/updateTTDonHang")
+  .patch(donHangController.updateTTDonHang); //cập nhật thông tin đơn hàng
+router.route("/donhang/huyDonHang").patch(donHangController.huyDonHang); //hủy đơn hàng
+router
+  .route("/donhang/khoiPhucDonHang")
+  .patch(donHangController.khoiPhucDonHang); //khôi phục đơn hàng
+router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang);
+router.route("/donhang/getAllDonHang").get(donHangController.getAllDonHang); // lấy danh sách các DH theo id khách hàng
 //MOMO PAYMENT
 router.route("/payment/momo/:idDH").post(donHangController.MomoPayment);
 module.exports = router;

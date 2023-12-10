@@ -2,14 +2,14 @@
   <!--Title Box -->
   <div class="box">
     <h2>QUẢN LÝ SẢN PHẨM</h2>
-    <form asp-action="Index" method="get">
+    <div>
       <input
-        type="text"
-        name="SearchString"
-        placeholder="Tìm kiếm qua tên loại sản phẩm"
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
         class="searchBox form-control"
+        placeholder="Tìm kiếm sản phẩm..."
       />
-    </form>
+    </div>
 
     <button class="btnCreate btn btn-dark text-uppercase" (click)="openForm()">
       THÊM MỚI {{ nameProduct }}
@@ -43,7 +43,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of listProduct" class="align-middle">
+            <tr *ngFor="let item of listProduct$ | async">
               <td>{{ item.tenSP }}</td>
               <td>{{ item.tenHang }}</td>
               <td>

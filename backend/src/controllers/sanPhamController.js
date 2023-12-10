@@ -1,6 +1,7 @@
 const { count } = require("../models/hangModel");
 const { json } = require("body-parser");
 var sanPhamService = require("../services/sanPhamService");
+const loaiSPModel = require("../models/loaiSPModel");
 var getProductsOfCompany = async (req, res) => {
   var products = await sanPhamService.getProductOfCompany(
     req.params.tenLoai,
@@ -94,6 +95,52 @@ var deleteProduct = async (req, res) => {
     console.log(error);
   }
 };
+const searchSP = async (req, res) => {
+  try {
+    const category = req.params.nameProduct;
+    const searchTerm = req.params.searchTerm;
+    console.log({ category, searchTerm });
+    const items = await sanPhamService.searchSP(category, searchTerm);
+    res.json(items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+const getProductFromCategory = async (req, res) => {
+  try {
+    const category = req.params.category;
+    const result = await sanPhamService.getProductFromCategory(category);
+    if (!result) {
+      return { message: "Product not found" };
+    }
+    console.log("Thành công", result);
+    return res.json(result);
+  } catch (error) {
+    console.error(error);
+    return res.json({ status: 500, message: "Internal Server Error" });
+  }
+};
+const getSPCompare = async (req, res) => {
+  try {
+    const { product1, product2 } = req.body;
+    const category = req.params.category;
+    console.log({ product1, product2, category });
+    const result = await sanPhamService.getSPCompare(
+      category,
+      product1,
+      product2
+    );
+    if (!result || !result.product1 || !result.product2) {
+      return res.json(result.error);
+    }
+    console.log(result);
+    return res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 var getAll = async (req, res) => {
   try {
     var listProduct = await sanPhamService.getAll();
@@ -112,5 +159,8 @@ module.exports = {
   editProduct,
   deleteProduct,
   countSP,
+  searchSP,
+  getSPCompare,
+  getProductFromCategory,
   getAll,
 };

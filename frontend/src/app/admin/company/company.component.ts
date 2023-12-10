@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, flatMap } from 'rxjs';
 import { LoadDataService } from '../shared/load-data.service';
@@ -15,33 +15,43 @@ export class CompanyComponent implements OnInit {
   deleted: boolean;
   notdelted: boolean;
   brandList$: Observable<any[]>;
-  tenNhaSX: string="";
+  tenNhaSX: string = '';
   brandID: any;
-  allHang: string[]=["Điện Thoại","Màn Hình","Laptop","Bàn Phím","Chuột","Tai Nghe"];
+  items: any[] = [];
+  searchTerm = '';
+  allHang: string[] = [
+    'Điện Thoại',
+    'Màn Hình',
+    'Laptop',
+    'Bàn Phím',
+    'Chuột',
+    'Tai Nghe',
+  ];
   cacLoaiSP: { [key: string]: boolean } = {};
 
   readonly API = 'http://localhost:3800';
   createNewBrand() {
     this.http
-    .post(this.API + '/hang/createNewHang', { tenHang: this.brandName })
-    .pipe(
-    flatMap(async () => this.showAllBrand())
-    )
-    .subscribe((data: any) => {this.showAllBrand()
-    });
-    }
+      .post(this.API + '/hang/createNewHang', { tenHang: this.brandName })
+      .pipe(flatMap(async () => this.showAllBrand()))
+      .subscribe((data: any) => {
+        this.showAllBrand();
+      });
+  }
   showAllBrand() {
     this.loadData.setLoadingData(true);
     const brandListSubject = new BehaviorSubject<any[]>([]);
-    this.http.get(this.API + '/hang/getAllHang').subscribe((data: any) => {
-      brandListSubject.next(data);
-    },
-    (error) => {
-      console.log(error);
-    },
-    () => {
-      this.loadData.setLoadingData(false);
-    });
+    this.http.get(this.API + '/hang/getAllHang').subscribe(
+      (data: any) => {
+        brandListSubject.next(data);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        this.loadData.setLoadingData(false);
+      }
+    );
     this.brandList$ = brandListSubject.asObservable();
   }
   deleteBrand(idSP) {
@@ -57,36 +67,39 @@ export class CompanyComponent implements OnInit {
         }
       });
   }
-  updateBrand(data:any){
+  updateBrand(data: any) {
     this.tenNhaSX = data.tenNhaSX;
-    this.brandID = data._id;   
-    this.allHang.forEach((item)=>{
-      this.cacLoaiSP[item]=data.cacLoaiSP.includes(item);
-    })
+    this.brandID = data._id;
+    this.allHang.forEach((item) => {
+      this.cacLoaiSP[item] = data.cacLoaiSP.includes(item);
+    });
   }
-  updateDB(){
-    var selectedLoaiSP = Object.keys(this.cacLoaiSP).filter((key) => this.cacLoaiSP[key]);
-    let data ={
-      "tenNhaSX": this.tenNhaSX,
-      "cacLoaiSP": selectedLoaiSP,
+  updateDB() {
+    var selectedLoaiSP = Object.keys(this.cacLoaiSP).filter(
+      (key) => this.cacLoaiSP[key]
+    );
+    let data = {
+      tenNhaSX: this.tenNhaSX,
+      cacLoaiSP: selectedLoaiSP,
     };
-    this.http.patch(this.API+'/hang/update'+"/"+this.brandID, data).subscribe((result)=>{
-      console.log(result);
-      alert("Cập nhật thành công!");
-      this.showAllBrand();
-    },
-    (error) => {
-      console.error("Error updating data:", error);
-    }
-    )
-    
+    this.http
+      .patch(this.API + '/hang/update' + '/' + this.brandID, data)
+      .subscribe(
+        (result) => {
+          console.log(result);
+          alert('Cập nhật thành công!');
+          this.showAllBrand();
+        },
+        (error) => {
+          console.error('Error updating data:', error);
+        }
+      );
   }
   ngOnInit(): void {
     this.showAllBrand();
   }
   // FUNCTIONS
   AddFormVisible: boolean = false;
-
   toggleAddForm() {
     this.AddFormVisible = !this.AddFormVisible;
   }
@@ -99,5 +112,24 @@ export class CompanyComponent implements OnInit {
       this.stringLoaiSP = this.stringLoaiSP + item + ', ';
     });
     return this.stringLoaiSP;
+  }
+  onSearch() {
+    if (this.searchTerm.trim() !== '') {
+      const searchResultSubject = new BehaviorSubject<any[]>([]);
+
+      this.http.get(this.API + '/hang/find/' + this.searchTerm).subscribe(
+        (data: any) => {
+          searchResultSubject.next(data);
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {}
+      );
+
+      this.brandList$ = searchResultSubject.asObservable();
+    } else {
+      this.showAllBrand();
+    }
   }
 }

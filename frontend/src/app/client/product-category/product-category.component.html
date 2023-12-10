@@ -29,6 +29,12 @@
       <ng-container *ngTemplateOutlet="tainghe"></ng-container>
     </ng-container>
   </ng-container>
+
+  <div class="container d-flex justify-content-end align-items-center">
+    <p class="filter m-0 p-2">Lọc theo: nổi bật</p>
+    <button class="btn btn-secondary" [routerLink]="['/client/compare-products', loaiSP]">So sánh
+      {{loaiSP}}</button>
+  </div>
   <hr />
   <div class="container mb-5">
     <div class="row">
@@ -51,22 +57,15 @@
               let product of findListProduct
                 | paginate
                   : { itemsPerPage: pageSize, currentPage: currentPage }
-            "
-          >
-            <app-product-items
-              [product]="product"
-              [tenSP]="product.tenSP"
-            ></app-product-items>
+            ">
+            <app-product-items [product]="product" [tenSP]="product.tenSP"></app-product-items>
           </div>
-          <pagination-controls
-            (pageChange)="currentPage = $event"
-          ></pagination-controls>
+          <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <ng-template #banphim>
   <div class="w-100 banner-banphim d-flex align-items-center">
     <div>

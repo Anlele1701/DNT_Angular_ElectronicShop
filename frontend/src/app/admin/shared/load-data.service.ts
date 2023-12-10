@@ -9,6 +9,7 @@ export class LoadDataService {
     new BehaviorSubject<boolean>(false);
 
   loadingData$ = this.loadingDataSubject.asObservable();
+  searchTerm$: any;
 
   setLoadingData(loading: boolean) {
     this.loadingDataSubject.next(loading);

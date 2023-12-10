@@ -42,14 +42,12 @@
   <!-- TITLE -->
   <div class="box">
     <h2>QUẢN LÝ HÃNG</h2>
-    <form asp-action="Index" method="get">
-      <input
-        type="text"
-        name="SearchString"
-        placeholder="Tìm kiếm qua hãng"
-        class="searchBox form-control"
-      />
-    </form>
+    <input
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+      placeholder="Tìm kiếm tên hãng..."
+      class="searchBox form-control"
+    />
     <button class="btnCreate btn btn-dark" (click)="toggleAddForm()">
       THÊM HÃNG MỚI
     </button>

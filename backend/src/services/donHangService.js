@@ -149,7 +149,7 @@ var updateSLSanPham = async (cartList) => {
   });
 };
 
-var QLDSDonHang = async () => {
+var QLDSDonHang = async (searchTerm) => {
   try {
     return await donHangModel.find().then(async (documents) => {
       var listDH = [];
@@ -170,13 +170,16 @@ var QLDSDonHang = async () => {
           );
         })
       );
+      if (searchTerm) {
+        const regex = new RegExp(searchTerm, "i");
+        listDH = listDH.filter((item) => regex.test(item.tenNguoiDat));
+      }
       return listDH;
     });
   } catch (error) {
     console.log(error);
   }
 };
-
 var findUsername = async (idKH) => {
   let tenKH = await khachHangModel.findById(idKH).then((document) => {
     return document.hoTen;
@@ -279,7 +282,6 @@ var changeDiemThanhVien = async (idKH, tongTien) => {
     console.log(error);
   }
 };
-
 module.exports = {
   muaHang,
   QLDSDonHang,
