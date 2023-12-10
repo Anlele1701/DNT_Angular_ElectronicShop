@@ -3,7 +3,8 @@ import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { error } from 'highcharts';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { LoadDataService } from '../shared/load-data.service';
 
 @Component({
   selector: 'app-category',
@@ -12,21 +13,33 @@ import { Observable } from 'rxjs';
 })
 export class CategoryComponent implements OnInit {
   categoryName: string = '';
-  listLoaiSP: any[] = [];
+  //listLoaiSP: any[] = [];
+  listLoaiSP$: Observable<any[]>;
   isShow = false;
   isNotification = false;
   newTenLoai = '';
+  searchTerm = '';
 
   readonly API = 'http://localhost:3800';
-  constructor(private http: HttpClient, private el: ElementRef) {}
+  constructor(private http: HttpClient, private el: ElementRef, private loadData: LoadDataService) {}
   ngOnInit(): void {
     this.showAllCategories();
   }
   showAllCategories() {
-    this.http.get(this.API + '/loaisp/countLoaiSP').subscribe((data: any) => {
-      this.listLoaiSP = data.listLoaiSP;
-      //console.log(data);
-    });
+    this.loadData.setLoadingData(true);
+    const listLoaiSPSubject = new BehaviorSubject<any[]>([]);
+    this.http.get(this.API + '/loaisp/countLoaiSP').subscribe(
+      (data: any) => {
+        listLoaiSPSubject.next(data.listLoaiSP);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        this.loadData.setLoadingData(false);
+      }
+    );
+    this.listLoaiSP$ = listLoaiSPSubject.asObservable();
   }
 
   createnewLoaiSP() {
@@ -46,7 +59,25 @@ export class CategoryComponent implements OnInit {
   hideAddForm() {
     this.AddFormVisible = false;
   }
+  onSearch() {
+    if (this.searchTerm.trim() !== '') {
+      const searchResultSubject = new BehaviorSubject<any[]>([]);
 
+      this.http.get(this.API + '/loaisp/find/' + this.searchTerm).subscribe(
+        (data: any) => {
+          searchResultSubject.next(data);
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {}
+      );
+
+      this.listLoaiSP$ = searchResultSubject.asObservable();
+    } else {
+      this.showAllCategories();
+    }
+  }
   //Xóa loại sp
   deleteLSP(idLSP: string) {
     this.http
@@ -68,7 +99,6 @@ export class CategoryComponent implements OnInit {
     this.http
       .patch(this.API + '/loaisp/updateLoaiSP/' + idLSP, data)
       .subscribe((data: any) => {
-        //console.log(data);
         if (data.status) {
           alert('Cập nhật thành công!');
         } else {

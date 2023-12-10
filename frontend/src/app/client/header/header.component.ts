@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginRegisComponent } from '../login-regis/login-regis.component';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
+import { CartService } from 'src/app/services/cartService/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +12,14 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router:Router, public popUp: MatDialog, private userService: UserServiceService) {}
+  slcart:number=0; 
+  constructor(private router:Router, public popUp: MatDialog, private userService: UserServiceService, private cartService:CartService) {}
   ngOnInit(): void {
-
+    this.countSL();
+    // this.cartService.countCart$.subscribe((value)=>{
+    //   this.slcart=value;
+    //   console.log(this.slcart)
+    // })
   }
   reloadCategory(loaiSP) {
     this.router.navigate(['/client/category', loaiSP]).then(() => {
@@ -35,8 +42,11 @@ export class HeaderComponent implements OnInit {
   changeToPersonalPage(){
     this.router.navigate(['/client/personal'])
   }
-
-  changeToLoginPage() {
+  countSL(){
+   this.cartService.countCartList().subscribe((value)=>{
+      this.slcart=value;
+      console.log(this.slcart);
+    });
   }
 
   checkLogin(){

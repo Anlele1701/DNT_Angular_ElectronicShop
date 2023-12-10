@@ -29,6 +29,11 @@
       <ng-container *ngTemplateOutlet="tainghe"></ng-container>
     </ng-container>
   </ng-container>
+
+  <div class="container d-flex justify-content-end align-items-center mt-3">
+    <button class="btn btn-secondary" [routerLink]="['/client/compare-products', loaiSP]">So sánh
+      {{loaiSP}}</button>
+  </div>
   <hr />
   <div class="container mb-5">
     <div class="row">
@@ -37,7 +42,7 @@
         <ul class="sidebar-list list-unstyled" *ngFor="let item of listBrand">
           <li class="sidebar-list_item fs-4">
             <div class="controller">
-              <input type="checkbox" />
+              <input type="checkbox" (change)="checkBrand($event,item)"/>
               <span>{{ item }}</span>
             </div>
           </li>
@@ -48,25 +53,18 @@
           <div
             class="col-lg-4"
             *ngFor="
-              let product of listproduct
+              let product of findListProduct
                 | paginate
                   : { itemsPerPage: pageSize, currentPage: currentPage }
-            "
-          >
-            <app-product-items
-              [product]="product"
-              [tenSP]="product.tenSP"
-            ></app-product-items>
+            ">
+            <app-product-items [product]="product" [tenSP]="product.tenSP"></app-product-items>
           </div>
-          <pagination-controls
-            (pageChange)="currentPage = $event"
-          ></pagination-controls>
+          <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <ng-template #banphim>
   <div class="w-100 banner-banphim d-flex align-items-center">
     <div>
@@ -134,5 +132,5 @@
   </div>
 </ng-template>
 <ng-template #content>
-  <p>loading</p>
+  <div style="height: 100vh"></div>
 </ng-template>

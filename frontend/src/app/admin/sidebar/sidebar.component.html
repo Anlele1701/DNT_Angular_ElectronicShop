@@ -1,9 +1,13 @@
 <div>
   <body>
+    <!-- SPINNER -->
+    <div *ngIf="isLoading$ | async" class="overlay">
+      <mat-spinner class="spinner"></mat-spinner>
+    </div>
     <!-- SIDEBAR -->
     <div class="sidebar">
       <!-- Logo -->
-      <a routerLink="/admin/dashboard" style="margin-left: -15px">
+      <a routerLink="/admin/dashboard" style="margin-left: -30px">
         <img src="assets/admin/logo.png" style="height: 85px" />
         <span class="imgTitle">HỆ THỐNG QUẢN LÝ</span>
       </a>
@@ -105,11 +109,11 @@
             </a>
           </li>
           <li class="nav-link">
-            <a routerLink="/categories">
+            <a routerLink="/loginAdmin">
               <span class="icon">
                 <i class="fa-solid fa-right-from-bracket"></i
               ></span>
-              <span class="cateName">Logout</span>
+              <span class="cateName" (click)="logout()">Logout</span>
             </a>
           </li>
         </ul>
@@ -124,8 +128,8 @@
             <img id="avataradmin" src="assets/admin/avatar.jpg" />
           </div>
           <div class="col ps-3">
-            <div class="fw-bold text-uppercase">Xin chào</div>
-            <div class="fw-light">Chức vụ</div>
+            <div class="fw-bold text-uppercase">ADMIN</div>
+            <div class="fw-light">Nhân Viên</div>
           </div>
         </div>
       </div>

@@ -42,12 +42,20 @@ import { EditProductComponent } from './admin/product/edit-product/edit-product.
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ContactComponent } from './client/contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { API } from './services/API.service';
+import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { OrderManagementComponent } from './admin/order-management/order-management.component';
 import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
 import { EditOrderAdminComponent } from './admin/order-management/edit-order-admin/edit-order-admin.component';
 import { YourAccountComponent } from './client/your-account/your-account.component';
 import { EditOrderComponent } from './client/order/edit-order/edit-order.component';
 import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.component';
+import { CompareProductComponent } from './client/compare-product/compare-product.component';
+import { CustomersComponent } from './admin/customers/customers.component';
+import { PopUpCreateCusComponent } from './admin/customers/pop-up-create-cus/pop-up-create-cus.component';
+import { PopUpCusDetailComponent } from './admin/customers/pop-up-cus-detail/pop-up-cus-detail.component';
+import { PopUpEditCusInfoComponent } from './admin/customers/pop-up-edit-cus-info/pop-up-edit-cus-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,11 +94,18 @@ import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.c
     YourAccountComponent,
     ContactComponent,
     ClientLayoutComponent,
+    CustomersComponent,
     OrderManagementComponent,
     DetailOrderAdminComponent,
     EditOrderAdminComponent,
     EditOrderComponent,
-    CancelOrderComponent
+    CancelOrderComponent,
+    LoginNhanVienComponent,
+    PopUpCreateCusComponent,
+    PopUpCusDetailComponent,
+    PopUpEditCusInfoComponent,
+    CompareProductComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -102,9 +117,10 @@ import { CancelOrderComponent } from './client/order/cancel-order/cancel-order.c
     MatDialogModule,
     HighchartsChartModule,
     ReactiveFormsModule,
-    NoopAnimationsModule
+    MatProgressSpinnerModule,
+
   ],
-  providers: [],
+  providers: [API],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

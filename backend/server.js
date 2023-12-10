@@ -12,7 +12,7 @@ const cookieparser=require('cookie-parser')
 app.use(cors())
 //
 app.use('/images', express.static(path.join(__dirname,"/assets/ProductImages")))
-
+require('dotenv').config();
 app.use(urlencoded({extended:false}))
 app.use(cookieparser())
 app.use(express.json())

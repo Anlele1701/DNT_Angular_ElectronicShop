@@ -1,18 +1,21 @@
 import { map } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginNhanVienComponent } from '../login-nhan-vien/login-nhan-vien.component';
+import { LoadDataService } from '../shared/load-data.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private loadData: LoadDataService) {}
   activeindex = 0;
   isExpanded = false;
   countLoaiSP: number = 0;
   listLoaiSP: any[] = [];
+  isLoading$ = this.loadData.loadingData$;
   readonly API = 'http://localhost:3800';
   onClickSideBar(index: number) {
     // Mỗi khi thao tác click 1 index bất kì thì dropdown sẽ tắt đi
@@ -27,6 +30,10 @@ export class SidebarComponent implements OnInit {
       this.countAllLoaiSP = data.sumLoaiSP;
       this.listLoaiSP = data.listLoaiSP;
     });
+  }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('admin');
   }
   ngOnInit(): void {
     this.countAllLoaiSP();

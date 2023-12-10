@@ -45,11 +45,26 @@ const updateLoaiSP = async (req, res) => {
     res.send({ error: "Lỗi controller updateLoaiSP" });
   }
 };
-
+var getLoaiSP = async (req, res) => {
+  var listLoaiSP = await loaiSPService.getAllLoaiSP();
+  res.send(listLoaiSP);
+};
+const searchLoai = async (req, res) => {
+  try {
+    const searchTerm = req.params.searchTerm;
+    const items = await loaiSPService.searchLoai(searchTerm);
+    res.json(items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 module.exports = {
   createnewLoaiSPtoHang,
   countLoaiSP,
   createLoaiSP,
   deleteLoaiSP,
   updateLoaiSP,
+  getLoaiSP,
+  searchLoai,
 };

@@ -50,6 +50,7 @@ var countKH = async (req, res) => {
     console.log(error);
   }
 };
+
 const sendEmail = async (req, res) => {
   try {
     const result = await khacHangService.sendEmail(req, res);
@@ -63,6 +64,59 @@ const sendEmail = async (req, res) => {
     console.log("Lỗi trong controller của sendEmail");
   }
 };
+const searchKH = async (req, res) => {
+  try {
+    const searchTerm = req.params.searchTerm;
+    const items = await khacHangService.searchKH(searchTerm);
+    res.json(items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// QUẢN LÝ CỦA ADMIN
+// thêm khách hàng mới
+var createNewKH = async (req, res) => {
+  var result = await khacHangService.createKH(req.body);
+  if (result) {
+    res.send({"status": true, "message": "Đã tạo tài khoản khách hàng thành công!"});
+  }
+  else {
+    res.send({"status": false, "message": "Tạo tài khoản khách hàng thất bại!"});
+  }
+};
+// sửa thông tin khách hàng
+var editKHDetail = async (req, res) => {
+  var result = await khacHangService.updateKH(req.params.id, req.body);
+  if (result) {
+    res.send({"status": true, "message": "Cập nhật thông tin tài khoản khách hàng thành công!"});
+  }
+  else {
+    res.send({"status": false, "message": "Cập nhật thông tin tài khoản khách hàng thất bại!"});
+  }
+};
+// get thông tin của 1 khách hàng
+var getKH = async(req, res) => {
+  var result = await khacHangService.getKHDetail(req.params.id);
+  if (result) {
+    res.send({"status": true, "message": "Dữ liệu khách hàng tồn tại!", result});
+  }
+  else {
+    res.send({"status": false, "message": "Dữ liệu khách hàng không tồn tại!"});
+  }
+};
+// get thông tin của tất cả khách hàng (hiển thị lên table)
+var getAllKH = async(req,res) => {
+  var result = await khacHangService.getAllKH();
+  if (result) {
+    res.send({"status": true, "message": "Trả về dữ liệu thành công!", result});
+  }
+  else {
+    res.send({"status": false, "message": "Không có dữ liệu nào!"}); 
+  }
+};
+
 module.exports = {
   dangKy,
   verifyEmail,
@@ -70,4 +124,10 @@ module.exports = {
   sendEmail,
   resetPassword,
   countKH,
+  searchKH,
+  createNewKH,
+  editKHDetail,
+  getKH,
+  getAllKH,
+  
 };
