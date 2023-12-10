@@ -45,39 +45,6 @@ var pushDonHangIntoList = async (userOrder, cartList) => {
       const idDH = await createIDDonHang(userOrder.id, index);
       var donhang = {
         idDonHang: idDH,
-        ngayDat: Date.now(),
-        hinhThucTT: userOrder.ptTT,
-        trangThaiTT: "Chưa thanh toán",
-        trangThaiGiaoHang: "Chưa giao hàng",
-        tongSLMua: userOrder.tongSL,
-        tamTinh: userOrder.tamTinh,
-        tienKM: userOrder.tienKM,
-        thueVAT: userOrder.thueVAT,
-        tongTien: userOrder.tongTien,
-        CTDH: [],
-      };
-      await cartList.forEach(async (item) => {
-        var result = await pushItemtoCTDH(item);
-        console.log(result);
-        donhang.CTDH.push(result);
-      });
-      console.log(donhang.CTDH);
-      document.cacDH.push(donhang);
-      document.save();
-      await updateSLSanPham(cartList);
-      return document;
-    });
-  return findUser;
-};
-
-var pushDonHangIntoList = async (userOrder, cartList) => {
-  var findUser = await donHangModel
-    .findOne({ idKH: userOrder.id })
-    .then(async (document) => {
-      const index = document.cacDH.length;
-      const idDH = await createIDDonHang(userOrder.id, index);
-      var donhang = {
-        idDonHang: idDH,
         nguoiNhan: userOrder.hoten,
         diaChi: userOrder.address,
         sdt: userOrder.sdt,
@@ -105,6 +72,19 @@ var pushDonHangIntoList = async (userOrder, cartList) => {
     });
   return findUser;
 };
+
+var createIDDonHang=(id,index)=>{
+  index=index+1
+  const newStringid=id.slice(-5)
+  const date=new Date()
+  const year=date.getFullYear()
+  const month=date.getMonth()+1
+  const day=date.getDate()
+  const hour=date.getHours()
+  const minutes=date.getMinutes()
+  const second=date.getSeconds()
+  return (day.toString()+month.toString()+year.toString()+hour.toString()+minutes.toString()+second.toString()+newStringid+index)
+}
 
 var pushItemtoCTDH = async (cartItem) => {
   var item = {
