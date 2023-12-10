@@ -318,6 +318,14 @@ const searchSP = async (category, searchTerm) => {
     throw error;
   }
 };
+var getAll = async () => {
+  try {
+    var listSP = await sanPhamModel.find();
+    return listSP;
+  } catch (error) {
+    console.log(error);
+  }
+};
 module.exports = {
   listSP,
   getAllProduct,
@@ -332,4 +340,6 @@ module.exports = {
   countSP,
   getProductFromCategory,
   getSPCompare,
+  searchSP,
+  getAll,
 };

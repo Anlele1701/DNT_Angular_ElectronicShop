@@ -48,6 +48,8 @@ router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số l
 router
   .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
   .delete(sanPhamController.deleteProduct);
+  router.route("/sanpham/getAll").get(sanPhamController.getAll);
+
 router.route("/loaisp/getAll").get(loaiSPController.getLoaiSP);
 router
   .route("/sanpham/find/:nameProduct/:searchTerm")

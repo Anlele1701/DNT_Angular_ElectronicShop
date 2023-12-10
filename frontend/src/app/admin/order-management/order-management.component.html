@@ -1,10 +1,14 @@
 <body>
   <!-- TITLE -->
   <div class="box">
-    <div>
-      <input id="searchInput" [(ngModel)]="searchTerm" (input)="searchDonHang()" placeholder="Tìm kiếm tên khách...">
-    </div>
     <h2>QUẢN LÝ ĐƠN HÀNG</h2>
+    <input
+      id="searchInput"
+      [(ngModel)]="searchTerm"
+      (input)="searchDonHang()"
+      class="searchBox form-control"
+      placeholder="Tìm kiếm tên khách hàng..."
+    />
   </div>
   <div class="box mt-3">
     <div style="position: relative">
@@ -12,7 +16,9 @@
     </div>
     <div class="box mt-3" id="listBox">
       <div class="fixTableHead">
-        <table class="table table-striped table-hover table-bordered text-center">
+        <table
+          class="table table-striped table-hover table-bordered text-center"
+        >
           <thead>
             <tr>
               <th>Mã đơn hàng</th>
@@ -26,19 +32,35 @@
           </thead>
           <tbody *ngFor="let item of listDH">
             <tr>
-              <td>{{item.donHang.idDonHang}}</td>
-              <td>{{item.tenNguoiDat}}</td>
-              <td>{{item.donHang.ngayDat|date:'dd/MM/yyyy HH:mm:ss'}}</td>
-              <td>{{item.donHang.tongTien|currency:' '||'VND'}}</td>
-              <td>{{item.donHang.hinhThucTT}}</td>
-              <td *ngIf="item.donHang.trangThaiTT!=='Đã hủy'">{{item.donHang.trangThaiTT}}</td>
-              <td *ngIf="item.donHang.trangThaiTT==='Đã hủy'" style="color:red">{{item.donHang.trangThaiTT}}</td>
+              <td>{{ item.donHang.idDonHang }}</td>
+              <td>{{ item.tenNguoiDat }}</td>
+              <td>{{ item.donHang.ngayDat | date : "dd/MM/yyyy HH:mm:ss" }}</td>
+              <td>{{ item.donHang.tongTien | currency : " " || "VND" }}</td>
+              <td>{{ item.donHang.hinhThucTT }}</td>
+              <td *ngIf="item.donHang.trangThaiTT !== 'Đã hủy'">
+                {{ item.donHang.trangThaiTT }}
+              </td>
+              <td
+                *ngIf="item.donHang.trangThaiTT === 'Đã hủy'"
+                style="color: red"
+              >
+                {{ item.donHang.trangThaiTT }}
+              </td>
               <td>
-                <button type="button" class="btn btn-outline-danger" (click)="editOrder(item)">
+                <button
+                  type="button"
+                  class="btn btn-outline-danger"
+                  (click)="editOrder(item)"
+                >
                   <i class="fa-solid fa-circle-info"></i> Chỉnh sửa đơn hàng
                 </button>
-                <button type="button" class="btn btn-outline-primary"
-                  (click)="changeToDetailOrder(item.donHang.idDonHang, item.idKH)">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  (click)="
+                    changeToDetailOrder(item.donHang.idDonHang, item.idKH)
+                  "
+                >
                   <i class="fa-solid fa-circle-info"></i> Xem chi tiết
                 </button>
               </td>

@@ -141,6 +141,14 @@ const getSPCompare = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+var getAll = async (req, res) => {
+  try {
+    var listProduct = await sanPhamService.getAll();
+    res.send(listProduct);
+  } catch (error) {
+    console.log(error);
+  }
+};
 module.exports = {
   getProductsOfCompany,
   createNewCateProduct,
@@ -154,4 +162,5 @@ module.exports = {
   searchSP,
   getSPCompare,
   getProductFromCategory,
+  getAll,
 };
