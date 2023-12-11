@@ -41,13 +41,13 @@ export class PurchaseComponent implements OnInit, OnDestroy {
     address: '',
     ptTT: 'Thanh toán tiền mặt',
     tongSL: 0,
-    tamTinh:0,
-    tienKM:0,
-    thueVAT:0,
-    tongTien:0,
-    trangThaiTT:'Chưa thanh toán'
-  }
-  orderForm: FormGroup
+    tamTinh: 0,
+    tienKM: 0,
+    thueVAT: 0,
+    tongTien: 0,
+    trangThaiTT: 'Chưa thanh toán',
+  };
+  orderForm: FormGroup;
   isShowMomo: boolean = false;
   ngUnsubscribe$ = new Subject<void>();
   getUserInfo() {
@@ -80,28 +80,32 @@ export class PurchaseComponent implements OnInit, OnDestroy {
   }
 
   thanhToan() {
-    if(this.userOrder.ptTT == 'Thanh toán tiền mặt') {
+    if (this.userOrder.ptTT == 'Thanh toán tiền mặt') {
       this.saveOrderToDB().subscribe({
-          next: (data) => {
-            if (data) {
-              this.userService.updateMembership(this.userOrder.tongTien)
-              this.router.navigate(['/']);
-              this.cartService.deleteAll();
-            }
-          },
-          error: (err) => {
-            console.error('Error saving order:', err);
+        next: (data) => {
+          if (data) {
+            this.userService.updateMembership(this.userOrder.tongTien);
+            this.router.navigate(['/client/personal']);
+            this.cartService.deleteAll();
           }
-        });
-    }
-    else  {
+        },
+        error: (err) => {
+          console.error('Error saving order:', err);
+        },
+      });
+    } else {
       const tongtien = this.userOrder.tongTien;
-      this.userOrder.trangThaiTT='Đã thanh toán'
-      this.http.post<ApiResponse>('http://localhost:3800/donhang/thanhtoanvnpay', {userOrder: this.userOrder, cartList: this.cartList}, httpOptions)
+      this.userOrder.trangThaiTT = 'Đã thanh toán';
+      this.http
+        .post<ApiResponse>(
+          'http://localhost:3800/donhang/thanhtoanvnpay',
+          { userOrder: this.userOrder, cartList: this.cartList },
+          httpOptions
+        )
         .pipe(takeUntil(this.ngUnsubscribe$))
         .subscribe((res) => {
           if (res.code == 200) {
-            this.userService.updateMembership(this.userOrder.tongTien)
+            this.userService.updateMembership(this.userOrder.tongTien);
             window.location.href = res.message;
             this.saveOrderToDB().subscribe({
               next: (data) => {
@@ -112,7 +116,7 @@ export class PurchaseComponent implements OnInit, OnDestroy {
               },
               error: (err) => {
                 console.error('Error saving order:', err);
-              }
+              },
             });
           } else {
             console.log('Error:', res);
