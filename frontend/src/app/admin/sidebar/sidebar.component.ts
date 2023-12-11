@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit {
   countLoaiSP: number = 0;
   listLoaiSP: any[] = [];
   isLoading$ = this.loadData.loadingData$;
+  admin:any
   readonly API = 'http://localhost:3800';
   onClickSideBar(index: number) {
     // Mỗi khi thao tác click 1 index bất kì thì dropdown sẽ tắt đi
@@ -37,8 +38,14 @@ export class SidebarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.countAllLoaiSP();
+    this.getAdminInfo()
   }
   changeToProductPage(item: string) {
     this.router.navigate(['/admin/products', item]);
+  }
+
+  getAdminInfo(){
+    this.admin=JSON.parse(localStorage.getItem('admin'));
+    console.log(this.admin.data)
   }
 }
