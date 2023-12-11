@@ -37,7 +37,7 @@ import { ForgotPasswordComponent } from './client/login-regis/forgot-password/fo
 import { ResetComponent } from './client/login-regis/forgot-password/reset/reset.component';
 import { ClientLayoutComponent } from './client/client-layout/client-layout.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './admin/product/edit-product/edit-product.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ContactComponent } from './client/contact/contact.component';
@@ -56,6 +56,7 @@ import { CustomersComponent } from './admin/customers/customers.component';
 import { PopUpCreateCusComponent } from './admin/customers/pop-up-create-cus/pop-up-create-cus.component';
 import { PopUpCusDetailComponent } from './admin/customers/pop-up-cus-detail/pop-up-cus-detail.component';
 import { PopUpEditCusInfoComponent } from './admin/customers/pop-up-edit-cus-info/pop-up-edit-cus-info.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,7 +106,7 @@ import { PopUpEditCusInfoComponent } from './admin/customers/pop-up-edit-cus-inf
     PopUpCusDetailComponent,
     PopUpEditCusInfoComponent,
     CompareProductComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -118,7 +119,10 @@ import { PopUpEditCusInfoComponent } from './admin/customers/pop-up-edit-cus-inf
     HighchartsChartModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+    }),
+    BrowserAnimationsModule
   ],
   providers: [API],
   bootstrap: [AppComponent],
