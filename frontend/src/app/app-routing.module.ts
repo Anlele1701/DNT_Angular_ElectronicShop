@@ -30,6 +30,7 @@ import { LoginNhanVienComponent } from './admin/login-nhan-vien/login-nhan-vien.
 import { CompareProductComponent } from './client/compare-product/compare-product.component';
 import { OrderManagementComponent } from './admin/order-management/order-management.component';
 import { DetailOrderAdminComponent } from './admin/order-management/detail-order-admin/detail-order-admin.component';
+import { SearchpageComponent } from './client/searchpage/searchpage.component';
 const routes: Routes = [
   { path: '', redirectTo: '/client/homepage', pathMatch: 'full' },
   // CLIENT
@@ -54,6 +55,7 @@ const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'your-account', component: YourAccountComponent },
       { path: 'compare-products/:loaiSP', component: CompareProductComponent },
+      { path: 'searchpage', component: SearchpageComponent },
     ],
   },
   // ADMIN

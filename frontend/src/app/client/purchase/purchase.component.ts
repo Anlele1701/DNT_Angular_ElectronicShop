@@ -38,7 +38,8 @@ export class PurchaseComponent implements OnInit, OnDestroy{
     tamTinh:0,
     tienKM:0,
     thueVAT:0,
-    tongTien:0
+    tongTien:0,
+    trangThaiTT:'Chưa thanh toán'
   }
   orderForm: FormGroup
   ngUnsubscribe$ = new Subject<void>();
@@ -77,27 +78,45 @@ export class PurchaseComponent implements OnInit, OnDestroy{
   }
 
   thanhToan() {
-    const tongtien = this.userOrder.tongTien;
-    this.http.post<ApiResponse>('http://localhost:3800/donhang/thanhtoanvnpay', {amount: tongtien}, httpOptions)
-      .pipe(takeUntil(this.ngUnsubscribe$))
-      .subscribe((res) => {
-        if (res.code == 200) {
-          window.location.href = res.message;
-          this.saveOrderToDB().subscribe({
-            next: (data) => {
-              if (data) {
-                this.router.navigate(['/client/personal']);
-                this.cartService.deleteAll();
-              }
-            },
-            error: (err) => {
-              console.error('Error saving order:', err);
+    if(this.userOrder.ptTT == 'Thanh toán tiền mặt') {
+      this.saveOrderToDB().subscribe({
+          next: (data) => {
+            if (data) {
+              this.userService.updateMembership(this.userOrder.tongTien)
+              this.router.navigate(['/']);
+              this.cartService.deleteAll();
             }
-          });
-        } else {
-          console.log('Error:', res);
-        }
-      });
+          },
+          error: (err) => {
+            console.error('Error saving order:', err);
+          }
+        });
+    }
+    else  {
+      const tongtien = this.userOrder.tongTien;
+      this.userOrder.trangThaiTT='Đã thanh toán'
+      this.http.post<ApiResponse>('http://localhost:3800/donhang/thanhtoanvnpay', {userOrder: this.userOrder, cartList: this.cartList}, httpOptions)
+        .pipe(takeUntil(this.ngUnsubscribe$))
+        .subscribe((res) => {
+          if (res.code == 200) {
+            this.userService.updateMembership(this.userOrder.tongTien)
+            window.location.href = res.message;
+            this.saveOrderToDB().subscribe({
+              next: (data) => {
+                if (data) {
+                  this.router.navigate(['/client/personal']);
+                  this.cartService.deleteAll();
+                }
+              },
+              error: (err) => {
+                console.error('Error saving order:', err);
+              }
+            });
+          } else {
+            console.log('Error:', res);
+          }
+        });
+    }
   }
   saveOrderToDB() {
     return this.http.post<ApiResponse>(this.api.getAPI() + '/donhang/muaHang', {userOrder: this.userOrder, cartList: this.cartList})

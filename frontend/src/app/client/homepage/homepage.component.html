@@ -53,8 +53,8 @@
       <img src="assets/client/HomePage/iphone15pro.png" id="hinh-anh">
     </div>
     <div class="col align-self-center justify-content-center">
-      <h1 class="tenSPRight" id="tenSP">iPhone 15 Pro</h1>
-      <a>Tìm Hiểu Thêm <i class="fa-solid fa-angles-right"></i></a>
+      <h1 class="tenSPRight" id="tenSP">iPhone 15</h1>
+      <a (click)="toProductDetail('65394499b2fba11b2842fd9c','iPhone 15','Điện Thoại')">Tìm Hiểu Thêm <i class="fa-solid fa-angles-right"></i></a>
     </div>
   </div>
   <!-- END SẢN PHẨM 1 -->
@@ -62,8 +62,8 @@
   <!-- SẢN PHẨM 2 -->
   <div class="row sanpham" id="laptopSP">
     <div class="col align-self-center">
-      <h1 class="tenSP-left" id="tenSP">Macbook Air</h1>
-      <a>Tìm Hiểu Thêm <i class="fa-solid fa-angles-right"></i></a>
+      <h1 class="tenSP-left" id="tenSP">Macbook Air 2023</h1>
+      <a (click)="toProductDetail('65394a221d72552f49d2ea5d','APPLE MacBook Air 2023s','Laptop')">Tìm Hiểu Thêm <i class="fa-solid fa-angles-right"></i></a>
     </div>
     <div class="col">
       <img src="assets/client/HomePage/macbook.png" id="hinh-anh">
@@ -80,30 +80,30 @@
   <!-- DANH MỤC -->
   <div class="container-md text-center mt-5">
     <div class="row gx-4 row-cols-3">
-      <div class="cateBox col">
+      <div class="cateBox col" (click)="reloadCategory('Điện Thoại')">
         <div class="imgCate" id="phone"></div>
         <span class="imgTitle">Điện Thoại</span>
       </div>
       <div class="cateBox col">
-        <div class="imgCate" id="laptop"></div>
+        <div class="imgCate" id="laptop" (click)="reloadCategory('Laptop')"></div>
         <span class="imgTitle">Laptop</span>
       </div>
-      <div class="cateBox col">
+      <div class="cateBox col" (click)="reloadCategory('Màn Hình')">
         <div class="imgCate" id="monitor"></div>
         <span class="imgTitle">Màn Hình</span>
       </div>
 
-      <div class="cateBox col" id="biggestBox">
+      <div class="cateBox col" id="biggestBox" (click)="reloadCategory('Bàn Phím')">
         <div class="imgCate" id="keyboard">
           <span id="longTitle">Bàn Phím</span>
         </div>
       </div>
-      <div class="cateBoxs col">
+      <div class="cateBoxs col" (click)="reloadCategory('Chuột')">
         <div class="imgCate" id="mouse">
           <span class="imgTitle">Chuột</span>
         </div>
       </div>
-      <div class="cateBoxs col">
+      <div class="cateBoxs col" (click)="reloadCategory('Tai Nghe')">
         <div class="imgCate" id="headphone">
           <span class="imgTitle">Tai Nghe</span>
         </div>

@@ -50,7 +50,7 @@ var pushDonHangIntoList = async (userOrder, cartList) => {
         sdt: userOrder.sdt,
         ngayDat: Date.now(),
         hinhThucTT: userOrder.ptTT,
-        trangThaiTT: "Chưa thanh toán",
+        trangThaiTT: userOrder.trangThaiTT,
         trangThaiGiaoHang: "Chưa giao hàng",
         tongSLMua: userOrder.tongSL,
         tamTinh: userOrder.tamTinh,
@@ -292,4 +292,5 @@ module.exports = {
   showdonhang,
   getAllDonHangById,
   getAllDonHang,
+  createIDDonHang
 };

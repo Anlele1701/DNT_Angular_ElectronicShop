@@ -270,16 +270,6 @@ const searchKH = async (searchTerm) => {
     throw error;
   }
 };
-module.exports = {
-  dangKy,
-  verifyEmail,
-  dangNhap,
-  sendEmail,
-  resetPassword,
-  countKH,
-  searchKH,
-};
-
 // QUẢN LÝ CỦA ADMIN
 // thêm khách hàng mới
 var createKH = async (khachhangDetail) => {
@@ -290,30 +280,34 @@ var createKH = async (khachhangDetail) => {
     khachhangData.sdt = khachhangDetail.sdt;
     khachhangData.matKhau = khachhangDetail.matKhau;
 
-    khachhangData.save().then(result => {
-      resolve(result);
-      return(result);
-    })
-    .catch(error => {
-      reject(error);
-    })
+    khachhangData
+      .save()
+      .then((result) => {
+        resolve(result);
+        return result;
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
 };
 // sửa thông tin khách hàng
 var updateKH = async (id, khachhangDetail) => {
   return new Promise((resolve, reject) => {
-    khachHangModel.findByIdAndUpdate(id, khachhangDetail, { new: true})
-    .exec().then(result => {
-      resolve(result);
-      return(result);
-    })
-    .catch(error => {
-      reject(error);
-    })
+    khachHangModel
+      .findByIdAndUpdate(id, khachhangDetail, { new: true })
+      .exec()
+      .then((result) => {
+        resolve(result);
+        return result;
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
 };
 // get dữ liệu của 1 khách hàng
-var getKHDetail = async(idKH) => {
+var getKHDetail = async (idKH) => {
   try {
     var result = await khachHangModel.findById(idKH);
     return result;
@@ -322,7 +316,7 @@ var getKHDetail = async(idKH) => {
   }
 };
 // get dữ liệu của tất cả khách hàng
-var getAllKH = async() => {
+var getAllKH = async () => {
   try {
     var result = await khachHangModel.find({});
     return result;
@@ -331,4 +325,16 @@ var getAllKH = async() => {
   }
 };
 
-module.exports = { dangKy, verifyEmail, dangNhap, sendEmail, resetPassword, countKH, createKH, updateKH, getKHDetail, getAllKH};
+module.exports = {
+  dangKy,
+  verifyEmail,
+  dangNhap,
+  sendEmail,
+  resetPassword,
+  countKH,
+  createKH,
+  updateKH,
+  getKHDetail,
+  getAllKH,
+  searchKH,
+};

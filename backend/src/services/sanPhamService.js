@@ -326,6 +326,20 @@ var getAll = async () => {
     console.log(error);
   }
 };
+var findSP = async(tenSP)=>
+{
+    return new Promise(function myFn(resolve,reject)
+    {
+        var regex = new RegExp(tenSP, 'i');
+        return sanPhamModel.find({tenSP:{ $regex: regex}}).then((result)=>
+        {
+            resolve(result);
+        })
+        .catch((error)=>{
+            reject(error);
+        })
+    })
+}
 module.exports = {
   listSP,
   getAllProduct,
@@ -342,4 +356,5 @@ module.exports = {
   getSPCompare,
   searchSP,
   getAll,
+  findSP,
 };

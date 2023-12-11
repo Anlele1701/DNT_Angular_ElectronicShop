@@ -66,6 +66,10 @@
 .progress-bar {
   background-color: #141515;
 }
+.mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: #141515;
+  --mdc-linear-progress-track-color: #f4f4f4;
+}
 .fa-flag {
   font-size: 24px;
 }

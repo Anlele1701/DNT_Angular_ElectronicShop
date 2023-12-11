@@ -103,6 +103,7 @@ p {
     margin-right: 31px;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .cateBoxs {

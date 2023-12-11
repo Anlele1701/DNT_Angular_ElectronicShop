@@ -40,6 +40,7 @@ export class ProductItemsComponent {
       thanhTien: this.product.giaTien,
     };
     this.cartService.addItemToCart(this.cartitem);
+    this.cartService.countCartList();
     this.router.navigate(['/client/shopping-cart']);
   }
 }

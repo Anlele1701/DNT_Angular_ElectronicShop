@@ -58,9 +58,12 @@ router
   .route("/sanpham/:category")
   .get(sanPhamController.getProductFromCategory); // Lấy sp theo category
 router.route("/sanpham/compare/:category").post(sanPhamController.getSPCompare); // Lay SP So Sanh
+router.route("/sanpham/findSP/:tenSP").get(sanPhamController.findSP); // Tìm kiếm sp
+
 //NHÂN VIÊN
 router.route("/nhanvien/login").post(nhanVienController.loginNV); // Đăng nhập nhân viên
 router.route("/nhanvien/verifyToken").post(verifyToken.verifyToken); // xác thực token nhân viên
+
 //KHÁCH HÀNG
 router.route("/khachhang/dangKy").post(khachHangController.dangKy); //đăng ký tài khoản
 router
@@ -71,7 +74,6 @@ router.route("/khachhang/countKH").get(khachHangController.countKH); // lấy s�
 router.route("/send-email").post(khachHangController.sendEmail); //Gửi email reset mật khẩu
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
 router.route("/khachhang/find/:searchTerm").get(khachHangController.searchKH); // tìm kiếm khách hàng
-
 router.route("/khachhang/createNewCus").post(khachHangController.createNewKH); // admin tạo khách hàng mới
 router.route("/khachhang/editCusDetail/:id").patch(khachHangController.editKHDetail); // admin chỉnh sửa thông tin của khách hàng
 router.route("/khachhang/getKHDetail/:id").get(khachHangController.getKH); // get dữ liệu của 1 khách hàng

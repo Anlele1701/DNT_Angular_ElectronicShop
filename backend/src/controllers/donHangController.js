@@ -44,14 +44,17 @@ var createpayment = async (req, res) => {
     let secretKey = process.env.vnp_HashSecret;
     let vnpUrl = process.env.vnp_Url;
     let returnUrl = process.env.vnp_ReturnUrl;
-    let orderId = moment(date).format("DDHHmmss");
-    let amount = req.body.amount;
+    let index=0
+    let idDH=''
+    var findUser = await donHangModel
+      .findOne({ idKH: req.body.userOrder.id })
+      .then(async (document) => {
+        index = document.cacDH.length;
+        idDH = await donHangService.createIDDonHang(req.body.userOrder.id, index);
+      })
+    let orderId = idDH;
+    let amount = req.body.userOrder.tongTien;
     let bankCode = "";
-
-    // let locale = req.body.language;
-    // if(locale === null || locale === ''){
-    //     locale = 'vn';
-    // }
     let currCode = "VND";
     let vnp_Params = {};
     vnp_Params["vnp_Version"] = "2.1.0";
@@ -91,7 +94,6 @@ var getvnPayIPN = async (req, res) => {
   try {
     let vnp_Params = req.query;
     let secureHash = vnp_Params["vnp_SecureHash"];
-
     let orderId = vnp_Params["vnp_TxnRef"];
     let rspCode = vnp_Params["vnp_ResponseCode"];
 
