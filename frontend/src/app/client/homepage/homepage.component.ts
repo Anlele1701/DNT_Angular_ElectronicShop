@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, HostListener, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { API } from 'src/app/services/API.service';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
+  providers: [API]
 })
 export class HomepageComponent implements OnInit {
   parallaxElements: NodeListOf<Element>;
@@ -15,7 +17,8 @@ export class HomepageComponent implements OnInit {
     private renderer: Renderer2,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private api:API
   ) {}
 
   ngOnInit() {
@@ -44,6 +47,22 @@ export class HomepageComponent implements OnInit {
         `translateX(${-offset * speed * 100}%)`
       );
     }
+  }
+
+  //sản phẩm
+  toProductDetail(idSP, tenSP, loaiSP) {
+    this.http.get(this.api.getAPI()+'/sanpham/getSP/'+idSP).subscribe((data:any)=>{
+      this.router.navigate(['/client/category/' + loaiSP, tenSP], {
+        queryParams: { product: JSON.stringify(data) },
+      });
+    })
+  }
+
+  //danh mục
+  reloadCategory(loaiSP) {
+    this.router.navigate(['/client/category', loaiSP]).then(() => {
+      window.location.reload();
+    });
   }
 
   //review
