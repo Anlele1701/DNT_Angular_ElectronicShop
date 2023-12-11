@@ -38,7 +38,8 @@ export class PurchaseComponent implements OnInit, OnDestroy{
     tamTinh:0,
     tienKM:0,
     thueVAT:0,
-    tongTien:0
+    tongTien:0,
+    trangThaiTT:'Chưa thanh toán'
   }
   orderForm: FormGroup
   ngUnsubscribe$ = new Subject<void>();
@@ -90,18 +91,19 @@ export class PurchaseComponent implements OnInit, OnDestroy{
             console.error('Error saving order:', err);
           }
         });
-
-    }else  {
+    }
+    else  {
       const tongtien = this.userOrder.tongTien;
-      this.http.post<ApiResponse>('http://localhost:3800/donhang/thanhtoanvnpay', {amount: tongtien}, httpOptions)
+      this.userOrder.trangThaiTT='Đã thanh toán'
+      this.http.post<ApiResponse>('http://localhost:3800/donhang/thanhtoanvnpay', {userOrder: this.userOrder, cartList: this.cartList}, httpOptions)
         .pipe(takeUntil(this.ngUnsubscribe$))
         .subscribe((res) => {
           if (res.code == 200) {
+            this.userService.updateMembership(this.userOrder.tongTien)
             window.location.href = res.message;
             this.saveOrderToDB().subscribe({
               next: (data) => {
                 if (data) {
-                  this.userService.updateMembership(this.userOrder.tongTien)
                   this.router.navigate(['/client/personal']);
                   this.cartService.deleteAll();
                 }
