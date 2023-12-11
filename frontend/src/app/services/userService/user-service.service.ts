@@ -41,4 +41,19 @@ export class UserServiceService {
   logOUt(){
     sessionStorage.removeItem('user')
   }
+
+  updateMembership(tongTien:number){
+    this.getUser();
+    var diem=tongTien/10000
+    this.user.diem=this.user.diem+diem
+    if(diem>=1000&&diem<=2499)
+    {
+      this.user.hangThanhVien='Bạc'
+    }
+    if(diem>2499)
+    {
+      this.user.hangThanhVien='Vàng'
+    }
+    this.setUser(this.user)
+  }
 }

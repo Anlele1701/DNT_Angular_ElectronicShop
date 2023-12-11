@@ -81,6 +81,7 @@ export class PurchaseComponent implements OnInit, OnDestroy{
       this.saveOrderToDB().subscribe({
           next: (data) => {
             if (data) {
+              this.userService.updateMembership(this.userOrder.tongTien)
               this.router.navigate(['/']);
               this.cartService.deleteAll();
             }
@@ -100,6 +101,7 @@ export class PurchaseComponent implements OnInit, OnDestroy{
             this.saveOrderToDB().subscribe({
               next: (data) => {
                 if (data) {
+                  this.userService.updateMembership(this.userOrder.tongTien)
                   this.router.navigate(['/client/personal']);
                   this.cartService.deleteAll();
                 }
