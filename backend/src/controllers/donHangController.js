@@ -119,6 +119,7 @@ var getvnPayIPN = async (req,res) => {
                             //thanh cong
                             //paymentStatus = '1'
                             // Ở đây cập nhật trạng thái giao dịch thanh toán thành công vào CSDL của bạn
+                            console.log('ĐÃ LƯU THÀNH CÔNG')
                             res.status(200).json({ RspCode: '00', Message: 'Success' });
                         } else {
                             //that bai
