@@ -1,10 +1,11 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 @Component({
   selector: 'app-membership-class',
   templateUrl: './membership-class.component.html',
   styleUrls: ['./membership-class.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MembershipClassComponent {
   user:any;

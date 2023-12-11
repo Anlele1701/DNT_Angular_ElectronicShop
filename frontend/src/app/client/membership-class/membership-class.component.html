@@ -82,26 +82,35 @@
           <div class="row progress-content">
             <div class="d-flex justify-content-between">
               <p class="h6 mx-3">{{ user.hoTen }}</p>
-              <i class="fa-solid fa-star pe-5" style="color: burlywood" *ngIf="user.hangThanhVien==='Đồng'"></i>
-              <i class="fa-solid fa-star pe-5" style="color: #B0C4DE" *ngIf="user.hangThanhVien==='Bạc'"></i>
-              <i class="fa-solid fa-star pe-5" style="color: #FFCC00" *ngIf="user.hangThanhVien==='Vàng'"></i>
+              <i
+                class="fa-solid fa-star pe-5"
+                style="color: burlywood"
+                *ngIf="user.hangThanhVien === 'Đồng'"
+              ></i>
+              <i
+                class="fa-solid fa-star pe-5"
+                style="color: #b0c4de"
+                *ngIf="user.hangThanhVien === 'Bạc'"
+              ></i>
+              <i
+                class="fa-solid fa-star pe-5"
+                style="color: #ffcc00"
+                *ngIf="user.hangThanhVien === 'Vàng'"
+              ></i>
             </div>
             <div class="d-flex justify-content-between">
-              <p class="mx-3">{{user.diem}}</p>
-              <div class="pe-5">{{user.hangThanhVien}}</div>
+              <p class="mx-3">{{ user.diem }}</p>
+              <div class="pe-5">{{ user.hangThanhVien }}</div>
             </div>
             <i class="d-flex justify-content-end pe-4 fa-regular fa-flag"></i>
             <div class="row">
               <div class="col">
                 <div class="progress">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 50%"
-                    aria-valuenow="50"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
+                  <mat-progress-bar
+                    mode="buffer"
+                    value="{{ (user.diem / 2500) * 100 }}"
+                    class="audio-progress-bar"
+                  ></mat-progress-bar>
                 </div>
               </div>
             </div>
@@ -137,11 +146,11 @@
               <p class="ms-3">Đồng:<span> 0 - 999(điểm)</span></p>
             </div>
             <div class="d-flex">
-              <i class="fa-solid fa-star" style="color: #B0C4DE"></i>
+              <i class="fa-solid fa-star" style="color: #b0c4de"></i>
               <p class="ms-3">Bạc:<span> 1000 - 2499(điểm)</span></p>
             </div>
             <div class="d-flex">
-              <i class="fa-solid fa-star" style="color: #FFCC00"></i>
+              <i class="fa-solid fa-star" style="color: #ffcc00"></i>
               <p class="ms-3">Vàng:<span> lớn hơn 2499(điểm)</span></p>
             </div>
           </div>

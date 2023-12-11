@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cartService/cart.service';
 import { cartItem } from 'src/app/services/cartService/cartItem.service';
+import { LoadingIndicatorService } from 'src/app/services/loading-indicator.service';
 
 @Component({
   selector: 'app-searchpage',
@@ -16,15 +17,18 @@ export class SearchpageComponent implements OnInit {
   @Input() tenSP: string = '';
   @Input() product: any;
   cartitem: cartItem;
+  loading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private cartService: CartService
+    private cartService: CartService,
+    private loadData: LoadingIndicatorService
   ) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
+      this.loadData.setLoadingData(true);
       const tenSP = params['tenSP'];
       if (tenSP) {
         this.http
@@ -33,6 +37,8 @@ export class SearchpageComponent implements OnInit {
             (data: any[]) => {
               this.searchResults = data;
               console.log(this.searchResults);
+              this.loading = false;
+              this.loadData.setLoadingData(false);
             },
             (error) => {
               console.error(error);
