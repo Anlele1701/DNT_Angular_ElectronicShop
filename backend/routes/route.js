@@ -48,7 +48,7 @@ router.route("/sanpham/countSP").get(sanPhamController.countSP); // lấy số l
 router
   .route("/sanpham/deleteProduct/:loaiSP/:tenHang/:idSP")
   .delete(sanPhamController.deleteProduct);
-  router.route("/sanpham/getAll").get(sanPhamController.getAll);
+router.route("/sanpham/getAll").get(sanPhamController.getAll);
 
 router.route("/loaisp/getAll").get(loaiSPController.getLoaiSP);
 router
@@ -75,15 +75,17 @@ router.route("/send-email").post(khachHangController.sendEmail); //Gửi email r
 router.route("/reset-password").post(khachHangController.resetPassword); //Reset mật khẩu
 router.route("/khachhang/find/:searchTerm").get(khachHangController.searchKH); // tìm kiếm khách hàng
 router.route("/khachhang/createNewCus").post(khachHangController.createNewKH); // admin tạo khách hàng mới
-router.route("/khachhang/editCusDetail/:id").patch(khachHangController.editKHDetail); // admin chỉnh sửa thông tin của khách hàng
+router
+  .route("/khachhang/editCusDetail/:id")
+  .patch(khachHangController.editKHDetail); // admin chỉnh sửa thông tin của khách hàng
 router.route("/khachhang/getKHDetail/:id").get(khachHangController.getKH); // get dữ liệu của 1 khách hàng
 router.route("/khachhang/allCusInfo").get(khachHangController.getAllKH); // get dữ liệu của tất cả khách hàng
 
 //ĐƠN HÀNG
 router.route("/donhang/muaHang").post(donHangController.muaHang);
+router.route("/donhang/muaHangTA").post(donHangController.muaHangTA);
 router.route("/donhang/thanhtoanvnpay").post(donHangController.createpayment);
 router.route("/donhang/vnpay_ipn").get(donHangController.getvnPayIPN);
-router.route("/donhang/muaHang").post(donHangController.muaHang);
 router.route("/donhang/quanLyDSDonHang").get(donHangController.QLDSDonHang); //show ds đơn hàng --admin
 router
   .route("/donhang/getAllDonHangById/:idkh")
@@ -99,5 +101,8 @@ router
 router.route("/donhang/showdonhang/:idKH").get(donHangController.showdonhang);
 router.route("/donhang/getAllDonHang").get(donHangController.getAllDonHang); // lấy danh sách các DH theo id khách hàng
 //MOMO PAYMENT
-router.route("/payment/momo/:idDH").post(donHangController.MomoPayment);
+router.route("/payment/momo").post(donHangController.MomoPayment);
+router
+  .route("/payment/momo/confirm")
+  .post(donHangController.confirmMomoSuccess); //Update khi thanh toán thành công momo
 module.exports = router;

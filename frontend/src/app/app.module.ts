@@ -57,7 +57,7 @@ import { PopUpCreateCusComponent } from './admin/customers/pop-up-create-cus/pop
 import { PopUpCusDetailComponent } from './admin/customers/pop-up-cus-detail/pop-up-cus-detail.component';
 import { PopUpEditCusInfoComponent } from './admin/customers/pop-up-edit-cus-info/pop-up-edit-cus-info.component';
 import { SearchpageComponent } from './client/searchpage/searchpage.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -109,7 +109,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     PopUpEditCusInfoComponent,
     CompareProductComponent,
     SearchpageComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -122,7 +121,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     HighchartsChartModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   providers: [API],
   bootstrap: [AppComponent],

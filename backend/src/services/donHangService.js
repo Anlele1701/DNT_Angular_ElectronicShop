@@ -16,9 +16,29 @@ var muaHang = async (userOrder, cartList) => {
           return await pushDonHangIntoList(userOrder, cartList);
         }
       });
-
-    console.log(findUser);
     return findUser;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+var muaHangTA = async (userOrder, cartList) => {
+  try {
+    var findUser = await donHangModel.findOne({ idKH: userOrder.id });
+
+    if (!findUser) {
+      await createUserInDonHang(userOrder.id);
+      findUser = await donHangModel.findOne({ idKH: userOrder.id });
+    }
+
+    await changeDiemThanhVien(userOrder.id, userOrder.tongTien);
+
+    var order = await pushDonHangIntoList(userOrder, cartList);
+
+    return {
+      order: order,
+      findUser,
+    };
   } catch (error) {
     console.log(error);
   }
@@ -64,27 +84,37 @@ var pushDonHangIntoList = async (userOrder, cartList) => {
         console.log(result);
         donhang.CTDH.push(result);
       });
+
       console.log(donhang.CTDH);
       document.cacDH.push(donhang);
       document.save();
       await updateSLSanPham(cartList);
-      return document;
+      return { document, invoice: donhang };
     });
   return findUser;
 };
 
-var createIDDonHang=(id,index)=>{
-  index=index+1
-  const newStringid=id.slice(-5)
-  const date=new Date()
-  const year=date.getFullYear()
-  const month=date.getMonth()+1
-  const day=date.getDate()
-  const hour=date.getHours()
-  const minutes=date.getMinutes()
-  const second=date.getSeconds()
-  return (day.toString()+month.toString()+year.toString()+hour.toString()+minutes.toString()+second.toString()+newStringid+index)
-}
+var createIDDonHang = (id, index) => {
+  index = index + 1;
+  const newStringid = id.slice(-5);
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
+  const second = date.getSeconds();
+  return (
+    day.toString() +
+    month.toString() +
+    year.toString() +
+    hour.toString() +
+    minutes.toString() +
+    second.toString() +
+    newStringid +
+    index
+  );
+};
 
 var pushItemtoCTDH = async (cartItem) => {
   var item = {
@@ -282,6 +312,19 @@ var changeDiemThanhVien = async (idKH, tongTien) => {
     console.log(error);
   }
 };
+const confirmMomoSuccess = async (orderInfo) => {
+  try {
+    const findCacDHandUpdate = await donHangModel.findOneAndUpdate(
+      { "cacDH.idDonHang": orderInfo },
+      { $set: { "cacDH.$.trangThaiTT": "Thanh Toán Thành Công" } },
+      { new: true }
+    );
+    return findCacDHandUpdate;
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 module.exports = {
   muaHang,
   QLDSDonHang,
@@ -292,5 +335,7 @@ module.exports = {
   showdonhang,
   getAllDonHangById,
   getAllDonHang,
+  confirmMomoSuccess,
+  muaHangTA,
   createIDDonHang
 };

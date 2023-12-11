@@ -23,12 +23,24 @@ function sortObject(obj) {
 var muaHang = async (req, res) => {
   try {
     var result = donHangService.muaHang(req.body.userOrder, req.body.cartList);
+    console.log("result:", result);
     res.send(result);
   } catch (error) {
     console.log(error);
   }
 };
-
+var muaHangTA = async (req, res) => {
+  try {
+    var result = await donHangService.muaHangTA(
+      req.body.userOrder,
+      req.body.cartList
+    );
+    console.log("result:", result);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
 var createpayment = async (req, res) => {
   try {
     process.env.TZ = "Asia/Ho_Chi_Minh";
@@ -200,7 +212,7 @@ var getCTDH = async (req, res) => {
 };
 const MomoPayment = async (req, res) => {
   try {
-    const idDH = req.params.idDH;
+    const idDH = req.body.idDH;
     const paymentUrl = await Momo(req, idDH);
     res.json({ payUrl: paymentUrl });
   } catch (error) {
@@ -260,6 +272,21 @@ var showdonhang = async (req, res) => {
     console.log(error);
   }
 };
+const confirmMomoSuccess = async (req, res) => {
+  try {
+    const orderInfo = req.body.orderInfo;
+    const result = await donHangService.confirmMomoSuccess(orderInfo);
+    console.log(result);
+    return {
+      status: 200,
+      message: "Confirm momo thành công",
+      data: result,
+    };
+  } catch (error) {
+    console.log(error);
+    res.json({ status: 500, message: "Lỗi controller confirm momo" });
+  }
+};
 module.exports = {
   muaHang,
   createpayment,
@@ -274,4 +301,6 @@ module.exports = {
   QLDSDonHang,
   getCTDH,
   showdonhang,
+  confirmMomoSuccess,
+  muaHangTA,
 };

@@ -4,33 +4,15 @@ const donHangModel = require("../models/donHangModel");
 
 const Momo = async (req, idDH) => {
   try {
-    const donHang = await donHangModel.findById(idDH);
-    if (!donHang) {
-      console.error("Không tìm thấy đơn hàng !");
-    }
-    console.log(donHang);
-    const idDonHangCanTim = "4122023182759d74ee1";
-    const hdCanTim = donHang.cacDH.filter(
-      (donHangItem) => donHangItem.idDonHang === idDonHangCanTim
-    );
-    console.log(hdCanTim);
-    var findAmount = hdCanTim.map((donHangItem) =>
-      Number(donHangItem.tongTien)
-    );
-    console.log(findAmount);
-    var amount = findAmount
-      .reduce((total, value) => total + value, 0)
-      .toString();
-
-    console.log(amount);
+    var amount = req.body.amount;
     //Config
     var partnerCode = "MOMO";
     var accessKey = "F8BBA842ECF85";
     var secretkey = "K951B6PE1waDMi640xX08PD3vg6EkVlz";
     var requestId = partnerCode + new Date().getTime();
     var orderId = requestId;
-    var orderInfo = "pay with MoMo với id hóa đơn: " + donHang._id;
-    var redirectUrl = "http://localhost:4200/client/homepage";
+    var orderInfo = idDH;
+    var redirectUrl = "http://localhost:4200/client/personal";
     var ipnUrl = "https://callback.url/notify";
     /// Dữ liệu động
     //var amount = amountFound.toString();
@@ -119,6 +101,7 @@ const Momo = async (req, idDH) => {
       });
 
       console.log("Sending....");
+      console.log("request Body:", requestBody);
       req.write(requestBody);
       req.end();
     });
@@ -127,5 +110,4 @@ const Momo = async (req, idDH) => {
     throw error;
   }
 };
-
 module.exports = Momo;

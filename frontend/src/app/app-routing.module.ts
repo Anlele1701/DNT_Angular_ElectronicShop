@@ -73,9 +73,12 @@ const routes: Routes = [
         component: FormCreateProductComponent,
       },
       { path: 'categories', component: CategoryComponent },
-      { path: 'orders', component: OrderManagementComponent},
-      { path: 'detail-order/:idKH/:idDH', component: DetailOrderAdminComponent},
-      { path: 'edit-product/:loaiSP/:idSP', component:EditProductComponent}
+      { path: 'orders', component: OrderManagementComponent },
+      {
+        path: 'detail-order/:idKH/:idDH',
+        component: DetailOrderAdminComponent,
+      },
+      { path: 'edit-product/:loaiSP/:idSP', component: EditProductComponent },
     ],
   },
   { path: 'loginAdmin', component: LoginNhanVienComponent },
@@ -89,10 +92,12 @@ const routes: Routes = [
   { path: 'verify-email/:token', component: VerifyEmailComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    onSameUrlNavigation: 'reload',
-    scrollPositionRestoration: 'enabled'
-  })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      onSameUrlNavigation: 'reload',
+      scrollPositionRestoration: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

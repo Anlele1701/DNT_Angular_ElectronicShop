@@ -1,115 +1,111 @@
 <body>
-<div class="khung-tongquat mb-5">
-  <!-- content-trai -->
-  <div class="khung-trai">
-    <!-- Nút back -->
-    <div class="mt-4" style="font-size: 27px">
-      <i class="fa-solid fa-arrow-left-long" style="color: #717171"></i>
-      <span class="ms-3" (click)="Gobackpage()">Quay về giỏ hàng</span>
-    </div>
-    <!-- Nội dung -->
-    <!-- content-Thongtinthanhtoan -->
-    <h2 class="mt-4">Thanh Toán Đơn Hàng</h2>
-    <div class="content-1">
-      <p class="p-change-1">Thông tin nhận hàng</p>
-      <div class="mb-4">
-        <p class="p-change-2">Họ tên: <span>*</span></p>
-        <input class="input-change" placeholder="Vui lòng nhập họ tên" [(ngModel)]="userOrder.hoten" name="userOrder.hoten"/>
+  <div class="khung-tongquat mb-5">
+    <!-- content-trai -->
+    <div class="khung-trai">
+      <!-- Nút back -->
+      <div class="mt-4" style="font-size: 27px">
+        <i class="fa-solid fa-arrow-left-long" style="color: #717171"></i>
+        <span class="ms-3" (click)="Gobackpage()">Quay về giỏ hàng</span>
       </div>
-      <div class="mb-4">
-        <p class="p-change-2">Số điện thoại: <span>*</span></p>
-        <input class="input-change" placeholder="Vui lòng nhập số điện thoại" [(ngModel)]="userOrder.sdt" name="userOrder.sdt"/>
-      </div>
-      <div class="mb-5">
-        <p class="p-change-2">Địa chỉ giao hàng: <span>*</span></p>
-        <input
-          class="input-change"
-          placeholder="Vui lòng nhập địa chỉ giao hàng"
-          [(ngModel)]="userOrder.address" name="userOrder.address"
-        />
-      </div>
-      <div class="d-flex">
-        <p class="p-change-2">Phương thức thanh toán</p>
-        <select class="select-change" [(ngModel)]="userOrder.ptTT">
-          <option selected>Thanh toán tiền mặt</option>
-          <option>Thanh toán chuyển khoản</option>
-        </select>
-      </div>
-    </div>
-    <!-- content-Hotrothanhtoan -->
-    <h2 class="mt-5">Hỗ trợ thanh toán</h2>
-    <div class="d-flex mt-3">
-      <div class="card card-change me-2">
-        <img class="img-change" src="assets/client/Purchase/ATM.jpg" alt="" />
-      </div>
-      <div class="card card-change me-2">
-        <img class="img-change" src="assets/client/Purchase/Visa.jpg" alt="" />
-      </div>
-      <div class="card card-change me-2">
-        <img
-          class="img-change"
-          src="assets/client/Purchase/MasterCard.jpg"
-          alt=""
-        />
-      </div>
-      <div class="card card-change">
-        <img class="img-change" src="assets/client/Purchase/VNPAY.jpg" alt="" />
-      </div>
-    </div>
-    <div class="p-change-3 mt-3">
-      <p style="font-weight: 500">Thanh toán tại văn phòng</p>
-      <p>Địa chỉ: 828 Sư Vạn Hạnh, phường 5, quận 10, TP.HCM</p>
-    </div>
-  </div>
-  <!-- content-phai -->
-  <div class="khung-phai">
-    <div class="content-2">
-      <p class="p-change-1">Thông tin đơn hàng</p>
       <!-- Nội dung -->
-      <!-- Content-DonHang -->
-      <div class="scrollbar">
-        <div class="d-flex mb-3" *ngFor="let item of cartList">
-          <div class="card card-change-2 me-3">
-            <img
-              class="img-change"
-              src="http://localhost:3800/images/{{item.hinhAnh}}"
-            />
-          </div>
-          <div>
-            <p class="p-change-4">{{item.tenSP}}</p>
-            <p class="p-change-5">Số lượng: <span>{{item.soLuongMua}}</span></p>
-            <p class="p-change-6">Giá: <span>{{item.thanhTien|currency:"VND":" "}}đ</span></p>
-          </div>
+      <!-- content-Thongtinthanhtoan -->
+      <h2 class="mt-4">Thanh Toán Đơn Hàng</h2>
+      <div class="content-1">
+        <p class="p-change-1">Thông tin nhận hàng</p>
+        <div class="mb-4">
+          <p class="p-change-2">Họ tên: <span>*</span></p>
+          <input class="input-change" placeholder="Vui lòng nhập họ tên" [(ngModel)]="userOrder.hoten"
+            name="userOrder.hoten" />
+        </div>
+        <div class="mb-4">
+          <p class="p-change-2">Số điện thoại: <span>*</span></p>
+          <input class="input-change" placeholder="Vui lòng nhập số điện thoại" [(ngModel)]="userOrder.sdt"
+            name="userOrder.sdt" />
+        </div>
+        <div class="mb-5">
+          <p class="p-change-2">Địa chỉ giao hàng: <span>*</span></p>
+          <input class="input-change" placeholder="Vui lòng nhập địa chỉ giao hàng" [(ngModel)]="userOrder.address"
+            name="userOrder.address" />
+        </div>
+        <div class="d-flex">
+          <p class="p-change-2">Phương thức thanh toán</p>
+          <select class="select-change" [(ngModel)]="userOrder.ptTT" (change)="onSelectPayment()">
+            <option selected>Thanh toán tiền mặt</option>
+            <option>Thanh toán chuyển khoản</option>
+            <option>Thanh toán Momo</option>
+          </select>
         </div>
       </div>
-      <div class="d-flex mt-4">
-        <p class="p-change-1" style="font-size: 18px">Privacy Policy</p>
-        <i class="fa-solid fa-circle-info mt-2 ms-2" style="color: #b5b5b5"></i>
+      <!-- content-Hotrothanhtoan -->
+      <h2 class="mt-5">Hỗ trợ thanh toán</h2>
+      <div class="d-flex mt-3">
+        <div class="card card-change me-2">
+          <img class="img-change" src="assets/client/Purchase/ATM.jpg" alt="" />
+        </div>
+        <div class="card card-change me-2">
+          <img class="img-change" src="assets/client/Purchase/Visa.jpg" alt="" />
+        </div>
+        <div class="card card-change me-2">
+          <img class="img-change" src="assets/client/Purchase/MasterCard.jpg" alt="" />
+        </div>
+        <div class="card card-change">
+          <img class="img-change" src="assets/client/Purchase/VNPAY.jpg" alt="" />
+        </div>
+      </div>
+      <div class="p-change-3 mt-3">
+        <p style="font-weight: 500">Thanh toán tại văn phòng</p>
+        <p>Địa chỉ: 828 Sư Vạn Hạnh, phường 5, quận 10, TP.HCM</p>
       </div>
     </div>
-    <!-- content-thanhtoan -->
-    <div class="content-3 mt-5">
-      <p class="p-change-1">Tổng tiền đơn hàng</p>
-      <div class="row mb-4">
-        <div class="col-4" >
-          <p class="p-change-6 mb-2">Số lượng:</p>
-          <p class="p-change-6 mb-2">Tạm tính:</p>
-          <p class="p-change-6 mb-2">Tiền KM:</p>
-          <p class="p-change-6 mb-4">Thuế VAT:</p>
-          <p class="p-change-6" style="font-size: 30px;">Tổng tiền:</p>
+    <!-- content-phai -->
+    <div class="khung-phai">
+      <div class="content-2">
+        <p class="p-change-1">Thông tin đơn hàng</p>
+        <!-- Nội dung -->
+        <!-- Content-DonHang -->
+        <div class="scrollbar">
+          <div class="d-flex mb-3" *ngFor="let item of cartList">
+            <div class="card card-change-2 me-3">
+              <img class="img-change" src="http://localhost:3800/images/{{item.hinhAnh}}" />
+            </div>
+            <div>
+              <p class="p-change-4">{{item.tenSP}}</p>
+              <p class="p-change-5">Số lượng: <span>{{item.soLuongMua}}</span></p>
+              <p class="p-change-6">Giá: <span>{{item.thanhTien|currency:"VND":" "}}đ</span></p>
+            </div>
+          </div>
         </div>
-        <div class="col-8 text-end">
-          <p class="p-change-6 mb-2">{{userOrder.tongSL}}</p>
-          <p class="p-change-6 mb-2">{{userOrder.tamTinh|currency:"VND":" "}}Đ</p>
-          <p class="p-change-6 mb-2">{{userOrder.tienKM|currency:"VND":" "}}Đ</p>
-          <p class="p-change-6 mb-4">{{userOrder.thueVAT|currency:"VND":" "}}Đ</p>
-          <p class="p-change-6" style="font-size: 30px;">{{userOrder.tongTien|currency:"VND":" "}}Đ</p>
+        <div class="d-flex mt-4">
+          <p class="p-change-1" style="font-size: 18px">Privacy Policy</p>
+          <i class="fa-solid fa-circle-info mt-2 ms-2" style="color: #b5b5b5"></i>
         </div>
       </div>
-      <div class="d-flex align-items-center justify-content-center">
-        <button class="Button-change text-center" (click)="thanhToan()">THANH TOÁN</button>
+      <!-- content-thanhtoan -->
+      <div class="content-3 mt-5">
+        <p class="p-change-1">Tổng tiền đơn hàng</p>
+        <div class="row mb-4">
+          <div class="col-4">
+            <p class="p-change-6 mb-2">Số lượng:</p>
+            <p class="p-change-6 mb-2">Tạm tính:</p>
+            <p class="p-change-6 mb-2">Tiền KM:</p>
+            <p class="p-change-6 mb-4">Thuế VAT:</p>
+            <p class="p-change-6" style="font-size: 30px;">Tổng tiền:</p>
+          </div>
+          <div class="col-8 text-end">
+            <p class="p-change-6 mb-2">{{userOrder.tongSL}}</p>
+            <p class="p-change-6 mb-2">{{userOrder.tamTinh|currency:"VND":" "}}Đ</p>
+            <p class="p-change-6 mb-2">{{userOrder.tienKM|currency:"VND":" "}}Đ</p>
+            <p class="p-change-6 mb-4">{{userOrder.thueVAT|currency:"VND":" "}}Đ</p>
+            <p class="p-change-6" style="font-size: 30px;">{{userOrder.tongTien|currency:"VND":" "}}Đ</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+          <button *ngIf="!isShowMomo" class="Button-change text-center" (click)="thanhToan()">THANH
+            TOÁN</button>
+          <button *ngIf="isShowMomo" class="Button-change text-center" (click)="ThanhToanMomo()">THANH
+            TOÁN</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </body>

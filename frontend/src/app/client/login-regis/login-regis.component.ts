@@ -16,10 +16,13 @@ export class LoginRegisComponent {
   sdt: string = '';
   matKhau: string = '';
 
+  isShow = false;
+  isSuccess = false;
+  isMess = '';
   constructor(
     private http: HttpClient,
     private router: Router,
-    private UserService: UserServiceService,
+    private UserService: UserServiceService
   ) {}
   readonly API = 'http://localhost:3800/';
   ngAfterViewInit() {
@@ -46,26 +49,38 @@ export class LoginRegisComponent {
       })
       .subscribe((data: any) => {
         if (data.emailExisted) {
+          this.isMess = 'Email đã tồn tại';
+          this.isShow = true;
+          this.isSuccess = false;
           console.log(data.emailExisted);
-        } else console.log('Success');
+        } else {
+          console.log('Success');
+          // Lỗi backend không fix kịp
+        }
       });
   }
 
-  submitFormLogin(){
-    this.http.post(this.API+'khachhang/dangNhap',{email:this.email,password:this.matKhau}).subscribe((data:any)=>{
-      if(data.invalid)
-      {
-        console.log(data.invalid)
-      }
-      else{
-        console.log(data)
-        this.UserService.setUser(data)
-        let route=this.router.url
-        if(route==='/client/shopping-cart'){
-          this.router.navigate(['/client/purchase'])
+  submitFormLogin() {
+    this.http
+      .post(this.API + 'khachhang/dangNhap', {
+        email: this.email,
+        password: this.matKhau,
+      })
+      .subscribe((data: any) => {
+        if (data.invalid) {
+          this.isMess = 'Đăng nhập thất bại';
+          this.isShow = true;
+          this.isSuccess = false;
+          console.log(data.invalid);
+        } else {
+          console.log(data);
+          this.UserService.setUser(data);
+          let route = this.router.url;
+          if (route === '/client/shopping-cart') {
+            this.router.navigate(['/client/purchase']);
+          } else this.router.navigate(['/client/personal']);
+          // Lỗi backend
         }
-        else this.router.navigate(['/client/personal'])
-      }
-    })
+      });
   }
 }
