@@ -2,7 +2,6 @@ import { UserServiceService } from './../../services/userService/user-service.se
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-regis',
@@ -21,7 +20,6 @@ export class LoginRegisComponent {
     private http: HttpClient,
     private router: Router,
     private UserService: UserServiceService,
-    private toast:ToastrService
   ) {}
   readonly API = 'http://localhost:3800/';
   ngAfterViewInit() {
@@ -47,13 +45,7 @@ export class LoginRegisComponent {
         password: this.matKhau,
       })
       .subscribe((data: any) => {
-        if(data.inValid) //data.inValid là thông tin đăng ký không hợp lệ
-        {
-          this.toast.success(data.inValid,'', {
-            timeOut: 5000, // Optional: Specify the time the toast will be displayed (in milliseconds)
-          });
-        }
-        else if (data.emailExisted) {
+        if (data.emailExisted) {
           console.log(data.emailExisted);
         } else console.log('Success');
       });
