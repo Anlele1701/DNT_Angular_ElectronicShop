@@ -110,7 +110,7 @@ var getKH = async(req, res) => {
 var getAllKH = async(req,res) => {
   var result = await khacHangService.getAllKH();
   if (result) {
-    res.send({"status": true, "message": "Trả về dữ liệu thành công!", result});
+    res.send(result);
   }
   else {
     res.send({"status": false, "message": "Không có dữ liệu nào!"}); 

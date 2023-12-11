@@ -2,7 +2,6 @@ body {
     background: #EEEDEC;
     padding:20px;
 }
-
 .box {
     background: #FFFFFF;
     border-radius: 10px;
@@ -36,7 +35,8 @@ body {
 /*table*/
 .fixTableHead {
     overflow-y: auto;
-    max-height: 500px;
+    max-height: 300px;
+    min-height:200px;
 }
 
     .fixTableHead thead th {

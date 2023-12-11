@@ -98,8 +98,8 @@ li:hover {
 }
 .content {
   margin-left: 100px;
-  height: auto;
-  min-height:100vh;
+  height: 100%;
+  background: #EEEDEC;
 }
 .dropdown-item:hover {
   background-color: #494949;
