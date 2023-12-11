@@ -1,5 +1,5 @@
 * {
-    padding: 0 0 10px 0;
+  padding: 0 0 10px 0;
 }
 
 .about_us {
@@ -10,7 +10,7 @@
 }
 
 p {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .parallax_scrolling {
@@ -21,10 +21,10 @@ p {
 }
 
 .prl-left h2 {
-    padding: 0px 0px 0px 10px;
-    font-size: 70px;
-    font-weight: 500;
-    transform: transform 0.5s ease-out;
+  padding: 0px 0px 0px 10px;
+  font-size: 70px;
+  font-weight: 500;
+  transform: transform 0.5s ease-out;
 }
 
 .prl-right h2 {
@@ -37,7 +37,7 @@ p {
 }
 
 .prl-left {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
 
 .prl-right {
@@ -50,29 +50,29 @@ p {
 }
 
 .sanpham a {
-    cursor: pointer;
-    font-size: 20px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 #hinh-anh {
-    width: 600px;
-    height: 600px;
+  width: 600px;
+  height: 600px;
 }
 
 #tenSP {
-    font-size: 50px;
-    font-weight: 500;
+  font-size: 50px;
+  font-weight: 500;
 }
 
 #banner {
-    padding-top: 32px;
-    width: 100%;
+  padding-top: 32px;
+  width: 100%;
 }
 
 .container {
-    background-color: #464646;
-    height: 300px;
-    border-radius: 35px;
+  background-color: #464646;
+  height: 300px;
+  border-radius: 35px;
 }
 
 .container h2 {
@@ -116,7 +116,7 @@ p {
 }
 
 #biggestBox {
-    width: 97%;
+  width: 97%;
 }
 
 /* CATE */
@@ -163,29 +163,29 @@ p {
 
 /*  ANIMATION*/
 .imgCate {
-    transition: 0.7s;
-    height: 110%;
-    background-repeat: no-repeat;
+  transition: 0.7s;
+  height: 110%;
+  background-repeat: no-repeat;
 }
 
 .cateBox:hover .imgCate {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .cateBox:hover .imgTitle {
-    opacity: 1;
+  opacity: 1;
 }
 
 .cateBox:hover #longTitle {
-    opacity: 1;
+  opacity: 1;
 }
 
 .cateBoxs:hover .imgCate {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .cateBoxs:hover .imgTitle {
-    opacity: 1;
+  opacity: 1;
 }
 
 .imgTitle {

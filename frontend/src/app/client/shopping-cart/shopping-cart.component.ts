@@ -29,13 +29,15 @@ export class ShoppingCartComponent implements OnInit {
         this.tongTien = this.tongTien + giaTien;
         this.tongSLMua++;
       }
-      return this.cartService.plusOneItem(idSP);
-    } else {
-      if (this.showSoLuongMua(idSP) - 1 >= 1) {
-        this.tongTien = this.tongTien - giaTien;
-        this.tongSLMua--;
+      return this.cartService.plusOneItem(idSP)
+    }
+    else{
+      if(this.showSoLuongMua(idSP)-1>=1)
+      {
+        this.tongTien=this.tongTien-giaTien
+        this.tongSLMua--
       }
-      return this.cartService.minusOneItem(idSP);
+      return this.cartService.minusOneItem(idSP)
     }
   }
 
@@ -52,21 +54,25 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCartList();
-    this.tongTien = this.cartService.updateTongTien();
-    this.tongSLMua = this.cartService.updateTongSLMua();
+    this.getCartList()
+    this.tongTien=this.cartService.updateTongTien()
+    this.tongSLMua=this.cartService.updateTongSLMua()
+    this.cartService.countCartList();
   }
 
-  deleteItemCart(idSP: string) {
-    this.cartList = this.cartService.deleteItem(idSP);
-    this.tongSLMua = this.cartService.updateTongSLMua();
-    this.tongTien = this.cartService.updateTongTien();
+  deleteItemCart(idSP: string){
+    this.cartList=this.cartService.deleteItem(idSP)
+    this.tongSLMua=this.cartService.updateTongSLMua()
+    this.tongTien=this.cartService.updateTongTien()
+    this.cartService.countCartList();
   }
 
-  deleteAll() {
-    this.cartList = this.cartService.deleteAll();
-    this.tongSLMua = 0;
-    this.tongTien = 0;
+  deleteAll()
+  {
+    this.cartList=this.cartService.deleteAll()
+    this.tongSLMua=0
+    this.tongTien=0
+    this.cartService.countCartList();
   }
 
   changeToPurchasePage() {

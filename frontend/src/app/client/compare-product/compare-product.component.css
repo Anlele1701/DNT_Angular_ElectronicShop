@@ -1,0 +1,19 @@
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  width: 100%; /* Đặt kích thước mong muốn cho mỗi hình ảnh */
+  height: 500px;
+  object-fit: contain, cover;
+}
+.content-compare span {
+  font-weight: bold;
+}
+ul {
+  list-style-type: none;
+}
+.content-description p {
+  font-weight: bold;
+}

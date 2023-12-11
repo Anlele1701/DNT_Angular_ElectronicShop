@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpCreateCusComponent } from './pop-up-create-cus/pop-up-create-cus.component';
+import { BehaviorSubject } from 'rxjs';
 import { PopUpCusDetailComponent } from './pop-up-cus-detail/pop-up-cus-detail.component';
 import { PopUpEditCusInfoComponent } from './pop-up-edit-cus-info/pop-up-edit-cus-info.component';
 
@@ -11,7 +12,8 @@ import { PopUpEditCusInfoComponent } from './pop-up-edit-cus-info/pop-up-edit-cu
   styleUrls: ['../shared/AdminIndex.css']
 })
 export class CustomersComponent implements OnInit {
-  listCus: any[] = [];
+  listCus:any[] = [];
+  searchTerm = '';
   constructor(private http: HttpClient, private popUp: MatDialog) { }
 
   ngOnInit(): void {

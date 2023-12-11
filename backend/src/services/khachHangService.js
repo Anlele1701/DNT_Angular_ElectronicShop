@@ -109,9 +109,8 @@ var dangNhap = async (req) => {
         } else {
           return "Invalid password!";
         }
-      }
-      else {
-        return "Email's not existed!"
+      } else {
+        return "Email's not existed!";
       }
     }
   } catch (error) {
@@ -119,11 +118,10 @@ var dangNhap = async (req) => {
   }
 };
 
-var countKH = async() =>{
-  
-  return new Promise(function myFn(resolve, reject)
-  {
-      khachHangModel.countDocuments({})
+var countKH = async () => {
+  return new Promise(function myFn(resolve, reject) {
+    khachHangModel
+      .countDocuments({})
       .then((count) => {
         resolve(count);
         console.log(count);
@@ -131,8 +129,8 @@ var countKH = async() =>{
       .catch((error) => {
         reject(error);
       });
-  })
-}
+  });
+};
 var checkAccountValid = (account) => {
   if (
     /[a-zA-Z]/.test(account.name) == false ||
@@ -258,6 +256,29 @@ function verifyToken(token) {
     return null;
   }
 }
+const searchKH = async (searchTerm) => {
+  try {
+    const result = await khachHangModel.find({
+      $or: [
+        { hoTen: { $regex: `^${searchTerm}`, $options: "i" } },
+        { email: { $regex: `^${searchTerm}`, $options: "i" } },
+        { sdt: { $regex: `^${searchTerm}`, $options: "i" } },
+      ],
+    });
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+module.exports = {
+  dangKy,
+  verifyEmail,
+  dangNhap,
+  sendEmail,
+  resetPassword,
+  countKH,
+  searchKH,
+};
 
 // QUẢN LÝ CỦA ADMIN
 // thêm khách hàng mới

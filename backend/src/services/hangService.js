@@ -81,21 +81,31 @@ var getHang = async (idHang) => {
     console.log(error);
   }
 };
-var updateHang = async(id, hangDetails) => {
+var updateHang = async (id, hangDetails) => {
   console.log("BOdy" + hangDetails);
   return new Promise((resolve, reject) => {
-    hangModel.findByIdAndUpdate(id, hangDetails, { new: true })
-    .exec()
-    .then(result=>{
-      resolve(result)
-      return result;
-    })
-    .catch(error =>{
-      reject(error);
-    })
+    hangModel
+      .findByIdAndUpdate(id, hangDetails, { new: true })
+      .exec()
+      .then((result) => {
+        resolve(result);
+        return result;
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
 };
-
+const searchHang = async (searchTerm) => {
+  try {
+    const result = await hangModel.find({
+      tenNhaSX: { $regex: `^${searchTerm}`, $options: "i" },
+    });
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
   deleteHang,
   createHang,
@@ -104,4 +114,5 @@ module.exports = {
   findIDHang,
   getHang,
   updateHang,
+  searchHang,
 };

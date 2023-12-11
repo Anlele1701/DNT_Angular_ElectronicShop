@@ -151,6 +151,23 @@ const updateLoaiSP = async (req) => {
     return { status: 500, message: "Lỗi service update Loại Sản Phẩm" };
   }
 };
+var getAllLoaiSP = async () => {
+  var listLoaiSP = await loaiSPModel.find({}).then((document) => {
+    console.log(document);
+    return document;
+  });
+  return listLoaiSP;
+};
+const searchLoai = async (searchTerm) => {
+  try {
+    const result = await loaiSPModel.find({
+      tenLoai: { $regex: `^${searchTerm}`, $options: "i" },
+    });
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = {
   listIDSP,
   getProductsOfCompany,
@@ -161,4 +178,6 @@ module.exports = {
   createLoaiSP,
   deleteLoaiSP,
   updateLoaiSP,
+  getAllLoaiSP,
+  searchLoai,
 };

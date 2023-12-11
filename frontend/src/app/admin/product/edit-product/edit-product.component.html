@@ -1,32 +1,39 @@
 <div style="width: 50%; margin-left: 30px;">
-  <select class="form-select" style="width: 30%;" aria-label="Default select example"[(ngModel)]="product.tenHang" name="tenHang">
+  <select class="form-select" style="width: 30%;" aria-label="Default select example" [(ngModel)]="product.tenHang"
+    name="tenHang">
     <option selected>Open this select menu</option>
-    <option *ngFor="let item of listHang" [value]="item" >{{ item }}</option>
+    <option *ngFor="let item of listHang" [value]="item">{{ item }}</option>
   </select>
   <form (submit)="editProduct()">
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Tên sản phẩm:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1"  value="{{product.tenSP}}" [(ngModel)]="product.tenSP" name="banphim.tenSP">
+      <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.tenSP}}"
+        [(ngModel)]="product.tenSP" name="banphim.tenSP">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mô tả 1:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.moTa[0]}}" [(ngModel)]="product.moTa[0]" name="banphim.moTa1">
+      <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.moTa[0]}}"
+        [(ngModel)]="product.moTa[0]" name="banphim.moTa1">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mô tả 2:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.moTa[1]}}" [(ngModel)]="product.moTa[1]" name="banphim.moTa2">
+      <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.moTa[1]}}"
+        [(ngModel)]="product.moTa[1]" name="banphim.moTa2">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mô tả 3:</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.moTa[2]}}" [(ngModel)]="product.moTa[2]" name="banphim.moTa3">
+      <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.moTa[2]}}"
+        [(ngModel)]="product.moTa[2]" name="banphim.moTa3">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Số lượng</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" value="{{product.soLuong}}" [(ngModel)]="product.soLuong" name="banphim.soLuong">
+      <input type="number" class="form-control" id="exampleInputPassword1" value="{{product.soLuong}}"
+        [(ngModel)]="product.soLuong" name="banphim.soLuong">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Gía tiền:</label>
-      <input type="number" class="form-control" id="exampleInputPassword1" value="{{product.giaTien}}" [(ngModel)]="product.giaTien" name="banphim.giaTien">
+      <input type="number" class="form-control" id="exampleInputPassword1" value="{{product.giaTien}}"
+        [(ngModel)]="product.giaTien" name="banphim.giaTien">
     </div>
     <ng-container [ngSwitch]="loaiSP">
       <ng-container *ngSwitchCase="'Chuột'">
@@ -50,171 +57,208 @@
     </ng-container>
     <div class="mb-3">
       <label for="formFileMultiple" class="form-label">Hình ảnh (tối đa 3 hình):</label>
-      <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*" (change)="getImage($event)">
+      <input class="form-control" type="file" id="formFileMultiple" multiple accept="image/*"
+        (change)="getImage($event)">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  </div>
+</div>
 
 
 <ng-template #banPhim>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Tình trạng:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.tinhTrang}}" [(ngModel)]="product.thongSo.tinhTrang" name="banphim.thongSo.tinhTrang">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.tinhTrang}}"
+      [(ngModel)]="product.thongSo.tinhTrang" name="banphim.thongSo.tinhTrang">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Bảo hành:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.baoHanh}}" [(ngModel)]="product.thongSo.baoHanh" name="banphim.thongSo.baoHanh">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.baoHanh}}"
+      [(ngModel)]="product.thongSo.baoHanh" name="banphim.thongSo.baoHanh">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Switch:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.switch}}" [(ngModel)]="product.thongSo.switch" name="banphim.thongSo.switch">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.switch}}"
+      [(ngModel)]="product.thongSo.switch" name="banphim.thongSo.switch">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Kích thước:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kichThuoc}}" [(ngModel)]="product.thongSo.kichThuoc" name="banphim.thongSo.kichThuoc">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kichThuoc}}"
+      [(ngModel)]="product.thongSo.kichThuoc" name="banphim.thongSo.kichThuoc">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Trọng lượng:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.trongLuong}}" [(ngModel)]="product.thongSo.trongLuong" name="banphim.thongSo.trongLuong">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.trongLuong}}"
+      [(ngModel)]="product.thongSo.trongLuong" name="banphim.thongSo.trongLuong">
   </div>
 </ng-template>
 
 <ng-template #dienThoai>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Màn hình:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.manHinh}}" [(ngModel)]="product.thongSo.manHinh" name="dienthoai.thongSo.manHinh">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.manHinh}}"
+      [(ngModel)]="product.thongSo.manHinh" name="dienthoai.thongSo.manHinh">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Camere trước:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.cameraTruoc}}" [(ngModel)]="product.thongSo.cameraTruoc" name="dienthoai.thongSo.cameraTruoc">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.cameraTruoc}}"
+      [(ngModel)]="product.thongSo.cameraTruoc" name="dienthoai.thongSo.cameraTruoc">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Camera sau:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.cameraSau}}" [(ngModel)]="product.thongSo.cameraSau" name="dienthoai.thongSo.cameraSau">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.cameraSau}}"
+      [(ngModel)]="product.thongSo.cameraSau" name="dienthoai.thongSo.cameraSau">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">CPU:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.CPU}}" [(ngModel)]="product.thongSo.CPU" name="dienthoai.thongSo.CPU">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.CPU}}"
+      [(ngModel)]="product.thongSo.CPU" name="dienthoai.thongSo.CPU">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Bộ nhớ:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.boNho}}" [(ngModel)]="product.thongSo.boNho" name="dienthoai.thongSo.boNho">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.boNho}}"
+      [(ngModel)]="product.thongSo.boNho" name="dienthoai.thongSo.boNho">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Hệ điều hành:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.heDieuHanh}}" [(ngModel)]="product.thongSo.heDieuHanh" name="dienthoai.thongSo.heDieuHanh">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.heDieuHanh}}"
+      [(ngModel)]="product.thongSo.heDieuHanh" name="dienthoai.thongSo.heDieuHanh">
   </div>
 </ng-template>
 
 <ng-template #laptop>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">CPU:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.CPU}}" [(ngModel)]="product.thongSo.CPU" name="laptop.thongSo.CPU">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.CPU}}"
+      [(ngModel)]="product.thongSo.CPU" name="laptop.thongSo.CPU">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Màn hình:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.manHinh}}" [(ngModel)]="product.thongSo.manHinh" name="laptop.thongSo.manhinh">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.manHinh}}"
+      [(ngModel)]="product.thongSo.manHinh" name="laptop.thongSo.manhinh">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">RAM:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.Ram}}" [(ngModel)]="product.thongSo.Ram" name="laptop.thongSo.Ram">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.Ram}}"
+      [(ngModel)]="product.thongSo.Ram" name="laptop.thongSo.Ram">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Đồ họa:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.doHoa}}" [(ngModel)]="product.thongSo.doHoa" name="laptop.thongSo.doHoa">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.doHoa}}"
+      [(ngModel)]="product.thongSo.doHoa" name="laptop.thongSo.doHoa">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Lưu trữ:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.luuTru}}" [(ngModel)]="product.thongSo.luuTru" name="laptop.thongSo.luuTru">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.luuTru}}"
+      [(ngModel)]="product.thongSo.luuTru" name="laptop.thongSo.luuTru">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Hệ điều hành:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.heDieuHanh}}" [(ngModel)]="product.thongSo.heDieuHanh" name="laptop.thongSo.heDieuHanh">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.heDieuHanh}}"
+      [(ngModel)]="product.thongSo.heDieuHanh" name="laptop.thongSo.heDieuHanh">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">PIN:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.PIN}}" [(ngModel)]="product.thongSo.PIN" name="laptop.thongSo.PIN">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.PIN}}"
+      [(ngModel)]="product.thongSo.PIN" name="laptop.thongSo.PIN">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Khối lượng:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.khoiLuong}}" [(ngModel)]="product.thongSo.khoiLuong" name="laptop.thongSo.khoiLuong">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.khoiLuong}}"
+      [(ngModel)]="product.thongSo.khoiLuong" name="laptop.thongSo.khoiLuong">
   </div>
 </ng-template>
 
 <ng-template #manHinh>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Kích thước:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kichthuoc}}" [(ngModel)]="product.thongSo.kichThuoc" name="manhinh.thongSo.kichThuoc">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kichthuoc}}"
+      [(ngModel)]="product.thongSo.kichThuoc" name="manhinh.thongSo.kichThuoc">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Tần số quét:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.tanSoQuet}}" [(ngModel)]="product.thongSo.tanSoQuet" name="manhinh.thongSo.tanSoQuet">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.tanSoQuet}}"
+      [(ngModel)]="product.thongSo.tanSoQuet" name="manhinh.thongSo.tanSoQuet">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Hiển thị màu sắc:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.hienthiMauSac}}" [(ngModel)]="product.thongSo.hienThiMauSac" name="manhinh.thongSo.hienThiMauSac">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.hienthiMauSac}}"
+      [(ngModel)]="product.thongSo.hienThiMauSac" name="manhinh.thongSo.hienThiMauSac">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Cổng hình ảnh:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.congHinhAnh}}" [(ngModel)]="product.thongSo.congHinhAnh" name="manhinh.thongSo.congHinhAnh">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.congHinhAnh}}"
+      [(ngModel)]="product.thongSo.congHinhAnh" name="manhinh.thongSo.congHinhAnh">
   </div>
 </ng-template>
 
 <ng-template #chuot>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Model:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.model}}" [(ngModel)]="product.thongSo.model" name="chuot.thongSo.model">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.model}}"
+      [(ngModel)]="product.thongSo.model" name="chuot.thongSo.model">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Bảo hành:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.baoHanh}}" [(ngModel)]="product.thongSo.baoHanh" name="chuot.thongSo.baoHanh">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.baoHanh}}"
+      [(ngModel)]="product.thongSo.baoHanh" name="chuot.thongSo.baoHanh">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Kiểu kết nối:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kieuKetNoi}}" [(ngModel)]="product.thongSo.kieuKetNoi" name="chuot.thongSo.kieuKetNoi">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kieuKetNoi}}"
+      [(ngModel)]="product.thongSo.kieuKetNoi" name="chuot.thongSo.kieuKetNoi">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Cảm biến:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.camBien}}" [(ngModel)]="product.thongSo.camBien" name="chuot.thongSo.camBien">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.camBien}}"
+      [(ngModel)]="product.thongSo.camBien" name="chuot.thongSo.camBien">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">DPI:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.DPI}}" [(ngModel)]="product.thongSo.DPI" name="chuot.thongSo.DPI">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.DPI}}"
+      [(ngModel)]="product.thongSo.DPI" name="chuot.thongSo.DPI">
   </div>
 </ng-template>
 
 <ng-template #taiNghe>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Chất liệu khung:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.chatlieuKhung}}" [(ngModel)]="product.thongSo.chatLieuKhung" name="tainghe.thongSo.chatLieuKhung">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.chatlieuKhung}}"
+      [(ngModel)]="product.thongSo.chatLieuKhung" name="tainghe.thongSo.chatLieuKhung">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Màu sắc:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.mauSac}}" [(ngModel)]="product.thongSo.mauSac" name="tainghe.thongSo.mauSac">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.mauSac}}"
+      [(ngModel)]="product.thongSo.mauSac" name="tainghe.thongSo.mauSac">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Kiểu tai nghe:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kieuTaiNghe}}" [(ngModel)]="product.thongSo.kieuTaiNghe" name="tainghe.thongSo.kieuTaiNghe">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kieuTaiNghe}}"
+      [(ngModel)]="product.thongSo.kieuTaiNghe" name="tainghe.thongSo.kieuTaiNghe">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Kiểu kết nối:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kieuKetnoi}}" [(ngModel)]="product.thongSo.kieuKetNoi" name="tainghe.thongSo.kieuKetNoi">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.kieuKetnoi}}"
+      [(ngModel)]="product.thongSo.kieuKetNoi" name="tainghe.thongSo.kieuKetNoi">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Thời lượng pin:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.thoiLuongPin}}" [(ngModel)]="product.thongSo.thoiLuongPin" name="tainghe.thongSo.thoiLuongPin">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.thoiLuongPin}}"
+      [(ngModel)]="product.thongSo.thoiLuongPin" name="tainghe.thongSo.thoiLuongPin">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Microphone:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.microphone}}" [(ngModel)]="product.thongSo.microphone" name="tainghe.thongSo.microphone">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.microphone}}"
+      [(ngModel)]="product.thongSo.microphone" name="tainghe.thongSo.microphone">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Tần số:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.tanSo}}" [(ngModel)]="product.thongSo.tanSo" name="tainghe.thongSo.tanSo">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.tanSo}}"
+      [(ngModel)]="product.thongSo.tanSo" name="tainghe.thongSo.tanSo">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Độ nhạy:</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.doNhay}}" [(ngModel)]="product.thongSo.doNhay" name="tainghe.thongSo.doNhay">
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{product.thongSo.doNhay}}"
+      [(ngModel)]="product.thongSo.doNhay" name="tainghe.thongSo.doNhay">
   </div>
 </ng-template>

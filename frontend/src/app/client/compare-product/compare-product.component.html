@@ -1,0 +1,164 @@
+<!-- compare-product.component.html -->
+<div class="container mt-4">
+    <div class="row text-center mb-4">
+        <div class="col-md-6 mb-4">
+            <label for="productSelect">Chọn sản phẩm:</label>
+            <select id="productSelect" [(ngModel)]="selectedProducts1">
+                <option *ngFor="let product of products" [value]="product._id">{{ product.tenSP }}</option>
+            </select>
+        </div>
+        <div class="col-md-6 mb-4">
+            <label for="productSelect">Chọn sản phẩm:</label>
+            <select id="productSelect" [(ngModel)]="selectedProducts2">
+                <option *ngFor="let product of products" [value]="product._id">{{ product.tenSP }}</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <div class="text-center">
+                <button type="button" class="btn btn-secondary fw-bold text-white"
+                    (click)="getProductForCompare(selectedProducts1,selectedProducts2)">So sánh sản phẩm</button>
+                <p *ngIf="mess" class="text-danger mt-2 fw-bold">{{ mess }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="content-compare" *ngIf="product1">
+                <p>Tên sản phẩm: <span>{{product1.tenSP}}</span></p>
+                <p>Hãng: <span>{{product1.tenHang}}</span></p>
+                <p>Giá: <span>{{product1.giaTien | currency:'VND':'symbol':'1.0-0'}}</span></p>
+                <p>Thông số:</p>
+                <div *ngIf="product1.thongSo">
+                    <ul *ngIf="category === 'Điện Thoại'" class="content-ul">
+                        <li>Màn hình: <span>{{product1.thongSo.manHinh}}</span></li>
+                        <li>Camera sau: <span>{{product1.thongSo.cameraSau}}</span></li>
+                        <li>Camera trước: <span>{{product1.thongSo.cameraTruoc}}</span></li>
+                        <li>CPU: <span>{{product1.thongSo.CPU}}</span></li>
+                        <li>Bộ nhớ: <span>{{product1.thongSo.boNho}}</span></li>
+                        <li>Hệ điều hành: <span>{{product1.thongSo.heDieuHanh}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Laptop'" class="content-ul">
+                        <li>Màn hình: <span>{{product1.thongSo.manHinh}}</span></li>
+                        <li>Ram: <span>{{product1.thongSo.Ram}}</span></li>
+                        <li>Đồ họa: <span>{{product1.thongSo.doHoa}}</span></li>
+                        <li>CPU: <span>{{product1.thongSo.CPU}}</span></li>
+                        <li>Lưu trữ: <span>{{product1.thongSo.luuTru}}</span></li>
+                        <li>Hệ điều hành: <span>{{product1.thongSo.heDieuHanh}}</span></li>
+                        <li>Pin: <span>{{product1.thongSo.PIN}}</span></li>
+                        <li>Khối lượng: <span>{{product1.thongSo.khoiLuong}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Màn Hình'" class="content-ul">
+                        <li>Kích thước: <span>{{product1.thongSo.kichThuoc}}</span></li>
+                        <li>Tần số quét: <span>{{product1.thongSo.tanSoQuet}}</span></li>
+                        <li>Màu sắc hiển thị: <span>{{product1.thongSo.hienThiMauSac}}</span></li>
+                        <li>Cổng hình ảnh: <span>{{product1.thongSo.congHinhAnh}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Bàn Phím'" class="content-ul">
+                        <li>Kích thước: <span>{{product1.thongSo.kichThuoc}}</span></li>
+                        <li>Switch: <span>{{product1.thongSo.switch}}</span></li>
+                        <li>Trọng lượng: <span>{{product1.thongSo.trongLuong}}</span></li>
+                        <li>Bảo hành: <span>{{product1.thongSo.baoHanh}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Chuột'" class="content-ul">
+                        <li>Model: <span>{{product1.thongSo.model}}</span></li>
+                        <li>Kiểu kết nối: <span>{{product1.thongSo.kieuKetNoi}}</span></li>
+                        <li>Cảm biến: <span>{{product1.thongSo.camBien}}</span></li>
+                        <li>DPI: <span>{{product1.thongSo.DPI}}</span></li>
+                        <li>Bảo hành: <span>{{product1.thongSo.baoHanh}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Tai Nghe'" class="content-ul">
+                        <li>Chất liệu: <span>{{product1.thongSo.chatLieuKhung}}</span></li>
+                        <li>Màu sắc: <span>{{product1.thongSo.mauSac}}</span></li>
+                        <li>Kiểu: <span>{{product1.thongSo.kieuTaiNghe}}</span></li>
+                        <li>Kiểu kết nối: <span>{{product1.thongSo.kieuKetNoi}}</span></li>
+                        <li>Pin: <span>{{product1.thongSo.thoiLuongPin}}</span></li>
+                        <li>Micro: <span>{{product1.thongSo.microphone}}</span></li>
+                        <li>Tần số: <span>{{product1.thongSo.tanSo}}</span></li>
+                        <li>Độ nhạy: <span>{{product1.thongSo.doNhay}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="content-compare" *ngIf="product2">
+                <p>Tên sản phẩm: <span>{{product2.tenSP}}</span></p>
+                <p>Hãng: <span>{{product2.tenHang}}</span></p>
+                <p>Giá: <span>{{product2.giaTien | currency:'VND':'symbol':'1.0-0'}}</span></p>
+                <p>Thông số:</p>
+                <div *ngIf="product2.thongSo">
+                    <ul *ngIf="category === 'Điện Thoại'" class="content-ul">
+                        <li>Màn hình: <span>{{product2.thongSo.manHinh}}</span></li>
+                        <li>Camera sau: <span>{{product2.thongSo.cameraSau}}</span></li>
+                        <li>Camera trước: <span>{{product2.thongSo.cameraTruoc}}</span></li>
+                        <li>CPU: <span>{{product2.thongSo.CPU}}</span></li>
+                        <li>Bộ nhớ: <span>{{product2.thongSo.boNho}}</span></li>
+                        <li>Hệ điều hành: <span>{{product2.thongSo.heDieuHanh}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Laptop'" class="content-ul">
+                        <li>Màn hình: <span>{{product2.thongSo.manHinh}}</span></li>
+                        <li>Ram: <span>{{product2.thongSo.Ram}}</span></li>
+                        <li>Đồ họa: <span>{{product2.thongSo.doHoa}}</span></li>
+                        <li>CPU: <span>{{product2.thongSo.CPU}}</span></li>
+                        <li>Lưu trữ: <span>{{product2.thongSo.luuTru}}</span></li>
+                        <li>Hệ điều hành: <span>{{product2.thongSo.heDieuHanh}}</span></li>
+                        <li>Pin: <span>{{product2.thongSo.PIN}}</span></li>
+                        <li>Khối lượng: <span>{{product2.thongSo.khoiLuong}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Màn Hình'" class="content-ul">
+                        <li>Kích thước: <span>{{product2.thongSo.kichThuoc}}</span></li>
+                        <li>Tần số quét: <span>{{product2.thongSo.tanSoQuet}}</span></li>
+                        <li>Màu sắc hiển thị: <span>{{product2.thongSo.hienThiMauSac}}</span></li>
+                        <li>Cổng hình ảnh: <span>{{product2.thongSo.congHinhAnh}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Bàn Phím'" class="content-ul">
+                        <li>Kích thước: <span>{{product2.thongSo.kichThuoc}}</span></li>
+                        <li>Switch: <span>{{product2.thongSo.switch}}</span></li>
+                        <li>Trọng lượng: <span>{{product2.thongSo.trongLuong}}</span></li>
+                        <li>Bảo hành: <span>{{product2.thongSo.baoHanh}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Chuột'" class="content-ul">
+                        <li>Model: <span>{{product2.thongSo.model}}</span></li>
+                        <li>Kiểu kết nối: <span>{{product2.thongSo.kieuKetNoi}}</span></li>
+                        <li>Cảm biến: <span>{{product2.thongSo.camBien}}</span></li>
+                        <li>DPI: <span>{{product2.thongSo.DPI}}</span></li>
+                        <li>Bảo hành: <span>{{product2.thongSo.baoHanh}}</span></li>
+                    </ul>
+                    <ul *ngIf="category === 'Tai Nghe'" class="content-ul">
+                        <li>Chất liệu: <span>{{product2.thongSo.chatLieuKhung}}</span></li>
+                        <li>Màu sắc: <span>{{product2.thongSo.mauSac}}</span></li>
+                        <li>Kiểu: <span>{{product2.thongSo.kieuTaiNghe}}</span></li>
+                        <li>Kiểu kết nối: <span>{{product2.thongSo.kieuKetNoi}}</span></li>
+                        <li>Pin: <span>{{product2.thongSo.thoiLuongPin}}</span></li>
+                        <li>Micro: <span>{{product2.thongSo.microphone}}</span></li>
+                        <li>Tần số: <span>{{product2.thongSo.tanSo}}</span></li>
+                        <li>Độ nhạy: <span>{{product2.thongSo.doNhay}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="product1">
+        <div class="col-md-6 mb-3 content-description">
+            <p>Mô tả: <span class="fw-semibold">{{product1.moTa[0]}}</span></p>
+        </div>
+        <div class="col-md-6 mb-3 content-description" *ngIf="product2">
+            <p>Mô tả: <span class="fw-semibold">{{product2.moTa[0]}}</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div *ngIf="product1">
+                <div class="image-container">
+                    <img [src]="getImageUrl(product1.hinhAnh[0].tenImageSP)" alt="Product Image">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div *ngIf="product2">
+                <div class="image-container">
+                    <img [src]="getImageUrl(product2.hinhAnh[0].tenImageSP)" alt="Product Image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

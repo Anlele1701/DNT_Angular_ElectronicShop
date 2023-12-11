@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
 import { cartItem } from './cartItem.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   listCartItem: cartItem[] = [];
+  countCart: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   constructor() {}
 
   getCart() {
     this.listCartItem = JSON.parse(localStorage.getItem('cartList'));
     if (this.listCartItem == null) this.listCartItem = [];
     return this.listCartItem
+  }
+  countCartList(){
+    this.getCart();
+    let totalCount = 0;
+    this.listCartItem.forEach(item => {
+      totalCount += item.soLuongMua;
+    });
+    this.countCart.next(totalCount);
+    return this.countCart.asObservable();
   }
   addItemToCart(item: cartItem) {
     //thêm sp vào giỏ hàng
@@ -50,6 +61,7 @@ export class CartService {
     {
       this.listCartItem[index].soLuongMua++
       this.updateThanhTien(idSP)
+      this.countCartList()
       return this.listCartItem[index].soLuongMua
     }
     else return 0
@@ -64,6 +76,7 @@ export class CartService {
     {
       this.listCartItem[index].soLuongMua--
       this.updateThanhTien(idSP)
+      this.countCartList()
       return this.listCartItem[index].soLuongMua
     }
     else return 0
