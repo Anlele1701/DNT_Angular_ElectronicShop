@@ -1,34 +1,54 @@
-import { Component, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'src/app/models/product.models';
 import { CartService } from 'src/app/services/cartService/cart.service';
 import { cartItem } from 'src/app/services/cartService/cartItem.service';
 
 @Component({
-  selector: 'app-product-items',
-  templateUrl: './product-items.component.html',
-  styleUrls: ['./product-items.component.css'],
+  selector: 'app-searchpage',
+  templateUrl: './searchpage.component.html',
+  styleUrls: ['./searchpage.component.css'],
   providers: [cartItem],
 })
-export class ProductItemsComponent {
-  @Input() product: any;
-  @Input() tenSP: string = '';
+export class SearchpageComponent implements OnInit {
+  searchResults: any[];
   loaiSP: string = '';
+  @Input() tenSP: string = '';
+  @Input() product: any;
   cartitem: cartItem;
+
   constructor(
-    private activeRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router,
+    private http: HttpClient,
     private cartService: CartService
   ) {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      const tenSP = params['tenSP'];
+      if (tenSP) {
+        this.http
+          .get('http://localhost:3800/sanpham/findSP/' + tenSP)
+          .subscribe(
+            (data: any[]) => {
+              this.searchResults = data;
+              console.log(this.searchResults);
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+      }
+    });
+  }
   detailPage() {
-    this.activeRoute.params.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       this.loaiSP = params['loaiSP'];
     });
     this.router.navigate(['/client/category/' + this.loaiSP, this.tenSP], {
       queryParams: { product: JSON.stringify(this.product) },
     });
   }
-
   buyNow() {
     this.cartitem = {
       idSP: this.product._id,
@@ -40,7 +60,6 @@ export class ProductItemsComponent {
       thanhTien: this.product.giaTien,
     };
     this.cartService.addItemToCart(this.cartitem);
-    this.cartService.countCartList();
     this.router.navigate(['/client/shopping-cart']);
   }
 }

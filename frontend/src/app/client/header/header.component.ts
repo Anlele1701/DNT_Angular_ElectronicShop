@@ -85,7 +85,7 @@ export class HeaderComponent implements OnInit {
             console.error(error);
           }
         );
-     // this.router.navigate(['/Search'], { queryParams: { tenSP: this.tenSP } });
+      this.router.navigate(['/client/searchpage'], { queryParams: { tenSP: this.tenSP } });
     }
   }
 }

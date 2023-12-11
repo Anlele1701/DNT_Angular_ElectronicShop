@@ -1,13 +1,19 @@
 <div class="card border-0 position-relative mb-5">
   <div class="card-img-top">
-    <img src="http://localhost:3800/images/{{product.hinhAnh[0].tenImageSP}}" class="card-img-top-child" (click)="detailPage()"/>
+    <img
+      src="http://localhost:3800/images/{{ product.hinhAnh[0].tenImageSP }}"
+      class="card-img-top-child"
+      (click)="detailPage()"
+    />
   </div>
   <div class="card-body mt-3 p-0">
-    <div style="width: 269.33px; height: 70px;">
+    <div style="width: 269.33px; height: auto; white-space: nowrap">
       <h5 class="card-title">{{ product.tenSP }}</h5>
     </div>
-    <p class="card-text mt-1">{{ product.giaTien| currency : "VND" : " " }}Đ</p>
-    <a class="btn btn-dark mt-2" (click)="buyNow()">MUA NGAY</a>
+    <p class="card-text mt-1" style="font-weight: 200">
+      {{ product.giaTien | currency : "VND" : " " }} &#8363;
+    </p>
+    <a class="btn btn-dark" (click)="buyNow()">MUA NGAY</a>
   </div>
   <p class="badge">NEW</p>
 </div>

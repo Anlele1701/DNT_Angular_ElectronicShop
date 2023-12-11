@@ -56,6 +56,7 @@ import { CustomersComponent } from './admin/customers/customers.component';
 import { PopUpCreateCusComponent } from './admin/customers/pop-up-create-cus/pop-up-create-cus.component';
 import { PopUpCusDetailComponent } from './admin/customers/pop-up-cus-detail/pop-up-cus-detail.component';
 import { PopUpEditCusInfoComponent } from './admin/customers/pop-up-edit-cus-info/pop-up-edit-cus-info.component';
+import { SearchpageComponent } from './client/searchpage/searchpage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,6 +106,7 @@ import { PopUpEditCusInfoComponent } from './admin/customers/pop-up-edit-cus-inf
     PopUpCusDetailComponent,
     PopUpEditCusInfoComponent,
     CompareProductComponent,
+    SearchpageComponent,
     
   ],
   imports: [

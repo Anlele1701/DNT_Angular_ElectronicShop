@@ -1,0 +1,20 @@
+<div class="container" style="width: 100%; height: auto">
+  <div class="row row-cols-3 mt-5">
+    <div
+      class="col justify-content-center d-flex"
+      *ngFor="let product of searchResults"
+    >
+      <div *ngIf="product; else notFound">
+        <app-product-items
+          [product]="product"
+          [tenSP]="product.tenSP"
+        ></app-product-items>
+      </div>
+      <ng-template #notFound>
+        <div class="container">
+          <h3>Không tìm thấy sản phẩm</h3>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

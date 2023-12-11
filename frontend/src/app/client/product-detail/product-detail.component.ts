@@ -47,6 +47,7 @@ export class ProductDetailComponent implements OnInit {
       thanhTien: this.product.giaTien,
     };
     this.cartService.addItemToCart(this.cartitem);
+    this.cartService.countCartList();
   }
 
   buyNow() {
