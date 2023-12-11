@@ -149,6 +149,16 @@ var getAll = async (req, res) => {
     console.log(error);
   }
 };
+var findSP = async (req, res) => {
+  console.log(req.params.tenSP)
+  var result = await sanPhamService.findSP(req.params.tenSP);
+  if (result) {
+    res.send(result);
+  }
+  else{
+    res.send({status: false})
+  }
+}
 module.exports = {
   getProductsOfCompany,
   createNewCateProduct,
@@ -163,4 +173,5 @@ module.exports = {
   getSPCompare,
   getProductFromCategory,
   getAll,
+  findSP
 };

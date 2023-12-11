@@ -98,7 +98,7 @@ li:hover {
 }
 .content {
   margin-left: 100px;
-  height: 100%;
+  height: auto;
   background: #EEEDEC;
 }
 .dropdown-item:hover {

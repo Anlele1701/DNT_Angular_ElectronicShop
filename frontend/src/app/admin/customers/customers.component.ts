@@ -55,7 +55,7 @@ export class CustomersComponent implements OnInit {
       exitAnimationDuration,
     });
     popup.afterClosed().subscribe((result) => {
-      console.log(result);
+      this.showAllCus();
     });
   }
 
@@ -73,7 +73,6 @@ export class CustomersComponent implements OnInit {
       },
     });
     popup.afterClosed().subscribe((result) => {
-      console.log(result);
     });
   }
 
@@ -90,12 +89,7 @@ export class CustomersComponent implements OnInit {
       },
     });
     popup.afterClosed().subscribe((result) => {
-      var user = result.user;
-      console.log(result.user);
-      const index = this.listCus.findIndex((item) => item._id === user._id);
-      if (index) {
-        this.listCus[index] = user;
-      }
+      this.showAllCus();
     });
   }
   onSearch() {

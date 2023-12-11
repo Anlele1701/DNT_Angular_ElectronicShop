@@ -3,7 +3,10 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <!-- logo -->
-      <img src="assets\client\Shared\logo.png" style="width: 75px; image-rendering: optimizeQuality" />
+      <img
+        src="assets\client\Shared\logo.png"
+        style="width: 75px; image-rendering: optimizeQuality"
+      />
     </a>
 
     <!-- Button cho màn hình mobile -->
@@ -11,7 +14,7 @@
       class="navbar-toggler bg-white"
       type="button"
       data-bs-toggle="collapse"
-      aria-controls="navbarSupportedContent" 
+      aria-controls="navbarSupportedContent"
       data-bs-target="#navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -23,13 +26,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item ms-5">
-          <a class="nav-link active" routerLink="/client/homepage">Trang Chủ</a>
+          <a
+            class="nav-link"
+            routerLink="/client/homepage"
+            routerLinkActive="active"
+            >Trang Chủ</a
+          >
         </li>
         <li class="nav-item ms-5">
-          <a class="nav-link" routerLink="/client/about-us">Về Chúng Tôi</a>
+          <a
+            class="nav-link"
+            routerLink="/client/about-us"
+            routerLinkActive="active"
+            >Về Chúng Tôi</a
+          >
         </li>
         <li class="nav-item dropdown ms-5">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Danh Mục
           </a>
           <ul class="dropdown-menu">
@@ -72,15 +91,38 @@
         </li>
       </ul>
       <!-- bên phải -->
-      <ul class="nav">
+      <ul class="navbar-nav">
+        <li class="nav-item me-3" *ngIf="onClicked">
+          <div class="searchbox">
+            <input
+              type="text"
+              class="inputSearch"
+              placeholder="Nhập dữ liệu"
+              (keypress)="handlekeyPress($event)"
+              [(ngModel)]="tenSP"
+            />
+          </div>
+        </li>
+
         <li class="nav-item me-3">
-          <a class="nav-link" aria-current="page" href="#">
-            <i class="fas fa-search fa-lg" style="color: #f1f1f1; font-size: 1.5rem"></i>
+          <a class="nav-link" (click)="searchBarclicked()">
+            <i class="fas fa-search fa-lg" style="color: #f1f1f1"></i>
           </a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link" [routerLink]="['/client/shopping-cart']" >
-            <i class="fas fa-shopping-bag" style="color: #f1f1f1; font-size: 1.5rem"></i>
+          <a class="nav-link" [routerLink]="['/client/shopping-cart']">
+            <i
+              class="fas fa-shopping-bag iconClass"
+              style="color: #f1f1f1; font-size: 1.5rem"
+            >
+              <span
+                class="badge badge-light"
+                id="validCart"
+                *ngIf="slcart != 0; else khackhong"
+                >{{ slcart }}</span
+              >
+              <ng-template #khackhong> </ng-template>
+            </i>
           </a>
         </li>
         <li class="nav-item" *ngIf="checkLogin()">
@@ -93,7 +135,7 @@
         </li>
         <li class="nav-item" *ngIf="!checkLogin()">
           <a class="nav-link" (click)="openLogin('500ms', '500ms')">
-            <p>Đăng nhập</p>
+            Đăng nhập
           </a>
         </li>
       </ul>
